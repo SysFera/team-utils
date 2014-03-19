@@ -1,13 +1,4 @@
 Host graal
-  Hostname 140.77.166.19
-  user aragon
-
-Host ovh
- Hostname ns202719.ovh.net
- User aragon
+ User pmartinez
  ForwardAgent yes
-
-Host sysfera-site
- User www-data
- ForwardAgent yes
- ProxyCommand=ssh ovh nc 192.168.0.3 22
+ Host 140.77.166.19

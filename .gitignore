@@ -1,3 +1,4 @@
 ssh_bak/
-ssh/config
-ssh/config_*
+ssh/conf/config
+ssh/conf/config_perso*
+*perso*

@@ -52,8 +52,13 @@ Host pbs-node01
 Host morgan
  GSSAPIAuthentication no
  User pmartinez
- Hostname 46.218.176.154
+ Hostname 192.168.1.2
  ForwardAgent yes
+Host morgan-slave
+ GSSAPIAuthentication no
+ User jenkins
+ ForwardAgent yes
+ ProxyCommand=ssh morgan nc jenkins01 22
 
 Host demolap
  User sysfera
@@ -106,7 +111,3 @@ Host afront
  ForwardAgent yes
  HostName 54.220.148.8
 
-Host ebiothon-vm
- User bdepardo
- ForwardAgent yes
- Hostname 194.57.136.140

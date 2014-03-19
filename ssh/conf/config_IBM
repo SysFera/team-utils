@@ -1,0 +1,6 @@
+Host ibm-ppc64
+ Hostname 172.16.162.77
+ User root
+ GSSAPIAuthentication no
+ IdentityFile ~/.ssh/id_rsaIBM
+ ForwardAgent yes
