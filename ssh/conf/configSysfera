@@ -21,7 +21,7 @@ Host testbed2
 Host testbed3
  ProxyCommand=ssh graal nc 127.0.0.1 20422
  User sysfera
- IdentityFile ~/.ssh/id_rsaTestbed
+ IdentityFile ~/.ssh/customerKeys/id_rsaTestbed
  ForwardAgent yes
 
 Host edf-redhat
@@ -81,5 +81,5 @@ Host prod-romeo-slurm2
 Host cristal2
  Hostname cristal2.cines.fr
  User sysfera
- IdentityFile ~/.ssh/id_rsaCines
+ IdentityFile ~/.ssh/customerKeys/id_rsaCines
  ForwardAgent yes
