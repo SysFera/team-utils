@@ -49,8 +49,10 @@ echo "==="
 echo "Copying the keys..."
 echo "cd $dir/keys"
 cd $dir/keys
-echo "cp * $ssh"
-cp * $ssh
+rm -rf $ssh/customerKeys > /dev/null
+mkdir -p $ssh/customerKeys
+cp * $ssh/customerKeys
+chmod 600 $ssh/customerKeys/*
 echo "Done."
 echo "==="
 popd > /dev/null
