@@ -16,5 +16,13 @@ Host cines-cristal4
  ProxyCommand=ssh cristal2 nc cristal4 22
  User sysfera
  IdentityFile ~/.ssh/customerKeys/id_rsaCines
+ GSSAPIAuthentication no
+ ForwardAgent yes
+
+Host cines-cristal5
+ ProxyCommand=ssh cristal2 nc cristal5 22
+ User sysfera
+ IdentityFile ~/.ssh/customerKeys/id_rsaCines
+ GSSAPIAuthentication no
  ForwardAgent yes
 
