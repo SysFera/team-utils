@@ -1,0 +1,85 @@
+Host appliancedev
+ ProxyCommand=ssh graal nc 127.0.0.1 11222
+ User ubuntu
+ ForwardAgent yes
+
+Host applianceprod
+ ProxyCommand=ssh graal nc 127.0.0.1 23022
+ User ubuntu
+ ForwardAgent yes
+
+Host appliance2
+ ProxyCommand=ssh graal nc 127.0.0.1 30022
+ User ubuntu
+ ForwardAgent no
+
+Host testbed2
+ ProxyCommand=ssh graal nc 127.0.0.1 20222
+ User sysfera
+ ForwardAgent yes
+
+Host testbed3
+ ProxyCommand=ssh graal nc 127.0.0.1 20422
+ User sysfera
+ IdentityFile ~/.ssh/id_rsaTestbed
+ ForwardAgent yes
+
+Host edf-redhat
+ ProxyCommand=ssh testbed3 nc 192.169.1.21 22
+ User root
+ ForwardAgent yes
+
+Host edf-debian-server
+ ProxyCommand=ssh testbed3 nc 192.169.1.25 22
+ User root
+ ForwardAgent yes
+
+Host edf-debian-client
+ ProxyCommand=ssh testbed3 nc 192.169.1.26 22
+ User root
+ ForwardAgent yes
+
+Host pbs-frontend
+  ProxyCommand=ssh appliancedev nc 192.169.1.45 22
+  User pbs
+  ForwardAgent yes
+
+Host pbs-node01
+  ProxyCommand=ssh appliancedev nc 192.169.1.46 22
+  User pbs
+  ForwardAgent yes
+
+Host morgan-slave
+ ProxyCommand=ssh morgan nc jenkins01 22
+ User jenkins
+ GSSAPIAuthentication no
+ ForwardAgent yes
+
+Host demolap
+ HostName 192.168.1.20
+ User sysfera
+ ForwardAgent yes
+
+Host morgana
+ Hostname 192.168.1.2
+
+Host prod-romeo-vm
+ Hostname ccr-meso.univ-reims.fr
+ user sysfera
+ ForwardAgent yes
+
+Host prod-romeo-slurm1
+ Hostname romeo1.univ-reims.fr
+ user meso_user1
+ ForwardAgent yes
+
+Host prod-romeo-slurm2
+ Hostname romeo2.univ-reims.fr
+ user meso_user2
+ ForwardAgent yes
+
+Host cristal2
+ Hostname cristal2.cines.fr
+ User sysfera
+ IdentityFile ~/.ssh/id_rsaCines
+ ForwardAgent yes

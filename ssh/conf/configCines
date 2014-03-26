@@ -1,18 +1,20 @@
 Host cines-frontal
  Hostname cristal2.cines.fr
- GSSAPIAuthentication no
- IdentityFile ~/.ssh/id_rsaCINES
- ForwardAgent yes
  User sysfera
+ IdentityFile ~/.ssh/id_rsaCines
+ GSSAPIAuthentication no
+ ForwardAgent yes
+
 Host cines-cristal3
- IdentityFile ~/.ssh/id_rsaCINES
+ Hostname cristal3.cines.fr
+ User sysfera
+ IdentityFile ~/.ssh/id_rsaCines
  GSSAPIAuthentication no
  ForwardAgent yes
- User sysfera
- Hostname cristal3.cines.fr
+ 
 Host cines-cristal4
- IdentityFile ~/.ssh/id_rsaCINES
- ForwardAgent yes
- User sysfera
  ProxyCommand=ssh cristal2 nc cristal4 22
+ User sysfera
+ IdentityFile ~/.ssh/id_rsaCines
+ ForwardAgent yes
 

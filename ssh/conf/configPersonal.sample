@@ -1,0 +1,11 @@
+Host graal
+  Hostname 140.77.166.19
+  User XXX
+  IdentityFile ~/.ssh/id_dsa
+  ForwardAgent yes
+
+Host morgan
+ Hostname 192.168.1.2
+ User XXX
+ GSSAPIAuthentication no
+ ForwardAgent yes
