@@ -1,0 +1,17 @@
+<script id="template-stats" type="text/html">
+  {{#projects}}
+    <tr class={{deadlineStatus}}>
+      <td class="text-left">{{name}}</td>
+      <td class="text-right">{{total}}</td>
+      <td class="text-right">{{closed}}</td>
+      <td class="text-right">{{open}}</td>
+      <td class="text-right">{{new}}</td>
+      <td class="text-right">{{deadline}}&nbsp;h</td>
+    </tr>
+  {{/projects}}
+  {{^projects}}
+    <tr>
+      <td colspan="4">Pas de stats. C'est plutôt mauvais signe.</td>
+    </tr>
+  {{/projects}}
+</script>
