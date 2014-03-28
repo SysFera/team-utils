@@ -9,22 +9,31 @@
   margin-right: 30px;
 }
 
-html, body {
-  height: 100%;
+.text-success circle {
+  fill: #3c763d;
 }
 
-.container-fluid {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin-bottom: -6em;
+.text-danger circle {
+  fill: #a94442;
 }
 
-footer, .push {
-  height: 4em;
+.text-warning circle {
+  fill: #fcf8e3;
 }
 
+.text-active circle {
+  fill: #f5f5f5;
+}
 
+.text-normal circle {
+  fill: #999;
+}
+
+#jenkinsBuilds {
+  font-size: 2em;
+  line-height: 1.5em;
+  list-style-type: none;
+}
 
 
 

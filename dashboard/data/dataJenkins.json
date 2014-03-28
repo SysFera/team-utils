@@ -1,0 +1,20 @@
+{
+    "jenkinsBuilds": [
+        {
+            "name": "libbatch", 
+            "status": "success"
+        }, 
+        {
+            "name": "vishnu-automtest", 
+            "status": "danger"
+        }, 
+        {
+            "name": "vishnu-compil", 
+            "status": "success"
+        }, 
+        {
+            "name": "WB", 
+            "status": "success"
+        }
+    ]
+}
