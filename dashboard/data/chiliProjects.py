@@ -13,14 +13,15 @@ import json
 
 SITE_URL = "https://support.sysfera.com"
 API_KEY = "28ae1810e982c8a2a1f4f4b726e1feced351e229"
-DATA_FILE = "data.json"
+DATA_FILE = "dataProjects.json"
+INTERNAL_PROJECTS = ["SysFera", "SysFera-marketing"]
 
 def data(rmine):
     """List projects"""
-    project = []
-    projectCounter = 0
+    projetsClient = []
+    projetsSysFera = []
+
     for x in rmine.project.all():
-        projectCounter += 1
         total = len(x.issues)
         counter = Counter([i.status.name for i in x.issues])
         now = datetime.now(dateutil.tz.tzutc())
@@ -29,14 +30,20 @@ def data(rmine):
                for issue in x.issues if issue.status.name == 'Nouveau']
 
         deadline = max(elapsed) if elapsed else 0
-        project.append( { 'name': x.name,
-                        'total': total,
-                        'open': counter['En cours'] + counter['Nouveau'], 
-                        'new': counter['Nouveau'],
-                        'closed': counter[u'Résolu'],
-                        'deadline': deadline
-        })
-    res = { "projects": project}
+        project = { 
+            'name': x.name,
+            'total': total,
+            'open': counter['En cours'] + counter['Nouveau'], 
+            'new': counter['Nouveau'],
+            'closed': counter['Résolu'] + counter['Fermé'] + counter['Rejeté'],
+            'deadline': deadline
+        }
+        if x.name in INTERNAL_PROJECTS:
+            projetsSysFera.append( project )
+        else:
+            projetsClient.append( project )
+
+    res = { "projetsClient": projetsClient, "projetsSysFera": projetsSysFera}
     return res
 
 if __name__ == '__main__':

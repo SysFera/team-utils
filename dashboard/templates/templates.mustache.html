@@ -1,3 +1,18 @@
+<script id="templateStatsEquipe" type="text/html">
+  {{#members}}
+    <tr class={{wipStatus}}>
+      <td class="text-left">{{name}}</td>
+      <td class="text-right">{{issues.closed}}</td>
+      <td class="text-right">{{issues.new}}</td>
+      <td class="text-right">{{issues.open}}</td>
+    </tr>
+  {{/members}}
+  {{^members}}
+    <tr>
+      <td colspan="4">Pas de stats. C'est plutôt mauvais signe.</td>
+    </tr>
+  {{/members}}
+</script>
 <script id="templateStatsClient" type="text/html">
   {{#projetsClient}}
     <tr class={{deadlineStatus}}>
@@ -30,34 +45,4 @@
       <td colspan="5" class="text-center danger">Pas de stats. C'est plutôt mauvais signe.</td>
     </tr>
   {{/projetsSysFera}}
-</script>
-<script id="templateStatsEquipe" type="text/html">
-  {{#team}}
-    <tr class={{wipStatus}}>
-      <td class="text-left">{{name}}</td>
-      <td class="text-right">{{assigned}}</td>
-      <td class="text-right">{{open}}</td>
-      <td class="text-right">{{closed}}</td>
-    </tr>
-  {{/team}}
-  {{^team}}
-    <tr>
-      <td colspan="4">Pas de stats. C'est plutôt mauvais signe.</td>
-    </tr>
-  {{/team}}
-</script>
-<script id="templateStatsEquipe" type="text/html">
-  {{#members}}
-    <tr class={{wipStatus}}>
-      <td class="text-left">{{name}}</td>
-      <td class="text-right">{{issues.new}}</td>
-      <td class="text-right">{{issues.open}}</td>
-      <td class="text-right">{{issues.closed}}</td>
-    </tr>
-  {{/members}}
-  {{^members}}
-    <tr>
-      <td colspan="6">Pas de stats. C'est plutôt mauvais signe.</td>
-    </tr>
-  {{/members}}
 </script>

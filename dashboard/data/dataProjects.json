@@ -1,5 +1,5 @@
 {
-    "projects": [
+    "projetsClient": [
         {
             "name": "ANSYS", 
             "deadline": 0, 
@@ -10,31 +10,31 @@
         }, 
         {
             "name": "CINES", 
-            "deadline": 3721, 
-            "closed": 2, 
+            "deadline": 3738, 
+            "closed": 0, 
             "new": 3, 
             "total": 5, 
             "open": 3
         }, 
         {
             "name": "eBiothon", 
-            "deadline": 1009, 
-            "closed": 2, 
+            "deadline": 1026, 
+            "closed": 0, 
             "new": 6, 
             "total": 10, 
             "open": 8
         }, 
         {
             "name": "EDF", 
-            "deadline": 12942, 
-            "closed": 1, 
+            "deadline": 12959, 
+            "closed": 0, 
             "new": 46, 
             "total": 51, 
             "open": 50
         }, 
         {
             "name": "ROMEO", 
-            "deadline": 1081, 
+            "deadline": 1098, 
             "closed": 0, 
             "new": 2, 
             "total": 2, 
@@ -42,7 +42,7 @@
         }, 
         {
             "name": "ROMEO-CRIHAN", 
-            "deadline": 12314, 
+            "deadline": 12331, 
             "closed": 0, 
             "new": 7, 
             "total": 7, 
@@ -50,27 +50,11 @@
         }, 
         {
             "name": "SOP", 
-            "deadline": 560, 
+            "deadline": 577, 
             "closed": 0, 
             "new": 6, 
             "total": 6, 
             "open": 6
-        }, 
-        {
-            "name": "SysFera", 
-            "deadline": 6122, 
-            "closed": 9, 
-            "new": 136, 
-            "total": 158, 
-            "open": 149
-        }, 
-        {
-            "name": "SysFera-marketing", 
-            "deadline": 654, 
-            "closed": 0, 
-            "new": 11, 
-            "total": 11, 
-            "open": 11
         }, 
         {
             "name": "Techlimed", 
@@ -79,6 +63,24 @@
             "new": 0, 
             "total": 0, 
             "open": 0
+        }
+    ], 
+    "projetsSysFera": [
+        {
+            "name": "SysFera", 
+            "deadline": 6140, 
+            "closed": 0, 
+            "new": 135, 
+            "total": 158, 
+            "open": 148
+        }, 
+        {
+            "name": "SysFera-marketing", 
+            "deadline": 672, 
+            "closed": 0, 
+            "new": 11, 
+            "total": 11, 
+            "open": 11
         }
     ]
 }
