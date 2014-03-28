@@ -1,7 +1,7 @@
 <script id="templateStatsEquipe" type="text/html">
   {{#members}}
-    <tr class={{wipStatus}}>
-      <td class="text-left">{{name}}</td>
+    <tr class="{{wipStatus}}">
+      <td class="text-left"><strong>{{name}}</strong></td>
       <td class="text-right">{{issues.closed}}</td>
       <td class="text-right">{{issues.new}}</td>
       <td class="text-right">{{issues.open}}</td>
@@ -16,11 +16,11 @@
 <script id="templateStatsClient" type="text/html">
   {{#projetsClient}}
     <tr class={{deadlineStatus}}>
-      <td class="text-left">{{name}}</td>
+      <td class="text-left"><strong>{{name}}</strong></td>
       <td class="text-right">{{total}}</td>
       <td class="text-right">{{closed}}</td>
       <td class="text-right">{{open}}</td>
-      <td class="text-right">{{new}}</td>
+      <td class="text-center"><strong>{{new}}</strong></td>
       <td class="text-right">{{deadline}}&nbsp;h</td>
     </tr>
   {{/projetsClient}}
@@ -33,11 +33,12 @@
 <script id="templateStatsSysFera" type="text/html">
   {{#projetsSysFera}}
     <tr>
-      <td class="text-left">{{name}}</td>
+      <td class="text-left"><strong>{{name}}</strong></td>
       <td class="text-right">{{total}}</td>
       <td class="text-right">{{closed}}</td>
       <td class="text-right">{{open}}</td>
-      <td class="text-right">{{new}}</td>
+      <td class="text-center"><strong>{{new}}</strong></td>
+      <td class="text-right">{{deadline}}&nbsp;h</td>
     </tr>
   {{/projetsSysFera}}
   {{^projetsSysFera}}
@@ -49,8 +50,8 @@
 <script id="templateJenkins" type="text/html">
   {{#jenkinsBuilds}}
     <li class="status text-{{status}}">
-      <svg width="16px" height="16px" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="8" cy="8" r="8" stroke-width="0" fill="#000" />
+      <svg width="26px" height="26px" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="13" cy="13" r="13" stroke-width="0" fill="#000" />
       </svg>
       &nbsp;<span class="project">{{name}}</span>
     </li>
