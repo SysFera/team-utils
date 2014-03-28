@@ -13,6 +13,7 @@ $.get('templates/templates.mustache.html', function(data) {
   templateStatsClient = templates.filter('#templateStatsClient').html();
   templateStatsSysFera = templates.filter('#templateStatsSysFera').html();
   templateStatsEquipe = templates.filter('#templateStatsEquipe').html();
+  templateJenkins = templates.filter('#templateJenkins').html();
 });
 
 // Query the project data JSON, render it against the Mustache template, and insert it in the project body tables
@@ -44,5 +45,13 @@ setInterval(function(){
       }
     });
     $('#statsEquipe').html(Mustache.render(templateStatsEquipe, dataTeam))
+  });
+}, 1000);
+
+
+Query the team data JSON, render it against the Mustache template, and insert it in the Team body table
+setInterval(function(){
+  $.getJSON('data/dataJenkins.json', function(dataJenkins) {
+    $('#jenkinsBuilds').html(Mustache.render(templateJenkins, dataJenkins))
   });
 }, 1000);

@@ -46,3 +46,18 @@
     </tr>
   {{/projetsSysFera}}
 </script>
+<script id="templateJenkins" type="text/html">
+  {{#jenkinsBuilds}}
+    <li class="status text-{{status}}">
+      <svg width="16px" height="16px" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8" cy="8" r="8" stroke-width="0" fill="#000" />
+      </svg>
+      &nbsp;<span class="project">{{name}}</span>
+    </li>
+  {{/jenkinsBuilds}}
+  {{^jenkinsBuilds}}
+    <tr>
+      <td colspan="4">Pas de stats. C'est plutôt mauvais signe.</td>
+    </tr>
+  {{/jenkinsBuilds}}
+</script>
