@@ -14,16 +14,15 @@ import json
 SITE_URL = "https://support.sysfera.com"
 API_KEY = "28ae1810e982c8a2a1f4f4b726e1feced351e229"
 DATA_FILE = "dataTeam.json"
-MEMBERS = [10,13,17,19,20,22,23,25,29,32]
+MEMBERS = [10,13,17,19,20,22,23,29,32]
 
 def data(rmine):
     members = []
     for memberId in MEMBERS:
         member = rmine.user.get(memberId)
-        print member
         user = {
             'id': memberId,
-            'name': member.firstname + " " + member.lastname,
+            'name': member.firstname,
             'issues': {
                 'new': 0,
                 'open': 0,

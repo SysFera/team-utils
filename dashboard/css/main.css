@@ -4,6 +4,22 @@
    Author's custom styles
    ========================================================================== */
 
+body {
+  font-size: 18px;
+  background: #fff;
+}
+
+#sprintEnd {
+  margin: 1em 0 2em;
+  padding: 10px 0;
+  background: #333;
+  color: #eee;
+}
+
+.sprintDanger {
+  background: #a94442 !important;
+}
+
 .container-fluid {
   margin-left: 30px;
   margin-right: 30px;
@@ -31,8 +47,9 @@
 
 #jenkinsBuilds {
   font-size: 2em;
-  line-height: 1.5em;
-  list-style-type: none;
+  line-height: 2em;
+  list-style: none;
+  padding-left: 0;
 }
 
 

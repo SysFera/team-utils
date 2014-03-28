@@ -7,7 +7,7 @@
                 "open": 2, 
                 "closed": 3
             }, 
-            "name": "Ha\u00efkel Gu\u00e9mar"
+            "name": "Ha\u00efkel"
         }, 
         {
             "id": 13, 
@@ -16,7 +16,7 @@
                 "open": 0, 
                 "closed": 1
             }, 
-            "name": "Benjamin Depardon"
+            "name": "Benjamin"
         }, 
         {
             "id": 17, 
@@ -25,7 +25,7 @@
                 "open": 1, 
                 "closed": 0
             }, 
-            "name": "Philippe Martinez"
+            "name": "Philippe"
         }, 
         {
             "id": 19, 
@@ -34,16 +34,16 @@
                 "open": 0, 
                 "closed": 0
             }, 
-            "name": "Olivier Mornard"
+            "name": "Olivier"
         }, 
         {
             "id": 20, 
             "issues": {
                 "new": 0, 
                 "open": 1, 
-                "closed": 1
+                "closed": 2
             }, 
-            "name": "Augustin Ragon"
+            "name": "Augustin"
         }, 
         {
             "id": 22, 
@@ -52,7 +52,7 @@
                 "open": 0, 
                 "closed": 0
             }, 
-            "name": "Nicolas Bard"
+            "name": "Nicolas"
         }, 
         {
             "id": 23, 
@@ -61,16 +61,7 @@
                 "open": 5, 
                 "closed": 1
             }, 
-            "name": "Rodrigue Chakode"
-        }, 
-        {
-            "id": 25, 
-            "issues": {
-                "new": 0, 
-                "open": 0, 
-                "closed": 0
-            }, 
-            "name": "sysfera sysfera"
+            "name": "Rodrigue"
         }, 
         {
             "id": 29, 
@@ -79,7 +70,7 @@
                 "open": 3, 
                 "closed": 0
             }, 
-            "name": "K\u00e9vin Coulomb"
+            "name": "K\u00e9vin"
         }, 
         {
             "id": 32, 
@@ -88,7 +79,7 @@
                 "open": 0, 
                 "closed": 0
             }, 
-            "name": "Amine Bsila"
+            "name": "Amine"
         }
     ]
 }
