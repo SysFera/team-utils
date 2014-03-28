@@ -22,12 +22,16 @@ def data(rmine):
     projetsSysFera = []
 
     for x in rmine.project.all():
-        total = len(x.issues)
-        counter = Counter([i.status.name for i in x.issues])
+        # bugfix: project API does not retrieve all associated tickets
+        # even if limit is raised
+        issues = rmine.issue.all(project_id=x.id,
+                                 status_id="*")
+        total = len(issues)
+        counter = Counter([i.status.name for i in issues])
         now = datetime.now(dateutil.tz.tzutc())
         # compute elapsed time between ticket creation
         elapsed = [int(round((now - dateutil.parser.parse(issue.created_on)).total_seconds() // 3600))
-               for issue in x.issues if issue.status.name == 'Nouveau']
+               for issue in issues if issue.status.name == 'Nouveau']
 
         deadline = max(elapsed) if elapsed else 0
         project = { 
@@ -35,7 +39,7 @@ def data(rmine):
             'total': total,
             'open': counter['En cours'] + counter['Nouveau'], 
             'new': counter['Nouveau'],
-            'closed': counter['Résolu'] + counter['Fermé'] + counter['Rejeté'],
+            'closed': counter[u'Résolu'] + counter[u'Fermé'] + counter[u'Rejeté'],
             'deadline': deadline
         }
         if x.name in INTERNAL_PROJECTS:
