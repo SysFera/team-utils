@@ -45,7 +45,8 @@ def data(rmine):
                 user['issues']['closed'] += 1
 
         members.append( user )
-    res = { 'members': members }
+
+    res = { 'members': sorted(members, key=lambda member: member['name']) }
     return res
 
 if __name__ == '__main__':

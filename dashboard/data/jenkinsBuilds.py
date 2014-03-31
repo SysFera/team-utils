@@ -10,7 +10,7 @@ JENKINS_URL = "http://192.168.1.2/jenkins"
 JENKINS_USER = "dashboard"
 JENKINS_PWD = "dashboard"
 DATA_FILE = "dataJenkins.json"
-PROJECTS = ["libbatch", "WB", "vishnu-compil", "vishnu-automtest"]
+PROJECTS = ["libbatch", "vishnu-automtest", "vishnu-compil", "WB"]
 
 
 statuses = { "blue": "success",

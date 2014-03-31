@@ -1,3 +1,4 @@
 ssh_*
 ssh/conf/config
 ssh/conf/configPersonal
+dashboard/data/*.json
