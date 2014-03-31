@@ -1,0 +1,14 @@
+Host romeo-vm
+ Hostname ccr-meso.univ-reims.fr
+ user sysfera
+ ForwardAgent yes
+
+Host romeo-slurm1
+ Hostname romeo1.univ-reims.fr
+ user meso_user1
+ ForwardAgent yes
+
+Host romeo-slurm2
+ Hostname romeo2.univ-reims.fr
+ user meso_user2
+ ForwardAgent yes
