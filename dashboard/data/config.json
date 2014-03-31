@@ -1,7 +1,15 @@
 {
   "sprint": {
-    "date_start": "datetime(2014, 3, 24)",
-    "date_end": ""
+    "start": {
+      "year": 2014,
+      "month": 3,
+      "day": 24
+    },
+    "end": {
+      "year": 2014,
+      "month": 4,
+      "day": 11
+    }
   },
   "chili": {
     "url": "https://support.sysfera.com",
