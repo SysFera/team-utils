@@ -12,6 +12,7 @@ Host morgan
  Hostname 192.168.1.2
  User sysfera
  IdentityFile ~/.ssh/customerKeys/id_rsaSysfera
+ ForwardAgent yes
 
 Host morgan-slave
  ProxyCommand=ssh morgan nc jenkins01 22
