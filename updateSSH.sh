@@ -17,6 +17,9 @@ sshbak=$repo/ssh_$now             # backup directory
 ##########
 # change to the ssh directory
 echo -n "Changing to the $ssh directory..."
+if [ ! -d $ssh ]; then
+  mkdir -p $ssh
+fi
 pushd $ssh > /dev/null
 echo "Done."
 
