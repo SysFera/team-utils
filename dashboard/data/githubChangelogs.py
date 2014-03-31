@@ -15,7 +15,9 @@ ORG = config['github']['org']
 FILE = config['github']['file']
 COMMITS = config['github']['commits']
 REPOS = config['github']['repositories']
-START = eval(config['sprint']['date_start'])
+START = datetime(config['sprint']['start']['year'],
+                 config['sprint']['start']['month'],
+                 config['sprint']['start']['day'])
 
 # pip install github3.py
 
