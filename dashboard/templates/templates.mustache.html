@@ -62,3 +62,19 @@
     </tr>
   {{/jenkinsBuilds}}
 </script>
+<script id="templateGithub" type="text/html">
+  {{#projects}}
+    <h3>{{name}}</h3>
+    <ul>
+      {{#commits}}
+        <li>- {{message}} (<strong>{{sha}}...</strong>)</li>
+      {{/commits}}
+      {{^commits}}
+        <li>Aucun commit pour l'instant.</li>
+      {{/commits}}
+    </ul>
+  {{/projects}}
+  {{^projects}}
+    <p>Pas de projets. C'est plutôt mauvais signe.</p>
+  {{/projects}}
+</script>

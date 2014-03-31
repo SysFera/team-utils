@@ -16,6 +16,9 @@ API_KEY = "28ae1810e982c8a2a1f4f4b726e1feced351e229"
 DATA_FILE = "dataProjects.json"
 INTERNAL_PROJECTS = ["SysFera", "SysFera-marketing"]
 
+def sortCollectionByName(collection):
+    return sorted(collection, key=lambda collection: collection['name'].lower)
+
 def data(rmine):
     """List projects"""
     projetsClient = []
@@ -47,7 +50,7 @@ def data(rmine):
         else:
             projetsClient.append( project )
 
-    res = { "projetsClient": projetsClient, "projetsSysFera": projetsSysFera}
+    res = { "projetsClient": sortCollectionByName(projetsClient), "projetsSysFera": sortCollectionByName(projetsSysFera)}
     return res
 
 if __name__ == '__main__':

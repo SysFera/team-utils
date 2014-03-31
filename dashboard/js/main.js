@@ -5,9 +5,10 @@ var clock = $("#countdown")
   , statsSysFera = $('#statsSysFera')
   , statsEquipe = $('#statsEquipe')
   , jenkinsBuilds = $('#jenkinsBuilds')
+  , github = $('#github')
   , nextSprint = new Date(2014, 03, 11, 18)
   , refreshTime = 10000
-  , templates, templateStatsClient, templateStatsEquipe;
+  , templates, templateStatsSysFera, templateStatsClient, templateStatsEquipe, templateJenkins, templateGithub;
 
 // Initial templates gathering. Done only once.
 $.get('templates/templates.mustache.html', function(data) {
@@ -16,6 +17,7 @@ $.get('templates/templates.mustache.html', function(data) {
   templateStatsSysFera = templates.filter('#templateStatsSysFera').html();
   templateStatsEquipe = templates.filter('#templateStatsEquipe').html();
   templateJenkins = templates.filter('#templateJenkins').html();
+  templateGithub = templates.filter('#templateGithub').html();
 });
 
 // main refreshDisplay function
@@ -51,9 +53,13 @@ function refreshDisplay() {
     });
     statsEquipe.html(Mustache.render(templateStatsEquipe, dataTeam))
   });
-  // Query the team data JSON, render it against the Mustache template, and insert it in the Team body table
+  // Query the Jenkins data JSON, render it against the Mustache template, and insert it in the Jenkins builds table
   $.getJSON('data/dataJenkins.json', function(dataJenkins) {
     jenkinsBuilds.html(Mustache.render(templateJenkins, dataJenkins))
+  });
+  // Query the Changelogs JSON, render it against the Mustache template, and insert it in the Changelogs div  
+  $.getJSON('data/dataGithub.json', function(dataGithub) {
+    github.html(Mustache.render(templateGithub, dataGithub))
   });
 }
 
