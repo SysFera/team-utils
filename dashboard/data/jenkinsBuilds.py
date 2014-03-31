@@ -3,14 +3,18 @@
 
 from jenkins import Jenkins
 import json
+import ConfigParser
+
+config = ConfigParser.RawConfigParser()
+config.read('config.cfg')
 
 # pip install jenkins-webapi
 
-JENKINS_URL = "http://192.168.1.2/jenkins"
-JENKINS_USER = "dashboard"
-JENKINS_PWD = "dashboard"
-DATA_FILE = "dataJenkins.json"
-PROJECTS = ["libbatch", "vishnu-automtest", "vishnu-compil", "WB"]
+URL = config.get('Jenkins', 'URL')
+USER = config.get('Jenkins', 'USER')
+PWD = config.get('Jenkins', 'PWD')
+FILE = config.get('Jenkins', 'FILE')
+PROJECTS = eval(config.get('Jenkins', 'PROJECTS'))
 
 
 statuses = { "blue": "success",
@@ -36,7 +40,7 @@ def generate_report(jenkins):
 
 
 if __name__ == '__main__':
-    jenkins = Jenkins(JENKINS_URL, JENKINS_USER, JENKINS_PWD)
+    jenkins = Jenkins(URL, USER, PWD)
     data = generate_report(jenkins)
-    data_file = open(DATA_FILE, 'w')
+    data_file = open(FILE, 'w')
     json.dump(data, data_file, indent=4, sort_keys=True)

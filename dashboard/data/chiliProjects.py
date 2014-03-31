@@ -6,15 +6,19 @@ from collections import Counter
 from datetime import datetime
 import dateutil.parser
 import json
+import ConfigParser
+
+config = ConfigParser.RawConfigParser()
+config.read('config.cfg')
 
 # non-standard modules required
-# pip install redmine
+# pip install python-redmine
 # pip install python-dateutil
 
-SITE_URL = "https://support.sysfera.com"
-API_KEY = "28ae1810e982c8a2a1f4f4b726e1feced351e229"
-DATA_FILE = "dataProjects.json"
-INTERNAL_PROJECTS = ["SysFera", "SysFera-marketing"]
+URL = config.get('Chili', 'URL')
+API = config.get('Chili', 'API')
+FILE = config.get('Chili', 'FILE')
+PROJECTS = config.get('Chili', 'PROJECTS')
 
 def sortCollectionByName(collection):
     return sorted(collection, key=lambda collection: collection['name'].lower)
@@ -45,7 +49,7 @@ def data(rmine):
             'closed': counter[u'Résolu'] + counter[u'Fermé'] + counter[u'Rejeté'],
             'deadline': deadline
         }
-        if x.name in INTERNAL_PROJECTS:
+        if x.name in PROJECTS:
             projetsSysFera.append( project )
         else:
             projetsClient.append( project )
@@ -54,7 +58,7 @@ def data(rmine):
     return res
 
 if __name__ == '__main__':
-    rmine = Redmine(SITE_URL, key=API_KEY, requests={ 'verify': False })
+    rmine = Redmine(URL, key=API, requests={ 'verify': False })
     result = data(rmine)
-    data_file = open(DATA_FILE, 'w')
+    data_file = open(FILE, 'w')
     jsonified = json.dump(result, data_file, indent=4)
