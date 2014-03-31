@@ -6,19 +6,19 @@ from collections import Counter
 from datetime import datetime
 import dateutil.parser
 import json
-import ConfigParser
 
-config = ConfigParser.RawConfigParser()
-config.read('config.cfg')
+configFile = open('config.json')
+config = json.load(configFile)
+configFile.close()
 
 # non-standard modules required
 # pip install python-redmine
 # pip install python-dateutil
 
-URL = config.get('Chili', 'URL')
-API = config.get('Chili', 'API')
-FILE = config.get('Chili', 'FILE')
-PROJECTS = config.get('Chili', 'PROJECTS')
+URL = config['chili']['url']
+API = config['chili']['api']
+FILE = config['chili']['fileProjects']
+PROJECTS = config['chili']['projects']
 
 def sortCollectionByName(collection):
     return sorted(collection, key=lambda collection: collection['name'].lower)

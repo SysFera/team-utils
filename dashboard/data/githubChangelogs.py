@@ -4,18 +4,18 @@
 from github3 import login
 from datetime import datetime
 import json
-import ConfigParser
 
-config = ConfigParser.RawConfigParser()
-config.read('config.cfg')
+configFile = open('config.json')
+config = json.load(configFile)
+configFile.close()
 
-USER = config.get('GitHub', 'USER')
-PWD = config.get('GitHub', 'PWD')
-ORG = config.get('GitHub', 'ORG')
-FILE = config.get('GitHub', 'FILE')
-COMMITS = config.getint('GitHub', 'COMMITS')
-REPOS = eval(config.get('GitHub', 'REPOS'))
-START = eval(config.get('Sprint', 'START'))
+USER = config['github']['user']
+PWD = config['github']['pwd']
+ORG = config['github']['org']
+FILE = config['github']['file']
+COMMITS = config['github']['commits']
+REPOS = config['github']['repositories']
+START = eval(config['sprint']['date_start'])
 
 # pip install github3.py
 
