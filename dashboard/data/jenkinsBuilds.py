@@ -3,18 +3,18 @@
 
 from jenkins import Jenkins
 import json
-import ConfigParser
 
-config = ConfigParser.RawConfigParser()
-config.read('config.cfg')
+configFile = open('config.json')
+config = json.load(configFile)
+configFile.close()
 
 # pip install jenkins-webapi
 
-URL = config.get('Jenkins', 'URL')
-USER = config.get('Jenkins', 'USER')
-PWD = config.get('Jenkins', 'PWD')
-FILE = config.get('Jenkins', 'FILE')
-PROJECTS = eval(config.get('Jenkins', 'PROJECTS'))
+URL = config['jenkins']['url']
+USER = config['jenkins']['user']
+PWD = config['jenkins']['pwd']
+FILE = config['jenkins']['file']
+PROJECTS = config['jenkins']['projects']
 
 
 statuses = { "blue": "success",
