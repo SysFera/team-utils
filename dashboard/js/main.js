@@ -1,13 +1,11 @@
 // Variables
 var clock = $("#countdown")
-  , sprintEnd, sprintDanger
   , statsClient = $('#statsClient')
   , statsSysFera = $('#statsSysFera')
   , statsEquipe = $('#statsEquipe')
   , jenkinsBuilds = $('#jenkinsBuilds')
   , github = $('#github')
-  , nextSprint
-  , refreshTime = 10000
+  , nextSprint, refreshTime, sprintEnd, sprintDanger
   , templates, templateStatsSysFera, templateStatsClient, templateStatsEquipe, templateJenkins, templateGithub;
 
 // Initial templates gathering. Done only once.
@@ -26,6 +24,7 @@ function refreshDisplay() {
   // Query the config file and create a display using the end date
   $.getJSON('data/config.json', function(data) {
     // nextSprint = eval(data['sprint']['date_end']);
+    refreshTime = data['global']['refreshtime'];
     nextSprint = new Date(
       data['sprint']['end']['year'],
       // months in JS are an index, so e.g., April is 3 and not 4
