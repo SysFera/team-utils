@@ -57,10 +57,14 @@ function refreshDisplay() {
   // Query the team data JSON, render it against the Mustache template, and insert it in the Team body table
   $.getJSON('data/dataTeam.json', function(dataTeam) {
     dataTeam["members"].forEach(function(member){
-      if (member.issues.open < 3) {
-        member.wipStatus = "success"
-      } else {
+      if (member.issues.open = 0) {
         member.wipStatus = "danger"
+      } else if (member.issues.open > 3) {
+        member.wipStatus = "danger"
+      } else if (member.issues.open > 2) {
+        member.wipStatus = "warning"
+      } else {
+        member.wipStatus = "success"
       }
     });
     statsEquipe.html(Mustache.render(templateStatsEquipe, dataTeam))
