@@ -17,10 +17,11 @@ Host morgan
 Host morgan-slave
  ProxyCommand=ssh morgan nc jenkins01 22
  User jenkins
+ IdentityFile ~/.ssh/customerKeys/id_rsaSysfera
  GSSAPIAuthentication no
  ForwardAgent yes
 
-Host sysfera-team
+Host team-dashboard
  Hostname 192.168.1.117
  User sysfera
  IdentityFile ~/.ssh/customerKeys/id_rsaSysfera
