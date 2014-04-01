@@ -1,4 +1,7 @@
 {
+  "global": {
+    "refreshtime": 30000
+  },
   "sprint": {
     "start": {
       "year": 2014,
