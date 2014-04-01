@@ -5,7 +5,6 @@ var clock = $("#countdown")
   , statsEquipe = $('#statsEquipe')
   , jenkinsBuilds = $('#jenkinsBuilds')
   , github = $('#github')
-  , refreshTime = 10000
   , templates, templateStatsSysFera, templateStatsClient, templateStatsEquipe, templateJenkins, templateGithub;
 
 // Initial templates gathering. Done only once.
