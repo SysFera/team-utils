@@ -1,6 +1,6 @@
 {
   "global": {
-    "refreshtime": 30000
+    "refreshtime": 60000
   },
   "sprint": {
     "start": {
