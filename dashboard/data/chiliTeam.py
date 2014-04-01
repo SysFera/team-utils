@@ -17,7 +17,7 @@ configFile.close()
 
 URL = config['chili']['url']
 API = config['chili']['api']
-FILE = config['chili']['fileProjects']
+FILE = config['chili']['fileTeam']
 MEMBERS = config['chili']['members']
 
 def data(rmine):
