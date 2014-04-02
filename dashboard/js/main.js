@@ -7,6 +7,8 @@ var clock = $("#countdown")
   , github = $('#github')
   , templates, templateStatsSysFera, templateStatsClient, templateStatsEquipe, templateJenkins, templateGithub;
 
+$.ajaxSetup({ cache: false });
+
 // Initial templates gathering. Done only once.
 $.get('templates/templates.mustache.html', function(data) {
   templates = $(data);
