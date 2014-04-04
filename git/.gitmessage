@@ -1,5 +1,7 @@
-subject line
+# modèle de commit :
+# b/e/o -> Bug, Enhancement, Other
+# #666 -> numéro du ticket
+b/e/o#666: Brève description succintement concise sans redondantes répétitions superfétatoires
 
-what happened
+Liste plus prolixe détaillants de manière précise les éléments constitutifs.
 
-[ticket: X]
