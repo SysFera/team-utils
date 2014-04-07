@@ -18,7 +18,8 @@
     "url": "https://support.sysfera.com",
     "api": "28ae1810e982c8a2a1f4f4b726e1feced351e229",
     "fileProjects": "dataProjects.json",
-    "projects": "['SysFera', 'SysFera-marketing']",
+    "customerProjects": "['CINES', 'eBiothon', 'Nu@ge', 'SOP']",
+    "sysferaProjects": "['SysFera']",
     "fileTeam": "dataTeam.json",
     "members": [10,13,17,19,20,22,23,29]
   },

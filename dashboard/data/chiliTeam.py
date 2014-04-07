@@ -29,8 +29,7 @@ def data(rmine):
             'name': member.firstname,
             'issues': {
                 'new': 0,
-                'open': 0,
-                'closed': 0
+                'open': 0
             }
         }
 
@@ -41,12 +40,6 @@ def data(rmine):
                 user['issues']['new'] += 1
             if status == 2:
                 user['issues']['open'] += 1
-            if status == 3:
-                user['issues']['closed'] += 1
-            if status == 5:
-                user['issues']['closed'] += 1
-            if status == 6:
-                user['issues']['closed'] += 1
 
         members.append( user )
 
