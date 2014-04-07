@@ -18,15 +18,16 @@ configFile.close()
 URL = config['chili']['url']
 API = config['chili']['api']
 FILE = config['chili']['fileProjects']
-PROJECTS = config['chili']['projects']
+CUSTOMER_PROJECTS = config['chili']['customerProjects']
+SYSFERA_PROJECTS = config['chili']['sysferaProjects']
 
 def sortCollectionByName(collection):
     return sorted(collection, key=lambda collection: collection['name'].lower)
 
 def data(rmine):
     """List projects"""
-    projetsClient = []
-    projetsSysFera = []
+    customerProjects = []
+    sysferaProjects = []
 
     for x in rmine.project.all():
         # bugfix: project API does not retrieve all associated tickets
@@ -49,12 +50,12 @@ def data(rmine):
             'closed': counter[u'Résolu'] + counter[u'Fermé'] + counter[u'Rejeté'],
             'deadline': deadline
         }
-        if x.name in PROJECTS:
-            projetsSysFera.append( project )
-        else:
-            projetsClient.append( project )
+        if x.name in SYSFERA_PROJECTS:
+            sysferaProjects.append( project )
+        elif x.name in CUSTOMER_PROJECTS:
+            customerProjects.append( project )
 
-    res = { "projetsClient": sortCollectionByName(projetsClient), "projetsSysFera": sortCollectionByName(projetsSysFera)}
+    res = { "customerProjects": sortCollectionByName(customerProjects), "sysferaProjects": sortCollectionByName(sysferaProjects)}
     return res
 
 if __name__ == '__main__':

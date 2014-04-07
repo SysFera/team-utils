@@ -46,7 +46,7 @@ function refreshDisplay() {
 
   // Query the project data JSON, render it against the Mustache template, and insert it in the project body tables
   $.getJSON('data/dataProjects.json', function(dataProjects) {
-    dataProjects["projetsClient"].forEach(function(it){
+    dataProjects["customerProjects"].forEach(function(it){
       if (it.deadline < 24) {
         it.deadlineStatus = "success"
       } else if (it.deadline < 48) {

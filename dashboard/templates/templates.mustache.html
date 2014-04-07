@@ -2,7 +2,6 @@
   {{#members}}
     <tr class="{{wipStatus}}">
       <td class="text-left"><strong>{{name}}</strong></td>
-      <td class="text-right">{{issues.closed}}</td>
       <td class="text-right">{{issues.new}}</td>
       <td class="text-right">{{issues.open}}</td>
     </tr>
@@ -14,7 +13,7 @@
   {{/members}}
 </script>
 <script id="templateStatsClient" type="text/html">
-  {{#projetsClient}}
+  {{#customerProjects}}
     <tr class={{deadlineStatus}}>
       <td class="text-left"><strong>{{name}}</strong></td>
       <td class="text-right">{{total}}</td>
@@ -23,15 +22,15 @@
       <td class="text-center"><strong>{{new}}</strong></td>
       <td class="text-right">{{deadline}}&nbsp;h</td>
     </tr>
-  {{/projetsClient}}
-  {{^projetsClient}}
+  {{/customerProjects}}
+  {{^customerProjects}}
     <tr>
       <td colspan="6">Pas de stats. C'est plutôt mauvais signe.</td>
     </tr>
-  {{/projetsClient}}
+  {{/customerProjects}}
 </script>
 <script id="templateStatsSysFera" type="text/html">
-  {{#projetsSysFera}}
+  {{#sysferaProjects}}
     <tr>
       <td class="text-left"><strong>{{name}}</strong></td>
       <td class="text-right">{{total}}</td>
@@ -40,12 +39,12 @@
       <td class="text-center"><strong>{{new}}</strong></td>
       <td class="text-right">{{deadline}}&nbsp;h</td>
     </tr>
-  {{/projetsSysFera}}
-  {{^projetsSysFera}}
+  {{/sysferaProjects}}
+  {{^sysferaProjects}}
     <tr>
       <td colspan="5" class="text-center danger">Pas de stats. C'est plutôt mauvais signe.</td>
     </tr>
-  {{/projetsSysFera}}
+  {{/sysferaProjects}}
 </script>
 <script id="templateJenkins" type="text/html">
   {{#jenkinsBuilds}}
