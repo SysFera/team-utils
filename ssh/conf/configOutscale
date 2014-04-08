@@ -1,0 +1,7 @@
+Host outscale-frontal
+ Hostname ows-109-232-237-92.eu-west-1.compute.outscale.com
+ User root
+ IdentityFile ~/.ssh/customerKeys/id_rsaOutscale
+ GSSAPIAuthentication no
+ ForwardAgent yes
+     
