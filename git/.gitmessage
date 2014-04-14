@@ -1,5 +1,5 @@
 # modèle de commit :
-# b/e/o -> Bug, Enhancement, Other
+# b/e/f/o -> Bug, Enhancement, Feature, Other
 # #666 -> numéro du ticket
 b/e/o#666: Brève description succintement concise sans redondantes répétitions superfétatoires
 
