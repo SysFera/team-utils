@@ -38,15 +38,15 @@ function refreshDisplay() {
       data['sprint']['end']['month'] - 1,
       data['sprint']['end']['day'],
       18, 0, 0);
-    sprintEnd = countdown(nextSprint, null, countdown.WEEKS | countdown.DAYS | countdown.HOURS | countdown.MINUTES | countdown.SECONDS, 3);
+    var sprintEnd = countdown(nextSprint, null, countdown.WEEKS | countdown.DAYS | countdown.HOURS | countdown.MINUTES | countdown.SECONDS, 3);
     clock.html(sprintEnd.toString());
-    var sprintDanger = (sprintEnd.value + 432000000) > 0
+    var sprintDanger = (sprintEnd.value + 432000000) > 0;
     $("#sprintEnd").toggleClass( "sprintDanger", sprintDanger );
   });
 
   // Query the project data JSON, render it against the Mustache template, and insert it in the project body tables
   $.getJSON('data/dataProjects.json', function(dataProjects) {
-    dataProjects["customerProjects"].forEach(function(it){
+    dataProjects["customers"].forEach(function(it){
       if (it.deadline < 24) {
         it.deadlineStatus = "success"
       } else if (it.deadline < 48) {
@@ -56,13 +56,13 @@ function refreshDisplay() {
       }
       it.deadline = it.deadline.toLocaleString()
     });
-    statsClient.html(Mustache.render(templateStatsClient, dataProjects))
-    statsSysFera.html(Mustache.render(templateStatsSysFera, dataProjects))
+    statsClient.html(Mustache.render(templateStatsClient, dataProjects));
+    statsSysFera.html(Mustache.render(templateStatsSysFera, dataProjects));
   });
 
   // Query the team data JSON, render it against the Mustache template, and insert it in the Team body table
   $.getJSON('data/dataTeam.json', function(dataTeam) {
-    dataTeam["members"].forEach(function(member){
+    dataTeam["users"].forEach(function(member){
       if (member.issues.open == 0) {
         member.wipStatus = "danger"
       } else if (member.issues.open > 3) {
@@ -73,12 +73,12 @@ function refreshDisplay() {
         member.wipStatus = "success"
       }
     });
-    statsEquipe.html(Mustache.render(templateStatsEquipe, dataTeam))
+    statsEquipe.html(Mustache.render(templateStatsEquipe, dataTeam));
   });
 
   // Query the Jenkins data JSON, render it against the Mustache template, and insert it in the Jenkins builds table
   $.getJSON('data/dataJenkins.json', function(dataJenkins) {
-    jenkinsBuilds.html(Mustache.render(templateJenkins, dataJenkins))
+    jenkinsBuilds.html(Mustache.render(templateJenkins, dataJenkins));
   });
 
   // Query the Changelogs JSON, render it against the Mustache template, and insert it in the Changelogs div  
