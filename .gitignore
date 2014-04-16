@@ -2,3 +2,5 @@ ssh_*
 ssh/conf/config
 ssh/conf/configPersonal
 dashboard/data/*.json
+dashboard/.idea/
+dashboard/dashboard.iml
