@@ -13,7 +13,7 @@
   {{/users}}
 </script>
 <script id="templateStatsClient" type="text/html">
-  {{#customerProjects}}
+  {{#customers}}
     <tr class={{deadlineStatus}}>
       <td class="text-left"><strong>{{name}}</strong></td>
       <td class="text-right">{{total}}</td>
@@ -22,29 +22,29 @@
       <td class="text-center"><strong>{{new}}</strong></td>
       <td class="text-right">{{deadline}}&nbsp;h</td>
     </tr>
-  {{/customerProjects}}
-  {{^customerProjects}}
+  {{/customers}}
+  {{^customers}}
     <tr>
       <td colspan="6">Pas de stats. C'est plutôt mauvais signe.</td>
     </tr>
-  {{/customerProjects}}
+  {{/customers}}
 </script>
 <script id="templateStatsSysFera" type="text/html">
-  {{#sysferaProjects}}
+  {{#sysfera}}
     <tr>
       <td class="text-left"><strong>{{name}}</strong></td>
       <td class="text-right">{{total}}</td>
       <td class="text-right">{{closed}}</td>
       <td class="text-right">{{open}}</td>
       <td class="text-center"><strong>{{new}}</strong></td>
-      <td class="text-right">{{deadline}}&nbsp;h</td>
+      <td class="text-right">N/A</td>
     </tr>
-  {{/sysferaProjects}}
-  {{^sysferaProjects}}
+  {{/sysfera}}
+  {{^sysfera}}
     <tr>
       <td colspan="5" class="text-center danger">Pas de stats. C'est plutôt mauvais signe.</td>
     </tr>
-  {{/sysferaProjects}}
+  {{/sysfera}}
 </script>
 <script id="templateJenkins" type="text/html">
   {{#jenkinsBuilds}}

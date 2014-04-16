@@ -109,7 +109,7 @@ def data(redmine):
 
     projects = {
         "sysfera": sort_collection_by_name(sysfera_projects),
-        "customer": sort_collection_by_name(customer_projects)
+        "customers": sort_collection_by_name(customer_projects)
     }
 
     return {
