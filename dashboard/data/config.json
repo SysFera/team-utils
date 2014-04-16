@@ -3,6 +3,7 @@
     "refreshtime": 60000
   },
   "sprint": {
+    "version_id": 12,
     "start": {
       "year": 2014,
       "month": 4,
@@ -11,15 +12,22 @@
     "end": {
       "year": 2014,
       "month": 5,
-      "day": 2
+      "day": 7
     }
   },
   "chili": {
     "url": "https://support.sysfera.com",
     "api": "28ae1810e982c8a2a1f4f4b726e1feced351e229",
     "fileProjects": "dataProjects.json",
-    "customerProjects": "['CINES', 'eBiothon', 'Nu@ge', 'SOP']",
-    "sysferaProjects": "['SysFera']",
+    "customerProjects": [
+      { "name": "CINES" },
+      { "name": "eBiothon" }
+    ],
+    "sysferaProjects": [
+      { "name": "SysFera" },
+      { "name": "Nu@ge" },
+      { "name": "SOP" }
+    ],
     "fileTeam": "dataTeam.json",
     "members": [10,13,17,19,20,22,23,29]
   },
