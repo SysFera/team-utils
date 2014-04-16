@@ -2,10 +2,8 @@ Host ebiothon-vm
  Hostname 194.57.136.140
  User vishnu
  IdentityFile ~/.ssh/customerKeys/id_rsaEbiothon
- ForwardAgent yes
  
 Host ebiothon-babel
  ProxyCommand=ssh ebiothon-vm nc babel.idris.fr 22
  User vishnu1
  IdentityFile ~/.ssh/customerKeys/id_rsaEbiothon
- ForwardAgent yes
