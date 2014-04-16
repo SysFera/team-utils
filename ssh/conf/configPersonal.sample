@@ -3,9 +3,3 @@ Host graal
   User XXX
   IdentityFile ~/.ssh/customerKeys/id_dsa
   ForwardAgent yes
-
-Host morgan
- Hostname 192.168.1.2
- User XXX
- GSSAPIAuthentication no
- ForwardAgent yes
