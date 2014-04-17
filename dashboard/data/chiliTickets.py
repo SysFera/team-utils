@@ -102,7 +102,7 @@ def data(redmine):
         if p.name in [x['name'] for x in SYSFERA_PROJECTS]:
             issues = get_issues(p, "fixed_version", "name", SPRINT_TARGET)
             project = create_project_json(p, issues, 0)
-            add_issues_to_users(users, issues)
+            add_issues_to_users(users, p.issues)
             sysfera_projects.append(project)
         elif p.name in [x['name'] for x in CUSTOMER_PROJECTS]:
             issues = get_issues(p, "tracker", "id", TRACKER)
