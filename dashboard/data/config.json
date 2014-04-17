@@ -3,6 +3,9 @@
     "refreshtime": 60000
   },
   "sprint": {
+    "trackers": {
+      "anomalie": 1
+    },
     "version_id": 12,
     "start": {
       "year": 2014,

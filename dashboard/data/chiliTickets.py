@@ -25,8 +25,9 @@ CUSTOMER_PROJECTS = config['chili']['customerProjects']
 SYSFERA_PROJECTS = config['chili']['sysferaProjects']
 MEMBERS = config['chili']['members']
 
-# SPRINT_TARGET = "%02d" % config['sprint']['end']['day'] + "-" + "%02d" % config['sprint']['end']['month'] + "-" + "%04d" % config['sprint']['end']['year']
-SPRINT_TARGET = config['sprint']['version_id']
+SPRINT_TARGET = "%02d" % config['sprint']['end']['day'] + "-" + "%02d" % config['sprint']['end']['month'] + "-" + "%04d" % config['sprint']['end']['year']
+# SPRINT_TARGET = config['sprint']['version_id']
+TRACKER = config['sprint']['trackers']['anomalie']
 
 
 def sort_collection_by_name(collection):
@@ -68,6 +69,16 @@ def add_issues_to_users(users, issues):
     return
 
 
+def get_issues(p, attr, field, value):
+    issues_id = []
+    for i in p.issues:
+        if hasattr(i, attr):
+            a = getattr(i, attr)
+            if getattr(a, field) == value:
+                issues_id.append(i.id)
+    return p.issues.filter(issues_id)
+
+
 def create_project_json(p, issues, deadline):
     total = len(issues)
     counter = Counter([i.status.name for i in issues])
@@ -89,18 +100,18 @@ def data(redmine):
 
     for p in redmine.project.all():
         if p.name in [x['name'] for x in SYSFERA_PROJECTS]:
-            issues = redmine.issue.filter(project_id=p.id, status_id="*", fixed_version_id=SPRINT_TARGET)
+            issues = get_issues(p, "fixed_version", "name", SPRINT_TARGET)
             project = create_project_json(p, issues, 0)
             add_issues_to_users(users, issues)
             sysfera_projects.append(project)
         elif p.name in [x['name'] for x in CUSTOMER_PROJECTS]:
-            issues = redmine.issue.filter(project_id=p.id, status_id="*")
+            issues = get_issues(p, "tracker", "id", TRACKER)
             now = datetime.now(dateutil.tz.tzutc())
             elapsed = [int(round((now - dateutil.parser.parse(issue.created_on)).total_seconds() // 3600))
                        for issue in issues if issue.status.name == u'Nouveau']
             deadline = max(elapsed) if elapsed else 0
             project = create_project_json(p, issues, deadline)
-            add_issues_to_users(users, issues)
+            add_issues_to_users(users, p.issues)
             customer_projects.append(project)
 
     team = {
