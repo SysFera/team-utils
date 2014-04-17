@@ -6,8 +6,7 @@ git pull
 
 # Python scripts
 cd data
-python chiliTeam.py
-python chiliProjects.py
+python chiliTickets.py
 python jenkinsBuilds.py
 python githubChangelogs.py
 cd -
