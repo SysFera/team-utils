@@ -25,23 +25,32 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-5">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th class="text-center">Client</th>
-                <th class="text-center">Total</th>
-                <th class="text-center">Fermé</th>
-                <th class="text-center">En cours</th>
-                <th class="text-center">Nouveau</th>
-                <th class="text-center">Écoulé&nbsp;*</th>
-              </tr>
-            </thead>
-            <tbody id="statsClient"></tbody>
-            <tbody id="statsSysFera"></tbody>
-          </table>
-          <p>
-            <small class="pull-right">*&nbsp;: temps écoulé depuis l'ouverture du ticket le plus ancien dans le projet.</small>
-          </p>
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th class="text-center">Client</th>
+                    <th class="text-center">Total</th>
+                    <th class="text-center">Fermé</th>
+                    <th class="text-center">En cours</th>
+                    <th class="text-center">Nouveau</th>
+                    <th class="text-center">Écoulé&nbsp;*</th>
+                  </tr>
+                </thead>
+                <tbody id="statsClient"></tbody>
+                <tbody id="statsSysFera"></tbody>
+              </table>
+              <p>
+                <small class="pull-right">*&nbsp;: temps écoulé depuis l'ouverture du ticket le plus ancien dans le projet.</small>
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div id="deployments"></div>
+            </div>
+          </div>
         </div>
         <div class="col-md-3">
           <div class="row">
@@ -60,7 +69,7 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <ul id="jenkinsBuilds"></ul>
+              <div id="jenkinsBuilds"></div>
             </div>
           </div>  
         </div>
