@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pushd /home/augustin/Documents/SysFera/team-utils/dashboard/data/PlatformChecking/
+pushd /home/jenkins/team-utils/dashboard/data/PlatformChecking/
 source ./libCheck.sh
 
 #define username and password.
