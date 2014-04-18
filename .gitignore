@@ -5,3 +5,5 @@ ssh/conf/configPersonal
 dashboard/data/*.json
 dashboard/.idea/
 dashboard/dashboard.iml
+dashboard/data/PlatformChecking/*
+!dashboard/data/PlatformChecking/*.sh
