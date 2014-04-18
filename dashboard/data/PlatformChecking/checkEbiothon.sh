@@ -1,22 +1,22 @@
 #!/bin/bash
 
-
+pushd /home/augustin/Documents/SysFera/team-utils/dashboard/data/PlatformChecking/
 source ./libCheck.sh
 
 #define username and password.
 Wb_un="admin"
 Wb_pw="admin123"
 
-rm report.raw
+rm report.raw 2> /dev/null
 #Processes
-checkSeDProcesses "FMS_SeD_on_VM" "vishnu" "194.57.136.140" "fmssed"
-checkSeDProcesses "UMS_SeD_on_VM" "vishnu" "194.57.136.140" "umssed"
-checkSeDProcesses "TMS_SeD_on_Babel" "vishnu1" "vbabel" "tmssed"
-checkSSHTunnel "SSH_tunnel_on_VM" "vishnu" "194.57.136.140" "5564:localhost:5564"
-checkFMSProxy "FMS_Proxy_on_VM" "vishnu" "194.57.136.140"
-checkTMSProxy "TMS_Proxy_on_VM" "vishnu" "194.57.136.140"
+checkSeDProcesses "FMS_SeD_on_VM" "vishnu" "ebiothon-vm" "fmssed"
+checkSeDProcesses "UMS_SeD_on_VM" "vishnu" "ebiothon-vm" "umssed"
+checkSeDProcesses "TMS_SeD_on_Babel" "vishnu1" "ebiothon-babel" "tmssed"
+checkSSHTunnel "SSH_tunnel_on_VM" "vishnu" "ebiothon-vm" "5564:localhost:5564"
+checkFMSProxy "FMS_Proxy_on_VM" "vishnu" "ebiothon-vm"
+checkTMSProxy "TMS_Proxy_on_VM" "vishnu" "ebiothon-vm"
 #WebBoard
-checkWebBoardBasic "WebBoard_login_page" "vishnu" "194.57.136.140" "https://www.e-biothon.fr"
+checkWebBoardBasic "WebBoard_login_page" "vishnu" "ebiothon-vm" "https://www.e-biothon.fr"
 connectWebBoard "WebBoard" "https://www.e-biothon.fr"
 checkAnyWebboardPage "WebBoard_project_list_page" "https://www.e-biothon.fr" "project/list?lang=en" "<title>Project list"
 checkAnyWebboardPage "WebBoard_file_manager_page" "https://www.e-biothon.fr" "fileBrowser/index?lang=en" "<title>File Manager - SysFera-DS"
@@ -27,3 +27,5 @@ checkAnyWebboardPage "WebBoard_Work:getDoneRatio" "https://www.e-biothon.fr" "wo
 testSubmitWebBoardJob "https://www.e-biothon.fr" "3" "3"
 #Add a global summary
 overallCheck
+
+popd

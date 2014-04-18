@@ -184,7 +184,7 @@ function overallCheck
 
 	echo '}]}' >> output.json
 
-	cat output.json | python -m json.tool > output2.json
+	cat output.json | python -m json.tool > ../dataDeployments.json
 
 
 }
