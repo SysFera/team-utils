@@ -1,3 +1,5 @@
+<html>
+<body>
 <script id="templateStatsEquipe" type="text/html">
   {{#users}}
     <tr class="{{wipStatus}}">
@@ -8,7 +10,7 @@
   {{/users}}
   {{^users}}
     <tr>
-      <td colspan="4">Pas de stats. C'est plutôt mauvais signe.</td>
+      <td colspan="4" class="text-center alert-danger">Aucun ticket équipe n'a été trouvé.</td>
     </tr>
   {{/users}}
 </script>
@@ -25,7 +27,7 @@
   {{/customers}}
   {{^customers}}
     <tr>
-      <td colspan="6">Pas de stats. C'est plutôt mauvais signe.</td>
+      <td colspan="6" class="text-center alert-danger">Aucun projet client n'a été trouvé.</td>
     </tr>
   {{/customers}}
 </script>
@@ -42,11 +44,12 @@
   {{/sysfera}}
   {{^sysfera}}
     <tr>
-      <td colspan="5" class="text-center danger">Pas de stats. C'est plutôt mauvais signe.</td>
+      <td colspan="6" class="text-center alert-danger">Aucun projet SysFera n'a été trouvé.</td>
     </tr>
   {{/sysfera}}
 </script>
 <script id="templateJenkins" type="text/html">
+  <ul>
   {{#jenkinsBuilds}}
     <li class="status text-{{status}}">
       <svg width="26px" height="26px" xmlns="http://www.w3.org/2000/svg">
@@ -55,10 +58,11 @@
       &nbsp;<span class="project">{{name}}</span>
     </li>
   {{/jenkinsBuilds}}
+  </ul>
   {{^jenkinsBuilds}}
-    <tr>
-      <td colspan="4">Pas de stats. C'est plutôt mauvais signe.</td>
-    </tr>
+    <div class="alert alert-danger">      
+      <p>Impossible de récupérer les builds Jenkins.</p>
+    </div>
   {{/jenkinsBuilds}}
 </script>
 <script id="templateGithub" type="text/html">
@@ -68,12 +72,39 @@
       {{#commits}}
         <li>- {{message}} (<strong>{{sha}}...</strong>)</li>
       {{/commits}}
+      <ul>
       {{^commits}}
         <li>Aucun commit pour l'instant.</li>
       {{/commits}}
     </ul>
   {{/projects}}
   {{^projects}}
-    <p>Pas de projets. C'est plutôt mauvais signe.</p>
+    <div class="alert alert-danger">      
+      <p>Impossible de récupérer les commits GitHub.</p>
+    </div>
   {{/projects}}
 </script>
+<script id="templateDeployments" type="text/html">
+  {{#clients}}   
+    <div class="alert alert-{{status}}">
+      <div>
+        <span class="lead">{{nom}}</span>
+        {{#errors}}
+          <span class="pull-right">{{failed}} test(s) échoué(s).</span>
+        {{/errors}}
+        {{^errors}}
+          <span class="pull-right">Aucune erreur, parfait&nbsp;!</span>        
+        {{/errors}}
+      </div>
+    </div> 
+  {{/clients}}
+  {{^clients}}
+    <div class="alert alert-info">
+      <div>
+        Aucun déploiement n'est surveillé.
+      </div>
+    </div>
+  {{/clients}}
+</script>
+</body>
+</html>

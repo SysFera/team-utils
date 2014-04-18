@@ -5,7 +5,8 @@ var clock = $("#countdown")
   , statsEquipe = $('#statsEquipe')
   , jenkinsBuilds = $('#jenkinsBuilds')
   , github = $('#github')
-  , templates, templateStatsSysFera, templateStatsClient, templateStatsEquipe, templateJenkins, templateGithub;
+  , deployments = $('#deployments')
+  , templates, templateStatsSysFera, templateStatsClient, templateStatsEquipe, templateJenkins, templateGithub, templateDeployments;
 
 $.ajaxSetup({ cache: false });
 
@@ -16,6 +17,7 @@ $.get('templates/templates.mustache.html', function(data) {
   templateStatsSysFera = templates.filter('#templateStatsSysFera').html();
   templateStatsEquipe = templates.filter('#templateStatsEquipe').html();
   templateJenkins = templates.filter('#templateJenkins').html();
+  templateDeployments = templates.filter('#templateDeployments').html();
   templateGithub = templates.filter('#templateGithub').html();
 });
 
@@ -58,7 +60,11 @@ function refreshDisplay() {
     });
     statsClient.html(Mustache.render(templateStatsClient, dataProjects));
     statsSysFera.html(Mustache.render(templateStatsSysFera, dataProjects));
-  });
+  })
+    .fail(function() {
+      statsClient.html(Mustache.render(templateStatsClient, []));
+      statsSysFera.html(Mustache.render(templateStatsSysFera, []));
+    });
 
   // Query the team data JSON, render it against the Mustache template, and insert it in the Team body table
   $.getJSON('data/dataTeam.json', function(dataTeam) {
@@ -74,17 +80,46 @@ function refreshDisplay() {
       }
     });
     statsEquipe.html(Mustache.render(templateStatsEquipe, dataTeam));
-  });
+  })
+    .fail(function() {
+      statsEquipe.html(Mustache.render(templateStatsEquipe, []));
+    });
 
   // Query the Jenkins data JSON, render it against the Mustache template, and insert it in the Jenkins builds table
   $.getJSON('data/dataJenkins.json', function(dataJenkins) {
     jenkinsBuilds.html(Mustache.render(templateJenkins, dataJenkins));
-  });
+  })
+    .fail(function() {
+      jenkinsBuilds.html(Mustache.render(templateJenkins, []));
+    });
 
   // Query the Changelogs JSON, render it against the Mustache template, and insert it in the Changelogs div  
   $.getJSON('data/dataGithub.json', function(dataGithub) {
     github.html(Mustache.render(templateGithub, dataGithub))
-  });
+  })
+    .fail(function() {
+      github.html(Mustache.render(templateGithub, []));
+    });
+
+  // Query the deployment monitoring JSON, render it against the Mustache template, and insert it in the deployments div
+  $.getJSON('data/dataDeployments.json', function(dataDeployments) {
+      dataDeployments["clients"].forEach(function(client){
+        if (client.overall == "OK") {
+          client.status = "success"
+        } else if (client.overall == "NOK") {
+          client.status = "danger"
+        } else {
+          client.status = "warning"
+        }
+        if (client.failed > 0) {
+          client.errors = "true"
+        }
+      });
+      deployments.html(Mustache.render(templateDeployments, dataDeployments));
+  })
+    .fail(function() {
+      deployments.html(Mustache.render(templateDeployments, []));
+    });
 }
 
 refreshDisplay();
