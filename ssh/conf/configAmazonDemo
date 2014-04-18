@@ -1,0 +1,5 @@
+Host aws-demo
+ User ec2-user
+ IdentityFile ~/.ssh/customerKeys/id_rsaAmazon
+ Hostname 54.246.101.26
+
