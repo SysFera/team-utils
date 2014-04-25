@@ -45,6 +45,10 @@ body {
   fill: #999;
 }
 
+.smalltext {
+  font-size : 50%;
+}
+
 #jenkinsBuilds ul {
   font-size: 2em;
   line-height: 2em;
