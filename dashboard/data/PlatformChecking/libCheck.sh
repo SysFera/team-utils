@@ -163,7 +163,8 @@ function overallCheck
 	fi
 
 	rm output.json
-	echo '{"clients":[{"nom":"e-Biothon",' >> output.json 
+	now=`date`
+	echo "{\"clients\":[{\"date\":\"${now}\",\"nom\":\"e-Biothon\"," >> output.json 
 	count=0
 	for i in `cat report.raw`
 	do
