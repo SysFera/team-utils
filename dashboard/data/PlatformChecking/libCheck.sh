@@ -208,6 +208,43 @@ function checkSSHTunnel
 	fi
 }
 
+function testSubmitCLIJob
+{
+
+	((totalChecks++))
+	echo "Command-line job submission status : "
+	vishnu_conf=$1
+	vishnu_connect=$2
+	scriptDir=$3
+	vishnu_submit=$4
+	machine=$5
+	script=$6
+	existing_work_container=$7
+	client_machine=$8
+
+	ssh ${client_machine} "VISHNU_CONFIG_FILE=${vishnu_conf} ${vishnu_connect} -u ${Wb_un} -w ${Wb_pw} && cd ${scriptDir} && VISHNU_CONFIG_FILE=${vishnu_conf} ${vishnu_submit} -r ${machine} -n \"CLI_TEST_$(date)\" -w ${existing_work_container} ${script} && echo \"RESULT:OK\" " > cli_out.txt
+
+	jobid=$(cat cli_out.txt | grep "Job Id" | wc -l)
+	resultok=$(cat cli_out.txt | grep "RESULT:OK" | wc -l)
+
+	if [ "${jobid}" -gt "0" ] 
+	then
+		if [ "${resultok}" -gt "0" ] 
+		then
+			echo -e " -status ${vert}OK${neutre}"
+			((passedChecks++))
+		else
+			echo -e " -status ${rouge}DOWN${neutre}"
+			echo -e " -command exited with an error status."
+		fi
+	else
+		echo -e " -status ${rouge}DOWN${neutre}"
+		echo -e " -no job id provided."
+	fi
+
+}
+
+
 #####################
 #
 # This function submits a job to the webboard, 
