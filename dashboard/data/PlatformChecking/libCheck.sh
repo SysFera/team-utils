@@ -194,7 +194,7 @@ function checkSSHTunnel
 {
 	((totalChecks++))
 	echo "$1 status : "
-	subcomm="ps -edf |grep $4 |grep ssh |wc -l"
+	subcomm="ps -edf |grep $4 |grep ssh | grep -v grep |wc -l"
 	runprocs=`ssh $2@$3 "$subcomm"`
 	echo " -running processes : $runprocs"
 	if [ "${runprocs}" -gt "0" ]

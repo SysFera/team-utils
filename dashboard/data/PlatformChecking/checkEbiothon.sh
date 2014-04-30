@@ -12,7 +12,8 @@ rm report.raw 2> /dev/null
 checkSeDProcesses "FMS_SeD_on_VM" "vishnu" "ebiothon-vm" "fmssed"
 checkSeDProcesses "UMS_SeD_on_VM" "vishnu" "ebiothon-vm" "umssed"
 checkSeDProcesses "TMS_SeD_on_Babel" "vishnu1" "ebiothon-babel" "tmssed"
-checkSSHTunnel "SSH_tunnel_on_VM" "vishnu" "ebiothon-vm" "5564:localhost:5564"
+#The ssh tunnel is not required anymore
+#checkSSHTunnel "SSH_tunnel_on_VM" "vishnu" "ebiothon-vm" "5564:localhost:5564"
 checkFMSProxy "FMS_Proxy_on_VM" "vishnu" "ebiothon-vm"
 checkTMSProxy "TMS_Proxy_on_VM" "vishnu" "ebiothon-vm"
 #WebBoard
