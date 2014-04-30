@@ -12,7 +12,8 @@ rm report.raw 2> /dev/null
 checkSeDProcesses "FMS_SeD_on_VM" "vishnu" "ebiothon-vm" "fmssed"
 checkSeDProcesses "UMS_SeD_on_VM" "vishnu" "ebiothon-vm" "umssed"
 checkSeDProcesses "TMS_SeD_on_Babel" "vishnu1" "ebiothon-babel" "tmssed"
-checkSSHTunnel "SSH_tunnel_on_VM" "vishnu" "ebiothon-vm" "5564:localhost:5564"
+#The ssh tunnel is not required anymore
+#checkSSHTunnel "SSH_tunnel_on_VM" "vishnu" "ebiothon-vm" "5564:localhost:5564"
 checkFMSProxy "FMS_Proxy_on_VM" "vishnu" "ebiothon-vm"
 checkTMSProxy "TMS_Proxy_on_VM" "vishnu" "ebiothon-vm"
 #WebBoard
@@ -25,7 +26,9 @@ checkAnyWebboardPage "WebBoard_FMS:listDir" "https://www.e-biothon.fr" "fileBrow
 checkAnyWebboardPage "WebBoard_FMS:stat" "https://www.e-biothon.fr" "fileBrowser/stat?file=%2Fworkgpfs%2Fidris%2Febiothon/vishnu1&machine=babel" '"result":"success"'
 checkAnyWebboardPage "WebBoard_Work:getDoneRatio" "https://www.e-biothon.fr" "work/getDoneRatio/3?workId=95" '{"doneRatio":100}'
 testSubmitWebBoardJob "https://www.e-biothon.fr" "3" "3"
+testSubmitCLIJob "/home/vishnu/applis/etc/vishnu.cfg" "/home/vishnu/applis/vishnu/bin/vishnu_connect" "/home/vishnu/applis/scripts" "/home/vishnu/applis/vishnu/bin/vishnu_submit_job" "babel" "test.sh" "200" "ebiothon-vm"
 #Add a global summary
 overallCheck
 
 popd
+
