@@ -103,16 +103,20 @@ function refreshDisplay() {
 
   // Query the deployment monitoring JSON, render it against the Mustache template, and insert it in the deployments div
   $.getJSON('data/dataDeployments.json', function(dataDeployments) {
-      dataDeployments["clients"].forEach(function(client){
-        if (client.overall == "OK") {
-          client.status = "success"
-        } else if (client.overall == "NOK") {
-          client.status = "danger"
+      $.each(dataDeployments["clients"], function(index, client){
+        if (!client.nom) {
+          dataDeployments["clients"].splice(index,1)
         } else {
-          client.status = "warning"
-        }
-        if (client.failed > 0) {
-          client.errors = "true"
+          if (client.overall == "OK") {
+            client.status = "success"
+          } else if (client.overall == "NOK") {
+            client.status = "danger"
+          } else {
+            client.status = "warning"
+          }
+          if (client.failed > 0) {
+            client.errors = "true"
+          }
         }
       });
       deployments.html(Mustache.render(templateDeployments, dataDeployments));
