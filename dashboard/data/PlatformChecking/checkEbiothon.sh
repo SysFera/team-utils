@@ -3,7 +3,8 @@
 pushd /home/jenkins/team-utils/dashboard/data/PlatformChecking/
 source ./libCheck.sh
 
-#define username and password.
+#Customer context variable
+##define username and password.
 Wb_un="admin"
 Wb_pw="admin123"
 
@@ -28,7 +29,7 @@ checkAnyWebboardPage "WebBoard_Work:getDoneRatio" "https://www.e-biothon.fr" "wo
 testSubmitWebBoardJob "https://www.e-biothon.fr" "3" "3"
 testSubmitCLIJob "/home/vishnu/applis/etc/vishnu.cfg" "/home/vishnu/applis/vishnu/bin/vishnu_connect" "/home/vishnu/applis/scripts" "/home/vishnu/applis/vishnu/bin/vishnu_submit_job" "babel" "test.sh" "200" "ebiothon-vm"
 #Add a global summary
-overallCheck
+overallCheck "ebiothon"
 
 popd
 

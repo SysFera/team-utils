@@ -145,9 +145,11 @@ function checkWebBoardBasic
 	fi
 }
 
-
+#Generate a json part for cutomer
 function overallCheck
 {
+	CUSTOMERNAME=$1
+	CUSTOMERFILE=part-${CUSTOMERNAME}.json
 	failed=$(( ${totalChecks} - ${passedChecks} ))
 	echo ""
 	echo "Test performed : ${totalChecks}, passed : ${passedChecks}, failed : ${failed}"
@@ -162,9 +164,9 @@ function overallCheck
 		echo "failed 0" >> report.raw
 	fi
 
-	rm output.json
+	rm $CUSTOMERFILE
 	now=`date`
-	echo "{\"clients\":[{\"date\":\"${now}\",\"nom\":\"e-Biothon\"," >> output.json 
+	echo "{\"date\":\"${now}\",\"nom\":\"${CUSTOMERNAME}\"," >> $CUSTOMERFILE 
 	count=0
 	for i in `cat report.raw`
 	do
@@ -173,20 +175,24 @@ function overallCheck
 		then
 			if [ $modcount -eq 1 ]
 			then
-				echo ":" >> output.json
+				echo ":" >> $CUSTOMERFILE
 			else
-				echo "," >> output.json
+				echo "," >> $CUSTOMERFILE
 			fi
 		fi
 		((count++))
-		echo "\"${i}\"" >> output.json
+		echo "\"${i}\"" >> $CUSTOMERFILE
 		
 	done
 
-	echo '}]}' >> output.json
-
+	echo '}' >> $CUSTOMERFILE
+}
+function overall
+{
+	echo "{\"clients\":[" > output.json
+	for i in `ls part-*`; do cat $i  >> output.json && echo "," >> output.json ;done
+	echo "{}]}" >> output.json
 	cat output.json | python -m json.tool > ../dataDeployments.json
-
 
 }
 
