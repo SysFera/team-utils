@@ -267,7 +267,7 @@ function testSubmitWebBoardJob
 
 	now=`date +%F-%H:%M:%S`
 
-	echo "Job submission status : "
+	echo "Web UI job submission status : "
 
 	if [ -f "cookie.webboard.connect" ]
 	then
@@ -278,7 +278,7 @@ function testSubmitWebBoardJob
 	fi
 
 	#Job submit
-	curl -3sk --cookie cookie.webboard.connect -d "machine.id=${machineID}&application.id=${basic_appli_id}&subject=CurlTest-${now}&nbcpus=1" ${base_url}/work/save/${project_id}
+	curl -3sk --cookie cookie.webboard.connect -d "machine.id=${machineID}&application.id=${basic_appli_id}&subject=CurlTest-${now}&nbcpus=1" ${base_url}/work/save/${project_id} > wbjs.html.out
 
 	echo " ...waiting during 10 seconds so that the job is submited"
 	sleep 10
