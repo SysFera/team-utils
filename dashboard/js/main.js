@@ -6,32 +6,31 @@ var clock = $("#countdown")
   , jenkinsBuilds = $('#jenkinsBuilds')
   , github = $('#github')
   , deployments = $('#deployments')
+  , refreshTime
   , templates, templateStatsSysFera, templateStatsClient, templateStatsEquipe, templateJenkins, templateGithub, templateDeployments;
 
 $.ajaxSetup({ cache: false });
 
-// Initial templates gathering. Done only once.
-$.get('templates/templates.mustache.html', function(data) {
-  templates = $(data);
-  templateStatsClient = templates.filter('#templateStatsClient').html();
-  templateStatsSysFera = templates.filter('#templateStatsSysFera').html();
-  templateStatsEquipe = templates.filter('#templateStatsEquipe').html();
-  templateJenkins = templates.filter('#templateJenkins').html();
-  templateDeployments = templates.filter('#templateDeployments').html();
-  templateGithub = templates.filter('#templateGithub').html();
-});
+function init() {
+  // Initial templates gathering. Done only once.
+  $.get('templates/templates.mustache.html', function(data) {
+    templates = $(data);
+    templateStatsClient = templates.filter('#templateStatsClient').html();
+    templateStatsSysFera = templates.filter('#templateStatsSysFera').html();
+    templateStatsEquipe = templates.filter('#templateStatsEquipe').html();
+    templateJenkins = templates.filter('#templateJenkins').html();
+    templateDeployments = templates.filter('#templateDeployments').html();
+    templateGithub = templates.filter('#templateGithub').html();
+  });
+}
 
-// main refreshDisplay function
-function refreshDisplay() {
-
+function getConfig() {  
   // Query the config file and create a display using the end date
   $.getJSON('data/config.json', function(data) {
-
     // sets the page's refresh time
-    var refreshTime = data['global']['refreshtime'];
-    setInterval(function(){  
-      location.reload();
-    }, refreshTime);
+    refreshTime = data['global']['refreshtime'];
+    console.log(refreshTime);
+    setTimeout(function() { update(); }, refreshTime);
 
     // sets the date of the sprint's end
     var nextSprint = new Date(
@@ -45,7 +44,19 @@ function refreshDisplay() {
     var sprintDanger = (sprintEnd.value + 432000000) > 0;
     $("#sprintEnd").toggleClass( "sprintDanger", sprintDanger );
   });
+}
 
+function update() {
+  console.log("Update at " + new Date());
+  getConfig();
+  displayProjects();
+  // displayTeam();
+  displayDeployments();
+  displayJenkins();
+  displayGit();
+}
+
+function displayProjects() {
   // Query the project data JSON, render it against the Mustache template, and insert it in the project body tables
   $.getJSON('data/dataProjects.json', function(dataProjects) {
     dataProjects["customers"].forEach(function(it){
@@ -65,7 +76,9 @@ function refreshDisplay() {
       statsClient.html(Mustache.render(templateStatsClient, []));
       statsSysFera.html(Mustache.render(templateStatsSysFera, []));
     });
+}
 
+function displayTeam() {
   // Query the team data JSON, render it against the Mustache template, and insert it in the Team body table
   $.getJSON('data/dataTeam.json', function(dataTeam) {
     dataTeam["users"].forEach(function(member){
@@ -84,7 +97,9 @@ function refreshDisplay() {
     .fail(function() {
       statsEquipe.html(Mustache.render(templateStatsEquipe, []));
     });
+}
 
+function displayJenkins() {
   // Query the Jenkins data JSON, render it against the Mustache template, and insert it in the Jenkins builds table
   $.getJSON('data/dataJenkins.json', function(dataJenkins) {
     jenkinsBuilds.html(Mustache.render(templateJenkins, dataJenkins));
@@ -92,7 +107,9 @@ function refreshDisplay() {
     .fail(function() {
       jenkinsBuilds.html(Mustache.render(templateJenkins, []));
     });
+}
 
+function displayGit() {
   // Query the Changelogs JSON, render it against the Mustache template, and insert it in the Changelogs div  
   $.getJSON('data/dataGithub.json', function(dataGithub) {
     github.html(Mustache.render(templateGithub, dataGithub))
@@ -100,7 +117,9 @@ function refreshDisplay() {
     .fail(function() {
       github.html(Mustache.render(templateGithub, []));
     });
+}
 
+function displayDeployments() {
   // Query the deployment monitoring JSON, render it against the Mustache template, and insert it in the deployments div
   $.getJSON('data/dataDeployments.json', function(dataDeployments) {
       $.each(dataDeployments["clients"], function(index, client){
@@ -126,4 +145,7 @@ function refreshDisplay() {
     });
 }
 
-refreshDisplay();
+$(function(){
+  init();
+  update();
+});
