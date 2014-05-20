@@ -1,0 +1,81 @@
+{
+  "global": {
+    "refreshtime": 60000
+  },
+  "sprint": {
+    "trackers": {
+      "anomalie": 1
+    },
+    "version_id": 14,
+    "start": {
+      "year": 2014,
+      "month": 5,
+      "day": 12
+    },
+    "end": {
+      "year": 2014,
+      "month": 5,
+      "day": 30
+    }
+  },
+  "chili": {
+    "url": "https://support.sysfera.com",
+    "api": "28ae1810e982c8a2a1f4f4b726e1feced351e229",
+    "fileProjects": "dataProjects.json",
+    "customerProjects": [
+      { "name": "CINES" },
+      { "name": "eBiothon" }
+    ],
+    "sysferaProjects": [
+      { "name": "SysFera" },
+      { "name": "Nu@ge" },
+      { "name": "SOP" }
+    ],
+    "fileTeam": "dataTeam.json",
+    "members": [
+      {
+        "id": 10,
+        "name": "haikel"
+      },
+      {
+        "id": 17,
+        "name": "pmartinez"
+      },
+      {
+        "id": 19,
+        "name": "omornard"
+      },
+      {
+        "id": 20,
+        "name": "augustin"
+      },
+      {
+        "id": 22,
+        "name": "nbard"
+      },
+      {
+        "id": 23,
+        "name": "rchakode"
+      },
+      {
+        "id": 29,
+        "name": "keoo"
+      }
+    ]
+  },
+  "jenkins": {
+    "url": "http://192.168.1.2/jenkins",
+    "user": "dashboard",
+    "pwd": "dashboard",
+    "file": "dataJenkins.json",
+    "projects": "['libbatch', 'vishnu-automtest', 'vishnu-compil', 'WB']"
+  },
+  "github": {
+    "user": "sysfera-jenkins2",
+    "pwd": "GraalSystems123",
+    "org": "SysFera",
+    "file": "dataGithub.json",
+    "commits": 5,
+    "repositories": "['libbatch', 'vishnu', 'webboard']"
+  }
+}
