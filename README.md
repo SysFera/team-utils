@@ -2,6 +2,18 @@
 
 Collection of internal tools for the SysFera technical team
 
+## ssh
+
+TODO
+
+## git
+
+TODO
+
+## dashboard
+
+TODO
+
 ## imdoing
 
 "imdoing" is a utility to ease up timetracking and interaction with the ChiliProject.
