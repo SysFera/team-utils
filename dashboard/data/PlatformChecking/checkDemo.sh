@@ -16,5 +16,5 @@ checkAnyWebboardPage "WebBoard_FMS:listDir" ${URL} "fileBrowser/getListDir?pwd=%
 checkAnyWebboardPage "WebBoard_FMS:stat" ${URL} "fileBrowser/stat?file=%2Fhome%2Fec2-user%2FSDS/core&machine=Machine1" '"result":"success"'
 checkAnyWebboardPage "WebBoard_Work:getDoneRatio" ${URL} "work/getDoneRatio/1?workId=22" '{"doneRatio":100}'
 testSubmitWebBoardJob ${URL} "1" "1" "1"
-testSubmitCLIJob "/home/ec2-user/install/vishnu-sample.cfg" "/home/ec2-user/install/bin/vishnu_connect" "/home/ec2-user/testing" "/home/ec2-user/install/bin/vishnu_submit_job" "Machine1" "test.sh" "24" "aws-demo"
+testSubmitCLIJob "/home/ec2-user/SDS/core/vishnu-sample.cfg" "/home/ec2-user/SDS/core/bin/vishnu_connect" "/home/ec2-user/testing" "/home/ec2-user/SDS/core/bin/vishnu_submit_job" "Machine1" "test.sh" "24" "aws-demo"
 overallCheck "demo"
