@@ -29,10 +29,10 @@ TRACKERS = {
 }
 
 parser = argparse.ArgumentParser(description='Create a new ticket.')
-parser.add_argument('-p', '--parent', nargs='?', type=int, required=True)
-parser.add_argument('-s', '--subject', nargs='?', type=str, required=True)
-parser.add_argument('-d', '--description', nargs='?', type=str, required=True)
-parser.add_argument('-t', '--tracker', nargs='?', type=str, choices=["bug", "enhancement", "support", "team"],
+parser.add_argument('-p', '--parent', type=int, required=True)
+parser.add_argument('-s', '--subject', type=str, required=True)
+parser.add_argument('-d', '--description', type=str, required=True)
+parser.add_argument('-t', '--tracker', type=str, choices=["bug", "enhancement", "support", "team"],
                     required=True)
 args = parser.parse_args()
 
