@@ -145,7 +145,7 @@ function checkWebBoardBasic
 	fi
 }
 
-#Generate a json part for cutomer
+#Generate a json part for customer
 function overallCheck
 {
 	CUSTOMERNAME=$1

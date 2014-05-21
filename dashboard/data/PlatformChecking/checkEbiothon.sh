@@ -9,7 +9,6 @@ Wb_un="admin"
 Wb_pw="admin123"
 Wb_URL="https://www.e-biothon.fr"
 
-rm report.raw 2> /dev/null
 #Processes
 checkSeDProcesses "FMS_SeD_on_VM" "vishnu" "ebiothon-vm" "fmssed"
 checkSeDProcesses "UMS_SeD_on_VM" "vishnu" "ebiothon-vm" "umssed"
