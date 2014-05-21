@@ -27,7 +27,7 @@ MEMBERS = config['chili']['members']
 
 SPRINT_TARGET = "%02d" % config['sprint']['end']['day'] + "-" + "%02d" % config['sprint']['end']['month'] + "-" + "%04d" % config['sprint']['end']['year']
 # SPRINT_TARGET = config['sprint']['version_id']
-TRACKER = config['sprint']['trackers']['anomalie']
+TRACKER = config['sprint']['trackers']['bug']
 
 
 def sort_collection_by_name(collection):

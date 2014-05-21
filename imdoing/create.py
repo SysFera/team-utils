@@ -66,17 +66,6 @@ def create(redmine):
         }
     ]
 
-    # print "project_id: " + str(project_id) + \
-    # " subject: " + subject + \
-    # " tracker_id: " + str(tracker_id) + \
-    #     " description: " + description + \
-    #     " status_id: " + str(status_id) + \
-    #     " fixed_version_id: " + str(fixed_version_id) + \
-    #     " start_date: " + str(start_date) + \
-    #     " assigned_to_id: " + str(assigned_to_id) + \
-    #     " parent_issue_id: " + str(parent_issue_id) + \
-    #     " of: " + str(of)
-
     ticket = redmine.issue.create(project_id=project_id,
                                   subject=subject,
                                   tracker_id=tracker_id,
@@ -87,17 +76,6 @@ def create(redmine):
                                   parent_issue_id=parent_issue_id,
                                   custom_fields=custom_fields,
                                   fixed_version_id=fixed_version_id)
-
-    # issue = redmine.issue.create(project_id=project_id,
-    #                              subject=subject,
-    #                              tracker_id=tracker_id,
-    #                              description=description,
-    #                              status_id=status_id,
-    #                              fixed_version_id=fixed_version_id,
-    #                              start_date=start_date,
-    #                              assigned_to_id=assigned_to_id,
-    #                              parent_issue_id=parent_issue_id,
-    #                              custom_fields=custom_fields)
 
     return ticket
 

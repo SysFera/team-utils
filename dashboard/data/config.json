@@ -4,7 +4,10 @@
   },
   "sprint": {
     "trackers": {
-      "anomalie": 1
+      "bug": 1,
+      "enhancement": 2,
+      "support": 3,
+      "team": 4
     },
     "version_id": 14,
     "start": {
