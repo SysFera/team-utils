@@ -1,5 +1,6 @@
-# ! /usr/bin/python
+#!/usr/bin/python
 # ~*~ coding: utf-8 ~*~
+import os
 
 from redmine import Redmine
 from datetime import datetime
@@ -8,7 +9,18 @@ import json
 import getpass
 import argparse
 
-configFile = open('config.json')
+
+def get_dir():
+    directory = os.environ.get('TEAM_PATH')
+
+    if directory is not None:
+        return os.path.join(directory, "imdoing")
+    else:
+        print "The environment variable TEAM_PATH is not set. Aborting."
+        quit()
+
+
+configFile = open(os.path.join(get_dir(), 'config.json'))
 config = json.load(configFile)
 configFile.close()
 
@@ -52,7 +64,6 @@ def create(redmine):
     subject = SUBJECT
     description = DESC
     tracker_id = TRACKERS[TRACKER]
-    assigned_to_id = USER_ID
 
     parent_issue_id = PARENT
     parent_issue = redmine.issue.get(PARENT)
@@ -72,7 +83,6 @@ def create(redmine):
                                   description=description,
                                   status_id=status_id,
                                   start_date=start_date,
-                                  assigned_to_id=assigned_to_id,
                                   parent_issue_id=parent_issue_id,
                                   custom_fields=custom_fields,
                                   fixed_version_id=fixed_version_id)
@@ -80,8 +90,12 @@ def create(redmine):
     return ticket
 
 
-if __name__ == '__main__':
-    rmine = Redmine(URL, key=API, requests={'verify': False}, impersonate="aragon")
-    # create(rmine)
+def main():
+    rmine = Redmine(URL, key=API, requests={'verify': False})
     issue = create(rmine)
     print "Issue #" + str(issue['id']) + " was created by " + USER
+    print "https://support.sysfera.com/issues/" + str(issue['id'])
+
+
+if __name__ == '__main__':
+    main()

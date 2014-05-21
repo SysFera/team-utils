@@ -3,6 +3,8 @@
 import os
 
 from redmine import Redmine
+from datetime import datetime
+import dateutil.parser
 import json
 import getpass
 import argparse
@@ -24,50 +26,40 @@ configFile.close()
 
 # non-standard modules required
 # pip install python-redmine
+# pip install python-dateutil
 
 URL = config['chili']['url']
 API = config['chili']['api']
 USERS = config['chili']['members']
 USERNAMES = [str(U['name']) for U in USERS]
-parser = argparse.ArgumentParser(description='List the tickets assigned to self or to $user.')
+
+parser = argparse.ArgumentParser(description='Assign a ticket to self or to $user.')
+parser.add_argument('ticket', type=int,
+                    help='the ticket number')
 parser.add_argument('user', nargs='?', default=getpass.getuser(), type=str,
                     help='the user to whom tickets are assigned',
                     choices=USERNAMES)
 args = parser.parse_args()
+TICKET = args.ticket
 USER = args.user
-USER_ID = [U['id'] for U in USERS if U['name'] == USER]
+USER_ID = [U['id'] for U in USERS if U['name'] == USER][0]
 
 
-def data(redmine):
-    results = []
+def assign(redmine):
+    status_id = 2  # Open
 
-    for issue in redmine.issue.filter(assigned_to_id=USER_ID):
-        of = [cf['value'] for cf in issue['custom_fields'] if cf['name'] == "OF"][0]
-        if of == '':
-            of = "None"
-        else:
-            of = str(of)
+    ticket = redmine.issue.update(TICKET, assigned_to_id=USER_ID, status_id=status_id)
 
-        result = {
-            'number': issue['id'],
-            'subject': issue['subject'],
-            'of': of
-        }
-        results.append(result)
-
-    return results
+    return ticket
 
 
 def main():
     rmine = Redmine(URL, key=API, requests={'verify': False})
-    tickets = data(rmine)
-
-    print "Tickets assigned to user " + USER + ":"
-    if len(tickets) > 0:
-        for ticket in tickets:
-            print "#" + str(ticket['number']) + " === OF: " + ticket['of'] + " === " + ticket['subject']
+    if assign(rmine):
+        print "Issue #" + str(TICKET) + " was successfully assigned to " + USER
+        print "https://support.sysfera.com/issues/" + str(TICKET)
     else:
-        print "No ticket found. Maybe you meant another user?"
+        print "There was an error assigning issue #" + str(TICKET) + " to " + USER
 
 
 if __name__ == '__main__':

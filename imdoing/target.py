@@ -1,13 +1,25 @@
-# ! /usr/bin/python
+#!/usr/bin/python
 # ~*~ coding: utf-8 ~*~
 
 # non-standard modules required
 # pip install python-redmine
+import os
 
 from redmine import Redmine
 import json
 
-configFile = open('config.json')
+
+def get_dir():
+    directory = os.environ.get('TEAM_PATH')
+
+    if directory is not None:
+        return os.path.join(directory, "imdoing")
+    else:
+        print "The environment variable TEAM_PATH is not set. Aborting."
+        quit()
+
+
+configFile = open(os.path.join(get_dir(), 'config.json'))
 config = json.load(configFile)
 configFile.close()
 
@@ -48,8 +60,13 @@ def data(redmine):
 
     return results
 
-if __name__ == '__main__':
+
+def main():
     rmine = Redmine(URL, key=API, requests={'verify': False})
     tickets = data(rmine)
     for ticket in tickets:
         print "#" + str(ticket['number']) + " === OF: " + ticket['of'] + " === " + ticket['subject']
+
+
+if __name__ == '__main__':
+    main()

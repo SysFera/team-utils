@@ -1,4 +1,4 @@
-# ! /usr/bin/python
+#!/usr/bin/python
 # ~*~ coding: utf-8 ~*~
 
 from datetime import datetime
@@ -8,7 +8,18 @@ import json
 import getpass
 import argparse
 
-configFile = open('config.json')
+
+def get_dir():
+    directory = os.environ.get('TEAM_PATH')
+
+    if directory is not None:
+        return os.path.join(directory, "imdoing")
+    else:
+        print "The environment variable TEAM_PATH is not set. Aborting."
+        quit()
+
+
+configFile = open(os.path.join(get_dir(), 'config.json'))
 config = json.load(configFile)
 configFile.close()
 
@@ -29,11 +40,10 @@ parser.add_argument('user', nargs='?', default=getpass.getuser(), type=str,
                     choices=USERNAMES)
 args = parser.parse_args()
 
-DIR = "timelog"
 USER = args.user
 ACTION = args.action
 TICKET = args.ticket
-NOW = datetime.now(dateutil.tz.tzutc())
+NOW = datetime.now()
 DATE = "%(Y)d.%(m)02d.%(d)02d-%(H)02d:%(M)02d:%(S)02d" % {"Y": NOW.year, "m": NOW.month, "d": NOW.day,
                                                           "H": NOW.hour, "M": NOW.minute, "S": NOW.second}
 
@@ -43,19 +53,27 @@ def check_dir(directory):
         os.makedirs(directory)
 
 
-def check_ticket_exists():
-    return True
+def write_log(directory, date, user, ticket, action):
+    basename = '%(date)s-%(user)s-%(ticket)d-%(action)s' % {"directory": directory, "date": date, "user": user,
+                                                            "ticket": ticket, "action": action}
+    filename = os.path.join(directory, basename)
+
+    if not os.path.isfile(filename):
+        try:
+            open(filename, 'w').close()
+            print '%(user)s %(action)ss working on ticket #%(ticket)d' % {"user": user, "action": action, "ticket": ticket}
+        except IOError, e:
+            print 'There was an error starting the log.'
+            print e
+    else:
+        print "The file already exists. As this is highly unlikely, something bad is probably going on ;)"
 
 
-def check_ticket_started():
-    return True
+def main():
+    directory = os.path.join(get_dir(), "timelog", USER)
+    check_dir(directory)
+    write_log(directory, DATE, USER, TICKET, ACTION)
 
 
 if __name__ == '__main__':
-    check_dir(DIR)
-    filename = '%(DIR)s/%(DATE)s-%(USER)s-%(TICKET)d-%(ACTION)s' % {"DIR": DIR, "DATE": DATE, "USER": USER, "TICKET": TICKET,
-                                                            "ACTION": ACTION}
-    print 'User %(USER)s wants to %(ACTION)s working on ticket #%(TICKET)d' % {"USER": USER, "ACTION": ACTION,
-                                                                               "TICKET": TICKET}
-
-    data_file = open(filename, 'w')
+    main()
