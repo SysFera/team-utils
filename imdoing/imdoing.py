@@ -17,6 +17,9 @@ parser.add_argument('arguments',
 args = parser.parse_args()
 
 command = args.command
+for index, arg in enumerate(args.arguments):
+    if arg[0] != "-":
+        args.arguments[index] = '\"' + arg + '\"'
 arguments = " ".join(args.arguments)
 
 
