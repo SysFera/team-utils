@@ -4,7 +4,14 @@
 import os
 import argparse
 import subprocess
-
+import json
+import mine
+import sys
+from redmine import Redmine
+import target
+import create
+import assign
+import mytime
 
 parser = argparse.ArgumentParser(description='Front to the imdoing commands.')
 parser.add_argument('command',
@@ -17,9 +24,9 @@ parser.add_argument('arguments',
 args = parser.parse_args()
 
 command = args.command
-for index, arg in enumerate(args.arguments):
-    if arg[0] != "-":
-        args.arguments[index] = '\"' + arg + '\"'
+#for index, arg in enumerate(args.arguments):
+#    if arg[0] != "-":
+#        args.arguments[index] = '\"' + arg + '\"'
 arguments = " ".join(args.arguments)
 
 
@@ -32,49 +39,40 @@ def get_dir():
         print "The environment variable TEAM_PATH is not set. Aborting."
         quit()
 
+# non-standard modules required
+# pip install python-redmine
+# pip install python-dateutil
 
-def mine(directory):
-    script = os.path.join(directory, "mine.py")
-    subprocess.call("python " + script + " " + arguments, shell=True)
-
-
-def current(directory):
-    script = os.path.join(directory, "target.py")
-    subprocess.call("python " + script + " " + arguments, shell=True)
-
-
-def create(directory):
-    script = os.path.join(directory, "create.py")
-    subprocess.call("python " + script + " " + arguments, shell=True)
-
-
-def assign(directory):
-    script = os.path.join(directory, "assign.py")
-    subprocess.call("python " + script + " " + arguments, shell=True)
-
-
-def start(directory):
-    script = os.path.join(directory, "time.py")
-    subprocess.call("python " + script + " start " + arguments, shell=True)
-
-
-def stop(directory):
-    script = os.path.join(directory, "time.py")
-    subprocess.call("python " + script + " stop " + arguments, shell=True)
+configFile = open(os.path.join(get_dir(), 'config.json'))
+config = json.load(configFile)
+configFile.close()
+URL = config['chili']['url']
+API = config['chili']['api']
+USERS = config['chili']['members']
+USERNAMES = [str(U['name']) for U in USERS]
+CUSTOMER_PROJECTS = config['chili']['customerProjects']
+SYSFERA_PROJECTS = config['chili']['sysferaProjects']
+SPRINT_TARGET = "%02d" % config['sprint']['end']['day'] + "-" + "%02d" % config['sprint']['end']['month'] + "-" + "%04d" % config['sprint']['end']['year']
+TARGET_VERSION = config['sprint']['version_id']
 
 
 def main():
-    directory = get_dir()
-    options = {
-        "mine": mine,
-        "current": current,
-        "create": create,
-        "assign": assign,
-        "start": start,
-        "stop": stop
-    }
+    rmine = Redmine(URL, key=API, requests={'verify': False})
 
-    options[command](directory)
+    if command == 'mine':
+        mine.run(rmine, args.arguments, USERNAMES, USERS)
+    elif command == 'current':
+        target.run(rmine, args.arguments, SPRINT_TARGET)
+    elif command == 'create':
+        create.run(rmine, args.arguments, USERS, TARGET_VERSION)
+    elif command == 'assign':
+        assign.run(rmine, args.arguments, USERS)
+    elif command == 'start':
+        mytime.run(args.arguments, USERS, get_dir(), "start")
+    elif command == 'stop':
+        mytime.run(args.arguments, USERS, get_dir(), "stop")
+    else : 
+        print "Usage: imdoing <action>{create/assign/mine/current/start/stop} [options]"
 
     quit()
 

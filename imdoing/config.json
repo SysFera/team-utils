@@ -23,7 +23,7 @@
   },
   "chili": {
     "url": "https://support.sysfera.com",
-    "api": "28ae1810e982c8a2a1f4f4b726e1feced351e229",
+    "api": "f1185f8959094aaee9abb5fd9700de1c70ca2fe2",
     "fileProjects": "dataProjects.json",
     "customerProjects": [
       { "name": "CINES" },

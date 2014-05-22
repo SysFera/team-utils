@@ -6,42 +6,14 @@ from redmine import Redmine
 import json
 import getpass
 import argparse
+import imdoing
+import sys
+import getopt
 
-
-def get_dir():
-    directory = os.environ.get('TEAM_PATH')
-
-    if directory is not None:
-        return os.path.join(directory, "imdoing")
-    else:
-        print "The environment variable TEAM_PATH is not set. Aborting."
-        quit()
-
-
-configFile = open(os.path.join(get_dir(), 'config.json'))
-config = json.load(configFile)
-configFile.close()
-
-# non-standard modules required
-# pip install python-redmine
-
-URL = config['chili']['url']
-API = config['chili']['api']
-USERS = config['chili']['members']
-USERNAMES = [str(U['name']) for U in USERS]
-parser = argparse.ArgumentParser(description='List the tickets assigned to self or to $user.')
-parser.add_argument('user', nargs='?', default=getpass.getuser(), type=str,
-                    help='the user to whom tickets are assigned',
-                    choices=USERNAMES)
-args = parser.parse_args()
-USER = args.user
-USER_ID = [U['id'] for U in USERS if U['name'] == USER]
-
-
-def data(redmine):
+def data(redmine, userid):
     results = []
 
-    for issue in redmine.issue.filter(assigned_to_id=USER_ID):
+    for issue in redmine.issue.filter(assigned_to_id=userid):
         of = [cf['value'] for cf in issue['custom_fields'] if cf['name'] == "OF"][0]
         if of == '':
             of = "None"
@@ -58,11 +30,20 @@ def data(redmine):
     return results
 
 
-def main():
-    rmine = Redmine(URL, key=API, requests={'verify': False})
-    tickets = data(rmine)
-
-    print "Tickets assigned to user " + USER + ":"
+def run(redmine, arguments, usernames, users):
+    try:
+        opts, args = getopt.getopt(arguments, "u:", "user")
+    except getopt.GetoptError:
+        print 'Error checking options for mine'
+        sys.exit(2)
+    userid = ""
+    user = getpass.getuser()
+    for opt, arg in opts:
+        if opt in ("-u", "--user"):
+            user = arg
+    userid = [U['id'] for U in users if U['name'] == user]
+    tickets = data(redmine, userid)
+    print "Tickets assigned to user " + user + ":"
     if len(tickets) > 0:
         for ticket in tickets:
             print "#" + str(ticket['number']) + " === OF: " + ticket['of'] + " === " + ticket['subject']
@@ -70,5 +51,3 @@ def main():
         print "No ticket found. Maybe you meant another user?"
 
 
-if __name__ == '__main__':
-    main()

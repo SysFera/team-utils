@@ -7,31 +7,8 @@ from datetime import datetime
 import dateutil.parser
 import json
 import getpass
-import argparse
-
-
-def get_dir():
-    directory = os.environ.get('TEAM_PATH')
-
-    if directory is not None:
-        return os.path.join(directory, "imdoing")
-    else:
-        print "The environment variable TEAM_PATH is not set. Aborting."
-        quit()
-
-
-configFile = open(os.path.join(get_dir(), 'config.json'))
-config = json.load(configFile)
-configFile.close()
-
-# non-standard modules required
-# pip install python-redmine
-# pip install python-dateutil
-
-URL = config['chili']['url']
-API = config['chili']['api']
-USERS = config['chili']['members']
-TARGET_VERSION = config['sprint']['version_id']
+import getopt
+import sys
 
 TRACKERS = {
     "bug": 1,
@@ -40,36 +17,20 @@ TRACKERS = {
     "team": 4
 }
 
-parser = argparse.ArgumentParser(description='Create a new ticket.')
-parser.add_argument('-p', '--parent', type=int, required=True)
-parser.add_argument('-s', '--subject', type=str, required=True)
-parser.add_argument('-d', '--description', type=str, required=True)
-parser.add_argument('-t', '--tracker', type=str, choices=["bug", "enhancement", "support", "team"],
-                    required=True)
-args = parser.parse_args()
-
-PARENT = args.parent
-SUBJECT = args.subject
-DESC = args.description
-TRACKER = args.tracker
-
-USER = getpass.getuser()
-USER_ID = [U['id'] for U in USERS if U['name'] == USER][0]
 
 
-def create(redmine):
+def create(redmine, parent, subject, desc, tracker, target):
     status_id = 1  # New
     start_date = datetime.now(dateutil.tz.tzutc())
 
-    subject = SUBJECT
-    description = DESC
-    tracker_id = TRACKERS[TRACKER]
+    description = desc
+    tracker_id = TRACKERS[tracker]
 
-    parent_issue_id = PARENT
-    parent_issue = redmine.issue.get(PARENT)
+    parent_issue_id = parent
+    parent_issue = redmine.issue.get(parent)
     project_id = parent_issue['project']['id']
     of = [cf['value'] for cf in parent_issue['custom_fields'] if cf['name'] == "OF"][0]
-    fixed_version_id = TARGET_VERSION
+    fixed_version_id = target
     custom_fields = [
         {
             'id': 5,
@@ -90,12 +51,36 @@ def create(redmine):
     return ticket
 
 
-def main():
-    rmine = Redmine(URL, key=API, requests={'verify': False})
-    issue = create(rmine)
-    print "Issue #" + str(issue['id']) + " was created by " + USER
+def run(rmine, arguments, users, target):
+#    rmine = Redmine(URL, key=API, requests={'verify': False})
+    parent = ''
+    subject = ''
+    desc = ''
+    tracker = ''
+    user = getpass.getuser()
+    userid = [U['id'] for U in users if U['name'] == user][0]
+    try:
+        opts, args = getopt.getopt(arguments, "p:s:d:t:", "parent,subject,description,tracker")
+    except getopt.GetoptError:
+        print 'Error checking options for mine'
+        sys.exit(2)
+    for opt, arg in opts:
+        if opt in ("-p", "--parent"):
+            parent = arg
+        if opt in ("-s", "--subject"):
+            subject = arg
+        if opt in ("-d", "--description"):
+            desc = arg
+        if opt in ("-t", "--tracker"):
+            tracker = arg
+
+    if parent == '' or subject == '' or desc == '' or tracker == '':
+        print 'Error missing IN parameter'
+        print 'Usage: imdoing create -p parent -s subject -d desc -t tracker'
+        sys.exit(2)
+
+
+    issue = create(rmine, parent, subject, desc, tracker, target)
+    print "Issue #" + str(issue['id']) + " was created by " + user
     print "https://support.sysfera.com/issues/" + str(issue['id'])
 
-
-if __name__ == '__main__':
-    main()
