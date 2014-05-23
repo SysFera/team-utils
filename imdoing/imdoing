@@ -1,20 +1,25 @@
 # file: imdoing
 # imdoing parameter-completion
+old=''
+old_k=''
 
 _imdoing ()   #  By convention, the function name
 {                 #+ starts with an underscore.
-  local cur prev
+  local cur prev antepen 
   # Pointer to current completion word.
   # By convention, it's named "cur" but this isn't strictly necessary.
   COMPREPLY=()
   cur=${COMP_WORDS[COMP_CWORD]}
   prev=${COMP_WORDS[COMP_CWORD-1]}
+  antepen=${COMP_WORDS[COMP_CWORD-2]}
 
+    
   if [ $COMP_CWORD -eq 1 ]; then
     COMPREPLY=( $( compgen -W ' assign  create current mine start stop  -h --help' -- $cur ) )
   elif [ $COMP_CWORD -eq 2 ]; then
     case "$prev" in
       "create")
+        old=$prev
         COMPREPLY=( $( compgen -W '-p -s -d -t' -- $cur ) )
         ;;
       "assign")
@@ -23,6 +28,66 @@ _imdoing ()   #  By convention, the function name
       *)
         ;;
     esac
+  elif [ $COMP_CWORD -eq 3 ]; then
+    case "$antepen" in
+      "create")
+        case "$prev" in
+          "-p")
+            old_k=$prev
+            COMPREPLY=( $( compgen -W '[project]' -- $cur ) )
+            ;;
+          "-s")
+            old_k=$prev
+            COMPREPLY=( $( compgen -W '[subject]' -- $cur ) )
+            ;;
+          "-d")
+            old_k=$prev
+            COMPREPLY=( $( compgen -W '[description]' -- $cur ) )
+            ;;
+          "-t")
+            old_k=$prev
+            COMPREPLY=( $( compgen -W '[type]' -- $cur ) )
+            ;;
+          *)
+            ;;
+        esac
+        ;;
+      *)
+        ;;
+    esac
+  elif [ $COMP_CWORD -eq 4 -o $COMP_CWORD -eq 6 -o $COMP_CWORD -eq 8 ]; then
+    case "$old" in
+      "create")
+        COMPREPLY=( $( compgen -W '-p -s -d -t' -- $cur ) )
+        ;;
+      *)
+        ;;
+    esac
+  elif [ $COMP_CWORD -eq 5 -o $COMP_CWORD -eq 7 -o $COMP_CWORD -eq 9 ]; then
+    case "$old" in
+      "create")
+        case "$prev" in
+          "-p")
+            old_k=$prev
+            COMPREPLY=( $( compgen -W '[project]' -- $cur ) )
+            ;;
+          "-s")
+            old_k=$prev
+            COMPREPLY=( $( compgen -W '[subject]' -- $cur ) )
+            ;;
+          "-d")
+            old_k=$prev
+            COMPREPLY=( $( compgen -W '[description]' -- $cur ) )
+            ;;
+          "-t")
+            old_k=$prev
+            COMPREPLY=( $( compgen -W '[type]' -- $cur ) )
+            ;;
+          *)
+            ;;
+        esac
+        ;;
+      esac
   fi
 #   Generate the completion matches and load them into $COMPREPLY array.
 #   xx) May add more cases here.
