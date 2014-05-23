@@ -7,8 +7,6 @@ import json
 import getpass
 import argparse
 import imdoing
-import sys
-import getopt
 
 def data(redmine, userid):
     results = []
@@ -31,16 +29,12 @@ def data(redmine, userid):
 
 
 def run(redmine, arguments, usernames, users):
-    try:
-        opts, args = getopt.getopt(arguments, "u:", "user")
-    except getopt.GetoptError:
-        print 'Error checking options for mine'
-        sys.exit(2)
-    userid = ""
-    user = getpass.getuser()
-    for opt, arg in opts:
-        if opt in ("-u", "--user"):
-            user = arg
+    parser = argparse.ArgumentParser(description='List the tickets assigned to self or to $user.')
+    parser.add_argument('user', nargs='?', default=getpass.getuser(), type=str,
+                        help='the user to whom tickets are assigned',
+                        choices=usernames)
+    args = parser.parse_args(arguments)
+    user = args.user
     userid = [U['id'] for U in users if U['name'] == user]
     tickets = data(redmine, userid)
     print "Tickets assigned to user " + user + ":"

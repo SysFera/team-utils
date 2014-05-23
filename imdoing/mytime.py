@@ -6,8 +6,7 @@ import os
 import dateutil.parser
 import json
 import getpass
-import getopt
-import sys
+import argparse
 
 
 
@@ -37,31 +36,22 @@ def write_log(directory, date, user, ticket, action):
         print "The file already exists. As this is highly unlikely, something bad is probably going on ;)"
 
 
-def run(arguments, users, direc, action):
-    userid = ""
-    user = getpass.getuser()
-    ticket = ""
-    try:
-        opts, args = getopt.getopt(arguments, "u:", "user")
-    except getopt.GetoptError:
-        print 'Error checking options for mine'
-        sys.exit(2)
-    for opt, arg in opts:
-        if opt in ("-u", "--user"):
-            user = arg
-    for arg in args:
-        try:
-            ticket = int(args[0])
-        except:
-            print "Invalid ticket number"
-            sys.exit(2)
+def run(arguments, users, direc, action, usernames):
+    parser = argparse.ArgumentParser(description='Start or stop work on a ticket.')
+    parser.add_argument('action', type=str,
+                        help='the action to record',
+                        choices=["start", "stop"])
+    parser.add_argument('ticket', type=int,
+                        help='the ticket # being worked on')
+    parser.add_argument('user', nargs='?', default=getpass.getuser(), type=str,
+                        help='who starts/stops working',
+                        choices=usernames)
+    args = parser.parse_args()
+    
+    user = args.user
+    action = args.action
+    ticket = args.ticket
     userid = [U['id'] for U in users if U['name'] == user]
-
-
-    if ticket == "" or userid == "":
-        print "Missing parameter"
-        print "Usage: imdoing start/stop [-u username]  <ticket_number>"
-        sys.exit(2)
 
 
     directory = os.path.join(direc, "timelog", user)

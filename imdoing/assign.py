@@ -7,8 +7,7 @@ from datetime import datetime
 import dateutil.parser
 import json
 import getpass
-import getopt
-import sys
+import argparse
 
 def assign(redmine, userid, ticket):
     status_id = 2  # Open
@@ -17,30 +16,20 @@ def assign(redmine, userid, ticket):
     return ticket
 
 
-def run(rmine, arguments, users):
-    userid = ""
-    user = getpass.getuser()
-    ticket = ""
-    try:
-        opts, args = getopt.getopt(arguments, "u:", "user")
-    except getopt.GetoptError:
-        print 'Error checking options for mine'
-        sys.exit(2)
-    for opt, arg in opts:
-        if opt in ("-u", "--user"):
-            user = arg
-    for arg in args:
-        try:
-            ticket = int(arg)
-        except:
-            print ""
+def run(rmine, arguments, users, usernames):
+
+    parser = argparse.ArgumentParser(description='Assign a ticket to self or to $user.')
+    parser.add_argument('ticket', type=int,
+                        help='the ticket number')
+    parser.add_argument('user', nargs='?', default=getpass.getuser(), type=str,
+                        help='the user to whom tickets are assigned',
+                        choices=usernames)
+    args = parser.parse_args(arguments)
+
+    ticket = args.ticket
+    user = args.user
 
     userid = [U['id'] for U in users if U['name'] == user]
-
-    if ticket == "" or userid == "":
-        print "Missing parameter"
-        print "Usage: imdoing assign [-u username]  <ticket_number>"
-        sys.exit(2)
 
     if assign(rmine, userid, ticket):
         print "Issue #" + str(ticket) + " was successfully assigned to " + user

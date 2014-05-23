@@ -7,8 +7,7 @@ from datetime import datetime
 import dateutil.parser
 import json
 import getpass
-import getopt
-import sys
+import argparse
 
 TRACKERS = {
     "bug": 1,
@@ -52,33 +51,20 @@ def create(redmine, parent, subject, desc, tracker, target):
 
 
 def run(rmine, arguments, users, target):
-#    rmine = Redmine(URL, key=API, requests={'verify': False})
-    parent = ''
-    subject = ''
-    desc = ''
-    tracker = ''
     user = getpass.getuser()
     userid = [U['id'] for U in users if U['name'] == user][0]
-    try:
-        opts, args = getopt.getopt(arguments, "p:s:d:t:", "parent,subject,description,tracker")
-    except getopt.GetoptError:
-        print 'Error checking options for mine'
-        sys.exit(2)
-    for opt, arg in opts:
-        if opt in ("-p", "--parent"):
-            parent = arg
-        if opt in ("-s", "--subject"):
-            subject = arg
-        if opt in ("-d", "--description"):
-            desc = arg
-        if opt in ("-t", "--tracker"):
-            tracker = arg
 
-    if parent == '' or subject == '' or desc == '' or tracker == '':
-        print 'Error missing IN parameter'
-        print 'Usage: imdoing create -p parent -s subject -d desc -t tracker'
-        sys.exit(2)
-
+    parser = argparse.ArgumentParser(description='Create a new ticket.')
+    parser.add_argument('-p', '--parent', type=int, required=True)
+    parser.add_argument('-s', '--subject', type=str, required=True)
+    parser.add_argument('-d', '--description', type=str, required=True)
+    parser.add_argument('-t', '--tracker', type=str, choices=["bug", "enhancement", "support", "team"],
+                        required=True)
+    args = parser.parse_args(arguments)
+    parent = args.parent
+    desc = args.description
+    subject = args.subject
+    tracker = args.tracker
 
     issue = create(rmine, parent, subject, desc, tracker, target)
     print "Issue #" + str(issue['id']) + " was created by " + user

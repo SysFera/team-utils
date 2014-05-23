@@ -66,11 +66,11 @@ def main():
     elif command == 'create':
         create.run(rmine, args.arguments, USERS, TARGET_VERSION)
     elif command == 'assign':
-        assign.run(rmine, args.arguments, USERS)
+        assign.run(rmine, args.arguments, USERS, USERNAMES)
     elif command == 'start':
-        mytime.run(args.arguments, USERS, get_dir(), "start")
+        mytime.run(args.arguments, USERS, get_dir(), "start", USERNAMES)
     elif command == 'stop':
-        mytime.run(args.arguments, USERS, get_dir(), "stop")
+        mytime.run(args.arguments, USERS, get_dir(), "stop", USERNAMES)
     else : 
         print "Usage: imdoing <action>{create/assign/mine/current/start/stop} [options]"
 
