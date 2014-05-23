@@ -3,13 +3,27 @@
 
 _imdoing ()   #  By convention, the function name
 {                 #+ starts with an underscore.
-  local cur
+  local cur prev
   # Pointer to current completion word.
   # By convention, it's named "cur" but this isn't strictly necessary.
   COMPREPLY=()
   cur=${COMP_WORDS[COMP_CWORD]}
+  prev=${COMP_WORDS[COMP_CWORD-1]}
 
-    COMPREPLY=( $( compgen -W 'assign  create current mine start stop  -h --help' -- $cur ) );
+  if [ $COMP_CWORD -eq 1 ]; then
+    COMPREPLY=( $( compgen -W ' assign  create current mine start stop  -h --help' -- $cur ) )
+  elif [ $COMP_CWORD -eq 2 ]; then
+    case "$prev" in
+      "create")
+        COMPREPLY=( $( compgen -W '-p -s -d -t' -- $cur ) )
+        ;;
+      "assign")
+        COMPREPLY=( $( compgen -W '[username]' -- $cur ) )
+        ;;
+      *)
+        ;;
+    esac
+  fi
 #   Generate the completion matches and load them into $COMPREPLY array.
 #   xx) May add more cases here.
 #   yy)
