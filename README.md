@@ -26,6 +26,8 @@ To use `imdoing`, you need to add the following to your .bashrc.
     export PATH=$PATH:$TEAM_PATH/imdoing
     alias imdoing='imdoing.py'
 
+Add the `imdoing` file to your /etc/bash_completion.d/ directory to have the bash completion
+
 ### Commands
 
 All commands can be invoked with the -h or --help parameter for more information.
