@@ -1,3 +1,4 @@
+
 #!/usr/bin/python
 # ~*~ coding: utf-8 ~*~
 
@@ -30,5 +31,6 @@ def run(rmine, arguments, users, usernames):
         print u"Issue #{} was successfully assigned to {}".format(ticket, user)
         print u"https://support.sysfera.com/issues/{}".format(ticket)
     else:
-        print u"There was an error assigning issue #{} to {}".format(ticket, user)
+        print u"There was an error assigning issue #{} to {}".format(ticket,
+                                                                     user)
 
