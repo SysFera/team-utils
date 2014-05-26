@@ -13,21 +13,22 @@ import create
 import assign
 import mytime
 
-parser = argparse.ArgumentParser(description='Front to the imdoing commands.')
-parser.add_argument('command',
-                    type=str,
-                    help='the imdoing command to run',
-                    choices=["mine", "current", "create", "assign", "start", "stop"])
-parser.add_argument('arguments',
-                    nargs=argparse.REMAINDER,
-                    help='the command arguments')
-args = parser.parse_args()
 
-command = args.command
-#for index, arg in enumerate(args.arguments):
-#    if arg[0] != "-":
-#        args.arguments[index] = '\"' + arg + '\"'
-arguments = " ".join(args.arguments)
+def parse_command_line():
+    parser = argparse.ArgumentParser(
+        description='Front to the imdoing commands.')
+    parser.add_argument('command',
+                        type=str,
+                        help='the imdoing command to run',
+                        choices=["mine", "current", "create",
+                                 "assign", "start", "stop"])
+    parser.add_argument('arguments',
+                        nargs=argparse.REMAINDER,
+                        help='the command arguments')
+    args = parser.parse_args()
+    command = args.command
+    arguments = " ".join(args.arguments)
+    return command, arguments
 
 
 def get_dir():
@@ -37,7 +38,7 @@ def get_dir():
         return os.path.join(directory, "imdoing")
     else:
         print "The environment variable TEAM_PATH is not set. Aborting."
-        quit()
+        sys.quit()
 
 # non-standard modules required
 # pip install python-redmine
@@ -52,29 +53,31 @@ USERS = config['chili']['members']
 USERNAMES = [str(U['name']) for U in USERS]
 CUSTOMER_PROJECTS = config['chili']['customerProjects']
 SYSFERA_PROJECTS = config['chili']['sysferaProjects']
-SPRINT_TARGET = "%02d" % config['sprint']['end']['day'] + "-" + "%02d" % config['sprint']['end']['month'] + "-" + "%04d" % config['sprint']['end']['year']
+SPRINT_TARGET = "%02d" % config['sprint']['end']['day'] + \
+                "-" + "%02d" % config['sprint']['end']['month'] + \
+                "-" + "%04d" % config['sprint']['end']['year']
 TARGET_VERSION = config['sprint']['version_id']
 
 
 def main():
     rmine = Redmine(URL, key=API, requests={'verify': False})
-
+    command, arguments = parse_command_line()
     if command == 'mine':
-        mine.run(rmine, args.arguments, USERNAMES, USERS)
+        mine.run(rmine, arguments, USERNAMES, USERS)
     elif command == 'current':
-        target.run(rmine, args.arguments, SPRINT_TARGET)
+        target.run(rmine, arguments, SPRINT_TARGET)
     elif command == 'create':
-        create.run(rmine, args.arguments, USERS, TARGET_VERSION)
+        create.run(rmine, arguments, USERS, TARGET_VERSION)
     elif command == 'assign':
-        assign.run(rmine, args.arguments, USERS, USERNAMES)
+        assign.run(rmine, arguments, USERS, USERNAMES)
     elif command == 'start':
-        mytime.run(args.arguments, USERS, get_dir(), "start", USERNAMES)
+        mytime.run(arguments, USERS, get_dir(), "start", USERNAMES)
     elif command == 'stop':
-        mytime.run(args.arguments, USERS, get_dir(), "stop", USERNAMES)
+        mytime.run(arguments, USERS, get_dir(), "stop", USERNAMES)
     else : 
         print "Usage: imdoing <action>{create/assign/mine/current/start/stop} [options]"
 
-    quit()
+    sys.quit()
 
 
 if __name__ == '__main__':
