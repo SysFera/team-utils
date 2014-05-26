@@ -23,7 +23,7 @@ _imdoing ()   #  By convention, the function name
         COMPREPLY=( $( compgen -W '-p -s -d -t' -- $cur ) )
         ;;
       "assign")
-        COMPREPLY=( $( compgen -W '[username]' -- $cur ) )
+        COMPREPLY=( $( compgen -W '<ticketId>' -- $cur ) )
         ;;
       *)
         ;;
@@ -52,6 +52,9 @@ _imdoing ()   #  By convention, the function name
             ;;
         esac
         ;;
+      "assign")
+          COMPREPLY=( $( compgen -W '[username]' -- $cur ) )
+          ;;
       *)
         ;;
     esac
