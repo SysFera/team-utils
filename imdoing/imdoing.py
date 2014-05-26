@@ -57,10 +57,8 @@ TRACKERS = config['sprint']['trackers']
 
 def main():
     user = getpass.getuser()
-    userlogin = [U['login'] for U in USERS if U['name'] == user]
 
-    rmine = Redmine(URL, key=API, requests={'verify': False},
-                    impersonate=userlogin)
+    rmine = Redmine(URL, key=API, requests={'verify': False})
     command, arguments = parse_command_line()
     if command == 'mine':
         mine.run(rmine, arguments, USERNAMES, USERS)
