@@ -9,31 +9,32 @@ import json
 import getpass
 import argparse
 
+
 def assign(redmine, userid, ticket):
     status_id = 2  # Open
-    ticket = redmine.issue.update(ticket, assigned_to_id=userid[0], status_id=status_id)
-
+    ticket = redmine.issue.update(ticket, assigned_to_id=userid[0],
+                                  status_id=status_id)
     return ticket
 
 
 def run(rmine, arguments, users, usernames):
-
-    parser = argparse.ArgumentParser(description='Assign a ticket to self or to $user.')
+    parser = argparse.ArgumentParser(
+        description='Assign a ticket to self or to $user.')
     parser.add_argument('ticket', type=int,
                         help='the ticket number')
     parser.add_argument('user', nargs='?', default=getpass.getuser(), type=str,
                         help='the user to whom tickets are assigned',
                         choices=usernames)
     args = parser.parse_args(arguments)
-
     ticket = args.ticket
     user = args.user
 
     userid = [U['id'] for U in users if U['name'] == user]
 
     if assign(rmine, userid, ticket):
-        print "Issue #" + str(ticket) + " was successfully assigned to " + user
-        print "https://support.sysfera.com/issues/" + str(ticket)
+        print "Issue #{} was successfully assigned to {}".format(ticket, user)
+        print "https://support.sysfera.com/issues/{}".format(ticket)
     else:
-        print "There was an error assigning issue #" + str(ticket) + " to " + user
+        print "There was an error assigning issue #{} to {}".format(ticket,
+                                                                    user)
 
