@@ -21,8 +21,8 @@ def write_log(directory, date, user, ticket, action):
     if not os.path.isfile(filename):
         try:
             open(filename, 'w').close()
-            print u'{} {}s working on ticket #{}'.format(user, action, ticket)
-        except IOError, e:
+            print u'{} {} working on ticket #{}'.format(user, action, ticket)
+        except IOError as e:
             print 'There was an error starting the log.'
             print e
     else:

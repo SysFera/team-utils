@@ -37,7 +37,9 @@ def get_dir():
     sys.exit()
 
 
-configFile = open(os.path.join(get_dir(), os.pardir, 'dashboard', 'data', 'config.json'))
+configFile = open(os.path.join(get_dir(), os.pardir,
+                               'dashboard', 'data',
+                               'config.json'))
 config = json.load(configFile)
 configFile.close()
 URL = config['chili']['url']
@@ -57,7 +59,8 @@ def main():
     user = getpass.getuser()
     userlogin = [U['login'] for U in USERS if U['name'] == user]
 
-    rmine = Redmine(URL, key=API, requests={'verify': False}, impersonate=userlogin)
+    rmine = Redmine(URL, key=API, requests={'verify': False},
+                    impersonate=userlogin)
     command, arguments = parse_command_line()
     if command == 'mine':
         mine.run(rmine, arguments, USERNAMES, USERS)
