@@ -9,10 +9,8 @@ import getpass
 import argparse
 
 
-
 NOW = datetime.now()
-DATE = "%(Y)d.%(m)02d.%(d)02d-%(H)02d:%(M)02d:%(S)02d" % {"Y": NOW.year, "m": NOW.month, "d": NOW.day,
-                                                          "H": NOW.hour, "M": NOW.minute, "S": NOW.second}
+DATE = "{0.year}.{0.month:02}.{0.day:02}-{0.hour:02}:{0.minute:02}:{0.second:02}".format(NOW)
 
 
 def check_dir(directory):
@@ -21,14 +19,13 @@ def check_dir(directory):
 
 
 def write_log(directory, date, user, ticket, action):
-    basename = '%(date)s-%(user)s-%(ticket)d-%(action)s' % {"directory": directory, "date": date, "user": user,
-                                                            "ticket": ticket, "action": action}
+    basename = '{}-{}-{}-{}'.format(date, user, ticket, action)
     filename = os.path.join(directory, basename)
 
     if not os.path.isfile(filename):
         try:
             open(filename, 'w').close()
-            print '%(user)s %(action)ss working on ticket #%(ticket)d' % {"user": user, "action": action, "ticket": ticket}
+            print '{} {} working on ticket #{}'.format(user, action, ticket)
         except IOError, e:
             print 'There was an error starting the log.'
             print e
@@ -52,7 +49,6 @@ def run(arguments, users, direc, action, usernames):
     action = args.action
     ticket = args.ticket
     userid = [U['id'] for U in users if U['name'] == user]
-
 
     directory = os.path.join(direc, "timelog", user)
     check_dir(directory)
