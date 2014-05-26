@@ -63,7 +63,7 @@ def main():
     if command == 'mine':
         mine.run(rmine, arguments, USERNAMES, USERS)
     elif command == 'current':
-        target.run(rmine, SPRINT_TARGET)
+        target.run(rmine, SPRINT_TARGET, USERS)
     elif command == 'create':
         create.run(rmine, arguments, TARGET_VERSION, user, TRACKERS)
     elif command == 'assign':

@@ -11,7 +11,7 @@ def get_issues(issues, attr, field, value):
     return issues.filter(issues_id)
 
 
-def data(redmine, target):
+def data(redmine, target, users):
     results = []
 
     issues = get_issues(redmine.issue.filter(status_id='1'),
@@ -24,9 +24,16 @@ def data(redmine, target):
         else:
             of = str(of)
 
+        if hasattr(issue, "assigned_to"):
+            assignee_id = getattr(issue, "assigned_to")['id']
+            assignee = [user['name'] for user in users if user['id'] == assignee_id][0]
+        else:
+            assignee = "unassigned"
+
         result = {
             'number': issue['id'],
             'subject': issue['subject'],
+            'assignee': assignee,
             'of': of
         }
         results.append(result)
@@ -34,7 +41,7 @@ def data(redmine, target):
     return results
 
 
-def run(rmine, target):
-    tickets = data(rmine, target)
+def run(rmine, target, users):
+    tickets = data(rmine, target, users)
     for ticket in tickets:
-        print u"#{number} === OF: {of} === {subject}".format(**ticket)
+        print u"#{number} === OF: {of} == {assignee:^10} == {subject}".format(**ticket)
