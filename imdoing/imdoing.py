@@ -74,9 +74,6 @@ def main():
         mytime.run(arguments, USERS, get_dir(), "start", USERNAMES)
     elif command == 'stop':
         mytime.run(arguments, USERS, get_dir(), "stop", USERNAMES)
-    else : 
-        print "Usage: imdoing <action>{create/assign/mine/current/start/stop} [options]"
-
     sys.exit()
 
 
