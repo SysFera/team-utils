@@ -22,11 +22,11 @@ TODO
 
 To use `imdoing`, you need to add the following to your .bashrc.
 
-    export TEAM_PATH=/path/to/team-utils
-    export PATH=$PATH:$TEAM_PATH/imdoing
-    alias imdoing='imdoing.py'
+    export TEAM_PATH=/home/augustin/Documents/SysFera/team-utils
+    export PYTHONPATH=$PYTHONPATH:$TEAM_PATH/imdoing
+    alias imdoing='python imdoing.py'
 
-Add the `imdoing` file to your /etc/bash_completion.d/ directory to have the bash completion
+Copy the `imdoing` file to your /etc/bash_completion.d/ directory (it most likely requires superuser rights) to have bash completion of the imdoing commands.
 
 ### Commands
 
