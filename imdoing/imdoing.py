@@ -27,7 +27,7 @@ def parse_command_line():
                         help='the command arguments')
     args = parser.parse_args()
     command = args.command
-    arguments = " ".join(args.arguments)
+    arguments = args.arguments
     return command, arguments
 
 
