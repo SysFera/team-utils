@@ -1,15 +1,11 @@
 #!/usr/bin/python
 # ~*~ coding: utf-8 ~*~
 
-# non-standard modules required
-# pip install python-redmine
-# pip install python-dateutil
 import os
 import argparse
 import json
 import mine
 import sys
-import getpass
 from redmine import Redmine
 import target
 import create
@@ -29,18 +25,15 @@ def parse_command_line():
                         nargs=argparse.REMAINDER,
                         help='the command arguments')
     args = parser.parse_args()
-
     return args.command, args.arguments
 
 
 def get_dir():
     directory = os.environ.get('TEAM_PATH')
-
     if directory is not None:
         return os.path.join(directory, "imdoing")
-    else:
-        print "The environment variable TEAM_PATH is not set. Aborting."
-        sys.exit()
+    print "The environment variable TEAM_PATH is not set. Aborting."
+    sys.exit()
 
 
 configFile = open(os.path.join(get_dir(), 'config.json'))
