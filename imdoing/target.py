@@ -8,6 +8,7 @@ import os
 from redmine import Redmine
 import json
 
+
 def get_issues(issues, attr, field, value):
     issues_id = []
     for i in issues:
@@ -21,9 +22,11 @@ def get_issues(issues, attr, field, value):
 def data(redmine, target):
     results = []
 
-    issues = get_issues(redmine.issue.filter(status_id='1'), "fixed_version", "name", target)
+    issues = get_issues(redmine.issue.filter(status_id='1'),
+                        "fixed_version", "name", target)
     for issue in issues:
-        of = [cf['value'] for cf in issue['custom_fields'] if cf['name'] == "OF"][0]
+        of = [cf['value'] for cf in issue['custom_fields']
+              if cf['name'] == "OF"][0]
         if of == '':
             of = "None"
         else:
@@ -42,5 +45,5 @@ def data(redmine, target):
 def run(rmine, arguments, target):
     tickets = data(rmine, target)
     for ticket in tickets:
-        print "#" + str(ticket['number']) + " === OF: " + ticket['of'] + " === " + ticket['subject']
+        print "#{number} === OF: {of} === {subject}".format(**ticket)
 
