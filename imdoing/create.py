@@ -1,30 +1,15 @@
 #!/usr/bin/python
 # ~*~ coding: utf-8 ~*~
-import os
-
-from redmine import Redmine
 from datetime import datetime
 import dateutil.parser
-import json
-import getpass
 import argparse
-
-TRACKERS = {
-    "bug": 1,
-    "enhancement": 2,
-    "support": 3,
-    "team": 4
-}
-
 
 
 def create(redmine, parent, subject, desc, tracker, target):
     status_id = 1  # New
     start_date = datetime.now(dateutil.tz.tzutc())
-
     description = desc
-    tracker_id = TRACKERS[tracker]
-
+    tracker_id = tracker
     parent_issue_id = parent
     parent_issue = redmine.issue.get(parent)
     project_id = parent_issue['project']['id']
@@ -50,10 +35,7 @@ def create(redmine, parent, subject, desc, tracker, target):
     return ticket
 
 
-def run(rmine, arguments, users, target):
-    user = getpass.getuser()
-    userid = [U['id'] for U in users if U['name'] == user][0]
-
+def run(rmine, arguments, target, user, trackers):
     parser = argparse.ArgumentParser(description='Create a new ticket.')
     parser.add_argument('-p', '--parent', type=int, required=True)
     parser.add_argument('-s', '--subject', type=str, required=True)
@@ -64,7 +46,7 @@ def run(rmine, arguments, users, target):
     parent = args.parent
     desc = args.description
     subject = args.subject
-    tracker = args.tracker
+    tracker = trackers[args.tracker]
 
     issue = create(rmine, parent, subject, desc, tracker, target)
     print "Issue #" + str(issue['id']) + " was created by " + user

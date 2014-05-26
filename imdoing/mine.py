@@ -1,12 +1,7 @@
 #!/usr/bin/python
 # ~*~ coding: utf-8 ~*~
-import os
-
-from redmine import Redmine
-import json
 import getpass
 import argparse
-import imdoing
 
 
 def data(redmine, userid):
@@ -42,9 +37,9 @@ def run(redmine, arguments, usernames, users):
     print "Tickets assigned to user " + user + ":"
     if len(tickets) > 0:
         for ticket in tickets:
-            print "#{} === OF: {} === {}".format(ticket['number'],
-                                                 ticket['of'],
-                                                 ticket['subject'])
+            print u"#{} === OF: {} === {}".format(ticket['number'],
+                                                  ticket['of'],
+                                                  ticket['subject'])
     else:
         print "No ticket found. Maybe you meant another user?"
 

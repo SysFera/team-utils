@@ -1,13 +1,6 @@
 #!/usr/bin/python
 # ~*~ coding: utf-8 ~*~
 
-# non-standard modules required
-# pip install python-redmine
-import os
-
-from redmine import Redmine
-import json
-
 
 def get_issues(issues, attr, field, value):
     issues_id = []
@@ -42,8 +35,7 @@ def data(redmine, target):
     return results
 
 
-def run(rmine, arguments, target):
+def run(rmine, target):
     tickets = data(rmine, target)
     for ticket in tickets:
         print "#{number} === OF: {of} === {subject}".format(**ticket)
-

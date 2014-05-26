@@ -1,10 +1,7 @@
 #!/usr/bin/python
 # ~*~ coding: utf-8 ~*~
-
 from datetime import datetime
 import os
-import dateutil.parser
-import json
 import getpass
 import argparse
 
@@ -25,7 +22,7 @@ def write_log(directory, date, user, ticket, action):
     if not os.path.isfile(filename):
         try:
             open(filename, 'w').close()
-            print '{} {} working on ticket #{}'.format(user, action, ticket)
+            print u'{} {} working on ticket #{}'.format(user, action, ticket)
         except IOError, e:
             print 'There was an error starting the log.'
             print e
@@ -33,22 +30,17 @@ def write_log(directory, date, user, ticket, action):
         print "The file already exists. As this is highly unlikely, something bad is probably going on ;)"
 
 
-def run(arguments, users, direc, action, usernames):
+def run(arguments, direc, action, usernames):
     parser = argparse.ArgumentParser(description='Start or stop work on a ticket.')
-    parser.add_argument('action', type=str,
-                        help='the action to record',
-                        choices=["start", "stop"])
     parser.add_argument('ticket', type=int,
                         help='the ticket # being worked on')
     parser.add_argument('user', nargs='?', default=getpass.getuser(), type=str,
                         help='who starts/stops working',
                         choices=usernames)
-    args = parser.parse_args()
+    args = parser.parse_args(arguments)
     
     user = args.user
-    action = args.action
     ticket = args.ticket
-    userid = [U['id'] for U in users if U['name'] == user]
 
     directory = os.path.join(direc, "timelog", user)
     check_dir(directory)

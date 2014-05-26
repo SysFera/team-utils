@@ -1,12 +1,15 @@
 #!/usr/bin/python
 # ~*~ coding: utf-8 ~*~
 
+# non-standard modules required
+# pip install python-redmine
+# pip install python-dateutil
 import os
 import argparse
-import subprocess
 import json
 import mine
 import sys
+import getpass
 from redmine import Redmine
 import target
 import create
@@ -26,9 +29,8 @@ def parse_command_line():
                         nargs=argparse.REMAINDER,
                         help='the command arguments')
     args = parser.parse_args()
-    command = args.command
-    arguments = args.arguments
-    return command, arguments
+
+    return args.command, args.arguments
 
 
 def get_dir():
@@ -40,9 +42,6 @@ def get_dir():
         print "The environment variable TEAM_PATH is not set. Aborting."
         sys.exit()
 
-# non-standard modules required
-# pip install python-redmine
-# pip install python-dateutil
 
 configFile = open(os.path.join(get_dir(), 'config.json'))
 config = json.load(configFile)
@@ -57,23 +56,27 @@ SPRINT_TARGET = "%02d" % config['sprint']['end']['day'] + \
                 "-" + "%02d" % config['sprint']['end']['month'] + \
                 "-" + "%04d" % config['sprint']['end']['year']
 TARGET_VERSION = config['sprint']['version_id']
+TRACKERS = config['sprint']['trackers']
 
 
 def main():
-    rmine = Redmine(URL, key=API, requests={'verify': False})
+    user = getpass.getuser()
+    userlogin = [U['login'] for U in USERS if U['name'] == user]
+
+    rmine = Redmine(URL, key=API, requests={'verify': False}, impersonate=userlogin)
     command, arguments = parse_command_line()
     if command == 'mine':
         mine.run(rmine, arguments, USERNAMES, USERS)
     elif command == 'current':
-        target.run(rmine, arguments, SPRINT_TARGET)
+        target.run(rmine, SPRINT_TARGET)
     elif command == 'create':
-        create.run(rmine, arguments, USERS, TARGET_VERSION)
+        create.run(rmine, arguments, TARGET_VERSION, user, TRACKERS)
     elif command == 'assign':
         assign.run(rmine, arguments, USERS, USERNAMES)
     elif command == 'start':
-        mytime.run(arguments, USERS, get_dir(), "start", USERNAMES)
+        mytime.run(arguments, get_dir(), "start", USERNAMES)
     elif command == 'stop':
-        mytime.run(arguments, USERS, get_dir(), "stop", USERNAMES)
+        mytime.run(arguments, get_dir(), "stop", USERNAMES)
     sys.exit()
 
 

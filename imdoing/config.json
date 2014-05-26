@@ -38,31 +38,38 @@
     "members": [
       {
         "id": 10,
-        "name": "haikel"
+        "name": "haikel",
+        "login": "hguemar"
       },
       {
         "id": 17,
-        "name": "pmartinez"
+        "name": "phi",
+        "login": "pmartinez"
       },
       {
         "id": 19,
-        "name": "omornard"
+        "name": "olivier",
+        "login": "omornard"
       },
       {
         "id": 20,
-        "name": "augustin"
+        "name": "augustin",
+        "login": "aragon"
       },
       {
         "id": 22,
-        "name": "nbard"
+        "name": "nbard",
+        "login": "nbard"
       },
       {
         "id": 23,
-        "name": "rchakode"
+        "name": "r",
+        "login": "rchakode"
       },
       {
         "id": 29,
-        "name": "keo"
+        "name": "keo",
+        "login": "keoo"
       }
     ]
   },

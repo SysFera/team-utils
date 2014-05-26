@@ -1,11 +1,6 @@
 #!/usr/bin/python
 # ~*~ coding: utf-8 ~*~
-import os
 
-from redmine import Redmine
-from datetime import datetime
-import dateutil.parser
-import json
 import getpass
 import argparse
 
