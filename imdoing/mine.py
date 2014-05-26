@@ -8,11 +8,13 @@ import getpass
 import argparse
 import imdoing
 
+
 def data(redmine, userid):
     results = []
 
     for issue in redmine.issue.filter(assigned_to_id=userid):
-        of = [cf['value'] for cf in issue['custom_fields'] if cf['name'] == "OF"][0]
+        of = [cf['value'] for cf in issue['custom_fields']
+              if cf['name'] == "OF"][0]
         if of == '':
             of = "None"
         else:
@@ -40,7 +42,9 @@ def run(redmine, arguments, usernames, users):
     print "Tickets assigned to user " + user + ":"
     if len(tickets) > 0:
         for ticket in tickets:
-            print "#" + str(ticket['number']) + " === OF: " + ticket['of'] + " === " + ticket['subject']
+            print "#{} === OF: {} === {}".format(ticket['number'],
+                                                 ticket['of'],
+                                                 ticket['subject'])
     else:
         print "No ticket found. Maybe you meant another user?"
 
