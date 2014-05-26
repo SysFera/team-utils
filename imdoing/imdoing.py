@@ -6,6 +6,7 @@ import argparse
 import json
 import mine
 import sys
+import getpass
 from redmine import Redmine
 import target
 import create
@@ -36,7 +37,7 @@ def get_dir():
     sys.exit()
 
 
-configFile = open(os.path.join(get_dir(), 'config.json'))
+configFile = open(os.path.join(get_dir(), os.pardir, 'dashboard', 'data', 'config.json'))
 config = json.load(configFile)
 configFile.close()
 URL = config['chili']['url']

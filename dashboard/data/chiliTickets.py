@@ -23,7 +23,7 @@ FILE_TEAM = config['chili']['fileTeam']
 
 CUSTOMER_PROJECTS = config['chili']['customerProjects']
 SYSFERA_PROJECTS = config['chili']['sysferaProjects']
-MEMBERS = config['chili']['members']
+MEMBERS = [M['id'] for M in config['chili']['members']]
 
 SPRINT_TARGET = "%02d" % config['sprint']['end']['day'] + "-" + "%02d" % config['sprint']['end']['month'] + "-" + "%04d" % config['sprint']['end']['year']
 # SPRINT_TARGET = config['sprint']['version_id']
@@ -36,6 +36,7 @@ def sort_collection_by_name(collection):
 
 def create_user_list():
     users = []
+
     for memberId in MEMBERS:
         member = rmine.user.get(memberId)
         user = {

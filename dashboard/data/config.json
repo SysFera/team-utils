@@ -23,7 +23,7 @@
   },
   "chili": {
     "url": "https://support.sysfera.com",
-    "api": "28ae1810e982c8a2a1f4f4b726e1feced351e229",
+    "api": "f1185f8959094aaee9abb5fd9700de1c70ca2fe2",
     "fileProjects": "dataProjects.json",
     "customerProjects": [
       { "name": "CINES" },
@@ -35,7 +35,43 @@
       { "name": "SOP" }
     ],
     "fileTeam": "dataTeam.json",
-    "members": [10,13,17,19,20,22,23,29]
+    "members": [
+      {
+        "id": 10,
+        "name": "haikel",
+        "login": "hguemar"
+      },
+      {
+        "id": 17,
+        "name": "phi",
+        "login": "pmartinez"
+      },
+      {
+        "id": 19,
+        "name": "olivier",
+        "login": "omornard"
+      },
+      {
+        "id": 20,
+        "name": "augustin",
+        "login": "aragon"
+      },
+      {
+        "id": 22,
+        "name": "nbard",
+        "login": "nbard"
+      },
+      {
+        "id": 23,
+        "name": "r",
+        "login": "rchakode"
+      },
+      {
+        "id": 29,
+        "name": "keo",
+        "login": "keoo"
+      }
+    ]
   },
   "jenkins": {
     "url": "http://192.168.1.2/jenkins",
