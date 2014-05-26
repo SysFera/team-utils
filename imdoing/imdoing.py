@@ -38,7 +38,7 @@ def get_dir():
         return os.path.join(directory, "imdoing")
     else:
         print "The environment variable TEAM_PATH is not set. Aborting."
-        sys.quit()
+        sys.exit()
 
 # non-standard modules required
 # pip install python-redmine
@@ -77,7 +77,7 @@ def main():
     else : 
         print "Usage: imdoing <action>{create/assign/mine/current/start/stop} [options]"
 
-    sys.quit()
+    sys.exit()
 
 
 if __name__ == '__main__':
