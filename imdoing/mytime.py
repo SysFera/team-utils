@@ -7,7 +7,7 @@ import argparse
 
 
 NOW = datetime.now()
-DATE = "{0.year}.{0.month:02}.{0.day:02}-{0.hour:02}:{0.minute:02}:{0.second:02}".format(NOW)
+DATE = u"{0.year}.{0.month:02}.{0.day:02}-{0.hour:02}:{0.minute:02}:{0.second:02}".format(NOW)
 
 
 def check_dir(directory):
@@ -16,13 +16,13 @@ def check_dir(directory):
 
 
 def write_log(directory, date, user, ticket, action):
-    basename = '{}-{}-{}-{}'.format(date, user, ticket, action)
+    basename = u'{}-{}-{}-{}'.format(date, user, ticket, action)
     filename = os.path.join(directory, basename)
 
     if not os.path.isfile(filename):
         try:
             open(filename, 'w').close()
-            print u'{} {} working on ticket #{}'.format(user, action, ticket)
+            print u'{} {}s working on ticket #{}'.format(user, action, ticket)
         except IOError, e:
             print 'There was an error starting the log.'
             print e

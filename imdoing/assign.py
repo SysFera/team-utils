@@ -27,9 +27,8 @@ def run(rmine, arguments, users, usernames):
     userid = [U['id'] for U in users if U['name'] == user]
 
     if assign(rmine, userid, ticket):
-        print "Issue #{} was successfully assigned to {}".format(ticket, user)
-        print "https://support.sysfera.com/issues/{}".format(ticket)
+        print u"Issue #{} was successfully assigned to {}".format(ticket, user)
+        print u"https://support.sysfera.com/issues/{}".format(ticket)
     else:
-        print "There was an error assigning issue #{} to {}".format(ticket,
-                                                                    user)
+        print u"There was an error assigning issue #{} to {}".format(ticket, user)
 

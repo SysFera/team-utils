@@ -38,4 +38,4 @@ def data(redmine, target):
 def run(rmine, target):
     tickets = data(rmine, target)
     for ticket in tickets:
-        print "#{number} === OF: {of} === {subject}".format(**ticket)
+        print u"#{number} === OF: {of} === {subject}".format(**ticket)
