@@ -55,6 +55,7 @@ SPRINT_TARGET = "%02d" % config['sprint']['end']['day'] + \
 TARGET_VERSION = config['sprint']['version_id']
 TRACKERS = config['sprint']['trackers']
 STATUSES = config['sprint']['statuses']
+PRIORITIES = config['sprint']['priorities']
 
 
 def main():
@@ -67,7 +68,7 @@ def main():
     elif command == 'current':
         target.run(rmine, SPRINT_TARGET, USERS)
     elif command == 'create':
-        create.run(rmine, arguments, TARGET_VERSION, user, TRACKERS)
+        create.run(rmine, arguments, TARGET_VERSION, user, TRACKERS, PRIORITIES)
     elif command == 'assign':
         assign.run(rmine, arguments, USERS, USERNAMES)
     elif command == 'status':

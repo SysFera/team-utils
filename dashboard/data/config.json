@@ -16,6 +16,13 @@
       "closed": 5,
       "rejected": 6
     },
+    "priorities": {
+      "low": 3,
+      "normal": 4,
+      "high": 5,
+      "urgent": 6,
+      "immediate": 7
+    },
     "version_id": 14,
     "start": {
       "year": 2014,
