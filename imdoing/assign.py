@@ -28,16 +28,23 @@ def run(rmine, arguments, users, usernames):
                         help='the ticket number')
     parser.add_argument('user', nargs='?', default=getpass.getuser(), type=str,
                         help='the user to whom tickets are assigned',
-                        choices=usernames)
+                        choices=usernames+["nobody"])
     parser.add_argument('-f', '--force', dest='forced', action='store_true', default=False)
     args = parser.parse_args(arguments)
     ticket = args.ticket
     user = args.user
     forced = args.forced
 
-    userid = [U['id'] for U in users if U['name'] == user][0]
+    if user == "nobody":
+        userid = 0
+    else:
+        userid = [U['id'] for U in users if U['name'] == user][0]
     assignee_id = get_assignee_id(rmine, ticket)
-    assignee = [member['name'] for member in users if member['id'] == assignee_id][0]
+    assignees = [member['name'] for member in users if member['id'] == assignee_id]
+    if len(assignees) == 0:
+        assignee = "nobody"
+    else:
+        assignee = assignees[0]
 
     if assignee_id == userid:
         print u"Issue #{} was already assigned to {}. " \
