@@ -1,4 +1,4 @@
 #!/bin/bash
 
-source libCheck.sh
+source ../../../checking/libCheck.sh
 overall

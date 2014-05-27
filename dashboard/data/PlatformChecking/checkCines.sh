@@ -1,5 +1,5 @@
 #!/bin/bash
-source ./libCheck.sh
+source ../../../checking/libCheck.sh
 Wb_un="sysfera"
 Wb_pw="GraalSystems"
 URL="http://cristal2.cines.fr:8080"

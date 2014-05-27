@@ -1,5 +1,5 @@
 #!/bin/bash
-source ./libCheck.sh
+source ../../../checking/libCheck.sh
 Wb_un="admin"
 Wb_pw="admin123"
 URL="http://54.246.101.26:8080"

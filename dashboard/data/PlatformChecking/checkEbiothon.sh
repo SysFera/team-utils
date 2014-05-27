@@ -1,7 +1,7 @@
 #!/bin/bash
 
 pushd /home/jenkins/team-utils/dashboard/data/PlatformChecking/
-source ./libCheck.sh
+source ../../../checking/libCheck.sh
 
 #Customer context variable
 ##define username and password.

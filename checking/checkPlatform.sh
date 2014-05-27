@@ -4,10 +4,19 @@
 # creating new scripts for new platforms        #
 #                                               #
 #################################################
+if [  -z "$SYSFERA_DS_ROOT" ];
+then 
+   echo "SYSFERA_DS_ROOT must be set. Exit"
+   exit -1
+fi
+if [ ! -f ${SYSFERA_DS_ROOT}/etc/check.conf ];
+then
+   
+   echo "${SYSFERA_DS_ROOT}/etc/check.conf must exist. Exit"
+   exit -1
+fi
 
-
-installation_path=~
-
+source ${SYSFERA_DS_ROOT}/etc/check.conf
 #define username and password.
 Wb_un="admin"
 Wb_pw="admin123"
@@ -24,6 +33,7 @@ sample_completedJobId=22
 sample_containerJob=24
 
 pushd ${installation_path}/SDS/contrib/tests
+
 source ./libCheck.sh
 
 rm report.raw 2> /dev/null
