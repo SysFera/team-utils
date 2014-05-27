@@ -17,6 +17,7 @@ def assign(redmine, userid, ticket):
     status_id = 2  # Open
     ticket = redmine.issue.update(ticket, assigned_to_id=userid,
                                   status_id=status_id)
+
     return ticket
 
 

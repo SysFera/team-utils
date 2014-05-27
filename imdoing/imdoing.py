@@ -11,6 +11,7 @@ from redmine import Redmine
 import target
 import create
 import assign
+import status
 import mytime
 
 
@@ -21,7 +22,7 @@ def parse_command_line():
                         type=str,
                         help='the imdoing command to run',
                         choices=["mine", "current", "create",
-                                 "assign", "start", "stop"])
+                                 "assign", "status", "start", "stop"])
     parser.add_argument('arguments',
                         nargs=argparse.REMAINDER,
                         help='the command arguments')
@@ -53,6 +54,7 @@ SPRINT_TARGET = "%02d" % config['sprint']['end']['day'] + \
                 "-" + "%04d" % config['sprint']['end']['year']
 TARGET_VERSION = config['sprint']['version_id']
 TRACKERS = config['sprint']['trackers']
+STATUSES = config['sprint']['statuses']
 
 
 def main():
@@ -68,6 +70,8 @@ def main():
         create.run(rmine, arguments, TARGET_VERSION, user, TRACKERS)
     elif command == 'assign':
         assign.run(rmine, arguments, USERS, USERNAMES)
+    elif command == 'status':
+        status.run(rmine, arguments, STATUSES)
     elif command == 'start':
         mytime.run(arguments, get_dir(), "start", USERNAMES)
     elif command == 'stop':

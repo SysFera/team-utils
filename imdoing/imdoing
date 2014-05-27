@@ -15,7 +15,7 @@ _imdoing ()   #  By convention, the function name
 
     
   if [ $COMP_CWORD -eq 1 ]; then
-    COMPREPLY=( $( compgen -W ' assign  create current mine start stop  -h --help' -- $cur ) )
+    COMPREPLY=( $( compgen -W ' assign create current mine start status stop -h --help' -- $cur ) )
   elif [ $COMP_CWORD -eq 2 ]; then
     case "$prev" in
       "create")
@@ -23,6 +23,9 @@ _imdoing ()   #  By convention, the function name
         COMPREPLY=( $( compgen -W '-p -s -d -t' -- $cur ) )
         ;;
       "assign")
+        COMPREPLY=( $( compgen -W '<ticketId>' -- $cur ) )
+        ;;
+      "status")
         COMPREPLY=( $( compgen -W '<ticketId>' -- $cur ) )
         ;;
       *)
@@ -54,7 +57,10 @@ _imdoing ()   #  By convention, the function name
         ;;
       "assign")
           COMPREPLY=( $( compgen -W '[username]' -- $cur ) )
-          ;;
+        ;;
+      "status")
+          COMPREPLY=( $( compgen -W 'new open rejected closed solved' -- $cur ) )
+        ;;
       *)
         ;;
     esac
