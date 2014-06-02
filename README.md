@@ -28,6 +28,23 @@ To use `imdoing`, you need to add the following to your .bashrc.
 
 Copy the `imdoing` file to your /etc/bash_completion.d/ directory (it most likely requires superuser rights) to have bash completion of the imdoing commands.
 
+You need some specifics python modules to use imdoing : `python-redmine` et `python-dateutil`
+
+    pip install python-redmine
+    pip install python-dateutil
+
+Use this commands in root for a global installation.
+
+Perhaps, you need to install the package installer pip too:
+
+for Debian (root):
+
+    apt-get install python-pip
+
+for OpenSuse (root):
+
+    zypper install python-pip
+
 ### Commands
 
 All commands can be invoked with the -h or --help parameter for more information.
