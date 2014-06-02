@@ -25,7 +25,7 @@ CUSTOMER_PROJECTS = config['chili']['customerProjects']
 SYSFERA_PROJECTS = config['chili']['sysferaProjects']
 MEMBERS = [M['id'] for M in config['chili']['members']]
 
-SPRINT_TARGET = "%02d" % config['sprint']['end']['day'] + "-" + "%02d" % config['sprint']['end']['month'] + "-" + "%04d" % config['sprint']['end']['year']
+TARGET_VERSION = config['chili']['version_id']
 TRACKER = config['chili']['trackers']['bug']
 
 
@@ -100,7 +100,7 @@ def data(redmine):
 
     for p in redmine.project.all():
         if p.name in [x['name'] for x in SYSFERA_PROJECTS]:
-            issues = get_issues(p, "fixed_version", "name", SPRINT_TARGET)
+            issues = get_issues(p, "fixed_version", "id", TARGET_VERSION)
             project = create_project_json(p, issues, 0)
             add_issues_to_users(users, p.issues)
             sysfera_projects.append(project)
