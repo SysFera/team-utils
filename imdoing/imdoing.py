@@ -65,7 +65,7 @@ def main():
     elif command == 'current':
         current.run(rmine, TARGET_VERSION, USERS)
     elif command == 'create':
-        create.run(rmine, arguments, TARGET_VERSION, user, TRACKERS, PRIORITIES)
+        create.run(rmine, arguments, TARGET_VERSION, user, TRACKERS, PRIORITIES, CUSTOMER_PROJECTS+SYSFERA_PROJECTS)
     elif command == 'assign':
         assign.run(rmine, arguments, USERS, USERNAMES)
     elif command == 'status':
