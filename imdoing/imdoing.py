@@ -8,7 +8,7 @@ import mine
 import sys
 import getpass
 from redmine import Redmine
-import target
+import current
 import create
 import assign
 import status
@@ -66,7 +66,7 @@ def main():
     if command == 'mine':
         mine.run(rmine, arguments, USERNAMES, USERS)
     elif command == 'current':
-        target.run(rmine, SPRINT_TARGET, USERS)
+        current.run(rmine, SPRINT_TARGET, USERS)
     elif command == 'create':
         create.run(rmine, arguments, TARGET_VERSION, user, TRACKERS, PRIORITIES)
     elif command == 'assign':
