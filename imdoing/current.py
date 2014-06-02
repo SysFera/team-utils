@@ -15,7 +15,7 @@ def data(redmine, target, users):
     results = []
 
     issues = get_issues(redmine.issue.filter(status_id='1'),
-                        "fixed_version", "name", target)
+                        "fixed_version", "id", target)
     for issue in issues:
         of = [cf['value'] for cf in issue['custom_fields']
               if cf['name'] == "OF"][0]

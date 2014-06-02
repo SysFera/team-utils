@@ -49,9 +49,6 @@ USERS = config['chili']['members']
 USERNAMES = [str(U['name']) for U in USERS]
 CUSTOMER_PROJECTS = config['chili']['customerProjects']
 SYSFERA_PROJECTS = config['chili']['sysferaProjects']
-SPRINT_TARGET = "%02d" % config['sprint']['end']['day'] + \
-                "-" + "%02d" % config['sprint']['end']['month'] + \
-                "-" + "%04d" % config['sprint']['end']['year']
 TARGET_VERSION = config['sprint']['version_id']
 TRACKERS = config['sprint']['trackers']
 STATUSES = config['sprint']['statuses']
@@ -66,7 +63,7 @@ def main():
     if command == 'mine':
         mine.run(rmine, arguments, USERNAMES, USERS)
     elif command == 'current':
-        current.run(rmine, SPRINT_TARGET, USERS)
+        current.run(rmine, TARGET_VERSION, USERS)
     elif command == 'create':
         create.run(rmine, arguments, TARGET_VERSION, user, TRACKERS, PRIORITIES)
     elif command == 'assign':
