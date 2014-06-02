@@ -3,6 +3,20 @@
     "refreshtime": 60000
   },
   "sprint": {
+    "start": {
+      "year": 2014,
+      "month": 6,
+      "day": 2
+    },
+    "end": {
+      "year": 2014,
+      "month": 6,
+      "day": 20
+    }
+  },
+  "chili": {
+    "url": "https://support.sysfera.com",
+    "api": "f1185f8959094aaee9abb5fd9700de1c70ca2fe2",
     "trackers": {
       "bug": 1,
       "enhancement": 2,
@@ -24,20 +38,6 @@
       "immediate": 7
     },
     "version_id": 15,
-    "start": {
-      "year": 2014,
-      "month": 6,
-      "day": 2
-    },
-    "end": {
-      "year": 2014,
-      "month": 6,
-      "day": 20
-    }
-  },
-  "chili": {
-    "url": "https://support.sysfera.com",
-    "api": "f1185f8959094aaee9abb5fd9700de1c70ca2fe2",
     "fileProjects": "dataProjects.json",
     "customerProjects": [
       { "name": "CINES" },

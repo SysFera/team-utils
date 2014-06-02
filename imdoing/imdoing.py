@@ -49,10 +49,10 @@ USERS = config['chili']['members']
 USERNAMES = [str(U['name']) for U in USERS]
 CUSTOMER_PROJECTS = config['chili']['customerProjects']
 SYSFERA_PROJECTS = config['chili']['sysferaProjects']
-TARGET_VERSION = config['sprint']['version_id']
-TRACKERS = config['sprint']['trackers']
-STATUSES = config['sprint']['statuses']
-PRIORITIES = config['sprint']['priorities']
+TARGET_VERSION = config['chili']['version_id']
+TRACKERS = config['chili']['trackers']
+STATUSES = config['chili']['statuses']
+PRIORITIES = config['chili']['priorities']
 
 
 def main():
