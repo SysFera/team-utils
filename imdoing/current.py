@@ -43,5 +43,8 @@ def data(redmine, target, users):
 
 def run(rmine, target, users):
     tickets = data(rmine, target, users)
-    for ticket in tickets:
-        print u"#{number} === OF: {of} == {assignee:^10} == {subject}".format(**ticket)
+    if len(tickets) > 0:
+        for ticket in tickets:
+            print u"#{number} === OF: {of} == {assignee:^10} == {subject}".format(**ticket)
+    else:
+        print "No ticket found. Please check version_id is set correctly in config.json."
