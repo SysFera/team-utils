@@ -45,7 +45,7 @@
     ],
     "sysferaProjects": [
       { "name": "SysFera" },
-      { "name": "Nu@ge" },
+      { "name": "Nuage" },
       { "name": "SOP" }
     ],
     "fileTeam": "dataTeam.json",
