@@ -5,11 +5,6 @@ import shelve
 import os
 import sys
 
-urls = (
-    '/register', 'Register',
-    '/timelog/(.+)', 'User'
-)
-
 
 def get_dir():
     directory = os.environ.get('TEAM_PATH')
@@ -18,12 +13,18 @@ def get_dir():
     print "The environment variable TEAM_PATH is not set. Aborting."
     sys.exit()
 
+
 configFile = open(os.path.join(get_dir(), os.pardir,
                                'dashboard', 'data',
                                'config.json'))
 config = json.load(configFile)
 configFile.close()
 USERS = config['chili']['members']
+
+urls = (
+    '/register', 'Register',
+    '/timelog/(.+)', 'User'
+)
 
 app = web.application(urls, globals())
 
