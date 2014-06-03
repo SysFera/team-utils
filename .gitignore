@@ -8,3 +8,4 @@ dashboard/dashboard.iml
 dashboard/data/PlatformChecking/*
 !dashboard/data/PlatformChecking/*.sh
 imdoing/*.pyc
+imdoing/*.db

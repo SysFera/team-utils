@@ -6,13 +6,44 @@ import argparse
 import json, requests
 
 
-SERVER = 'http://localhost:8080/'
+REGISTER_URL = 'http://localhost:8080/register'
 NOW = datetime.now()
 DATE = u"{0.year}.{0.month:02}.{0.day:02}-{0.hour:02}:{0.minute:02}:{0.second:02}".format(NOW)
 
 
-def register_file(f):
-    return f
+def parse_filename(f):
+    filename = os.path.basename(f)
+    data = filename.split("-")
+    date = data[0] + "-" + data[1]
+    user = data[2]
+    ticket = data[3]
+    action = data[4]
+
+    return {
+        'date': date,
+        'user': user,
+        'action': action,
+        'ticket': ticket
+    }
+
+
+def register_file(f):  # returns 0 if server unreachable, 1 if operation failed, 2 if operation OK
+    timestamp = parse_filename(f)
+    data = json.dumps(timestamp)
+
+    try:
+        req = requests.post(REGISTER_URL, data)
+    except IOError:
+        print "Failed (server unreachable). File was kept."
+        return 0
+    else:
+        if req.status_code == 200:
+            print "Success =)"
+            print req.text
+            return 2
+        else:
+            print "Failed (server returned an error). File was kept."
+            return 1
 
 
 def check_dir(directory):
@@ -29,11 +60,19 @@ def check_backlog(directory):
     else:
         if len(ls) == 0:
             print "Backlog is empty, nothing to do!"
+            return False
         else:
             print "Backlog needs emptying, let's do it!"
             for f in ls:
-                print "Trying to register file", f
-                register_file(f)
+                print "Trying to register file", f, "...",
+                server_reachable = register_file(f)
+                if server_reachable == 0:
+                    break
+                elif server_reachable == 2:
+                    try:
+                        os.remove(os.path.join(directory, f))
+                    except IOError:
+                        print "Could not remove the file, it was kept."
 
 
 def register_local(directory, timestamp):
@@ -54,24 +93,27 @@ def register_local(directory, timestamp):
 
 
 def register(directory, timestamp):  # try to save remotely, do it locally if it fails
-    url = SERVER + 'register'
+    server_reachable = True
     data = json.dumps(timestamp)
 
     print "Trying to register on the server...",
 
     try:
-        req = requests.post(url, data)
+        req = requests.post(REGISTER_URL, data)
     except IOError:
-        print 'Failed (could not reach the server). Saving locally.'
+        print 'Failed (server unreachable). Saving locally.'
+        server_reachable = False
         register_local(directory, timestamp)
     else:
         if req.status_code == 200:
             print "Success =)"
             print req.text
-            check_backlog(directory)
         else:
-            print "Failed (the server returned an error). Saving locally."
+            print "Failed (server returned an error). Saving locally."
             register_local(directory, timestamp)
+
+    if server_reachable:
+        check_backlog(directory)
 
 
 def run(arguments, direc, action, usernames):
