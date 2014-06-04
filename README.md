@@ -106,4 +106,16 @@ To facilitate usage, there is a map in the config file that matches ChiliProject
 
 ### Server
 
-The server that `imdoing start/stop` tries to communicate with is contained in server.py. It needs to be run on a server accessible in-house (morgan-slave?).
+The server that `imdoing start/stop` tries to communicate with is contained in server.py. It is currently run on morgan-slave and accessible on morgan on port 9090 (http://192.168.1.2:9090).
+
+#### /register
+
+`/register` is the entry point for the `imdoing start/stop` script to register information. It should not be accessed in the browser.
+
+#### /timelog/USER
+
+`/timelog/USER` is a page that displays the current content of each user's timelog.
+
+#### TODO
+
+Post-processing needs to be implemented, in order to convert a list of start/stop action for a user and a ticket into a total duration spent by a user on a ticket.
