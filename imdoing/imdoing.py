@@ -38,11 +38,13 @@ def get_dir():
     sys.exit()
 
 
-configFile = open(os.path.join(get_dir(), os.pardir,
+TEAM_PATH = get_dir()
+configFile = open(os.path.join(TEAM_PATH, os.pardir,
                                'dashboard', 'data',
                                'config.json'))
 config = json.load(configFile)
 configFile.close()
+REGISTER_URL = config['global']['register_url']
 URL = config['chili']['url']
 API = config['chili']['api']
 USERS = config['chili']['members']
@@ -71,9 +73,9 @@ def main():
     elif command == 'status':
         status.run(rmine, arguments, STATUSES)
     elif command == 'start':
-        mytime.run(arguments, get_dir(), "start", USERNAMES)
+        mytime.run(arguments, TEAM_PATH, "start", USERNAMES, REGISTER_URL)
     elif command == 'stop':
-        mytime.run(arguments, get_dir(), "stop", USERNAMES)
+        mytime.run(arguments, TEAM_PATH, "stop", USERNAMES, REGISTER_URL)
     sys.exit()
 
 

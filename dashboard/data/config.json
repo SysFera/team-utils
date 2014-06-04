@@ -1,6 +1,7 @@
 {
   "global": {
-    "refreshtime": 60000
+    "refreshtime": 60000,
+    "register_url": "http://localhost:8080/register"
   },
   "sprint": {
     "start": {

@@ -3,10 +3,9 @@ from datetime import datetime
 import os
 import getpass
 import argparse
-import json, requests
+import json
+import requests
 
-
-REGISTER_URL = 'http://localhost:8080/register'
 NOW = datetime.now()
 DATE = u"{0.year}.{0.month:02}.{0.day:02}-{0.hour:02}:{0.minute:02}:{0.second:02}".format(NOW)
 
@@ -116,7 +115,9 @@ def register(directory, timestamp):  # try to save remotely, do it locally if it
         check_backlog(directory)
 
 
-def run(arguments, direc, action, usernames):
+def run(arguments, direc, action, usernames, register_url):
+    global REGISTER_URL
+    REGISTER_URL = register_url
     parser = argparse.ArgumentParser(description='Start or stop work on a ticket.')
     parser.add_argument('ticket', type=int,
                         help='the ticket # being worked on')

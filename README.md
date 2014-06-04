@@ -103,3 +103,7 @@ If the server was not unreachable, the program attempts to see if there are file
 ### Current user
 
 To facilitate usage, there is a map in the config file that matches ChiliProject user ids to a "name". `imdoing` gets that name by doing the equivalent of a `whoami`. If you want to use `imdoing` and that your computer's username is different from your ChiliProject's username, you will need to edit the configuration file.
+
+### Server
+
+The server that `imdoing start/stop` tries to communicate with is contained in server.py. It needs to be run on a server accessible in-house (morgan-slave?).
