@@ -2,7 +2,7 @@
 source ../../../checking/libCheck.sh
 Wb_un="admin"
 Wb_pw="admin123"
-URL="http://54.246.101.26:8080"
+URL="http://54.246.101.26"
 
 #Processes
 checkSeDProcesses "XMS_SeD" "ec2-user" "aws-demo" "xmssed"
