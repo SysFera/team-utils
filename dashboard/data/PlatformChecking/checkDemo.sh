@@ -15,6 +15,6 @@ checkAnyWebboardPage "WebBoard_FMS:getUserHome" ${URL} "fileBrowser/getUserHome?
 checkAnyWebboardPage "WebBoard_FMS:listDir" ${URL} "fileBrowser/getListDir?pwd=%2Fhome%2Fec2-user%2FSDS&machine=Machine1&offset=0&max=20&sort=name&order=asc&noHidden=true" '"result":"success"'
 checkAnyWebboardPage "WebBoard_FMS:stat" ${URL} "fileBrowser/stat?file=%2Fhome%2Fec2-user%2FSDS/core&machine=Machine1" '"result":"success"'
 checkAnyWebboardPage "WebBoard_Work:getDoneRatio" ${URL} "work/getDoneRatio/1?workId=22" '{"doneRatio":100}'
-testSubmitWebBoardJob ${URL} "1" "1" "1"
-testSubmitCLIJob "/home/ec2-user/SDS/core/vishnu-sample.cfg" "/home/ec2-user/SDS/core/bin/vishnu_connect" "/home/ec2-user/testing" "/home/ec2-user/SDS/core/bin/vishnu_submit_job" "Machine1" "test.sh" "24" "aws-demo"
+testSubmitWebBoardJob ${URL} "15" "15" "1"
+testSubmitCLIJob "/home/ec2-user/sysfera-ds/etc/vishnu.server.cfg" "vishnu_connect" "/home/ec2-user/testing" "vishnu_submit_job" "cluster1" "test.sh" "647" "aws-demo"
 overallCheck "demo"
