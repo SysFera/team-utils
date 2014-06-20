@@ -13,7 +13,7 @@ checkAnyWebboardPage "WebBoard_project_list_page" ${URL} "project/list?lang=en" 
 checkAnyWebboardPage "WebBoard_file_manager_page" ${URL} "fileBrowser/index?lang=en" "<title>File Manager - SysFera-DS"
 checkAnyWebboardPage "WebBoard_FMS:getUserHome" ${URL} "fileBrowser/getUserHome?machineId=babel" '"result":"success"'
 checkAnyWebboardPage "WebBoard_FMS:listDir" ${URL} "fileBrowser/getListDir?pwd=%2Fhome%2Fuser-cluster1%2F&machine=cluster1&offset=0&max=20&sort=name&order=asc&noHidden=true" '"result":"success"'
-checkAnyWebboardPage "WebBoard_FMS:stat" ${URL} "fileBrowser/stat?file=%2Fhome%2Fuser-cluster1%2F/DoNotDelete.txt&machine=cluster1" '"result":"success"'
+checkAnyWebboardPage "WebBoard_FMS:stat" ${URL} "fileBrowser/stat?file=%2Fhome%2Fuser-cluster1&machine=cluster1" '"result":"success"'
 checkAnyWebboardPage "WebBoard_Work:getDoneRatio" ${URL} "work/getDoneRatio/1?workId=22" '{"doneRatio":100}'
 testSubmitWebBoardJob ${URL} "15" "15" "1"
 testSubmitCLIJob "/home/ec2-user/sysfera-ds/etc/vishnu.server.cfg" "vishnu_connect" "/home/ec2-user/testing" "vishnu_submit_job" "cluster1" "test.sh" "647" "aws-demo"
