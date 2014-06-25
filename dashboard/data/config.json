@@ -38,7 +38,7 @@
       "urgent": 6,
       "immediate": 7
     },
-    "version_id": 15,
+    "version_id": 16,
     "fileProjects": "dataProjects.json",
     "customerProjects": [
       { "name": "CINES" },
@@ -51,11 +51,6 @@
     ],
     "fileTeam": "dataTeam.json",
     "members": [
-      {
-        "id": 10,
-        "name": "haikel",
-        "login": "hguemar"
-      },
       {
         "id": 17,
         "name": "phi",
