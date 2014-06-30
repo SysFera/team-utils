@@ -1,0 +1,2 @@
+sds_keepAlive.sh : Script pour lancer et relancer reguliérement (en cas de crash) le xmssed (sur babel).
+manageKeys.sh : Script pour générer le keystore tomcat à partir des certificats et de la clé fournie sur la VM E-biothon.
