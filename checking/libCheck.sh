@@ -228,10 +228,13 @@ function testSubmitCLIJob
 	existing_work_container=$7
 	client_machine=$8
 
-	ssh ${client_machine} "VISHNU_CONFIG_FILE=${vishnu_conf} ${vishnu_connect} -u ${Wb_un} -w ${Wb_pw} && cd ${scriptDir} && VISHNU_CONFIG_FILE=${vishnu_conf} ${vishnu_submit} -r ${machine} -n \"CLI_TEST_$(date)\" -w ${existing_work_container} ${script} && echo \"RESULT:OK\" " > cli_out.txt
+	when=$(date +%Y-%m-%d-%H.%M.%S)
 
-	jobid=$(cat cli_out.txt | grep "Job Id" | wc -l)
-	resultok=$(cat cli_out.txt | grep "RESULT:OK" | wc -l)
+	ssh ${client_machine} "VISHNU_CONFIG_FILE=${vishnu_conf} ${vishnu_connect} -u ${Wb_un} -w ${Wb_pw} && cd ${scriptDir} && VISHNU_CONFIG_FILE=${vishnu_conf} ${vishnu_submit} -r ${machine} -n \"CLI_TEST_$(date)\" -w ${existing_work_container} ${script} && echo \"RESULT:OK\" " > cli_${when}_out.txt
+	
+	
+	jobid=$(cat cli_${when}_out.txt | grep "Job Id" | wc -l)
+	resultok=$(cat cli_${when}_out.txt | grep "RESULT:OK" | wc -l)
 
 	if [ "${jobid}" -gt "0" ] 
 	then
