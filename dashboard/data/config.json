@@ -93,7 +93,7 @@
     "user": "dashboard",
     "pwd": "dashboard",
     "file": "dataJenkins.json",
-    "projects": "['vishnu-compil-stable', 'vishnu-compil-dev', 'libbatch-dev', 'libbatch-stable', 'libfms-dev', 'libfms-stable', 'WB-stable', 'WB-dev']"
+    "projects": ["vishnu-compil-stable", "vishnu-compil-dev", "libbatch-dev", "libbatch-stable", "libfms-dev", "libfms-stable", "WB-stable", "WB-dev"]
   },
   "github": {
     "user": "sysfera-jenkins2",
@@ -101,6 +101,6 @@
     "org": "SysFera",
     "file": "dataGithub.json",
     "commits": 5,
-    "repositories": "['vishnu-compil-stable', 'vishnu-compil-dev', 'libbatch-dev', 'libbatch-stable', 'libfms-dev', 'libfms-stable', 'WB-stable', 'WB-dev']"
+    "repositories": ["vishnu-compil-stable", "vishnu-compil-dev", "libbatch-dev", "libbatch-stable", "libfms-dev", "libfms-stable", "WB-stable", "WB-dev"]
   }
 }
