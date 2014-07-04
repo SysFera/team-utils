@@ -101,6 +101,6 @@
     "org": "SysFera",
     "file": "dataGithub.json",
     "commits": 5,
-    "repositories": "['libbatch', 'vishnu', 'webboard']"
+    "repositories": "['vishnu-compil-stable', 'vishnu-compil-dev', 'libbatch-dev', 'libbatch-stable', 'libfms-dev', 'libfms-stable', 'WB-stable', 'WB-dev']"
   }
 }

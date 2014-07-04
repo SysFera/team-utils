@@ -67,7 +67,7 @@
 </script>
 <script id="templateGithub" type="text/html">
   {{#projects}}
-    <h4>{{name}} {{version}}</h4>
+    <h4 id="{{name}}">{{name}} {{version}}</h4>
     <ul>
       <b>Features:</b>
       {{#changelog}}{{#feature}} <li>{{message}}</li> {{/feature}}{{/changelog}}
