@@ -67,20 +67,23 @@
 </script>
 <script id="templateGithub" type="text/html">
   {{#projects}}
-    <h3>{{name}}</h3>
+    <h4>{{name}} {{version}}</h4>
     <ul>
-      {{#commits}}
-        <li>- {{message}} (<strong>{{sha}}...</strong>)</li>
-      {{/commits}}
-      <ul>
-      {{^commits}}
-        <li>Aucun commit pour l'instant.</li>
-      {{/commits}}
+      <b>Features:</b>
+      {{#changelog}}{{#feature}} <li>{{message}}</li> {{/feature}}{{/changelog}}
     </ul>
-  {{/projects}}
-  {{^projects}}
+    <ul> 
+      <b>Bugfix:</b>
+      {{#changelog}}{{#bugfix}} <li>{{message}}</li> {{/bugfix}}{{/changelog}}
+    </ul>
+    <ul> 
+      <b>Enhancement</b>
+      {{#changelog}}{{#enhancement}} <li>{{message}}</li> {{/enhancement}}{{/changelog}}
+    </ul>
+    {{/projects}}
+    {{^projects}}
     <div class="alert alert-danger">      
-      <p>Impossible de récupérer les commits GitHub.</p>
+      <p>Fail: Impossible de récupérer les commits GitHub.</p>
     </div>
   {{/projects}}
 </script>

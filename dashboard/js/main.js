@@ -111,7 +111,7 @@ function displayJenkins() {
 
 function displayGit() {
   // Query the Changelogs JSON, render it against the Mustache template, and insert it in the Changelogs div  
-  $.getJSON('data/dataGithub.json', function(dataGithub) {
+  $.getJSON('data/changelog.json', function(dataGithub) {
     github.html(Mustache.render(templateGithub, dataGithub))
   })
     .fail(function() {
