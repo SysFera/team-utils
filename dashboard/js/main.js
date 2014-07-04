@@ -20,7 +20,7 @@ function init() {
     templateStatsEquipe = templates.filter('#templateStatsEquipe').html();
     templateJenkins = templates.filter('#templateJenkins').html();
     templateDeployments = templates.filter('#templateDeployments').html();
-    templateGithub = templates.filter('#templateGithub').html();
+    templateGithub = templates.filter('#templateChangelogs').html();
   });
 }
 
@@ -52,8 +52,8 @@ function update() {
   displayProjects();
   // displayTeam();
   displayDeployments();
-  displayJenkins();
   displayGit();
+  displayJenkins();
 }
 
 function displayProjects() {
@@ -99,14 +99,37 @@ function displayTeam() {
     });
 }
 
+function updateStatus(name, status) {
+  var branch = name.slice(-4); // is it "-dev"?
+  var branchDiv, repoDiv, repoName;
+
+  if (branch == "-dev") { // yes!
+    branchDiv = $("#master");
+    repoName = name.slice(0, -4);
+    repoDiv = $("." + repoName, branchDiv);
+  } else { // no! is it "-stable"?
+    branch = name.slice(-7);
+    if (branch == "-stable") { // yes!
+      branchDiv = $("#stable");
+      repoName = name.slice(0, -7);
+      repoDiv = $("." + repoName, branchDiv);
+      console.log("." + repoName);
+      console.log(branchDiv);
+    } else { // no! see you, bye!
+      return
+    }
+  }
+  repoDiv.removeClass("alert-info").removeClass("alert-error").removeClass("alert-warning").addClass("alert-" + status).addClass("alert");
+}
+
 function displayJenkins() {
   // Query the Jenkins data JSON, render it against the Mustache template, and insert it in the Jenkins builds table
   $.getJSON('data/dataJenkins.json', function(dataJenkins) {
-    jenkinsBuilds.html(Mustache.render(templateJenkins, dataJenkins));
-  })
-    .fail(function() {
-      jenkinsBuilds.html(Mustache.render(templateJenkins, []));
-    });
+    var builds = dataJenkins["jenkinsBuilds"];
+    $.each(builds, function(index, build) {
+      updateStatus(build.name, build.status);
+    })
+  });
 }
 
 function displayGit() {

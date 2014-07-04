@@ -48,44 +48,30 @@
     </tr>
   {{/sysfera}}
 </script>
-<script id="templateJenkins" type="text/html">
-  <ul>
-  {{#jenkinsBuilds}}
-    <li class="status text-{{status}}">
-      <svg width="26px" height="26px" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="13" cy="13" r="13" stroke-width="0" fill="#000" />
-      </svg>
-      &nbsp;<span class="project">{{name}}</span>
-    </li>
-  {{/jenkinsBuilds}}
-  </ul>
-  {{^jenkinsBuilds}}
-    <div class="alert alert-danger">      
-      <p>Impossible de récupérer les builds Jenkins.</p>
-    </div>
-  {{/jenkinsBuilds}}
-</script>
-<script id="templateGithub" type="text/html">
-  {{#projects}}
-    <h4 id="{{name}}">{{name}} {{version}}</h4>
-    <ul>
-      <b>Features:</b>
-      {{#changelog}}{{#feature}} <li>{{message}}</li> {{/feature}}{{/changelog}}
-    </ul>
-    <ul> 
-      <b>Bugfix:</b>
-      {{#changelog}}{{#bugfix}} <li>{{message}}</li> {{/bugfix}}{{/changelog}}
-    </ul>
-    <ul> 
-      <b>Enhancement</b>
-      {{#changelog}}{{#enhancement}} <li>{{message}}</li> {{/enhancement}}{{/changelog}}
-    </ul>
-    {{/projects}}
-    {{^projects}}
-    <div class="alert alert-danger">      
-      <p>Fail: Impossible de récupérer les commits GitHub.</p>
-    </div>
-  {{/projects}}
+<script id="templateChangelogs" type="text/html">
+  <div class="row">
+    {{#branches}}
+      <div id="{{type}}" class="col-md-6">
+        <h2>Branche {{type}}</h2>
+        {{#repos}}
+          <h3 class="{{name}}">{{name}} {{start}}</h3>
+          {{#trackers}}
+            <h4 {{^messages}}class="hide"{{/messages}} ><b>{{type}}&nbsp;:</b></h4>
+            <ul class="list">
+              {{#messages}}
+              <li>{{.}}</li>
+              {{/messages}}
+            </ul>
+          {{/trackers}}
+        {{/repos}}
+      </div>
+    {{/branches}}
+    {{^branches}}
+      <div class="col-md-12 alert alert-danger">
+        <p>Impossible de récupérer les commits GitHub.</p>
+      </div>
+    {{/branches}}
+  </div>
 </script>
 <script id="templateDeployments" type="text/html">
   {{#clients}}   
