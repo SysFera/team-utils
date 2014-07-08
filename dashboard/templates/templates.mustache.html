@@ -51,17 +51,18 @@
 <script id="templateChangelogs" type="text/html">
   <div class="row">
     {{#branches}}
-      <div id="{{type}}" class="col-md-6">
-        <h2>Branche {{type}}</h2>
+      <div class="col-md-6">
         {{#repos}}
           <h3 class="{{name}}">{{name}} {{start}}</h3>
           {{#trackers}}
-            <h4 {{^messages}}class="hide"{{/messages}} ><b>{{type}}&nbsp;:</b></h4>
-            <ul class="list">
-              {{#messages}}
-              <li>{{.}}</li>
-              {{/messages}}
-            </ul>
+            {{#messages.length}}
+              <h4><b>{{type}}&nbsp;:</b></h4>
+              <ul class="list">
+                {{#messages}}
+                <li>{{.}}</li>
+                {{/messages}}
+              </ul>
+            {{/messages.length}}
           {{/trackers}}
         {{/repos}}
       </div>

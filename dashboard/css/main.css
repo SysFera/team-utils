@@ -56,9 +56,8 @@ body {
   padding-left: 0;
 }
 
-#github ul {
-  list-style: none;
-  padding-left: 0;
+#github {
+  font-size: 0.9em;
 }
 
 .row .row {

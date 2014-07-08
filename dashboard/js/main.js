@@ -29,7 +29,6 @@ function getConfig() {
   $.getJSON('data/config.json', function(data) {
     // sets the page's refresh time
     refreshTime = data['global']['refreshtime'];
-    console.log(refreshTime);
     setTimeout(function() { update(); }, refreshTime);
 
     // sets the date of the sprint's end
@@ -101,24 +100,19 @@ function displayTeam() {
 
 function updateStatus(name, status) {
   var branch = name.slice(-4); // is it "-dev"?
-  var branchDiv, repoDiv, repoName;
+  var repoDiv, repoName;
 
   if (branch == "-dev") { // yes!
-    branchDiv = $("#master");
     repoName = name.slice(0, -4);
-    repoDiv = $("." + repoName, branchDiv);
   } else { // no! is it "-stable"?
     branch = name.slice(-7);
     if (branch == "-stable") { // yes!
-      branchDiv = $("#stable");
       repoName = name.slice(0, -7);
-      repoDiv = $("." + repoName, branchDiv);
-      console.log("." + repoName);
-      console.log(branchDiv);
     } else { // no! see you, bye!
       return
     }
   }
+  repoDiv = $("." + repoName + branch);
   repoDiv.removeClass("alert-info").removeClass("alert-error").removeClass("alert-warning").addClass("alert-" + status).addClass("alert");
 }
 
