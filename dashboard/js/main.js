@@ -49,10 +49,8 @@ function update() {
   console.log("Update at " + new Date());
   getConfig();
   displayProjects();
-  // displayTeam();
   displayDeployments();
   displayGit();
-  displayJenkins();
 }
 
 function displayProjects() {
@@ -117,7 +115,7 @@ function updateStatus(name, status) {
 }
 
 function displayJenkins() {
-  // Query the Jenkins data JSON, render it against the Mustache template, and insert it in the Jenkins builds table
+  // Query the Jenkins data JSON and use it to color the Git Changelog output
   $.getJSON('data/dataJenkins.json', function(dataJenkins) {
     var builds = dataJenkins["jenkinsBuilds"];
     $.each(builds, function(index, build) {
@@ -127,10 +125,13 @@ function displayJenkins() {
 }
 
 function displayGit() {
-  // Query the Changelogs JSON, render it against the Mustache template, and insert it in the Changelogs div  
+  // Query the changelog JSON, render it against the Mustache template, and insert it in the changelog div
   $.getJSON('data/changelog.json', function(dataGithub) {
     github.html(Mustache.render(templateGithub, dataGithub))
   })
+    .done(function() {
+        displayJenkins();
+      })
     .fail(function() {
       github.html(Mustache.render(templateGithub, []));
     });
