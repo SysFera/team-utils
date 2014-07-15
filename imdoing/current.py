@@ -34,7 +34,8 @@ def data(redmine, target, users):
             'number': issue['id'],
             'subject': issue['subject'],
             'assignee': assignee,
-            'of': of
+            'of': of,
+            'project': issue['project']['name']
         }
         results.append(result)
 
@@ -45,6 +46,6 @@ def run(rmine, target, users):
     tickets = data(rmine, target, users)
     if len(tickets) > 0:
         for ticket in tickets:
-            print u"#{number} === OF: {of} == {assignee:^10} == {subject}".format(**ticket)
+            print u"#{number} = {project:^7} = OF: {of} = {assignee:^10} = {subject}".format(**ticket)
     else:
         print "No ticket found. Please check version_id is set correctly in config.json."
