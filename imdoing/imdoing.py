@@ -12,6 +12,7 @@ import current
 import create
 import assign
 import status
+import update
 import mytime
 
 
@@ -21,7 +22,7 @@ def parse_command_line():
     parser.add_argument('command',
                         type=str,
                         help='the imdoing command to run',
-                        choices=["mine", "current", "create",
+                        choices=["mine", "current", "create", "update",
                                  "assign", "status", "start", "stop"])
     parser.add_argument('arguments',
                         nargs=argparse.REMAINDER,
@@ -72,6 +73,8 @@ def main():
         assign.run(rmine, arguments, USERS, USERNAMES)
     elif command == 'status':
         status.run(rmine, arguments, STATUSES)
+    elif command == 'update':
+        update.run(rmine, arguments, USERS, STATUSES, PRIORITIES, TRACKERS)
     elif command == 'start':
         mytime.run(arguments, TEAM_PATH, "start", USERNAMES, REGISTER_URL)
     elif command == 'stop':

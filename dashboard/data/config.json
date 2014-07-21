@@ -20,9 +20,13 @@
     "api": "f1185f8959094aaee9abb5fd9700de1c70ca2fe2",
     "trackers": {
       "bug": 1,
+      "b": 1,
       "enhancement": 2,
+      "e": 2,
       "support": 3,
-      "team": 4
+      "s": 3,
+      "team": 4,
+      "t": 4
     },
     "statuses": {
       "new": 1,
