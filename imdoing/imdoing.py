@@ -70,9 +70,9 @@ def main():
     elif command == 'create':
         create.run(rmine, arguments, TARGET_VERSION, user, TRACKERS, PRIORITIES, CUSTOMER_PROJECTS+SYSFERA_PROJECTS)
     elif command == 'assign':
-        assign.run(rmine, arguments, USERS, USERNAMES)
+        assign.run(arguments, USERNAMES)
     elif command == 'status':
-        status.run(rmine, arguments, STATUSES)
+        status.run(arguments, STATUSES)
     elif command == 'update':
         update.run(rmine, arguments, USERS, STATUSES, PRIORITIES, TRACKERS)
     elif command == 'start':

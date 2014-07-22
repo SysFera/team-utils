@@ -1,12 +1,36 @@
 # ~*~ coding: utf-8 ~*~
 
 import argparse
+import sys
+
+
+def check_already_assigned(properties):
+    assigned_to = properties.get('assigned_to')
+    user = assigned_to.get('user')['id']
+    current = assigned_to.get('current')['id']
+
+    # we return True (which means we need to --force) if
+    # - user is not None
+    #   a change of assigned_to was actually requested
+    # - current != 0
+    #   the ticket is already assigned to a real person (not 'nobody'/0)
+    # - current != user
+    #   the current user is not the requested user
+    # - user != 0
+    #   the requested user is not 'nobody' (if you typed --assigned_to nobody,
+    #   you obviously want to de-assign the ticket from its current assignee)
+    #
+    # if all of the above evaluates to True, we return the current assignee
+    return assigned_to.get('current')['label'] \
+        if user is not None and current != 0 and current != user and user != 0\
+        else ""
 
 
 def build_properties(ticket, args, usernames, statuses, priorities, trackers):
     # we "pop" the ticket from the argument list.
     # any cleaner way of doing that is welcome!
-    mod_args = {k: v for k, v in vars(args).iteritems() if k != 'ticket'}
+    mod_args = {k: v for k, v in vars(args).iteritems()
+                if k != 'ticket' and k != 'force'}
 
     # we create reverse dictionaries for easy lookup
     usernames_rev = {v: k for k, v in usernames.iteritems()}
@@ -34,16 +58,20 @@ def build_properties(ticket, args, usernames, statuses, priorities, trackers):
         else:
             ticket_prop_id = 0
 
+        user_label = dicts[prop][0][val] if val is not None else None
+        current_label = dicts[prop][1][ticket_prop_id] if \
+            ticket_prop_id is not None else None
+
         current_prop = {
             'name': prop,
             'code': prop + "_id",
             'user': {
-                'id': dicts[prop][0][val] if val is not None else None,
+                'id': user_label,
                 'label': val
             },
             'current': {
                 'id': ticket_prop_id,
-                'label': dicts[prop][1][ticket_prop_id] if ticket_prop_id is not None else None
+                'label': current_label
             }
         }
         properties[prop] = current_prop
@@ -75,10 +103,10 @@ def update(**options):
     ticket_id = options.pop('ticket_id')
 
     # now that our option object is clean, we just submit the update
-    if rmine.issue.update(ticket_id, **options):
-        print u"Issue #{} was successfully updated".format(ticket_id)
-    else:
-        print u"There was an error updating issue #{}".format(ticket_id)
+    # if rmine.issue.update(ticket_id, **options):
+    #     print u"Issue #{} was successfully updated".format(ticket_id)
+    # else:
+    #     print u"There was an error updating issue #{}".format(ticket_id)
 
 
 def run(rmine, arguments, users, statuses, priorities, trackers):
@@ -104,6 +132,8 @@ def run(rmine, arguments, users, statuses, priorities, trackers):
                         choices=priorities_s)
     parser.add_argument('--tracker', '-t', type=str,
                         help='the ticket\'s tracker', choices=trackers_s)
+    parser.add_argument('--force', '-f', dest='force', action='store_true',
+                        default=False, help='force the update')
     args = parser.parse_args(arguments)
 
     # ticket_id will be used in several places
@@ -115,6 +145,18 @@ def run(rmine, arguments, users, statuses, priorities, trackers):
     # we build a "complex" properties object that we will iterate through
     properties = build_properties(ticket, args, usernames, statuses,
                                   priorities, trackers)
+
+    # was the command forced?
+    if not args.force:
+        # let's check if we won't require the user to --force their request
+        already_assigned = check_already_assigned(properties)
+        # did we get a name or did we get "" ?
+        if already_assigned:
+            # tell the user to run ith --force and exit
+            print u"Issue #{} was already assigned to {}. Please run again " \
+                  u"with -f if you want to force assign the issue." \
+                .format(ticket_id, already_assigned)
+            sys.exit()
 
     # we initialize the options object that we will use to update the ticket
     options = {'rmine': rmine, 'ticket_id': ticket_id}

@@ -4,56 +4,20 @@ import getpass
 import argparse
 
 
-def get_assignee_id(rmine, ticket):
-    issue = rmine.issue.get(ticket)
-
-    if hasattr(issue, "assigned_to"):
-        return getattr(issue, "assigned_to")['id']
-    else:
-        return 0
-
-
-def assign(redmine, userid, ticket):
-    ticket = redmine.issue.update(ticket, assigned_to_id=userid)
-
-    return ticket
-
-
-def run(rmine, arguments, users, usernames):
+def run(arguments, usernames):
     parser = argparse.ArgumentParser(
-        description='Assign a ticket to self or to $user.')
-    parser.add_argument('ticket', type=int,
-                        help='the ticket number')
+        description='Assign a ticket to self or to $user. '
+                    'DEPECRATED: use imdoing update.')
+    parser.add_argument('ticket', type=int, help='the ticket\'s number')
     parser.add_argument('user', nargs='?', default=getpass.getuser(), type=str,
-                        help='the user to whom tickets are assigned',
+                        help='the user to assign the ticket to',
                         choices=usernames+["nobody"])
-    parser.add_argument('-f', '--force', dest='forced', action='store_true', default=False)
+    parser.add_argument('-f', '--force', dest='forced', action='store_true',
+                        default=False)
     args = parser.parse_args(arguments)
-    ticket = args.ticket
+    force = " -f" if args.forced else ""
     user = args.user
-    forced = args.forced
+    ticket = args.ticket
 
-    if user == "nobody":
-        userid = 0
-    else:
-        userid = [U['id'] for U in users if U['name'] == user][0]
-    assignee_id = get_assignee_id(rmine, ticket)
-    assignees = [member['name'] for member in users if member['id'] == assignee_id]
-    if len(assignees) == 0:
-        assignee = "nobody"
-    else:
-        assignee = assignees[0]
-
-    if assignee_id == userid:
-        print u"Issue #{} was already assigned to {}. " \
-              u"Nothing was done.".format(ticket, assignee)
-    elif forced or assignee_id == 0:
-        if assign(rmine, userid, ticket):
-            print u"Issue #{} was successfully assigned to {}".format(ticket, user)
-            print u"https://support.sysfera.com/issues/{}".format(ticket)
-        else:
-            print u"There was an error assigning issue #{} to {}".format(ticket, user)
-    else:
-        print u"Issue #{} was already assigned to {}. Please run again " \
-              u"with -f if you want to force assign the issue." \
-            .format(ticket, assignee)
+    print "DEPECRATED. Please use:"
+    print "imdoing update{0} {1} --assigned_to {2}".format(force, ticket, user)
