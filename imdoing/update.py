@@ -103,10 +103,10 @@ def update(**options):
     ticket_id = options.pop('ticket_id')
 
     # now that our option object is clean, we just submit the update
-    # if rmine.issue.update(ticket_id, **options):
-    #     print u"Issue #{} was successfully updated".format(ticket_id)
-    # else:
-    #     print u"There was an error updating issue #{}".format(ticket_id)
+    if rmine.issue.update(ticket_id, **options):
+        print u"Issue #{} was successfully updated".format(ticket_id)
+    else:
+        print u"There was an error updating issue #{}".format(ticket_id)
 
 
 def run(rmine, arguments, users, statuses, priorities, trackers):
