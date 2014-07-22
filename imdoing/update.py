@@ -30,7 +30,7 @@ def build_properties(ticket, args, usernames, statuses, priorities, trackers):
     # we "pop" the ticket from the argument list.
     # any cleaner way of doing that is welcome!
     mod_args = {k: v for k, v in vars(args).iteritems()
-                if k != 'ticket' and k != 'force'}
+                if k != 'ticket' and k != 'force' and k != 'notes'}
 
     # we create reverse dictionaries for easy lookup
     usernames_rev = {v: k for k, v in usernames.iteritems()}
@@ -134,8 +134,10 @@ def run(rmine, arguments, users, statuses, priorities, trackers):
                         help='the ticket\'s tracker', choices=trackers_s)
     parser.add_argument('--force', '-f', dest='force', action='store_true',
                         default=False, help='force the update')
+    parser.add_argument('--notes', '-n', type=str,
+                        help='any additional comment')
     args = parser.parse_args(arguments)
-
+    
     # ticket_id will be used in several places
     ticket_id = args.ticket
 
@@ -160,6 +162,8 @@ def run(rmine, arguments, users, statuses, priorities, trackers):
 
     # we initialize the options object that we will use to update the ticket
     options = {'rmine': rmine, 'ticket_id': ticket_id}
+    if args.notes:
+        options['notes'] = args.notes
 
     # do_update is a flag that will be set to True if we actually need to
     # update the ticket
