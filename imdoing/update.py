@@ -1,5 +1,6 @@
 # ~*~ coding: utf-8 ~*~
 
+import getpass
 import argparse
 import sys
 
@@ -160,14 +161,15 @@ def run(rmine, arguments, users, statuses, priorities, trackers):
                 .format(ticket_id, already_assigned)
             sys.exit()
 
-    # we initialize the options object that we will use to update the ticket
-    options = {'rmine': rmine, 'ticket_id': ticket_id}
-    if args.notes:
-        options['notes'] = args.notes
-
     # do_update is a flag that will be set to True if we actually need to
     # update the ticket
     do_update = False
+
+    # we initialize the options object that we will use to update the ticket
+    options = {'rmine': rmine, 'ticket_id': ticket_id}
+    if args.notes:
+        do_update = True
+        options['notes'] = "{0} :\n".format(getpass.getuser()) + args.notes
 
     # for each of the properties created, we check if we need to update
     # and populate "options" accordingly.
