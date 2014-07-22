@@ -22,7 +22,7 @@ def parse_command_line():
     parser.add_argument('command',
                         type=str,
                         help='the imdoing command to run',
-                        choices=["mine", "current", "create", "update",
+                        choices=["mine", "list", "current", "create", "update",
                                  "assign", "status", "start", "stop"])
     parser.add_argument('arguments',
                         nargs=argparse.REMAINDER,
@@ -66,6 +66,8 @@ def main():
     if command == 'mine':
         mine.run(rmine, arguments, USERNAMES, USERS)
     elif command == 'current':
+        current.run(rmine, TARGET_VERSION, USERS)
+    elif command == 'list':
         current.run(rmine, TARGET_VERSION, USERS)
     elif command == 'create':
         create.run(rmine, arguments, TARGET_VERSION, user, TRACKERS, PRIORITIES, CUSTOMER_PROJECTS+SYSFERA_PROJECTS)
