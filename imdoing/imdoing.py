@@ -59,8 +59,6 @@ PRIORITIES = config['chili']['priorities']
 
 
 def main():
-    user = getpass.getuser()
-
     rmine = Redmine(URL, key=API, requests={'verify': False})
     command, arguments = parse_command_line()
     if command == 'mine':
@@ -70,7 +68,8 @@ def main():
     elif command == 'list':
         current.run(rmine, TARGET_VERSION, USERS)
     elif command == 'create':
-        create.run(rmine, arguments, TARGET_VERSION, user, TRACKERS, PRIORITIES, CUSTOMER_PROJECTS+SYSFERA_PROJECTS)
+        create.run(rmine, arguments, TARGET_VERSION, USERS, TRACKERS,
+                   PRIORITIES, CUSTOMER_PROJECTS+SYSFERA_PROJECTS, STATUSES)
     elif command == 'assign':
         assign.run(arguments, USERNAMES)
     elif command == 'status':
