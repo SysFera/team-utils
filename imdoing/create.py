@@ -3,6 +3,8 @@
 import getpass
 import argparse
 
+uni = lambda s: unicode(s, 'utf8')
+
 
 def add_project_or_parent(args, options):
     project = args.project
@@ -52,16 +54,16 @@ def run(rmine, arguments, target, users, trackers, priorities, projects,
     parser = argparse.ArgumentParser(description='Create a new ticket.')
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument('--parent', '-p', type=int)
-    group.add_argument('--project', '-P', type=str, choices=project_list)
-    parser.add_argument('--subject', '-s', type=str, required=True)
-    parser.add_argument('--description', '-d', type=str, required=True)
+    group.add_argument('--project', '-P', type=uni, choices=project_list)
+    parser.add_argument('--subject', '-s', type=uni, required=True)
+    parser.add_argument('--description', '-d', type=uni, required=True)
     parser.add_argument('--tracker', '-t', type=str, choices=trackers_list,
                         required=True)
     parser.add_argument('--priority', type=str, default='normal',
                         choices=priorities_list)
     parser.add_argument('--status', type=str, default='new',
                         choices=statuses_list)
-    parser.add_argument('--assigned_to', type=str, choices=users_list,
+    parser.add_argument('--assigned_to', type=uni, choices=users_list,
                         default='nobody')
     parser.add_argument('--of', type=int, default=0)
     args = parser.parse_args(arguments)

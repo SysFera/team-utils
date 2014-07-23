@@ -4,6 +4,8 @@ import getpass
 import argparse
 import sys
 
+uni = lambda s: unicode(s, 'utf8')
+
 
 def check_already_assigned(properties):
     assigned_to = properties.get('assigned_to')
@@ -127,7 +129,7 @@ def run(rmine, arguments, users, statuses, priorities, trackers):
     parser.add_argument('ticket', type=int, help='the ticket number')
     parser.add_argument('--assigned_to', '-a', type=str,
                         help='assign the ticket', choices=usernames_s)
-    parser.add_argument('--status', '-s', type=str,
+    parser.add_argument('--status', '-s', type=uni,
                         help='the ticket\'s status', choices=statuses_s)
     parser.add_argument('--priority', '-p', type=str,
                         help='the ticket\'s priority',
@@ -136,7 +138,7 @@ def run(rmine, arguments, users, statuses, priorities, trackers):
                         help='the ticket\'s tracker', choices=trackers_s)
     parser.add_argument('--force', '-f', dest='force', action='store_true',
                         default=False, help='force the update')
-    parser.add_argument('--notes', '-n', type=str,
+    parser.add_argument('--notes', '-n', type=uni,
                         help='any additional comment')
     args = parser.parse_args(arguments)
     
