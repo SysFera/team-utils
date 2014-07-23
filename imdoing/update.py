@@ -108,9 +108,9 @@ def update(**options):
     # now that our option object is clean, we just submit the update
     if rmine.issue.update(ticket_id, **options):
         print u"\nIssue #{0} was successfully updated: " \
-              u"https://support.sysfera.com/issues/{0}".format(ticket_id)
+              u"https://support.sysfera.com/issues/{0}\n".format(ticket_id)
     else:
-        print u"There was an error updating issue #{0}".format(ticket_id)
+        print u"\nThere was an error updating issue #{0}\n".format(ticket_id)
 
 
 def run(rmine, arguments, users, statuses, priorities, trackers):
@@ -160,7 +160,7 @@ def run(rmine, arguments, users, statuses, priorities, trackers):
         if already_assigned:
             # tell the user to run ith --force and exit
             print u"\nIssue #{0} was already assigned to {1}. Please run" \
-                  u" again with -f if you want to force assign the issue."\
+                  u" again with -f if you want to force assign the issue.\n"\
                 .format(ticket_id, already_assigned)
             sys.exit()
 

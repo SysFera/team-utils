@@ -83,8 +83,8 @@ def run(rmine, arguments, target, users, trackers, priorities, projects,
 
     issue = create(options)
     if issue:
-        print u"Issue #{0} was created by {1}\n" \
-              u"https://support.sysfera.com/issues/{0}"\
+        print u"\nIssue #{0} was created by {1}: " \
+              u"https://support.sysfera.com/issues/{0}\n"\
             .format(issue['id'], getpass.getuser())
     else:
         print u"There was an error. Please check the options and try again."

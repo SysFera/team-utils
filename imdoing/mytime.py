@@ -83,15 +83,18 @@ def register_local(directory, timestamp):
         try:
             with open(filename, 'w'):
                 os.utime(filename, None)
-            print u'{user} {action}s working on ticket #{ticket} at {date} (registered locally)'.format(**timestamp)
+            print u'{user} {action}s working on ticket #{ticket} at ' \
+                  u'{date} (registered locally)'.format(**timestamp)
         except IOError as e:
             print 'There was an error writing the log to the filesystem.'
             print e
     else:
-        print "The file already exists. As this is highly unlikely, something bad is probably going on ;)"
+        print "The file already exists. As this is highly unlikely, " \
+              "something bad is probably going on ;)"
 
 
-def register(directory, timestamp):  # try to save remotely, do it locally if it fails
+def register(directory, timestamp):
+    # try to save remotely, do it locally if it fails
     server_reachable = True
     data = json.dumps(timestamp)
 
@@ -118,12 +121,12 @@ def register(directory, timestamp):  # try to save remotely, do it locally if it
 def run(arguments, direc, action, usernames, register_url):
     global REGISTER_URL
     REGISTER_URL = register_url
-    parser = argparse.ArgumentParser(description='Start or stop work on a ticket.')
+    parser = argparse.ArgumentParser(description='Start or stop work '
+                                                 'on a ticket.')
     parser.add_argument('ticket', type=int,
                         help='the ticket # being worked on')
     parser.add_argument('user', nargs='?', default=getpass.getuser(), type=str,
-                        help='who starts/stops working',
-                        choices=usernames)
+                        help='who starts/stops working', choices=usernames)
     args = parser.parse_args(arguments)
     user = args.user
     ticket = args.ticket
@@ -137,4 +140,3 @@ def run(arguments, direc, action, usernames, register_url):
     }
 
     register(directory, timestamp)
-
