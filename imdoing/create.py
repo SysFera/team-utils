@@ -46,6 +46,7 @@ def run(rmine, arguments, target, users, trackers, priorities, projects,
     trackers_list = sorted([k for k in trackers.iterkeys()])
     statuses_list = sorted([k for k in statuses.iterkeys()])
     usernames = {user['name']: user['id'] for user in users}
+    usernames['nobody'] = 0
     users_list = sorted([k for k in usernames.iterkeys()])
 
     parser = argparse.ArgumentParser(description='Create a new ticket.')
@@ -56,11 +57,12 @@ def run(rmine, arguments, target, users, trackers, priorities, projects,
     parser.add_argument('--description', '-d', type=str, required=True)
     parser.add_argument('--tracker', '-t', type=str, choices=trackers_list,
                         required=True)
-    parser.add_argument('--priority', type=str, default="normal",
+    parser.add_argument('--priority', type=str, default='normal',
                         choices=priorities_list)
-    parser.add_argument('--status', type=str, default="new",
+    parser.add_argument('--status', type=str, default='new',
                         choices=statuses_list)
-    parser.add_argument('--assigned_to', type=str, choices=users_list)
+    parser.add_argument('--assigned_to', type=str, choices=users_list,
+                        default='nobody')
     parser.add_argument('--of', type=int, default=0)
     args = parser.parse_args(arguments)
 
