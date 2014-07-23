@@ -85,13 +85,13 @@ def is_different(ticket_id, options, obj):
         return False
 
     elif obj['user']['id'] == obj['current']['id']:
-        print u"Issue #{0} already has {1} \"{2}\"; " \
+        print u"\nIssue #{0} already has {1} \"{2}\"; " \
               u"{1} will not be changed.".format(ticket_id, obj['name'],
                                                  obj['user']['label'])
         return False
 
     else:
-        print u"The {1} of issue #{0} will be changed to \"{2}\" from " \
+        print u"\nThe {1} of issue #{0} will be changed to \"{2}\" from " \
               u"\"{3}\".".format(ticket_id, obj['name'], obj['user']['label'],
                                  obj['current']['label'])
         options[obj['code']] = obj['user']['id']
@@ -157,8 +157,8 @@ def run(rmine, arguments, users, statuses, priorities, trackers):
         # did we get a name or did we get "" ?
         if already_assigned:
             # tell the user to run ith --force and exit
-            print u"Issue #{} was already assigned to {}. Please run again " \
-                  u"with -f if you want to force assign the issue." \
+            print u"\nIssue #{0} was already assigned to {1}. Please run" \
+                  u" again with -f if you want to force assign the issue."\
                 .format(ticket_id, already_assigned)
             sys.exit()
 
@@ -168,9 +168,14 @@ def run(rmine, arguments, users, statuses, priorities, trackers):
 
     # we initialize the options object that we will use to update the ticket
     options = {'rmine': rmine, 'ticket_id': ticket_id}
-    if args.notes:
+
+    # we extract the notes since they behave differently than the rest
+    notes = args.notes
+    if notes:
         do_update = True
-        options['notes'] = "{0} :\n".format(getpass.getuser()) + args.notes
+        print u"\nIssue #{0} will have the following comment:\n{1}"\
+            .format(ticket_id, notes)
+        options['notes'] = "{0} :\n".format(getpass.getuser()) + notes
 
     # for each of the properties created, we check if we need to update
     # and populate "options" accordingly.
