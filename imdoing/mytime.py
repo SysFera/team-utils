@@ -5,9 +5,12 @@ import getpass
 import argparse
 import json
 import requests
+import sys
+import imdoing
 
 NOW = datetime.now()
-DATE = u"{0.year}.{0.month:02}.{0.day:02}-{0.hour:02}:{0.minute:02}:{0.second:02}".format(NOW)
+DATE = u"{0.year}.{0.month:02}.{0.day:02}-" \
+       u"{0.hour:02}:{0.minute:02}:{0.second:02}".format(NOW)
 
 
 def parse_filename(f):
@@ -26,7 +29,8 @@ def parse_filename(f):
     }
 
 
-def register_file(f):  # returns 0 if server unreachable, 1 if operation failed, 2 if operation OK
+def register_file(f):
+    # returns 0 if server unreachable, 1 if operation failed, 2 if operation OK
     timestamp = parse_filename(f)
     data = json.dumps(timestamp)
 
@@ -118,25 +122,93 @@ def register(directory, timestamp):
         check_backlog(directory)
 
 
-def run(arguments, direc, action, usernames, register_url):
+def update_ticket(args, action):
+    auto = args.auto
+    manual = args.manual
+    user = args.user
+    ticket_id = args.ticket
+    do_update = auto or manual
+
+    if do_update:
+        # let's set the default values (used for auto)
+        # start is true if action is "start"
+        start = action == "start"
+        # ticket assigned to the user who starts, or to nobody if stop
+        assigned_to = user if start else "nobody"
+        # status set to open if start, new if stop
+        status = "open" if start else "new"
+
+        # if manual was set, some values may be overridden
+        if manual:
+            assigned_to = args.assigned_to
+            status = args.status
+            if not (assigned_to or status):
+                print "--manual was set but neither --status nor " \
+                      "--assigned_to was set: ticket was not updated.\n" \
+                      "Please run 'imdoing update' manually."
+                sys.exit()
+
+        c = "update"
+        a = [str(ticket_id)]
+
+        if assigned_to is not None:
+            a.append("--assigned_to")
+            a.append(assigned_to)
+        if status is not None:
+            a.append("--status")
+            a.append(status)
+
+        imdoing.dispatch(c, a)
+
+
+def run(arguments, direc, action, users, statuses, register_url):
+    # REGISTER_URL declared as a global for convenience
     global REGISTER_URL
     REGISTER_URL = register_url
+
+    # we create a mapping [username: id]
+    usernames = {user['name']: user['id'] for user in users}
+    usernames['nobody'] = 0
+
+    # we create sorted lists for options
+    usernames_s = sorted([username for username in usernames.iterkeys()])
+    statuses_s = sorted([status for status in statuses.iterkeys()])
+
     parser = argparse.ArgumentParser(description='Start or stop work '
                                                  'on a ticket.')
     parser.add_argument('ticket', type=int,
                         help='the ticket # being worked on')
     parser.add_argument('user', nargs='?', default=getpass.getuser(), type=str,
-                        help='who starts/stops working', choices=usernames)
+                        help='who starts/stops working', choices=usernames_s)
+
+    # options to update the ticket when start/stop
+    group = parser.add_mutually_exclusive_group(required=False)
+    group.add_argument('--auto', '-a', dest='auto', action='store_true',
+                       help='automatically update the ticket. '
+                            'Start will assign/open the ticket. '
+                            'Stop will deassign/new the ticket.')
+    group.add_argument('--manual', '-m', dest='manual', action='store_true',
+                       help='manually update the ticket')
+    parser.add_argument('--status', type=str,
+                        help='the status to set. '
+                             'Will be ignored if -m is not used.',
+                        choices=statuses_s)
+    parser.add_argument('--assigned_to', type=str,
+                        help='the user to assign the ticket to. '
+                             'Will be ignored if -m is not used.',
+                        choices=usernames_s)
+
     args = parser.parse_args(arguments)
     user = args.user
-    ticket = args.ticket
+    ticket_id = args.ticket
 
-    directory = os.path.join(direc, "timelog")
     timestamp = {
         'user': user,
-        'ticket': ticket,
+        'ticket': ticket_id,
         'action': action,
         'date': DATE
     }
-
+    directory = os.path.join(direc, "timelog")
     register(directory, timestamp)
+
+    update_ticket(args, action)

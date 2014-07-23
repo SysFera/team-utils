@@ -58,9 +58,8 @@ STATUSES = config['chili']['statuses']
 PRIORITIES = config['chili']['priorities']
 
 
-def main():
+def dispatch(command, arguments):
     rmine = Redmine(URL, key=API, requests={'verify': False})
-    command, arguments = parse_command_line()
     if command == 'mine':
         mine.run(rmine, arguments, USERNAMES, USERS)
     elif command == 'current':
@@ -77,10 +76,17 @@ def main():
     elif command == 'update':
         update.run(rmine, arguments, USERS, STATUSES, PRIORITIES, TRACKERS)
     elif command == 'start':
-        mytime.run(arguments, TEAM_PATH, "start", USERNAMES, REGISTER_URL)
+        mytime.run(arguments, TEAM_PATH, "start", USERS, STATUSES,
+                   REGISTER_URL)
     elif command == 'stop':
-        mytime.run(arguments, TEAM_PATH, "stop", USERNAMES, REGISTER_URL)
+        mytime.run(arguments, TEAM_PATH, "stop", USERS, STATUSES,
+                   REGISTER_URL)
     sys.exit()
+
+
+def main():
+    c, a = parse_command_line()
+    dispatch(c, a)
 
 
 if __name__ == '__main__':
