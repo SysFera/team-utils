@@ -105,9 +105,10 @@ def update(**options):
 
     # now that our option object is clean, we just submit the update
     if rmine.issue.update(ticket_id, **options):
-        print u"Issue #{} was successfully updated".format(ticket_id)
+        print u"\nIssue #{0} was successfully updated: " \
+              u"https://support.sysfera.com/issues/{0}".format(ticket_id)
     else:
-        print u"There was an error updating issue #{}".format(ticket_id)
+        print u"There was an error updating issue #{0}".format(ticket_id)
 
 
 def run(rmine, arguments, users, statuses, priorities, trackers):
