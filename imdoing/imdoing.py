@@ -1,19 +1,19 @@
 #!/usr/bin/python
 # ~*~ coding: utf-8 ~*~
 
+from redmine import Redmine
 import os
 import argparse
 import json
 import mine
 import sys
-import getpass
-from redmine import Redmine
 import current
 import create
 import assign
 import status
 import update
 import mytime
+import timelog
 
 
 def parse_command_line():
@@ -23,7 +23,7 @@ def parse_command_line():
                         type=str,
                         help='the imdoing command to run',
                         choices=["mine", "list", "current", "create", "update",
-                                 "assign", "status", "start", "stop"])
+                                 "assign", "status", "start", "stop", "time"])
     parser.add_argument('arguments',
                         nargs=argparse.REMAINDER,
                         help='the command arguments')
@@ -33,10 +33,22 @@ def parse_command_line():
 
 def get_dir():
     directory = os.environ.get('TEAM_PATH')
-    if directory is not None:
-        return os.path.join(directory, "imdoing")
-    print "The environment variable TEAM_PATH is not set. Aborting."
-    sys.exit()
+
+    if not directory:
+        print "The environment variable TEAM_PATH is not set. Aborting."
+        sys.exit()
+
+    return os.path.join(directory, "imdoing")
+
+
+def get_api_key():
+    api_key = os.environ.get('CHILI_API_KEY')
+
+    if api_key is None:
+        print "The environment variable CHILI_API_KEY is not set." \
+              "The time-tracking feature will be disabled."
+
+    return api_key
 
 
 TEAM_PATH = get_dir()
@@ -47,7 +59,8 @@ config = json.load(configFile)
 configFile.close()
 REGISTER_URL = config['global']['register_url']
 URL = config['chili']['url']
-API = config['chili']['api']
+COMMON_KEY = config['chili']['api']
+PERSONAL_KEY = get_api_key()
 USERS = config['chili']['members']
 USERNAMES = [str(U['name']) for U in USERS]
 CUSTOMER_PROJECTS = config['chili']['customerProjects']
@@ -59,28 +72,43 @@ PRIORITIES = config['chili']['priorities']
 
 
 def dispatch(command, arguments):
-    rmine = Redmine(URL, key=API, requests={'verify': False})
+    api_key = PERSONAL_KEY or COMMON_KEY
+    rmine = Redmine(URL, key=api_key, requests={'verify': False})
+
     if command == 'mine':
         mine.run(rmine, arguments, USERNAMES, USERS)
+
+    # current = list
     elif command == 'current':
         current.run(rmine, TARGET_VERSION, USERS)
     elif command == 'list':
         current.run(rmine, TARGET_VERSION, USERS)
+
     elif command == 'create':
         create.run(rmine, arguments, TARGET_VERSION, USERS, TRACKERS,
                    PRIORITIES, CUSTOMER_PROJECTS+SYSFERA_PROJECTS, STATUSES)
+
+    elif command == 'update':
+        update.run(rmine, arguments, USERS, STATUSES, PRIORITIES, TRACKERS)
+
+    elif command == 'time':
+        if PERSONAL_KEY:
+            timelog.run(rmine, arguments, TEAM_PATH, USERS)
+        else:
+            print "Sorry, the CHILI_API_KEY environment variable was not " \
+                  "set, you cannot use the time-tracking features."
+
+    elif command == 'start':
+        mytime.run(rmine, arguments, TEAM_PATH, "start", USERS, STATUSES)
+    elif command == 'stop':
+        mytime.run(rmine, arguments, TEAM_PATH, "stop", USERS, STATUSES)
+
+    # deprecated commands
     elif command == 'assign':
         assign.run(arguments, USERNAMES)
     elif command == 'status':
         status.run(arguments, STATUSES)
-    elif command == 'update':
-        update.run(rmine, arguments, USERS, STATUSES, PRIORITIES, TRACKERS)
-    elif command == 'start':
-        mytime.run(arguments, TEAM_PATH, "start", USERS, STATUSES,
-                   REGISTER_URL)
-    elif command == 'stop':
-        mytime.run(arguments, TEAM_PATH, "stop", USERS, STATUSES,
-                   REGISTER_URL)
+
     sys.exit()
 
 
