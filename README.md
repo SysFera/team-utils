@@ -49,6 +49,7 @@ To use `imdoing`, you need to add the following to your .bashrc (or similar):
     alias imdoing='python $TEAM_PATH/imdoing/imdoing.py'
 
 To be able to use the time-tracking features, you need to use your own private API KEY instead of SysFera Bot's. To create/reset your API key, please go to https://support.sysfera.com/my/account in the left column. Then, add the following to your .bashrc (or similar):
+
     export CHILI_API_KEY=XXX
 
 
