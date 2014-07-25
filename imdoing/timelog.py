@@ -4,8 +4,10 @@ import os
 import getpass
 import argparse
 
+
+format_string = u"{0.year}-{0.month:02}-{0.day:02}"
 NOW = datetime.now()
-DATE = u"{0.year}-{0.month:02}-{0.day:02}".format(NOW)
+DATE = format_string.format(NOW)
 
 
 def parse_filename(f):
@@ -77,15 +79,19 @@ def log_time(options):
 
 def register(options, backlog=True):
     # try to save remotely, do it locally if it fails
-    print "Trying to register on the server...",
+    print "\nTrying to register on the server...",
+    user = options.pop("user")
 
     if log_time(options):
         print "Success =)"
-    #     if backlog:
-    #         check_backlog()
-    # else:
-    #     print 'Failed. Saving locally.'
-    #     register_local(options)
+        print u'{0} worked {hours} hours on {spent_on} for ticket:' \
+              u'\nhttps://support.sysfera.com/issues/{issue_id}\n'\
+            .format(user, **options)
+        if backlog:
+            check_backlog()
+    else:
+        print 'Failed. Saving locally.'
+        register_local(options)
 
 
 def parse_args(arguments):
@@ -120,11 +126,13 @@ def run(rmine, arguments, team_path, users):
 
     timelog_dir = os.path.join(team_path, "timelog")
 
+    user = args.user
     options = {
         'issue_id': args.issue_id,
         'hours': args.hours,
-        'user_id': usernames[args.user],
-        'spent_on': args.date,
+        'user': user,
+        'user_id': usernames[user],
+        'spent_on': format_string.format(args.date),
         'activity_id': 9,
         'comments': args.comments
     }
