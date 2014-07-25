@@ -98,7 +98,7 @@ def parse_args(arguments):
                         help='the ticket # being worked on')
     parser.add_argument('user', nargs='?', default=getpass.getuser(), type=str,
                         help='who starts/stops working', choices=usernames_s)
-    parser.add_argument('--hours', type=int, required=True,
+    parser.add_argument('--hours', type=float, required=True,
                         help='the number of hours worked')
     parser.add_argument('--date', type=str, default=NOW,
                         help='the date (format: YYYY-MM-DD)')

@@ -45,12 +45,19 @@ def get_api_key():
     api_key = os.environ.get('CHILI_API_KEY')
 
     if api_key is None:
-        print "The environment variable CHILI_API_KEY is not set." \
-              "The time-tracking feature will be disabled."
+        print CHILI_ERROR
 
     return api_key
 
 
+CHILI_ERROR = """
+Sorry, the CHILI_API_KEY environment variable was not set, you cannot \
+use the time-tracking features.
+To generate the key, please use the link in the left column at
+https://support.sysfera.com/my/account
+and add the following to your .bashrc (or something):
+export CHILI_API_KEY=XXX
+"""
 TEAM_PATH = get_dir()
 configFile = open(os.path.join(TEAM_PATH, os.pardir,
                                'dashboard', 'data',
@@ -94,9 +101,6 @@ def dispatch(command, arguments):
     elif command == 'time':
         if PERSONAL_KEY:
             timelog.run(rmine, arguments, TEAM_PATH, USERS)
-        else:
-            print "Sorry, the CHILI_API_KEY environment variable was not " \
-                  "set, you cannot use the time-tracking features."
 
     elif command == 'start':
         mytime.run(rmine, arguments, TEAM_PATH, "start", USERS, STATUSES)

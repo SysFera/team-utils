@@ -25,7 +25,8 @@ def data(redmine, userid):
 
 
 def run(redmine, arguments, usernames, users):
-    parser = argparse.ArgumentParser(description='List the tickets assigned to self or to $user.')
+    parser = argparse.ArgumentParser(description='List the tickets assigned '
+                                                 'to self or to $user.')
     parser.add_argument('user', nargs='?', default=getpass.getuser(), type=str,
                         help='the user to whom tickets are assigned',
                         choices=usernames)
