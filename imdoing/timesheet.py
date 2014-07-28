@@ -20,11 +20,15 @@ def add(entries, date, of, hours, issue_id):
 
 def get_entries(options):
     global total_hrs
+    total_hrs = 0
     redmine = options.pop('rmine')
     user_id = options.pop("user_id")
-    time_entries = redmine.time_entry.filter(**options)
     entries = {}
-    total_hrs = 0
+
+    # filtering by user_id should work but does not,
+    # so instead we'll download everything and then filter ourselves...
+    # yeah, it sucks.
+    time_entries = redmine.time_entry.filter(**options)
 
     for entry in time_entries:
         if user_id == entry['user']['id']:
