@@ -4,8 +4,7 @@ import argparse
 
 
 format_string = u"{0.year}-{0.month:02}-{0.day:02}"
-NOW = datetime.now()
-DATE = format_string.format(NOW)
+DATE = format_string.format(datetime.now())
 
 
 def register(options):
@@ -23,7 +22,7 @@ def parse_args(arguments):
                         help='the ticket # being worked on')
     parser.add_argument('hours', type=float,
                         help='the number of hours worked')
-    parser.add_argument('--date', '-d', type=str, default=NOW,
+    parser.add_argument('--date', '-d', type=str, default=DATE,
                         help='the date (format: "YYYY-MM-DD"), defaults to'
                              'today')
     parser.add_argument('--comments', '-c', type=str,

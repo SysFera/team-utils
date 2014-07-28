@@ -100,7 +100,7 @@ def dispatch(command, arguments):
 
     elif command == 'time':
         if PERSONAL_KEY:
-            timelog.run(rmine, arguments, TEAM_PATH, USERS)
+            timelog.run(rmine, arguments)
 
     elif command == 'start':
         mytime.run(rmine, arguments, TEAM_PATH, "start", USERS, STATUSES)
