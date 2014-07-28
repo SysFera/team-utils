@@ -68,7 +68,7 @@ def run(rmine, sprint_start, sprint_end, users, team_path):
         os.makedirs(filedir)
 
     # we create a mapping [username: id]
-    usernames = {user['name']: user['id'] for user in users}
+    usernames = {user['login']: user['id'] for user in users}
     usernames_rev = {v: k for k, v in usernames.iteritems()}
 
     redmine = rmine
