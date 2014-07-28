@@ -1,7 +1,6 @@
 # ~*~ coding: utf-8 ~*~
 from datetime import datetime
 import os
-import getpass
 import argparse
 
 
@@ -80,13 +79,12 @@ def log_time(options):
 def register(options, backlog=True):
     # try to save remotely, do it locally if it fails
     print "\nTrying to register on the server...",
-    user = options.pop("user")
 
     if log_time(options):
         print "Success =)"
-        print u'{0} worked {hours} hours on {spent_on} for ticket:' \
+        print u'You worked {hours} hours on {spent_on} for ticket:' \
               u'\nhttps://support.sysfera.com/issues/{issue_id}\n'\
-            .format(user, **options)
+            .format(**options)
         if backlog:
             check_backlog()
     else:
@@ -95,19 +93,15 @@ def register(options, backlog=True):
 
 
 def parse_args(arguments):
-    # we create sorted lists for options
-    usernames_s = sorted([username for username in usernames.iterkeys()])
-
     # we create the parser
     parser = argparse.ArgumentParser(description='Log time on a ticket.')
     parser.add_argument('issue_id', type=int,
                         help='the ticket # being worked on')
-    parser.add_argument('user', nargs='?', default=getpass.getuser(), type=str,
-                        help='who starts/stops working', choices=usernames_s)
-    parser.add_argument('--hours', type=float, required=True,
+    parser.add_argument('hours', type=float,
                         help='the number of hours worked')
     parser.add_argument('--date', type=str, default=NOW,
-                        help='the date (format: YYYY-MM-DD)')
+                        help='the date (format: "YYYY-MM-DD"), defaults to'
+                             'today')
     parser.add_argument('--comments', type=str,
                         help='comments to add to the time entry')
 
@@ -130,9 +124,8 @@ def run(rmine, arguments, team_path, users):
     options = {
         'issue_id': args.issue_id,
         'hours': args.hours,
-        'user': user,
         'user_id': usernames[user],
-        'spent_on': format_string.format(args.date),
+        'spent_on': args.date,
         'activity_id': 9,
         'comments': args.comments
     }
