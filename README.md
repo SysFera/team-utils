@@ -73,7 +73,6 @@ Ex.: `imdoing -h`, `imdoing create -h`
 
 `imdoing list STATUS` lists the tickets that have the current sprint as their target and the specified STATUS. STATUS can be all, closed, open (default). The output is color-coded according to the tickets' statuses, as explained by a legend.
 
-
 #### current
 
 `current` is an alias for `list`.
@@ -105,9 +104,9 @@ Ex.: `imdoing -h`, `imdoing create -h`
 
 #### time
 
-`imdoing time TICKET# USER` uses Time Entries in ChiliProject to clock in the time spent on a ticket. It takes a number of options:
+`imdoing time TICKET# HOURS` uses Time Entries in ChiliProject to clock in the time spent on a ticket. It takes a number of options:
 
-- --hours (required): the number of hours spent on the ticket. Can be an integer or a float (US format: 4.2 and not 4,2).
+- HOURS (required): the number of hours spent on the ticket. Can be an integer or a float (US format: 4.2 and not 4,2).
 - --date (optional): the day on which the hours were done. The format is "YYYY-MM-DD". Defaults to "today".
 - --comments (optional): additional comments on the time spent ("Ran into a problem", "Was disturbed every other minute", etc.)
 
