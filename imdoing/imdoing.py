@@ -11,6 +11,7 @@ import current
 import create
 import assign
 import status
+import timesheet
 import update
 import mytime
 import timelog
@@ -23,7 +24,8 @@ def parse_command_line():
                         type=str,
                         help='the imdoing command to run',
                         choices=["mine", "list", "current", "create", "update",
-                                 "assign", "status", "start", "stop", "time"])
+                                 "assign", "status", "start", "stop", "time",
+                                 "export"])
     parser.add_argument('arguments',
                         nargs=argparse.REMAINDER,
                         help='the command arguments')
@@ -76,6 +78,8 @@ TARGET_VERSION = config['chili']['version_id']
 TRACKERS = config['chili']['trackers']
 STATUSES = config['chili']['statuses']
 PRIORITIES = config['chili']['priorities']
+SPRINT_START = config['sprint']['start']
+SPRINT_END = config['sprint']['end']
 
 
 def dispatch(command, arguments):
@@ -101,6 +105,10 @@ def dispatch(command, arguments):
     elif command == 'time':
         if PERSONAL_KEY:
             timelog.run(rmine, arguments)
+
+    elif command == 'export':
+        if PERSONAL_KEY:
+            timesheet.run(rmine, SPRINT_START, SPRINT_END, USERS, TEAM_PATH)
 
     elif command == 'start':
         mytime.run(rmine, arguments, TEAM_PATH, "start", USERS, STATUSES)
