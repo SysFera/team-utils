@@ -1,6 +1,8 @@
 # ~*~ coding: utf-8 ~*~
 from datetime import datetime
-import csv
+from xlrd import open_workbook
+from xlutils.copy import copy
+import xlwt
 import os
 
 
@@ -45,26 +47,57 @@ def get_entries(start, end):
     return entries
 
 
+def get_xls(user):
+    filepath = os.path.join(path, "FdT", user + ".xls")
+    new_filepath = os.path.join(path, "FdT", user + "-modified.xls")
+    book = open_workbook(filepath, formatting_info=True, on_demand=True)
+    new_book = copy(book)
+
+    return new_book
+
+
 def export_to_xls(entries):
     for user in sorted(entries.iterkeys()):
-        print "Timesheet for {}".format(user)
-        for week in sorted(entries[user].iterkeys()):
-            print "Week n°{}".format(week)
-            print "{0:<6}{1:<20}{2:<6}{3:<6}{4:<6}{5:<6}{6:<6}{7:<6}"\
-                .format("OF", "Tickets", "Lu", "Ma", "Me", "Je", "Ve", "Sa")
-            for of in sorted(entries[user][week].iterkeys()):
-                issues = ",".join(entries[user][week][of]['issues'])
-                print "{0:<6}{1:<20}".format(of, issues),
-                for day in range(1, 7):
-                    obj = entries[user][week][of].get(day, {'hours': 0})
-                    hours = obj['hours']
-                    print "{0:<6}".format(str(hours)),
-                print "\n"
+        if user == "aragon":
+            new_filepath = os.path.join(path, "FdT", user + "-modified.xls")
+            new_book = get_xls(user)
+            print "Timesheet for {}".format(user)
+            for week in sorted(entries[user].iterkeys()):
+                sheet = new_book.get_sheet(week + 2)
+                row = 5
+                print "Week n°{}".format(week)
+                print "{0:<6}{1:<20}{2:<6}{3:<6}{4:<6}{5:<6}{6:<6}{7:<6}"\
+                    .format("OF", "Tickets", "Lu", "Ma", "Me", "Je", "Ve", "Sa")
+                for of in sorted(entries[user][week].iterkeys()):
+                    issues = ",".join(entries[user][week][of]['issues'])
+                    col = 0
+                    sheet.write(row, col, of)
+                    col = 1
+                    sheet.write(row, col, issues)
+                    col = 23
+
+                    print "{0:<6}{1:<20}".format(of, issues),
+
+                    for day in range(1, 7):
+                        obj = entries[user][week][of].get(day, {'hours': 0})
+                        hours = obj['hours']
+
+                        sheet.write(row, col, hours)
+                        col += 1
+
+                        print "{0:<6}".format(str(hours)),
+
+                    row += 1
+
+                    print "\n"
+
+            new_book.save(new_filepath)
 
 
 def run(rmine, sprint_start, sprint_end, users, team_path):
-    global redmine, usernames, usernames_rev, filedir
+    global redmine, usernames, usernames_rev, filedir, path
 
+    path = team_path
     filedir = os.path.join(team_path, "export")
     if not os.path.exists(filedir):
         os.makedirs(filedir)
