@@ -73,7 +73,8 @@ def run(rmine, sprint_start, sprint_end, users, team_path):
 
     redmine = rmine
 
-    start = datetime(sprint_start['year'], sprint_start['month'], sprint_start['day'])
+    start = datetime(sprint_start['year'], sprint_start['month'],
+                     sprint_start['day'])
     end = datetime(sprint_end['year'], sprint_end['month'], sprint_end['day'])
 
     entries = get_entries(start, end)
