@@ -12,6 +12,7 @@ import create
 import assign
 import status
 import timesheet
+import export
 import update
 import mytime
 import timelog
@@ -108,7 +109,7 @@ def dispatch(command, arguments):
 
     elif command == 'export':
         if PERSONAL_KEY:
-            timesheet.run(rmine, SPRINT_START, SPRINT_END, USERS, TEAM_PATH)
+            export.run(rmine, SPRINT_START, SPRINT_END, USERS, TEAM_PATH)
 
     elif command == 'timesheet':
         if PERSONAL_KEY:
