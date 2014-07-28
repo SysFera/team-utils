@@ -1,117 +1,119 @@
 # ~*~ coding: utf-8 ~*~
-from datetime import datetime
-from xlrd import open_workbook
-from xlutils.copy import copy
-import xlwt
-import os
+import argparse
+import getpass
+import datetime
+from isocalendar_utils import iso_to_gregorian
 
 
-def add(entries, user, date, of, hours, issue_id):
+def add(entries, date, of, hours, issue_id):
     isocalendar = date.isocalendar()
-    week = isocalendar[1]
     day = isocalendar[2]
 
-    if not user in entries:
-        entries[user] = {}
-    if not week in entries[user]:
-        entries[user][week] = {}
-    if not of in entries[user][week]:
-        entries[user][week][of] = {'issues': set()}
-    if not day in entries[user][week][of]:
-        entries[user][week][of][day] = {'hours': 0}
+    if not of in entries:
+        entries[of] = {'issues': set()}
+    if not day in entries[of]:
+        entries[of][day] = {'hours': 0}
 
-    entries[user][week][of][day]['hours'] += hours
-    entries[user][week][of]['issues'].add(str(issue_id))
+    entries[of][day]['hours'] += hours
+    entries[of]['issues'].add(str(issue_id))
 
 
-def get_entries(start, end):
-    time_entries = redmine.time_entry.filter(from_date=start, to_date=end)
+def get_entries(options):
+    global total_hrs
+    redmine = options.pop('rmine')
+    user_id = options.pop("user_id")
+    time_entries = redmine.time_entry.filter(**options)
     entries = {}
+    total_hrs = 0
+
     for entry in time_entries:
-        issue_id = entry['issue']['id']
-        issue = redmine.issue.get(issue_id)
-        user = usernames_rev[entry['user']['id']]
-        date = entry['spent_on']
-        hours = entry['hours']
-        of = ""
+        if user_id == entry['user']['id']:
+            issue_id = entry['issue']['id']
+            issue = redmine.issue.get(issue_id)
+            date = entry['spent_on']
+            hours = entry['hours']
+            of = ""
 
-        if hasattr(issue, 'custom_fields'):
-            fields = issue['custom_fields']
-            of_list = [field['value'] for field in fields
-                       if field['name'] == "OF"]
-            if len(of_list) > 0:
-                of = str(of_list[0])
+            if hasattr(issue, 'custom_fields'):
+                fields = issue['custom_fields']
+                of_list = [field['value'] for field in fields
+                           if field['name'] == "OF"]
+                if len(of_list) > 0:
+                    of = str(of_list[0])
 
-        add(entries, user, date, of, hours, issue_id)
+            add(entries, date, of, hours, issue_id)
+            total_hrs += hours
 
     return entries
 
 
-def get_xls(user):
-    filepath = os.path.join(path, "FdT", user + ".xls")
-    new_filepath = os.path.join(path, "FdT", user + "-modified.xls")
-    book = open_workbook(filepath, formatting_info=True, on_demand=True)
-    new_book = copy(book)
+def export_to_cvs(entries):
+    delta_hrs = target_hrs - total_hrs
 
-    return new_book
+    print "\nTimesheet for {} - Week n°{} - {}\n" \
+          "Just copy-paste it in the FdT\n".format(user, week, year)
 
+    if delta_hrs > 0:
+        print "You need to declare {} hours more.\n".format(delta_hrs)
+    elif delta_hrs < 0:
+        print "You have declared {} hour(s) too much.\n".format(-delta_hrs)
+    else:
+        print "You have declared exactly {} hours. Cheater ;)\n"\
+            .format(target_hrs)
 
-def export_to_xls(entries):
-    for user in sorted(entries.iterkeys()):
-        if user == "aragon":
-            new_filepath = os.path.join(path, "FdT", user + "-modified.xls")
-            new_book = get_xls(user)
-            print "Timesheet for {}".format(user)
-            for week in sorted(entries[user].iterkeys()):
-                sheet = new_book.get_sheet(week + 2)
-                row = 5
-                print "Week n°{}".format(week)
-                print "{0:<6}{1:<20}{2:<6}{3:<6}{4:<6}{5:<6}{6:<6}{7:<6}"\
-                    .format("OF", "Tickets", "Lu", "Ma", "Me", "Je", "Ve", "Sa")
-                for of in sorted(entries[user][week].iterkeys()):
-                    issues = ",".join(entries[user][week][of]['issues'])
-                    col = 0
-                    sheet.write(row, col, of)
-                    col = 1
-                    sheet.write(row, col, issues)
-                    col = 23
+    for of in sorted(entries.iterkeys()):
+        issues = ", ".join(entries[of]['issues'])
+        print "{0}\t{1}".format(of, issues),
+        print "\t" * 21,
 
-                    print "{0:<6}{1:<20}".format(of, issues),
-
-                    for day in range(1, 7):
-                        obj = entries[user][week][of].get(day, {'hours': 0})
-                        hours = obj['hours']
-
-                        sheet.write(row, col, hours)
-                        col += 1
-
-                        print "{0:<6}".format(str(hours)),
-
-                    row += 1
-
-                    print "\n"
-
-            new_book.save(new_filepath)
+        for day in range(1, 7):
+            obj = entries[of].get(day, {'hours': 0})
+            hrs = obj['hours']
+            hours = str(hrs).replace(".", ",") if not hrs == 0 else ""
+            print "\t{0}".format(hours),
+        print ""
 
 
-def run(rmine, sprint_start, sprint_end, users, team_path):
-    global redmine, usernames, usernames_rev, filedir, path
+def parse_args(arguments):
+    now = datetime.datetime.now()
 
-    path = team_path
-    filedir = os.path.join(team_path, "export")
-    if not os.path.exists(filedir):
-        os.makedirs(filedir)
+    parser = argparse.ArgumentParser(
+        description='prints a csv output for the given week, ready to'
+                    'paste in the FdT.')
+    parser.add_argument('user', nargs='?', default=getpass.getuser(), type=str,
+                        help='the user to whom tickets are assigned',
+                        choices=usernames)
+    parser.add_argument('week', type=int, help='the week')
+    parser.add_argument('year', nargs='?', default=now.year, type=int,
+                        help='the year')
+
+    return parser.parse_args(arguments)
+
+
+def run(rmine, arguments, users):
+    global usernames, usernames_rev, user, week, year, target_hrs
+    target_hrs = 38.5
 
     # we create a mapping [username: id]
-    usernames = {user['login']: user['id'] for user in users}
+    usernames = {user['name']: user['id'] for user in users}
     usernames_rev = {v: k for k, v in usernames.iteritems()}
 
-    redmine = rmine
+    args = parse_args(arguments)
 
-    start = datetime(sprint_start['year'], sprint_start['month'],
-                     sprint_start['day'])
-    end = datetime(sprint_end['year'], sprint_end['month'], sprint_end['day'])
+    week = args.week
+    year = args.year
+    user = args.user
 
-    entries = get_entries(start, end)
+    start = iso_to_gregorian(year, week, 1)
+    end = iso_to_gregorian(year, week, 6)
 
-    export_to_xls(entries)
+    options = {
+        'rmine': rmine,
+        'user_id': usernames[user],
+        'from_date': start,
+        'to_date': end
+    }
+
+    entries = get_entries(options)
+
+    export_to_cvs(entries)

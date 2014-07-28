@@ -113,7 +113,7 @@ def dispatch(command, arguments):
 
     elif command == 'timesheet':
         if PERSONAL_KEY:
-            timesheet.run(rmine, SPRINT_START, SPRINT_END, USERS, TEAM_PATH)
+            timesheet.run(rmine, arguments, USERS)
 
     elif command == 'start':
         mytime.run(rmine, arguments, TEAM_PATH, "start", USERS, STATUSES)
