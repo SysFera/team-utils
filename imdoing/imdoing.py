@@ -12,6 +12,7 @@ import create
 import assign
 import status
 import timesheet
+import export
 import update
 import mytime
 import timelog
@@ -25,7 +26,7 @@ def parse_command_line():
                         help='the imdoing command to run',
                         choices=["mine", "list", "current", "create", "update",
                                  "assign", "status", "start", "stop", "time",
-                                 "export"])
+                                 "export", "timesheet", "fdt"])
     parser.add_argument('arguments',
                         nargs=argparse.REMAINDER,
                         help='the command arguments')
@@ -108,7 +109,15 @@ def dispatch(command, arguments):
 
     elif command == 'export':
         if PERSONAL_KEY:
-            timesheet.run(rmine, SPRINT_START, SPRINT_END, USERS, TEAM_PATH)
+            export.run(rmine, SPRINT_START, SPRINT_END, USERS, TEAM_PATH)
+
+    elif command == 'timesheet':
+        if PERSONAL_KEY:
+            timesheet.run(rmine, arguments, USERS)
+
+    elif command == 'fdt':
+        if PERSONAL_KEY:
+            timesheet.run(rmine, arguments, USERS)
 
     elif command == 'start':
         mytime.run(rmine, arguments, TEAM_PATH, "start", USERS, STATUSES)
