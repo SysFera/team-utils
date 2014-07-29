@@ -1,42 +1,40 @@
 # ~*~ coding: utf-8 ~*~
-from datetime import datetime
-import argparse
-
-
-format_string = u"{0.year}-{0.month:02}-{0.day:02}"
-DATE = format_string.format(datetime.now())
+from variables import *
 
 
 def register(options):
-    if redmine.time_entry.create(**options):
+    if REDMINE.time_entry.create(**options):
         print u'You worked {hours} hours on {spent_on} for ticket:' \
               u'\nhttps://support.sysfera.com/issues/{issue_id}\n' \
             .format(**options)
     else:
-        print "There was an error saving your time entry, please try again."
+        print u"There was an error saving your entry, please try again."
 
 
-def parse_args(arguments):
-    parser = argparse.ArgumentParser(description='Log time on a ticket.')
-    parser.add_argument('issue_id', type=int,
-                        help='the ticket # being worked on')
-    parser.add_argument('hours', type=float,
-                        help='the number of hours worked')
-    parser.add_argument('--date', '-d', type=str, default=DATE,
-                        help='the date (format: "YYYY-MM-DD"), defaults to'
-                             'today')
-    parser.add_argument('--comments', '-c', type=str,
-                        help='comments to add to the time entry')
+def add_parser(subparsers):
+    subparser = subparsers.add_parser('time',
+                                      help='Log time on a ticket.')
 
-    return parser.parse_args(arguments)
+    subparser.add_argument('issue_id',
+                           type=int,
+                           help='the ticket you worked on')
+
+    subparser.add_argument('hours',
+                           type=float,
+                           help='the number of hours worked')
+
+    subparser.add_argument('--comments', '-c',
+                           type=str,
+                           help='comments to add to the time entry')
+
+    subparser.add_argument('--date', '-d',
+                           type=str,
+                           default=DATE,
+                           help='the date (format: "YYYY-MM-DD"), '
+                                'defaults to today')
 
 
-def run(rmine, arguments):
-    global redmine
-    redmine = rmine
-
-    args = parse_args(arguments)
-
+def run(args):
     options = {
         'issue_id': args.issue_id,
         'hours': args.hours,

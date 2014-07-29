@@ -1,10 +1,19 @@
 # ~*~ coding: utf-8 ~*~
+from variables import *
 
-import getpass
-import argparse
-import sys
 
-uni = lambda s: unicode(s, 'utf8')
+def process_notes(notes, options):
+    do_update = False
+
+    # we extract the notes since they behave differently than the rest
+    if notes:
+        do_update = True
+        print u"\nIssue #{0} will have the following comment:\n{1}" \
+            .format(options['ticket_id'], notes)
+        prefix = "" if PERSONAL_KEY else "{0} :\n".format(CURRENT_USER)
+        options['notes'] = "{0}{1}".format(prefix, notes)
+
+    return do_update
 
 
 def check_already_assigned(properties):
@@ -29,24 +38,21 @@ def check_already_assigned(properties):
         else ""
 
 
-def build_properties(ticket, args, usernames, statuses, priorities, trackers):
+def build_properties(ticket, args):
     # we "pop" the ticket from the argument list.
     # any cleaner way of doing that is welcome!
-    mod_args = {k: v for k, v in vars(args).iteritems()
-                if k != 'ticket' and k != 'force' and k != 'notes'}
-
-    # we create reverse dictionaries for easy lookup
-    usernames_rev = {v: k for k, v in usernames.iteritems()}
-    statuses_rev = {v: k for k, v in statuses.iteritems()}
-    priorities_rev = {v: k for k, v in priorities.iteritems()}
-    trackers_rev = {v: k for k, v in trackers.iteritems()}
+    mod_args = {a: b for a, b in vars(args).iteritems()
+                if a != 'ticket'
+                and a != 'force'
+                and a != 'notes'
+                and a != 'command'}
 
     # for each argument, we assign the dictionaries that will be used
     dicts = {
-        'assigned_to': (usernames, usernames_rev),
-        'status': (statuses, statuses_rev),
-        'priority': (priorities, priorities_rev),
-        'tracker': (trackers, trackers_rev)
+        'assigned_to': (USERNAMES, USERNAMES_REV),
+        'status': (STATUSES, STATUSES_REV),
+        'priority': (PRIORITIES, PRIORITIES_REV),
+        'tracker': (TRACKERS, TRACKERS_REV)
     }
 
     # let's create the object we will return
@@ -101,56 +107,66 @@ def is_different(ticket_id, options, obj):
 
 
 def update(**options):
-    # we remove the rmine and ticket options
-    rmine = options.pop('rmine')
     ticket_id = options.pop('ticket_id')
 
     # now that our option object is clean, we just submit the update
-    if rmine.issue.update(ticket_id, **options):
+    if REDMINE.issue.update(ticket_id, **options):
         print u"\nIssue #{0} was successfully updated: " \
               u"https://support.sysfera.com/issues/{0}\n".format(ticket_id)
     else:
         print u"\nThere was an error updating issue #{0}\n".format(ticket_id)
 
 
-def run(rmine, arguments, users, statuses, priorities, trackers):
-    # we create a mapping [username: id]
-    usernames = {user['name']: user['id'] for user in users}
-    usernames['nobody'] = 0
+def add_parser(subparsers):
+    subparser = subparsers.add_parser('update',
+                                      help='Updates a new ticket.')
 
-    # we create sorted lists for options
-    usernames_s = sorted([username for username in usernames.iterkeys()])
-    statuses_s = sorted([status for status in statuses.iterkeys()])
-    priorities_s = sorted([priority for priority in priorities.iterkeys()])
-    trackers_s = sorted([tracker for tracker in trackers.iterkeys()])
+    subparser.add_argument('ticket',
+                           type=int,
+                           help='the ticket number')
 
-    # we create the parser
-    parser = argparse.ArgumentParser(description='Updates a ticket.')
-    parser.add_argument('ticket', type=int, help='the ticket number')
-    parser.add_argument('--assigned_to', '-a', type=str,
-                        help='assign the ticket', choices=usernames_s)
-    parser.add_argument('--status', '-s', type=uni,
-                        help='the ticket\'s status', choices=statuses_s)
-    parser.add_argument('--priority', '-p', type=str,
-                        help='the ticket\'s priority',
-                        choices=priorities_s)
-    parser.add_argument('--tracker', '-t', type=str,
-                        help='the ticket\'s tracker', choices=trackers_s)
-    parser.add_argument('--force', '-f', dest='force', action='store_true',
-                        default=False, help='force the update')
-    parser.add_argument('--notes', '-n', type=uni,
-                        help='any additional comment')
-    args = parser.parse_args(arguments)
-    
+    subparser.add_argument('--assigned_to', '-a',
+                           type=str,
+                           choices=USERNAMES_L,
+                           help='assign the ticket')
+
+    subparser.add_argument('--status', '-s',
+                           type=UNI,
+                           choices=STATUSES_L,
+                           help='the ticket\'s status')
+
+    subparser.add_argument('--priority', '-p',
+                           type=str,
+                           choices=PRIORITIES_L,
+                           help='the ticket\'s priority')
+
+    subparser.add_argument('--tracker', '-t',
+                           type=str,
+                           choices=TRACKERS_L,
+                           help='the ticket\'s tracker')
+
+    subparser.add_argument('--force', '-f',
+                           dest='force',
+                           action='store_true',
+                           default=False,
+                           help='force the update')
+
+    subparser.add_argument('--notes', '-n',
+                           type=UNI,
+                           help='any additional comment')
+
+
+def run(args):
     # ticket_id will be used in several places
     ticket_id = args.ticket
-
     # we get the ticket from redmine
-    ticket = rmine.issue.get(ticket_id)
+    ticket = REDMINE.issue.get(ticket_id)
+
+    # we initialize the options object that we will use to update the ticket
+    options = {'ticket_id': ticket_id}
 
     # we build a "complex" properties object that we will iterate through
-    properties = build_properties(ticket, args, usernames, statuses,
-                                  priorities, trackers)
+    properties = build_properties(ticket, args)
 
     # was the command forced?
     if not args.force:
@@ -166,18 +182,9 @@ def run(rmine, arguments, users, statuses, priorities, trackers):
 
     # do_update is a flag that will be set to True if we actually need to
     # update the ticket
-    do_update = False
-
-    # we initialize the options object that we will use to update the ticket
-    options = {'rmine': rmine, 'ticket_id': ticket_id}
-
-    # we extract the notes since they behave differently than the rest
-    notes = args.notes
-    if notes:
-        do_update = True
-        print u"\nIssue #{0} will have the following comment:\n{1}"\
-            .format(ticket_id, notes)
-        options['notes'] = "{0} :\n".format(getpass.getuser()) + notes
+    # we process notes separately from the rest,
+    # because the structure is different
+    do_update = process_notes(args.notes, options)
 
     # for each of the properties created, we check if we need to update
     # and populate "options" accordingly.

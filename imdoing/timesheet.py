@@ -1,11 +1,37 @@
 # ~*~ coding: utf-8 ~*~
-import argparse
-import getpass
-import datetime
-from isocalendar_utils import iso_to_gregorian
+from variables import *
 
 
-def add(entries, date, of, hours, issue_id):
+def add_parser(subparsers):
+    now = datetime.now()
+    week_now = now.isocalendar()[1]
+    year_now = now.year
+
+    subparser = subparsers.add_parser('fdt',
+                                      help='Generates a csv output to be '
+                                           'pasted in a FdT.')
+
+    subparser.add_argument('user',
+                           nargs='?',
+                           default=CURRENT_USER,
+                           type=str,
+                           help='the user whom timesheet to display '
+                                '(default: you)')
+
+    subparser.add_argument('week',
+                           nargs='?',
+                           default=week_now,
+                           type=int,
+                           help='the week (default: current)')
+
+    subparser.add_argument('year',
+                           nargs='?',
+                           default=year_now,
+                           type=int,
+                           help='the year (default: current)')
+
+
+def add_entry(entries, date, of, hours, issue_id):
     isocalendar = date.isocalendar()
     day = isocalendar[2]
 
@@ -45,14 +71,14 @@ def get_entries(options):
                 if len(of_list) > 0:
                     of = str(of_list[0])
 
-            add(entries, date, of, hours, issue_id)
+            add_entry(entries, date, of, hours, issue_id)
             total_hrs += hours
 
     return entries
 
 
 def export_to_cvs(entries):
-    delta_hrs = target_hrs - total_hrs
+    delta_hrs = TARGET_HRS - total_hrs
 
     print "\nTimesheet for {} - Week n°{} - {}\n" \
           "Just copy-paste it in the FdT\n".format(user, week, year)
@@ -62,8 +88,8 @@ def export_to_cvs(entries):
     elif delta_hrs < 0:
         print "You have declared {} hour(s) too much.\n".format(-delta_hrs)
     else:
-        print "You have declared exactly {} hours. Cheater ;)\n"\
-            .format(target_hrs)
+        print "You have declared exactly {} hours. Cheater ;)\n" \
+            .format(TARGET_HRS)
 
     for of in sorted(entries.iterkeys()):
         issues = ", ".join(entries[of]['issues'])
@@ -78,36 +104,8 @@ def export_to_cvs(entries):
         print ""
 
 
-def parse_args(arguments):
-    now = datetime.datetime.now()
-    week_now = now.isocalendar()[1]
-    year_now = now.year
-
-    parser = argparse.ArgumentParser(
-        description='prints a csv output for the given week, ready to'
-                    'paste in the FdT.')
-    parser.add_argument('user', nargs='?', default=getpass.getuser(), type=str,
-                        help='the user whom timesheet to display '
-                             '(default: you)',
-                        choices=sorted(usernames))
-    parser.add_argument('week', nargs='?', default=week_now, type=int,
-                        help='the week (default: current)')
-    parser.add_argument('year', nargs='?', default=year_now, type=int,
-                        help='the year (default: current)')
-
-    return parser.parse_args(arguments)
-
-
-def run(rmine, arguments, users):
-    global usernames, usernames_rev, user, week, year, target_hrs
-    target_hrs = 38.5
-
-    # we create a mapping [username: id]
-    usernames = {user['name']: user['id'] for user in users}
-    usernames_rev = {v: k for k, v in usernames.iteritems()}
-
-    args = parse_args(arguments)
-
+def run(args):
+    global user, week, year
     week = args.week
     year = args.year
     user = args.user
@@ -116,8 +114,8 @@ def run(rmine, arguments, users):
     end = iso_to_gregorian(year, week, 6)
 
     options = {
-        'rmine': rmine,
-        'user_id': usernames[user],
+        'rmine': REDMINE,
+        'user_id': USERNAMES[user],
         'from_date': start,
         'to_date': end
     }

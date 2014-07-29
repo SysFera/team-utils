@@ -1,7 +1,11 @@
 # ~*~ coding: utf-8 ~*~
-from datetime import datetime
-import csv
-import os
+from variables import *
+
+
+def add_parser(subparsers):
+    subparser = subparsers.add_parser('export',
+                                      help='Exports all the time entries of '
+                                           'a sprint.')
 
 
 def add(entries, user, date, of, hours, issue_id):
@@ -17,12 +21,12 @@ def add(entries, user, date, of, hours, issue_id):
 
 
 def get_entries(start, end):
-    time_entries = redmine.time_entry.filter(from_date=start, to_date=end)
+    time_entries = REDMINE.time_entry.filter(from_date=start, to_date=end)
     entries = {}
     for entry in time_entries:
         issue_id = entry['issue']['id']
-        issue = redmine.issue.get(issue_id)
-        user = usernames_rev[entry['user']['id']]
+        issue = REDMINE.issue.get(issue_id)
+        user = USERNAMES_REV[entry['user']['id']]
         date = entry['spent_on']
         hours = entry['hours']
         of = ""
@@ -40,11 +44,13 @@ def get_entries(start, end):
 
 
 def export_to_csv(entries):
-    now = datetime.now()
+    filedir = os.path.join(TEAM_PATH, "export")
+    if not os.path.exists(filedir):
+        os.makedirs(filedir)
     timestamp = u"{0.year}.{0.month:02}.{0.day:02}-" \
-                u"{0.hour:02}:{0.minute:02}:{0.second:02}".format(now)
-
+                u"{0.hour:02}:{0.minute:02}:{0.second:02}".format(NOW)
     filename = os.path.join(filedir, timestamp + '.csv')
+
     with open(filename, 'wb') as csvfile:
         writer = csv.writer(csvfile, delimiter=',',
                             quotechar='"', quoting=csv.QUOTE_MINIMAL)
@@ -60,22 +66,10 @@ def export_to_csv(entries):
                         .format(user, date, of, hours, issues)
 
 
-def run(rmine, sprint_start, sprint_end, users, team_path):
-    global redmine, usernames, usernames_rev, filedir
-
-    filedir = os.path.join(team_path, "export")
-    if not os.path.exists(filedir):
-        os.makedirs(filedir)
-
-    # we create a mapping [username: id]
-    usernames = {user['login']: user['id'] for user in users}
-    usernames_rev = {v: k for k, v in usernames.iteritems()}
-
-    redmine = rmine
-
-    start = datetime(sprint_start['year'], sprint_start['month'],
-                     sprint_start['day'])
-    end = datetime(sprint_end['year'], sprint_end['month'], sprint_end['day'])
+def run():
+    start = datetime(SPRINT_START['year'], SPRINT_START['month'],
+                     SPRINT_START['day'])
+    end = datetime(SPRINT_END['year'], SPRINT_END['month'], SPRINT_END['day'])
 
     entries = get_entries(start, end)
 

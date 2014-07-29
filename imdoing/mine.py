@@ -1,46 +1,52 @@
 # ~*~ coding: utf-8 ~*~
-import getpass
-import argparse
+from variables import *
 
 
-def data(redmine, userid):
+def data(userid):
     results = []
 
-    for issue in redmine.issue.filter(assigned_to_id=userid):
-        of = [cf['value'] for cf in issue['custom_fields']
-              if cf['name'] == "OF"][0]
-        if of == '':
-            of = "None"
-        else:
-            of = str(of)
+    for issue in REDMINE.issue.filter(assigned_to_id=userid):
+        cf_of = [cf['value'] for cf in issue['custom_fields']
+                 if cf['name'] == "OF"][0]
+        of = "None" if cf_of == "" else str(cf_of)
 
         result = {
-            'number': issue['id'],
+            'id': issue['id'],
             'subject': issue['subject'],
             'of': of
         }
+
         results.append(result)
 
     return results
 
 
-def run(redmine, arguments, usernames, users):
-    parser = argparse.ArgumentParser(description='List the tickets assigned '
-                                                 'to self or to $user.')
-    parser.add_argument('user', nargs='?', default=getpass.getuser(), type=str,
-                        help='the user to whom tickets are assigned',
-                        choices=usernames)
-    args = parser.parse_args(arguments)
-    user = args.user
-    userid = [U['id'] for U in users if U['name'] == user]
-    tickets = data(redmine, userid)
-    print "Tickets assigned to user " + user + ":"
+def add_parser(subparsers):
+    fdt_parser = subparsers.add_parser('mine',
+                                       help='List the tickets assigned to '
+                                            'a user')
+
+    fdt_parser.add_argument('user',
+                            nargs='?',
+                            default=CURRENT_USER,
+                            type=str,
+                            help='the user to whom tickets are assigned '
+                                 '(default: you)')
+
+
+def display(user, tickets):
+    print u"Tickets assigned to user {}:".format(user)
     if len(tickets) > 0:
         for ticket in tickets:
-            print u"#{} === OF: {} === {}".format(ticket['number'],
-                                                  ticket['of'],
-                                                  ticket['subject'])
+            print u"#{id} === OF: {of} === {subject}".format(**ticket)
     else:
-        print "No ticket found. Maybe you meant another user?"
+        print u"No ticket found. Maybe you meant another user?"
 
 
+def run(args):
+    user = args.user
+    user_id = USERNAMES[user]
+
+    tickets = data(user_id)
+
+    display(user, tickets)
