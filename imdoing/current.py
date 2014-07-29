@@ -1,14 +1,5 @@
 # ~*~ coding: utf-8 ~*~
-import argparse
-
-
-class termColors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
+from variables import *
 
 
 def get_issues(issues, attr, field, value):
@@ -31,8 +22,8 @@ def legend():
         "FAIL": "rejected"
     }
 
-    for k, v in my_dict.iteritems():
-        string += getattr(termColors, k) + v + termColors.ENDC + " - "
+    for a, b in my_dict.iteritems():
+        string += getattr(TermColors, a) + b + TermColors.ENDC + " - "
 
     return string[:-3] + "\n"
 
@@ -41,26 +32,28 @@ def color_status(ticket):
     status = ticket['status']
 
     if status == 1:
-        return termColors.HEADER
+        return TermColors.HEADER
     elif status == 2:
-        return termColors.WARNING
+        return TermColors.WARNING
     elif status == 3:
-        return termColors.OKBLUE
+        return TermColors.OKBLUE
     elif status == 5:
-        return termColors.OKGREEN
+        return TermColors.OKGREEN
     elif status == 6:
-        return termColors.FAIL
+        return TermColors.FAIL
 
 
 def colorify(string, color):
-    return color + string + termColors.ENDC
+    return color + string + TermColors.ENDC
 
 
 def print_ticket(ticket, prefix=""):
     color = color_status(ticket)
-    string = prefix + u"#{id} = {project:^7} = OF: {of} = " \
-                      u"{assignee:^10} = {subject}".format(**ticket)
+    string = u"{}#{id} = {project:^7} = OF: {of} = " \
+             u"{assignee:^10} = {subject}".format(prefix, **ticket)
+
     print colorify(string, color)
+
     children = ticket['children']
     if children:
         for child in children:
@@ -75,15 +68,15 @@ def print_tree(tickets):
             print_ticket(result)
         print legend()
     else:
-        print "No ticket found. Please check version_id " \
-              "is set correctly in config.json."
+        print u"No ticket found. Please check version_id " \
+              u"is set correctly in config.json."
 
 
-def data(redmine, target, users, status):
+def data(status):
     results = []
 
-    issues = get_issues(redmine.issue.filter(status_id=status),
-                        "fixed_version", "id", target)
+    ids = REDMINE.issue.filter(status_id=status)
+    issues = get_issues(ids, "fixed_version", "id", TARGET_VERSION)
 
     for issue in issues:
         issue_id = issue['id']
@@ -93,16 +86,13 @@ def data(redmine, target, users, status):
         else:
             parent_id = None
 
-        of = [cf['value'] for cf in issue['custom_fields']
-              if cf['name'] == "OF"][0]
-        if of == '':
-            of = "None"
-        else:
-            of = str(of)
+        cf_of = [cf['value'] for cf in issue['custom_fields']
+                 if cf['name'] == "OF"][0]
+        of = 'None' if cf_of == '' else str(cf_of)
 
         if hasattr(issue, "assigned_to"):
             assignee_id = getattr(issue, "assigned_to")['id']
-            assignee = [user['name'] for user in users if user['id'] == assignee_id][0]
+            assignee = USERNAMES_REV[assignee_id]
         else:
             assignee = "unassigned"
 
@@ -129,19 +119,20 @@ def data(redmine, target, users, status):
     return results
 
 
-def parse():
-    parser = argparse.ArgumentParser(
-        description='list tickets for the current sprint.')
-    parser.add_argument('current', type=str, help='the current sprint')
-    parser.add_argument('status', nargs='?', help='the command arguments',
-                        default='open', choices=['open', 'all', 'closed'])
-    args = parser.parse_args()
-    status = args.status
+def add_parser(subparsers):
+    subparser = subparsers.add_parser('list',
+                                      help='List tickets for the '
+                                           'current sprint.')
 
-    return "*" if status == "all" else status
+    subparser.add_argument('status',
+                           nargs='?',
+                           help='the command arguments',
+                           default='open',
+                           choices=['open', 'all', 'closed'])
 
 
-def run(rmine, target, users):
-    args = parse()
-    tickets = data(rmine, target, users, args)
+def run(args):
+    status = "*" if args.status == "all" else args.status
+
+    tickets = data(status)
     print_tree(tickets)

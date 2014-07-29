@@ -1,14 +1,10 @@
-#!/usr/bin/python
 # ~*~ coding: utf-8 ~*~
-import getpass
-import argparse
-
-uni = lambda s: unicode(s, 'utf8')
+from variables import *
 
 
-def add_project_or_parent(args, options):
-    project = args.project
-    parent = args.parent
+def add_project_or_parent(options):
+    project = options.pop('project')
+    parent = options.pop('parent')
     parent_of = None
 
     # if project was not set (then parent was, by argparse construction)
@@ -24,7 +20,7 @@ def add_project_or_parent(args, options):
 
     # now we create the OF: either it was explicitly set, or it is inherited
     # from the parent, or it is None
-    of = args.of or parent_of or ""
+    of = options.pop('of') or parent_of or ""
 
     options['custom_fields'] = [{'id': 5, 'value': str(of)}]
     options['parent_issue_id'] = parent
@@ -32,59 +28,74 @@ def add_project_or_parent(args, options):
 
 
 def create(options):
-    redmine = options.pop('redmine')
+    issue = REDMINE.issue.create(**options)
 
-    # for k, v in options.iteritems():
-    #     print k
-    #     print v
-    ticket = redmine.issue.create(**options)
-    return ticket
-
-
-def run(rmine, arguments, target, users, trackers, priorities, projects,
-        statuses):
-    project_list = sorted([project['name'] for project in projects])
-    priorities_list = sorted([k for k in priorities.iterkeys()])
-    trackers_list = sorted([k for k in trackers.iterkeys()])
-    statuses_list = sorted([k for k in statuses.iterkeys()])
-    usernames = {user['name']: user['id'] for user in users}
-    usernames['nobody'] = 0
-    users_list = sorted([k for k in usernames.iterkeys()])
-
-    parser = argparse.ArgumentParser(description='Create a new ticket.')
-    group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument('--parent', '-p', type=int)
-    group.add_argument('--project', '-P', type=uni, choices=project_list)
-    parser.add_argument('--subject', '-s', type=uni, required=True)
-    parser.add_argument('--description', '-d', type=uni, required=True)
-    parser.add_argument('--tracker', '-t', type=str, choices=trackers_list,
-                        required=True)
-    parser.add_argument('--priority', type=str, default='normal',
-                        choices=priorities_list)
-    parser.add_argument('--status', type=str, default='new',
-                        choices=statuses_list)
-    parser.add_argument('--assigned_to', type=uni, choices=users_list,
-                        default='nobody')
-    parser.add_argument('--of', type=int, default=0)
-    args = parser.parse_args(arguments)
-
-    options = {
-        'redmine': rmine,
-        'subject': args.subject,
-        'priority_id': priorities[args.priority],
-        'tracker_id': trackers[args.tracker],
-        'description': args.description,
-        'status_id': statuses[args.status],
-        'fixed_version_id': target,
-        'assigned_to_id': usernames[args.assigned_to]
-    }
-
-    add_project_or_parent(args, options)
-
-    issue = create(options)
     if issue:
         print u"\nIssue #{0} was created by {1}: " \
-              u"https://support.sysfera.com/issues/{0}\n"\
-            .format(issue['id'], getpass.getuser())
+              u"https://support.sysfera.com/issues/{0}\n" \
+            .format(issue['id'], CURRENT_USER)
     else:
         print u"There was an error. Please check the options and try again."
+
+
+def add_parser(subparsers):
+    subparser = subparsers.add_parser('export',
+                                      help='Create a new ticket.')
+    group = subparser.add_mutually_exclusive_group(required=True)
+    group.add_argument('--parent', '-p',
+                       type=int)
+    group.add_argument('--project', '-P',
+                       type=UNI,
+                       choices=PROJECTS_L)
+
+    subparser.add_argument('--subject', '-s',
+                           type=UNI,
+                           required=True)
+
+    subparser.add_argument('--description', '-d',
+                           type=UNI,
+                           required=True)
+
+    subparser.add_argument('--tracker', '-t',
+                           type=str,
+                           choices=TRACKERS_L,
+                           required=True)
+
+    subparser.add_argument('--priority',
+                           type=str,
+                           choices=PRIORITIES_L,
+                           default='normal')
+
+    subparser.add_argument('--status',
+                           type=str,
+                           choices=STATUSES_L,
+                           default='new')
+
+    subparser.add_argument('--assigned_to',
+                           type=UNI,
+                           choices=USERNAMES_L,
+                           default='nobody')
+
+    subparser.add_argument('--of',
+                           type=int,
+                           default=0)
+
+
+def run(args):
+
+    options = {
+        'parent': args.parent,
+        'project': args.project,
+        'subject': args.subject,
+        'of': args.of,
+        'priority_id': PRIORITIES[args.priority],
+        'tracker_id': TRACKERS[args.tracker],
+        'description': args.description,
+        'status_id': STATUSES[args.status],
+        'fixed_version_id': TARGET_VERSION,
+        'assigned_to_id': USERNAMES[args.assigned_to]
+    }
+
+    add_project_or_parent(options)
+
+    create(options)
