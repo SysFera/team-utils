@@ -53,7 +53,7 @@ def get_entries():
     # Currently, it seems the API can return only 25 time entries at most.
     # To try and circumvent that, we request time entries day by day instead
     # of for the whole week.
-    for d in range(5):
+    for d in range(1, 5):
         day = "{0.year}-{0.month:0>2}-{0.day:0>2}" \
             .format(iso_to_gregorian(year, week, d))
         daily_entries = REDMINE.time_entry.filter(from_date=day, to_date=day)
@@ -95,16 +95,25 @@ def export_to_cvs(entries):
         print "You have declared exactly {} hours. Cheater ;)\n" \
             .format(TARGET_HRS)
 
+    print "{0:^4}|{1:^16}".format("OF", "Tickets"),
+    print "|" * 22,
+    days = ["Lu", "Ma", "Me", "Je", "Ve", "Sa"]
+    for d in range(1, 7):
+        print "{0:^3}".format(days[d-1]),
+        print "" if d == 6 else "|",
+    print ""
+    print "=" * 79
     for of in sorted(entries.iterkeys()):
         issues = ", ".join(entries[of]['issues'])
-        print "{0}\t{1}".format(of, issues),
-        print "\t" * 21,
+        print "{0:>4}|{1:<16}".format(of, issues),
+        print "|" * 22,
 
         for day in range(1, 7):
             obj = entries[of].get(day, {'hours': 0})
             hrs = obj['hours']
             hours = str(hrs).replace(".", ",") if not hrs == 0 else ""
-            print "\t{0}".format(hours),
+            print "{0:>3}".format(hours),
+            print "" if day == 6 else "|",
         print ""
 
 
