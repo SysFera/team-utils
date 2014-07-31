@@ -11,6 +11,9 @@ def add_parser(subparsers):
                                       help='Generates a csv output to be '
                                            'pasted in a FdT.')
 
+    # In the run() method, we will take into account the fact that users may
+    # want to use imdoing fdt WEEK without having to specify the user if
+    # the user is themselves.
     subparser.add_argument('user',
                            nargs='?',
                            default=CURRENT_USER,
@@ -44,7 +47,7 @@ def add_entry(entries, date, of, hours, issue_id):
     entries[of]['issues'].add(str(issue_id))
 
 
-def get_entries(options):
+def get_entries():
     global total_hrs
     total_hrs = 0
     user_id = USERNAMES[user]
@@ -53,27 +56,33 @@ def get_entries(options):
     # Filtering by user_id should work but does not,
     # so instead we'll download everything and then filter ourselves...
     # Yeah, it sucks.
-    time_entries = REDMINE.time_entry.filter(**options)
-    
-    for entry in time_entries:
-        # Currently, user_id filtering seems dead, so we need to
-        # manually check for ownership
-        if user_id == entry['user']['id']:
-            issue_id = entry['issue']['id']
-            issue = REDMINE.issue.get(issue_id)
-            date = entry['spent_on']
-            hours = entry['hours']
-            of = ""
+    # Also, since we are limited by ChiliProject to 100 time entries at a time,
+    # we will need to query for each day instead of day per day.
+    for d in range(1, 5):
+        day = "{0.year}{0.month:0>2}{0.day:0>2}" \
+            .format(iso_to_gregorian(year, week, d))
+        daily_entries = REDMINE.time_entry.filter(
+            from_date=day, to_date=day, per_page=100)
 
-            if hasattr(issue, 'custom_fields'):
-                fields = issue['custom_fields']
-                of_list = [field['value'] for field in fields
-                           if field['name'] == "OF"]
-                if len(of_list) > 0:
-                    of = str(of_list[0])
+        for entry in daily_entries:
+            # Currently, user_id filtering seems dead, so we need to
+            # manually check for ownership
+            if user_id == entry['user']['id']:
+                issue_id = entry['issue']['id']
+                issue = REDMINE.issue.get(issue_id)
+                date = entry['spent_on']
+                hours = entry['hours']
+                of = ""
 
-            add_entry(entries, date, of, hours, issue_id)
-            total_hrs += hours
+                if hasattr(issue, 'custom_fields'):
+                    fields = issue['custom_fields']
+                    of_list = [field['value'] for field in fields
+                               if field['name'] == "OF"]
+                    if len(of_list) > 0:
+                        of = str(of_list[0])
+
+                add_entry(entries, date, of, hours, issue_id)
+                total_hrs += hours
 
     return entries
 
@@ -116,20 +125,19 @@ def export_to_cvs(entries):
 
 def run(args):
     global user, week, year
-    week = args.week
+
+    # Let's support when people used only one positional argument
+    # begin
+    try:
+        i = int(args.user)
+    except ValueError:
+        week = args.week
+        user = args.user
+    else:
+        week = i
+        user = CURRENT_USER
+    # end
     year = args.year
-    user = args.user
 
-    start = iso_to_gregorian(year, week, 1)
-    end = iso_to_gregorian(year, week, 6)
-
-    options = {
-        'from_date': start,
-        'to_date': end,
-        # Currently, it seems the API can return only 25 time entries at most.
-        # To circumvent that we ask ChiliProject to send a page of 100 results.
-        'per_page': 100
-    }
-
-    entries = get_entries(options)
+    entries = get_entries()
     export_to_cvs(entries)
