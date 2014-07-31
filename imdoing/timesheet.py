@@ -58,7 +58,7 @@ def get_entries():
     # Yeah, it sucks.
     # Also, since we are limited by ChiliProject to 100 time entries at a time,
     # we will need to query for each day instead of day per day.
-    for d in range(1, 5):
+    for d in range(1, 7):
         day = "{0.year}{0.month:0>2}{0.day:0>2}" \
             .format(iso_to_gregorian(year, week, d))
         daily_entries = REDMINE.time_entry.filter(
