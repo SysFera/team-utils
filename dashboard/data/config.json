@@ -6,12 +6,12 @@
     "start": {
       "year": 2014,
       "month": 8,
-      "day": 4
+      "day": 25
     },
     "end": {
       "year": 2014,
-      "month": 8,
-      "day": 22
+      "month": 9,
+      "day": 12
     }
   },
   "chili": {
@@ -41,7 +41,7 @@
       "urgent": 6,
       "immediate": 7
     },
-    "version_id": 18,
+    "version_id": 19,
     "fileProjects": "dataProjects.json",
     "customerProjects": [
       { "name": "CINES" },
