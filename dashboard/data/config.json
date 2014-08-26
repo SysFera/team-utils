@@ -1,18 +1,17 @@
 {
   "global": {
-    "refreshtime": 60000,
-    "register_url": "http://192.168.1.2:9090/register"
+    "refreshtime": 60000
   },
   "sprint": {
     "start": {
       "year": 2014,
-      "month": 7,
-      "day": 14
+      "month": 8,
+      "day": 25
     },
     "end": {
       "year": 2014,
-      "month": 8,
-      "day": 1
+      "month": 9,
+      "day": 12
     }
   },
   "chili": {
@@ -42,10 +41,11 @@
       "urgent": 6,
       "immediate": 7
     },
-    "version_id": 17,
+    "version_id": 19,
     "fileProjects": "dataProjects.json",
     "customerProjects": [
       { "name": "CINES" },
+      { "name": "ROMEO" }
       { "name": "eBiothon" }
     ],
     "sysferaProjects": [

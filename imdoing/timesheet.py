@@ -11,6 +11,9 @@ def add_parser(subparsers):
                                       help='Generates a csv output to be '
                                            'pasted in a FdT.')
 
+    # In the run() method, we will take into account the fact that users may
+    # want to use imdoing fdt WEEK without having to specify the user if
+    # the user is themselves.
     subparser.add_argument('user',
                            nargs='?',
                            default=CURRENT_USER,
@@ -50,13 +53,16 @@ def get_entries():
     user_id = USERNAMES[user]
     entries = {}
 
-    # Currently, it seems the API can return only 25 time entries at most.
-    # To try and circumvent that, we request time entries day by day instead
-    # of for the whole week.
-    for d in range(1, 5):
-        day = "{0.year}-{0.month:0>2}-{0.day:0>2}" \
+    # Filtering by user_id should work but does not,
+    # so instead we'll download everything and then filter ourselves...
+    # Yeah, it sucks.
+    # Also, since we are limited by ChiliProject to 100 time entries at a time,
+    # we will need to query for each day instead of day per day.
+    for d in range(1, 7):
+        day = "{0.year}{0.month:0>2}{0.day:0>2}" \
             .format(iso_to_gregorian(year, week, d))
-        daily_entries = REDMINE.time_entry.filter(from_date=day, to_date=day)
+        daily_entries = REDMINE.time_entry.filter(
+            from_date=day, to_date=day, per_page=100)
 
         for entry in daily_entries:
             # Currently, user_id filtering seems dead, so we need to
@@ -119,9 +125,19 @@ def export_to_cvs(entries):
 
 def run(args):
     global user, week, year
-    week = args.week
+
+    # Let's support when people used only one positional argument
+    # begin
+    try:
+        i = int(args.user)
+    except ValueError:
+        week = args.week
+        user = args.user
+    else:
+        week = i
+        user = CURRENT_USER
+    # end
     year = args.year
-    user = args.user
 
     entries = get_entries()
     export_to_cvs(entries)
