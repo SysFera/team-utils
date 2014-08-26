@@ -45,6 +45,7 @@
     "fileProjects": "dataProjects.json",
     "customerProjects": [
       { "name": "CINES" },
+      { "name": "ROMEO" }
       { "name": "eBiothon" }
     ],
     "sysferaProjects": [
