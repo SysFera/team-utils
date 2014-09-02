@@ -2,13 +2,16 @@
 from variables import *
 
 
-def get_issues(issues, attr, field, value):
+def get_issues(issues, attr, field, value, recurrent):
     issues_id = []
     for i in issues:
         if hasattr(i, attr):
             a = getattr(i, attr)
             if getattr(a, field) == value:
                 issues_id.append(i.id)
+            elif recurrent and getattr(a, field) == RECURRENT_TARGET:
+                issues_id.append(i.id)
+
     return issues.filter(issues_id)
 
 
@@ -72,11 +75,11 @@ def print_tree(tickets):
               u"is set correctly in config.json."
 
 
-def data(status):
+def data(status, recurrent):
     results = []
 
     ids = REDMINE.issue.filter(status_id=status)
-    issues = get_issues(ids, "fixed_version", "id", TARGET_VERSION)
+    issues = get_issues(ids, "fixed_version", "id", TARGET_VERSION, recurrent)
 
     for issue in issues:
         issue_id = issue['id']
@@ -130,9 +133,14 @@ def add_parser(subparsers):
                            default='open',
                            choices=['open', 'all', 'closed'])
 
+    subparser.add_argument("--rec", "-r",
+                           help="display including recurrent target tickets",
+                           action="store_true")
 
 def run(args):
     status = "*" if args.status == "all" else args.status
+    recurrent = args.rec
 
-    tickets = data(status)
+    tickets = data(status, recurrent)
+        
     print_tree(tickets)

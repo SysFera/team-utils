@@ -92,3 +92,4 @@ API_KEY = PERSONAL_KEY if PERSONAL_KEY else COMMON_KEY
 REDMINE = Redmine(URL, key=API_KEY, requests={'verify': False})
 
 TARGET_HRS = 38.5
+RECURRENT_TARGET=20
