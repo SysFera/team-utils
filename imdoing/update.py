@@ -16,6 +16,26 @@ def process_notes(notes, options):
     return do_update
 
 
+def process_of(of, options, ticket):
+    do_update = False
+
+    if of:
+        current_of = [cf['value'] for cf in ticket['custom_fields']
+                      if cf['name'] == "OF"][0] or "None"
+        of = unicode(str(of))
+        if of == current_of:
+            print u"\nIssue #{0} already has OF \"{1}\"; " \
+                  u"OF will not be changed."\
+                .format(options['ticket_id'], of)
+        else:
+            do_update = True
+            print u"\nThe OF of issue #{0} will be changed to \"{1}\" from " \
+                  u"\"{2}\".".format(options['ticket_id'], of, current_of)
+            options['custom_fields'] = [{'id': 5, 'value': of}]
+
+    return do_update
+
+
 def check_already_assigned(properties):
     assigned_to = properties.get('assigned_to')
     user = assigned_to.get('user')['id']
@@ -44,6 +64,7 @@ def build_properties(ticket, args):
     mod_args = {a: b for a, b in vars(args).iteritems()
                 if a != 'ticket'
                 and a != 'force'
+                and a != 'of'
                 and a != 'notes'
                 and a != 'command'}
 
@@ -145,6 +166,10 @@ def add_parser(subparsers):
                            choices=TRACKERS_L,
                            help='the ticket\'s tracker')
 
+    subparser.add_argument('--of', '-o',
+                           type=int,
+                           help='the ticket\'s OF')
+
     subparser.add_argument('--force', '-f',
                            dest='force',
                            action='store_true',
@@ -185,6 +210,8 @@ def run(args):
     # we process notes separately from the rest,
     # because the structure is different
     do_update = process_notes(args.notes, options)
+    # likewise, we process the OF separately because it is a custom field
+    do_update = process_of(args.of, options, ticket) or do_update
 
     # for each of the properties created, we check if we need to update
     # and populate "options" accordingly.
