@@ -122,7 +122,7 @@ def print_tree(tickets):
               u"is set correctly in config.json."
 
 
-def data(status, recurrent, sort):
+def data(status, recurrent, sort, project, luke):
     results = []
 
     ids = REDMINE.issue.filter(status_id=status)
@@ -156,15 +156,26 @@ def data(status, recurrent, sort):
             'status': issue['status']['id'],
             'children': []
         }
-        results.append(result)
+        if project == None or project == result['project']:
+            results.append(result)
     if sort == 'tree':
         for result in results:
             for child in results:
                 if child['parent_id'] is not None:
                     if child['parent_id'] == result['id']:
                         result['children'].append(child)
-
-        results = [x for x in results if not x['parent_id']]
+        if luke == None:
+            results = [x for x in results if not x['parent_id']]
+        else:
+            son = [x for x in results if x['id']==int(luke) ]
+            if son:
+                darkVader = son[0]
+            else:
+                return []
+            while darkVader['parent_id'] is not None:
+                son = [x for x in results if x['id']==darkVader['parent_id'] ]
+                darkVader = son[0]
+            results = [darkVader]
 
     return results
 
@@ -186,15 +197,22 @@ def add_parser(subparsers):
 
     subparser.add_argument("--sort", "-s",
                            help="sort the tickets by status",
-                           default='tree',
+                           default='date',
                            choices=['tree', 'status', 'date'])
+
+    subparser.add_argument("--project", "-p",
+                           help="show the tickets corresponding to the specified project")
+
+    subparser.add_argument("--familly", "-f",
+                           help="show the tickets in the same familly as that one (parents and children). Need the tree sort option to work.")
 
 def run(args):
     status = "*" if args.status == "all" else args.status
     recurrent = args.rec
     sort = args.sort
+    project = args.project
+    familly = args.familly
 
-    tickets = data(status, recurrent, sort)
-
+    tickets = data(status, recurrent, sort, project, familly)
 
     print_tickets(tickets, sort)
