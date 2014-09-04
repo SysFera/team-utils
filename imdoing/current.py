@@ -49,6 +49,46 @@ def color_status(ticket):
 def colorify(string, color):
     return color + string + TermColors.ENDC
 
+def sort_status(tickets):
+    closed = []
+    new = [] 
+    solved = []
+    rejected = []
+    opened = []
+    for ticket in tickets:
+        status = ticket['status']
+        if status == 1:
+            new.append(ticket)
+        elif status == 2:
+            opened.append(ticket)
+        elif status == 3:
+            solved.append(ticket)
+        elif status == 5:
+            closed.append(ticket)
+        elif status == 6:
+            rejected.append(ticket)
+
+    return closed+rejected+solved+new+opened
+
+def print_sort_status(tickets):
+    if len(tickets) > 0:
+        print "\n"
+        for result in tickets:
+            print_single_ticket(result)
+        print legend()
+    else:
+        print u"No ticket found. Please check version_id " \
+              u"is set correctly in config.json."
+
+
+def print_tickets(tickets, sort):
+    if sort == "status":
+        sorted_list = sort_status(tickets)
+        print_sort_status (sorted_list)
+    else:
+        print_tree(tickets)
+        
+
 
 def print_ticket(ticket, prefix=""):
     color = color_status(ticket)
@@ -63,6 +103,13 @@ def print_ticket(ticket, prefix=""):
             new_prefix = "  " + prefix if prefix else "  \_ "
             print_ticket(child, new_prefix)
 
+def print_single_ticket(ticket, prefix=""):
+    color = color_status(ticket)
+    string = u"{}#{id} = {project:^7} = OF: {of} = " \
+             u"{assignee:^10} = {subject}".format(prefix, **ticket)
+
+    print colorify(string, color)
+
 
 def print_tree(tickets):
     if len(tickets) > 0:
@@ -75,7 +122,7 @@ def print_tree(tickets):
               u"is set correctly in config.json."
 
 
-def data(status, recurrent):
+def data(status, recurrent, sort):
     results = []
 
     ids = REDMINE.issue.filter(status_id=status)
@@ -110,14 +157,14 @@ def data(status, recurrent):
             'children': []
         }
         results.append(result)
+    if sort == 'tree':
+        for result in results:
+            for child in results:
+                if child['parent_id'] is not None:
+                    if child['parent_id'] == result['id']:
+                        result['children'].append(child)
 
-    for result in results:
-        for child in results:
-            if child['parent_id'] is not None:
-                if child['parent_id'] == result['id']:
-                    result['children'].append(child)
-
-    results = [x for x in results if not x['parent_id']]
+        results = [x for x in results if not x['parent_id']]
 
     return results
 
@@ -137,10 +184,17 @@ def add_parser(subparsers):
                            help="display including recurrent target tickets",
                            action="store_true")
 
+    subparser.add_argument("--sort", "-s",
+                           help="sort the tickets by status",
+                           default='tree',
+                           choices=['tree', 'status', 'date'])
+
 def run(args):
     status = "*" if args.status == "all" else args.status
     recurrent = args.rec
+    sort = args.sort
 
-    tickets = data(status, recurrent)
-        
-    print_tree(tickets)
+    tickets = data(status, recurrent, sort)
+
+
+    print_tickets(tickets, sort)
