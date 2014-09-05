@@ -228,7 +228,7 @@ def add_parser(subparsers):
     subparser.add_argument("--limit", "-l",
                            help="show the tickets limited to the given status",
                            default='all',
-                           choices=['all', 'open', 'closed', 'resolved',
+                           choices=['all', 'open', 'closed', 'solved',
                                     'new', 'rejected'])
 
     subparser.add_argument("--family", "-f",
