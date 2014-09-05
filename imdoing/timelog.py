@@ -35,12 +35,13 @@ def add_parser(subparsers):
 
 
 def run(args):
-    options = {
-        'issue_id': args.issue_id,
-        'hours': args.hours,
-        'spent_on': args.date,
-        'activity_id': 9,
-        'comments': args.comments
-    }
+    if PERSONAL_KEY:
+        options = {
+            'issue_id': args.issue_id,
+            'hours': args.hours,
+            'spent_on': args.date,
+            'activity_id': 9,
+            'comments': args.comments
+        }
 
-    register(options)
+        register(options)
