@@ -15,7 +15,7 @@ def get_issues(issues, attr, field, value, recurrent):
     return issues.filter(issues_id)
 
 
-def convertToIntStatus(limit):
+def convert_to_int_status(limit):
         if limit == "new":
             return 1
         elif limit == "open":
@@ -26,6 +26,7 @@ def convertToIntStatus(limit):
             return 5
         elif limit == "rejected":
             return 6
+
 
 def legend():
     string = "\n\nLegend: "
@@ -61,9 +62,10 @@ def color_status(ticket):
 def colorify(string, color):
     return color + string + TermColors.ENDC
 
+
 def sort_status(tickets):
     closed = []
-    new = [] 
+    new = []
     solved = []
     rejected = []
     opened = []
@@ -80,7 +82,8 @@ def sort_status(tickets):
         elif status == 6:
             rejected.append(ticket)
 
-    return closed+rejected+solved+new+opened
+    return closed + rejected + solved + new + opened
+
 
 def print_sort_status(tickets):
     if len(tickets) > 0:
@@ -96,10 +99,9 @@ def print_sort_status(tickets):
 def print_tickets(tickets, sort):
     if sort == "status":
         sorted_list = sort_status(tickets)
-        print_sort_status (sorted_list)
+        print_sort_status(sorted_list)
     else:
         print_tree(tickets)
-        
 
 
 def print_ticket(ticket, prefix=""):
@@ -114,6 +116,7 @@ def print_ticket(ticket, prefix=""):
         for child in children:
             new_prefix = "  " + prefix if prefix else "  \_ "
             print_ticket(child, new_prefix)
+
 
 def print_single_ticket(ticket, prefix=""):
     color = color_status(ticket)
@@ -168,12 +171,12 @@ def data(status, recurrent, sort, project, luke, limit):
             'status': issue['status']['id'],
             'children': []
         }
-#        if project == None or project == result['project']:
-#            results.append(result)
-#        if limit == None or limit == 'all' or limit == result['status']:
-#            results.append(result)
-        if (project == None and (limit == None or limit == result['status'])) or (project == result['project'] and (limit == None or limit == 'all' or limit == result['status'])):
-           results.append(result)
+
+        lnr = (limit is None) or (limit == result['status'])
+        pnr = (project is None) or (project == result['project'])
+
+        if pnr and lnr:
+            results.append(result)
 
     if sort == 'tree':
         for result in results:
@@ -181,18 +184,19 @@ def data(status, recurrent, sort, project, luke, limit):
                 if child['parent_id'] is not None:
                     if child['parent_id'] == result['id']:
                         result['children'].append(child)
-        if luke == None:
+        if luke is None:
             results = [x for x in results if not x['parent_id']]
         else:
-            son = [x for x in results if x['id']==int(luke) ]
+            son = [x for x in results if x['id'] == int(luke)]
             if son:
-                darkVader = son[0]
+                darthvader = son[0]
             else:
                 return []
-            while darkVader['parent_id'] is not None:
-                son = [x for x in results if x['id']==darkVader['parent_id'] ]
-                darkVader = son[0]
-            results = [darkVader]
+            while darthvader['parent_id'] is not None:
+                son = [x for x in results
+                       if x['id'] == darthvader['parent_id']]
+                darthvader = son[0]
+            results = [darthvader]
 
     return results
 
@@ -218,24 +222,29 @@ def add_parser(subparsers):
                            choices=['tree', 'status', 'date'])
 
     subparser.add_argument("--project", "-p",
-                           help="show the tickets corresponding to the specified project")
+                           help="show the tickets corresponding to the "
+                                "specified project")
 
     subparser.add_argument("--limit", "-l",
                            help="show the tickets limited to the given status",
                            default='all',
-                           choices=['all', 'open', 'closed', 'resolved', 'new', 'rejected'])
+                           choices=['all', 'open', 'closed', 'resolved',
+                                    'new', 'rejected'])
 
-    subparser.add_argument("--familly", "-f",
-                           help="show the tickets in the same familly as that one (parents and children). Need the tree sort option to work.")
+    subparser.add_argument("--family", "-f",
+                           help="show the tickets in the same family as "
+                                "that one (parents and children). Need the "
+                                "tree sort option to work.")
+
 
 def run(args):
     status = "*" if args.status == "all" else args.status
     recurrent = args.rec
     sort = args.sort
     project = args.project
-    familly = args.familly
-    limit = convertToIntStatus(args.limit)
+    family = args.family
+    limit = convert_to_int_status(args.limit)
 
-    tickets = data(status, recurrent, sort, project, familly, limit)
+    tickets = data(status, recurrent, sort, project, family, limit)
 
     print_tickets(tickets, sort)
