@@ -3,47 +3,65 @@ from variables import *
 
 
 def add_parser(subparsers):
-    subparser = subparsers.add_parser('export',
-                                      help='Exports all the time entries of '
-                                           'a sprint.')
+    subparser = subparsers.add_parser('raw',
+                                      help='Generates a csv output of time'
+                                           'entries between two dates.')
+
+    subparser.add_argument('date_from',
+                           type=str,
+                           help='the from date (string, "YYYYMMDD")')
+
+    subparser.add_argument('date_to',
+                           type=str,
+                           help='the to date (string, "YYYYMMDD")')
 
 
-def add(entries, user, date, of, hours, issue_id):
-    if not user in entries:
-        entries[user] = {}
-    if not date in entries[user]:
-        entries[user][date] = {}
-    if not of in entries[user][date]:
-        entries[user][date][of] = {'hours': 0, 'issues': set()}
+def get_entries():
+    entries = []
+    # Since we are limited by ChiliProject to 100 time entries at a time,
+    # we will need to query for each day instead of day per day.
+    d = date_from
+    delta = timedelta(days=1)
+    while d <= date_to:
+        day = "{0.year}{0.month:0>2}{0.day:0>2}".format(d)
+        daily_entries = REDMINE.time_entry.filter(from_date=day, to_date=day,
+                                                  per_page=100)
 
-    entries[user][date][of]['hours'] += hours
-    entries[user][date][of]['issues'].add(str(issue_id))
+        for daily_entry in daily_entries:
+            entry = {
+                "id": daily_entry['id'],
+                "date": daily_entry['spent_on'],
+                "ticket": daily_entry['issue']['id'],
+                "title": "N/A",
+                "project": daily_entry['project']['name'],
+                "comments": "N/A",
+                "user": USERNAMES_REV[daily_entry['user']['id']],
+                "of": "N/A",
+                "time": daily_entry['hours']
+            }
 
+            if hasattr(daily_entry, 'comments'):
+                entry['comments'] = getattr(daily_entry, 'comments')
 
-def get_entries(start, end):
-    time_entries = REDMINE.time_entry.filter(from_date=start, to_date=end)
-    entries = {}
-    for entry in time_entries:
-        issue_id = entry['issue']['id']
-        issue = REDMINE.issue.get(issue_id)
-        user = USERNAMES_REV[entry['user']['id']]
-        date = entry['spent_on']
-        hours = entry['hours']
-        of = ""
+            issue_id = daily_entry['issue']['id']
+            issue = REDMINE.issue.get(issue_id)
+            entry['title'] = issue['subject']
 
-        if hasattr(issue, 'custom_fields'):
-            fields = issue['custom_fields']
-            of_list = [field['value'] for field in fields
-                       if field['name'] == "OF"]
-            if len(of_list) > 0:
-                of = str(of_list[0])
+            if hasattr(issue, 'custom_fields'):
+                fields = issue['custom_fields']
+                of_list = [field['value'] for field in fields
+                           if field['name'] == "OF"]
+                if len(of_list) > 0:
+                    entry['of'] = str(of_list[0])
 
-        add(entries, user, date, of, hours, issue_id)
+            entries.append(entry)
+
+        d += delta
 
     return entries
 
 
-def export_to_csv(entries):
+def export_to_cvs(entries):
     filedir = os.path.join(TEAM_PATH, "export")
     if not os.path.exists(filedir):
         os.makedirs(filedir)
@@ -51,26 +69,20 @@ def export_to_csv(entries):
                 u"{0.hour:02}:{0.minute:02}:{0.second:02}".format(NOW)
     filename = os.path.join(filedir, timestamp + '.csv')
 
-    with open(filename, 'wb') as csvfile:
-        writer = csv.writer(csvfile, delimiter=',',
-                            quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        writer.writerow(['user', 'date', 'OF', 'hours', 'tickets'])
-
-        for user in sorted(entries.iterkeys()):
-            for date in sorted(entries[user].iterkeys()):
-                for of in sorted(entries[user][date].iterkeys()):
-                    hours = entries[user][date][of]['hours']
-                    issues = ",".join(entries[user][date][of]['issues'])
-                    writer.writerow([user, date, of, hours, issues])
-                    print u"{0},{1},{2},{3},{4}"\
-                        .format(user, date, of, hours, issues)
+    with open(filename, 'wb') as f:
+        header = u"id,date,ticket,title,project,comments,user,of,time"
+        f.write(header.encode('utf8'))
+        for entry in entries:
+            line = u"\n{id},{date},{ticket},\"{title}\",{project}," \
+                   u"\"{comments}\",{user},{of},{time}".format(**entry)
+            f.write(line.encode('utf8'))
 
 
-def run():
-    start = datetime(SPRINT_START['year'], SPRINT_START['month'],
-                     SPRINT_START['day'])
-    end = datetime(SPRINT_END['year'], SPRINT_END['month'], SPRINT_END['day'])
+def run(args):
+    global date_from, date_to
 
-    entries = get_entries(start, end)
+    date_from = datetime.strptime(args.date_from, "%Y%m%d").date()
+    date_to = datetime.strptime(args.date_to, "%Y%m%d").date()
 
-    export_to_csv(entries)
+    entries = get_entries()
+    export_to_cvs(entries)

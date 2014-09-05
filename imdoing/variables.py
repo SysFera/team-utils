@@ -1,6 +1,7 @@
 # ~*~ coding: utf-8 ~*~
 from redmine import Redmine
 from datetime import datetime
+from datetime import timedelta
 import os
 import json
 import sys

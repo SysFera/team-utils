@@ -8,6 +8,7 @@ import update
 import timelog
 import export
 import timesheet
+import raw_time_entries
 
 
 def main_parser():
@@ -20,6 +21,7 @@ def main_parser():
     timelog.add_parser(subparsers)
     export.add_parser(subparsers)
     timesheet.add_parser(subparsers)
+    raw_time_entries.add_parser(subparsers)
     return parser
 
 
@@ -39,7 +41,7 @@ def main():
     elif command == 'time':
         timelog.run(args)
     elif command == 'export':
-        export.run()
+        export.run(args)
     elif command == 'timesheet' or command == 'fdt':
         timesheet.run(args)
 
