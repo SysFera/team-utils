@@ -3,7 +3,7 @@ from variables import *
 
 
 def add_parser(subparsers):
-    subparser = subparsers.add_parser('raw',
+    subparser = subparsers.add_parser('export',
                                       help='Generates a csv output of time'
                                            'entries between two dates.')
 
