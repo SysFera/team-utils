@@ -15,6 +15,18 @@ def get_issues(issues, attr, field, value, recurrent):
     return issues.filter(issues_id)
 
 
+def convertToIntStatus(limit):
+        if limit == "new":
+            return 1
+        elif limit == "open":
+            return 2
+        elif limit == "solved":
+            return 3
+        elif limit == "closed":
+            return 5
+        elif limit == "rejected":
+            return 6
+
 def legend():
     string = "\n\nLegend: "
     my_dict = {
@@ -122,7 +134,7 @@ def print_tree(tickets):
               u"is set correctly in config.json."
 
 
-def data(status, recurrent, sort, project, luke):
+def data(status, recurrent, sort, project, luke, limit):
     results = []
 
     ids = REDMINE.issue.filter(status_id=status)
@@ -156,8 +168,13 @@ def data(status, recurrent, sort, project, luke):
             'status': issue['status']['id'],
             'children': []
         }
-        if project == None or project == result['project']:
-            results.append(result)
+#        if project == None or project == result['project']:
+#            results.append(result)
+#        if limit == None or limit == 'all' or limit == result['status']:
+#            results.append(result)
+        if (project == None and (limit == None or limit == result['status'])) or (project == result['project'] and (limit == None or limit == 'all' or limit == result['status'])):
+           results.append(result)
+
     if sort == 'tree':
         for result in results:
             for child in results:
@@ -203,6 +220,11 @@ def add_parser(subparsers):
     subparser.add_argument("--project", "-p",
                            help="show the tickets corresponding to the specified project")
 
+    subparser.add_argument("--limit", "-l",
+                           help="show the tickets limited to the given status",
+                           default='all',
+                           choices=['all', 'open', 'closed', 'resolved', 'new', 'rejected'])
+
     subparser.add_argument("--familly", "-f",
                            help="show the tickets in the same familly as that one (parents and children). Need the tree sort option to work.")
 
@@ -212,7 +234,8 @@ def run(args):
     sort = args.sort
     project = args.project
     familly = args.familly
+    limit = convertToIntStatus(args.limit)
 
-    tickets = data(status, recurrent, sort, project, familly)
+    tickets = data(status, recurrent, sort, project, familly, limit)
 
     print_tickets(tickets, sort)
