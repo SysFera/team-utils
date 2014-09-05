@@ -1,0 +1,120 @@
+id,date,ticket,title,project,comments,user,of,time
+84,2014-08-01,964,"Congés",SysFera,"N/A",phi,60,7.7
+129,2014-08-01,995,"Liste toutes les tâches : pb de filtres",SysFera,"N/A",augustin,1254,0.5
+130,2014-08-01,996,"Pagination bizarre dans quotas",SysFera,"N/A",augustin,1254,0.5
+131,2014-08-01,990,"démo : pb affichage page résumé d'un job",SysFera,"N/A",augustin,1254,0.5
+132,2014-08-01,985,"Démo : PhyML inutilisable",SysFera,"N/A",augustin,1254,0.5
+133,2014-08-01,982,"Visu et date de soumission sur la démo",SysFera,"N/A",augustin,1254,1.0
+134,2014-08-01,966,"Bug WB",SysFera,"N/A",augustin,1258,2.0
+135,2014-08-01,998,"use only one of columns numuserid and userid and transferid and numtransferid",SysFera,"database model updated, changed in code in progress",r,1257,6.5
+278,2014-08-01,944,"[WB] Internationnaliser activity report",SysFera,"N/A",keo,1254,6.5
+345,2014-08-01,964,"Congés",SysFera,"N/A",absila,60,7.7
+88,2014-08-04,964,"Congés",SysFera,"N/A",augustin,60,7.7
+87,2014-08-04,964,"Congés",SysFera,"N/A",phi,60,7.7
+136,2014-08-04,998,"use only one of columns numuserid and userid and transferid and numtransferid",SysFera,"clean, clean and clean code. rewrite when necessary and fixes for broken features",r,1257,7.0
+194,2014-08-04,980,"Férié",SysFera,"N/A",keo,50,7.7
+208,2014-08-04,958,"Fonctionnement : FdT ...",SysFera,"N/A",olivier,700,2.0
+346,2014-08-04,964,"Congés",SysFera,"N/A",absila,60,7.7
+209,2014-08-04,575,"Site non sécurisé",ROMEO,"N/A",olivier,1259,6.0
+89,2014-08-05,964,"Congés",SysFera,"N/A",phi,60,7.7
+90,2014-08-05,964,"Congés",SysFera,"N/A",augustin,60,7.7
+137,2014-08-05,1000,"Refactoring machine model",SysFera,"refactoring machine model deprecating unused properties, while providing additionnal properties where required",r,1254,7.0
+195,2014-08-05,980,"Férié",SysFera,"N/A",keo,50,7.7
+347,2014-08-05,964,"Congés",SysFera,"N/A",absila,60,7.7
+210,2014-08-05,575,"Site non sécurisé",ROMEO,"N/A",olivier,1259,8.0
+91,2014-08-06,964,"Congés",SysFera,"N/A",phi,60,7.7
+92,2014-08-06,964,"Congés",SysFera,"N/A",augustin,60,7.7
+138,2014-08-06,998,"use only one of columns numuserid and userid and transferid and numtransferid",SysFera,"infine loop: clean, refactoring, test...",r,1257,7.0
+196,2014-08-06,980,"Férié",SysFera,"N/A",keo,50,7.7
+348,2014-08-06,964,"Congés",SysFera,"N/A",absila,60,7.7
+211,2014-08-06,575,"Site non sécurisé",ROMEO,"N/A",olivier,1259,8.0
+93,2014-08-07,964,"Congés",SysFera,"N/A",phi,60,7.7
+94,2014-08-07,964,"Congés",SysFera,"N/A",augustin,60,7.7
+139,2014-08-07,998,"use only one of columns numuserid and userid and transferid and numtransferid",SysFera,"clean, clean and clean code. rewrite when necessary and fixes for broken features",r,1257,8.0
+140,2014-08-07,964,"Congés",SysFera,"N/A",r,60,4.0
+197,2014-08-07,980,"Férié",SysFera,"N/A",keo,50,7.7
+349,2014-08-07,964,"Congés",SysFera,"N/A",absila,60,7.7
+212,2014-08-07,575,"Site non sécurisé",ROMEO,"N/A",olivier,1259,8.0
+95,2014-08-08,964,"Congés",SysFera,"N/A",phi,60,7.7
+96,2014-08-08,964,"Congés",SysFera,"N/A",augustin,60,7.7
+141,2014-08-08,1007,"refactoring job db model",SysFera,"infine loop: refactoring, test, clean, refactoring, test...",r,1257,7.0
+198,2014-08-08,980,"Férié",SysFera,"N/A",keo,50,7.7
+350,2014-08-08,964,"Congés",SysFera,"N/A",absila,60,7.7
+213,2014-08-08,575,"Site non sécurisé",ROMEO,"",olivier,1259,6.5
+97,2014-08-11,964,"Congés",SysFera,"N/A",phi,60,7.7
+98,2014-08-11,964,"Congés",SysFera,"N/A",augustin,60,7.7
+150,2014-08-11,998,"use only one of columns numuserid and userid and transferid and numtransferid",SysFera,"rewrite to conform to db changes + refactoring for code simplification in list accounts, list users, authsystem...",r,1257,7.0
+199,2014-08-11,980,"Férié",SysFera,"N/A",keo,50,7.7
+351,2014-08-11,964,"Congés",SysFera,"N/A",absila,60,7.7
+214,2014-08-11,575,"Site non sécurisé",ROMEO,"N/A",olivier,1259,8.0
+99,2014-08-12,964,"Congés",SysFera,"N/A",phi,60,7.7
+100,2014-08-12,964,"Congés",SysFera,"N/A",augustin,60,7.7
+149,2014-08-12,998,"use only one of columns numuserid and userid and transferid and numtransferid",SysFera,"rewrite to conform with db change: job list, job submit, job info, job cancel. remain autom tests",r,1257,7.0
+200,2014-08-12,980,"Férié",SysFera,"N/A",keo,50,7.7
+352,2014-08-12,964,"Congés",SysFera,"N/A",absila,60,7.7
+215,2014-08-12,575,"Site non sécurisé",ROMEO,"N/A",olivier,1259,8.0
+101,2014-08-13,964,"Congés",SysFera,"N/A",phi,60,7.7
+102,2014-08-13,964,"Congés",SysFera,"N/A",augustin,60,7.7
+152,2014-08-13,1010,"Update webbaord model",SysFera,"N/A",r,1257,7.0
+201,2014-08-13,980,"Férié",SysFera,"N/A",keo,50,7.7
+353,2014-08-13,964,"Congés",SysFera,"N/A",absila,60,7.7
+216,2014-08-13,872,"Création de la CLI",BioAster,"N/A",olivier,1233,8.0
+103,2014-08-14,964,"Congés",SysFera,"N/A",phi,60,7.7
+104,2014-08-14,964,"Congés",SysFera,"N/A",augustin,60,7.7
+151,2014-08-14,1009,"Simplifying TMS",SysFera,"N/A",r,1257,7.0
+202,2014-08-14,980,"Férié",SysFera,"N/A",keo,50,7.7
+354,2014-08-14,964,"Congés",SysFera,"N/A",absila,60,7.7
+217,2014-08-14,872,"Création de la CLI",BioAster,"N/A",olivier,1233,8.0
+110,2014-08-15,980,"Férié",SysFera,"N/A",augustin,50,7.7
+111,2014-08-15,980,"Férié",SysFera,"N/A",phi,50,7.7
+153,2014-08-15,980,"Férié",SysFera,"N/A",r,50,8.0
+203,2014-08-15,964,"Congés",SysFera,"N/A",keo,60,7.7
+218,2014-08-15,980,"Férié",SysFera,"N/A",olivier,50,6.5
+340,2014-08-15,980,"Férié",SysFera,"N/A",absila,50,7.7
+105,2014-08-18,964,"Congés",SysFera,"N/A",phi,60,7.7
+154,2014-08-18,971,"Analytics",SysFera,"Impossible de comprendre pourquoi Google Analytics ne trouve pas le snippet de code qui est mis sur le site.",augustin,1254,1.0
+155,2014-08-18,895,"[SDS] MaJ du modèle",SysFera,"Temps passé sur la PR de Rodrigue puis à lire les modifications du modèle.",augustin,1257,1.0
+156,2014-08-18,1011,"WB: appliquer les changements de modèle faits par Rodrigue",SysFera,"Rien de spécial, IntelliJ a bien aidé pour renommer/effacer.",augustin,1254,3.0
+158,2014-08-18,944,"[WB] Internationnaliser activity report",SysFera,"Worked with Kevin to learn how Activity Report works, and how to improve it.",augustin,1254,2.0
+163,2014-08-18,1010,"Update webbaord model",SysFera,"N/A",r,1257,2.0
+164,2014-08-18,1007,"refactoring job db model",SysFera,"tests",r,1257,4.5
+279,2014-08-18,896,"[VISHNU] Enlever les ID générés en base de données et en faire une config",SysFera,"N/A",keo,1257,4.0
+284,2014-08-18,1021,"Formation LMS",SysFera,"N/A",keo,1252,4.0
+355,2014-08-18,964,"Congés",SysFera,"N/A",absila,60,7.7
+219,2014-08-18,872,"Création de la CLI",BioAster,"N/A",olivier,1233,8.0
+106,2014-08-19,964,"Congés",SysFera,"N/A",phi,60,7.7
+159,2014-08-19,944,"[WB] Internationnaliser activity report",SysFera,"Pas mal de temps passé à jongler avec les BDD, et à ré-évaluer l'architecture progressivement. Au final, ça tourne pas mal.",augustin,1254,7.0
+165,2014-08-19,1007,"refactoring job db model",SysFera,"tests",r,1257,7.0
+280,2014-08-19,896,"[VISHNU] Enlever les ID générés en base de données et en faire une config",SysFera,"N/A",keo,1257,4.0
+285,2014-08-19,1021,"Formation LMS",SysFera,"N/A",keo,1252,4.0
+356,2014-08-19,964,"Congés",SysFera,"N/A",absila,60,7.7
+160,2014-08-19,999,"Pb de trad FMS page d'un work",ROMEO,"N/A",augustin,1254,1.0
+220,2014-08-19,872,"Création de la CLI",BioAster,"N/A",olivier,1233,8.0
+107,2014-08-20,964,"Congés",SysFera,"N/A",phi,60,7.7
+162,2014-08-20,827,"[WB] user/list ne prends pas en compte offset et max",SysFera,"Pas mal galéré pour faire le tri dans Users : il y a beaucoup de nettoyage à faire...",augustin,1254,5.5
+166,2014-08-20,1007,"refactoring job db model",SysFera,"tests and debug",r,1257,5.0
+167,2014-08-20,1012,"WB: Intégrer les clefs étrangères de Machine (?) dans Filetransfer",SysFera,"test and debug",r,1254,2.0
+281,2014-08-20,896,"[VISHNU] Enlever les ID générés en base de données et en faire une config",SysFera,"N/A",keo,1257,3.0
+286,2014-08-20,1021,"Formation LMS",SysFera,"N/A",keo,1252,5.0
+357,2014-08-20,964,"Congés",SysFera,"N/A",absila,60,7.7
+161,2014-08-20,999,"Pb de trad FMS page d'un work",ROMEO,"N/A",augustin,1254,2.0
+222,2014-08-20,575,"Site non sécurisé",ROMEO,"N/A",olivier,1259,2.0
+221,2014-08-20,872,"Création de la CLI",BioAster,"N/A",olivier,1233,6.0
+108,2014-08-21,964,"Congés",SysFera,"N/A",phi,60,7.7
+168,2014-08-21,827,"[WB] user/list ne prends pas en compte offset et max",SysFera,"Minor additions to the Job, Work, and User searches.",augustin,1254,1.5
+178,2014-08-21,966,"Bug WB",SysFera,"Ajouté la recherche dynamique à des pages",augustin,1258,3.0
+176,2014-08-21,912,"Portal : nettoyage des log.X de Grails",SysFera,"N/A",augustin,1254,1.0
+184,2014-08-21,1007,"refactoring job db model",SysFera,"fixed dans le webboard",r,1257,3.0
+185,2014-08-21,1007,"refactoring job db model",SysFera,"fixed bugs vishnu",r,1257,4.0
+282,2014-08-21,896,"[VISHNU] Enlever les ID générés en base de données et en faire une config",SysFera,"N/A",keo,1257,1.0
+287,2014-08-21,1021,"Formation LMS",SysFera,"N/A",keo,1252,7.0
+358,2014-08-21,964,"Congés",SysFera,"N/A",absila,60,7.7
+169,2014-08-21,1002,"FMS : pb avec le thème",ROMEO,"N/A",augustin,1254,1.0
+177,2014-08-21,1002,"FMS : pb avec le thème",ROMEO,"N/A",augustin,1254,1.0
+223,2014-08-21,872,"Création de la CLI",BioAster,"N/A",olivier,1233,8.0
+109,2014-08-22,964,"Congés",SysFera,"N/A",phi,60,7.7
+170,2014-08-22,1014,"[WB] Les liens ""select group"" de globalProjectRole ne fonctionnent pas",SysFera,"N/A",augustin,1254,0.2
+171,2014-08-22,944,"[WB] Internationnaliser activity report",SysFera,"Corrections mineures suite aux retours de Kevin, sur la PR et 'autour'.",augustin,1254,0.8
+179,2014-08-22,827,"[WB] user/list ne prends pas en compte offset et max",SysFera,"On étend encore la recherche avancée, cette fois à projectAdmin",augustin,1254,1.0
+180,2014-08-22,1018,"[WB] Problème d'accès à une application",SysFera,"N/A",augustin,1254,1.0
+181,2014-08-22,1020,"[WB] Contraintes entre ProjectRole et ProjectMember",SysFera,"N/A",augustin,1254,1.0

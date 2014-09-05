@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>dc.js - Bar Chart Example</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div id="test">BLA</div>
+
+<script type="text/javascript">
+    console.log("avant")
+
+
+
+</script>
+
+<script type="text/javascript" src="js/d3-3.4.6.js"></script>
+<script type="text/javascript" src="js/crossfilter.js"></script>
+<script type="text/javascript" src="js/dc.js"></script>
+<script type="text/javascript">
+    var chart = dc.rowChart("#test");
+    d3.csv("juillet2014.csv", function(error, experiments) {
+        experiments.forEach(function(x) {
+
+        });
+        var ndx = crossfilter(experiments),
+                OFDimension = ndx.dimension(function(d) {
+                    return d.of;}),
+                speedSumGroup = OFDimension.group().reduceSum(function(d) {return d.time;});
+        chart
+                .width(768)
+                .height(480)
+                .dimension(OFDimension)
+                .group(speedSumGroup);
+        chart.render();
+    });
+
+</script>
+</body>
+</html>
