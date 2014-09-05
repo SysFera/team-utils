@@ -16,6 +16,20 @@ def add_parser(subparsers):
                            help='the to date (string, "YYYYMMDD")')
 
 
+def get_of():
+    filedir = os.path.join(TEAM_PATH, "consolidate", "data")
+    filename = os.path.join(filedir, 'OF.csv')
+
+    ofs = {}
+
+    with open(filename, 'rb') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            ofs[unicode(row[0], 'utf8')] = unicode(row[1], 'utf8')
+
+    return ofs
+
+
 def get_entries():
     entries = []
     # Since we are limited by ChiliProject to 100 time entries at a time,
@@ -37,6 +51,7 @@ def get_entries():
                 "comments": "N/A",
                 "user": USERNAMES_REV[daily_entry['user']['id']],
                 "of": "N/A",
+                "of_name": "N/A",
                 "time": daily_entry['hours']
             }
 
@@ -54,6 +69,7 @@ def get_entries():
                            if field['name'] == "OF"]
                 if len(of_list) > 0:
                     entry['of'] = str(of_list[0])
+                    entry['of_name'] = list_of[entry['of']]
 
             entries.append(entry)
 
@@ -71,16 +87,19 @@ def export_to_cvs(entries):
     filename = os.path.join(filedir, timestamp + '.csv')
 
     with open(filename, 'wb') as f:
-        header = u"id,date,ticket,title,project,comments,user,of,time"
+        header = u"id,date,ticket,title,project,comments,user,of,of_name,time"
         f.write(header.encode('utf8'))
         for entry in entries:
             line = u"\n{id},{date},{ticket},\"{title}\",{project}," \
-                   u"\"{comments}\",{user},{of},{time}".format(**entry)
+                   u"\"{comments}\",{user},{of},{of_name},{time}"\
+                .format(**entry)
             f.write(line.encode('utf8'))
 
 
 def run(args):
-    global date_from, date_to
+    global date_from, date_to, list_of
+
+    list_of = get_of()
 
     date_from = datetime.strptime(args.date_from, "%Y%m%d").date()
     date_to = datetime.strptime(args.date_to, "%Y%m%d").date()

@@ -25,7 +25,7 @@
         });
         var ndx = crossfilter(experiments),
                 OFDimension = ndx.dimension(function(d) {
-                    return d.of;}),
+                    return d.of_name;}),
                 speedSumGroup = OFDimension.group().reduceSum(function(d) {return d.time;});
         chart
                 .width(768)
