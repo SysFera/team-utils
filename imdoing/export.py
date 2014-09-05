@@ -41,11 +41,12 @@ def get_entries():
             }
 
             if hasattr(daily_entry, 'comments'):
-                entry['comments'] = getattr(daily_entry, 'comments')
+                entry['comments'] = getattr(daily_entry, 'comments')\
+                    .replace('"', '""')
 
             issue_id = daily_entry['issue']['id']
             issue = REDMINE.issue.get(issue_id)
-            entry['title'] = issue['subject']
+            entry['title'] = issue['subject'].replace('"', '""')
 
             if hasattr(issue, 'custom_fields'):
                 fields = issue['custom_fields']
