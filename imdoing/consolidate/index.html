@@ -6,12 +6,13 @@
 </head>
 <body>
 <div id="test"></div>
+
 <script type="text/javascript" src="js/d3-3.4.6.js"></script>
 <script type="text/javascript" src="js/crossfilter.js"></script>
 <script type="text/javascript" src="js/dc.js"></script>
 <script type="text/javascript">
     var chart = dc.rowChart("#test");
-    d3.csv("juillet2014.csv", function(error, experiments) {
+    d3.csv("data/aout2014.csv", function(error, experiments) {
         experiments.forEach(function(x) {
 
         });
