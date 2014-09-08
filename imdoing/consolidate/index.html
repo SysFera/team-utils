@@ -5,33 +5,49 @@
     <meta charset="UTF-8">
 </head>
 <body>
-<div id="test"></div>
-
+<div id="rowchart" style="float: left;"></div>
+<div id="piechart" style="float: right;"></div>
 <script type="text/javascript" src="js/d3-3.4.6.js"></script>
 <script type="text/javascript" src="js/crossfilter.js"></script>
 <script type="text/javascript" src="js/dc.js"></script>
 <script type="text/javascript">
-    var chart = dc.rowChart("#test");
+    var rowchart = dc.rowChart("#rowchart");
+    var piechart = dc.pieChart("#piechart");
     d3.csv("data/aout2014.csv", function(error, experiments) {
-        experiments.forEach(function(x) {
+      experiments.forEach(function (x) {
 
-        });
-        var ndx = crossfilter(experiments),
-                OFDimension = ndx.dimension(function(d) {
-                    return d.of_name;}),
-                speedSumGroup = OFDimension.group().reduceSum(function(d) {return d.time;});
-        chart
-                .width(768)
-                .height(480)
-                .dimension(OFDimension)
-                .group(speedSumGroup)
-                .label(function(d) {
-                  console.log(d);
-                  return d.key + " — " + d.value + " h"
-                });
-        chart.render();
+      });
+
+      var ndx = crossfilter(experiments);
+
+      var OFDimension = ndx.dimension(function (d) {
+        return d.of_name;
+      });
+
+      var speedSumGroup = OFDimension.group().reduceSum(function (d) {
+        console.log(d.time);
+        return d.time;
+      });
+
+      rowchart
+              .width(640)
+              .height(960)
+              .dimension(OFDimension)
+              .group(speedSumGroup)
+              .label(function (d) {
+                return d.key + " — " + d.value.toFixed(0) + " h"
+              });
+
+      piechart
+              .width(960)
+              .height(960)
+              .dimension(OFDimension)
+              .group(speedSumGroup)
+              .renderLabel(false)
+              .renderTitle(false);
+
+      dc.renderAll();
     });
-
 </script>
 </body>
 </html>
