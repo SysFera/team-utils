@@ -5,15 +5,7 @@
     <meta charset="UTF-8">
 </head>
 <body>
-<div id="test">BLA</div>
-
-<script type="text/javascript">
-    console.log("avant")
-
-
-
-</script>
-
+<div id="test"></div>
 <script type="text/javascript" src="js/d3-3.4.6.js"></script>
 <script type="text/javascript" src="js/crossfilter.js"></script>
 <script type="text/javascript" src="js/dc.js"></script>
@@ -31,7 +23,11 @@
                 .width(768)
                 .height(480)
                 .dimension(OFDimension)
-                .group(speedSumGroup);
+                .group(speedSumGroup)
+                .label(function(d) {
+                  console.log(d);
+                  return d.key + " — " + d.value + " h"
+                });
         chart.render();
     });
 
