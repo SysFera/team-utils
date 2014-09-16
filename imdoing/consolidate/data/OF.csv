@@ -1,6 +1,6 @@
-50,Férié,,
-60,Congés,,
-100,Maladie,,
+50,Férié,,06-Interne
+60,Congés,,06-Interne
+100,Maladie,,06-Interne
 200,,,
 210,,,
 220,,,
@@ -11,7 +11,7 @@
 270,,,
 280,,,
 290,,,
-300,Formation interne,,
+300,Formation interne,,06-Interne
 310,,,
 320,,,
 330,,,
@@ -21,47 +21,47 @@
 370,,,
 380,,,
 390,,,
-400,"Formation Externe : Préparation (slides, TP, répétitions…)",,
+400,"Formation Externe : Préparation (slides, TP, répétitions…)",,04-Formation
 410,,,
 420,,,
 430,,,
 440,,,
-450,Formation Externe : Exécution (journées effectives de formation),,
+450,Formation Externe : Exécution (journées effectives de formation),,04-Formation
 460,,,
 470,,,
 480,,,
 490,,,
-500,Salons,,
-510,Production de supports,,
-520,Présence effective,,
-530,Post traitement - 1er contact avce 1 client après le salon,,
+500,Salons,,06-Interne
+510,Production de supports,,06-Interne
+520,Présence effective,,06-Interne
+530,Post traitement - 1er contact avce 1 client après le salon,,06-Interne
 540,,,
 550,,,
 560,,,
 570,,,
 580,,,
 590,,,
-600,Avant Vente,,
-610,Phoning,,
-620,RDV ext,,
-630,Offre,,
-640,Négociation,,
-650,"Réunion commerciales (PIPE, …)",,
-660,Meeting partenaires,,
+600,Avant Vente,,06-Interne
+610,Phoning,,06-Interne
+620,RDV ext,,06-Interne
+630,Offre,,06-Interne
+640,Négociation,,06-Interne
+650,"Réunion commerciales (PIPE, …)",,06-Interne
+660,Meeting partenaires,,06-Interne
 670,,,
 680,,,
 690,,,
-700,Fonctionnement,,
-710,RH,,
-720,Comptabilité client,,
-730,Comptabilité fournisseur,,
-740,Intendance,,
+700,Fonctionnement,,06-Interne
+710,RH,,06-Interne
+720,Comptabilité client,,06-Interne
+730,Comptabilité fournisseur,,06-Interne
+740,Intendance,,06-Interne
 750,,,
 760,,,
 770,,,
 780,,,
 790,,,
-800,Veille techno + WEB,,
+800,Veille techno + WEB,,06-Interne
 810,,,
 820,,,
 830,,,
@@ -71,12 +71,12 @@
 870,,,
 880,,,
 890,,,
-900,Marketing,,
-910,Animation Web,,
-920,Communication formation,,
-930,Communication webinar,,
-940,Préparation formation,,
-950,Préparation webinar,,
+900,Marketing,,06-Interne
+910,Animation Web,,06-Interne
+920,Communication formation,,06-Interne
+930,Communication webinar,,06-Interne
+940,Préparation formation,,06-Interne
+950,Préparation webinar,,06-Interne
 960,,,
 970,,,
 980,,,
