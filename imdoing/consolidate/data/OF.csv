@@ -1,129 +1,130 @@
-50,Férié
-60,Congés
-100,Maladie
-200,
-210,
-220,
-230,
-240,
-250,
-260,
-270,
-280,
-290,
-300,Formation interne
-310,
-320,
-330,
-340,
-350,
-360,
-370,
-380,
-390,
-400,"Formation Externe : Préparation (slides, TP, répétitions…)"
-410,
-420,
-430,
-440,
-450,Formation Externe : Exécution (journées effectives de formation)
-460,
-470,
-480,
-490,
-500,Salons
-510,Production de supports
-520,Présence effective
-530,Post traitement - 1er contact avce 1 client après le salon
-540,
-550,
-560,
-570,
-580,
-590,
-600,Avant Vente
-610,Phoning
-620,RDV ext
-630,Offre
-640,Négociation
-650,"Réunion commerciales (PIPE, …)"
-660,Meeting partenaires
-670,
-680,
-690,
-700,Fonctionnement
-710,RH
-720,Comptabilité client
-730,Comptabilité fournisseur
-740,Intendance
-750,
-760,
-770,
-780,
-790,
-800,Veille techno + WEB
-810,
-820,
-830,
-840,
-850,
-860,
-870,
-880,
-890,
-900,Marketing
-910,Animation Web
-920,Communication formation
-930,Communication webinar
-940,Préparation formation
-950,Préparation webinar
-960,
-970,
-980,
-990,
-1146,R&D Dagda2 - Thèse
-1157,Projet R&D ANR SOP
-1163,Projet Techlimed – indexation sites tunisiens
-1189,Projet FP7 - PaaSage
-1208,"Projet e-biothon, licence 2013"
-1210,Projet R&D financé BIODATACLOUD
-1211,"Projet INRIA, mise à disposition pour PaaSage"
-1213,Projet R&D CapRezo
-1223,R&D - SysFera-DS v4.5
-1224,Projet R&D CAPREZO
-1225,EDF R&D - Support 
-1226,EDF R&D - Evolutions vishnu tickets Logilab
-1227,"Projet R&D CPER  « Imagerie expérimentale, clinique et virtuelle »"
-1228,"Prestation Consulting ""SaaS Design"""
-1229,Prestation Consulting TKM
-1230,ANSYS - projet MBD
-1231,Projet Nu@ge - page métrique
-1232,POC CEA Cadarache
-1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C
-1234,IRT Bioaster - dev spécifiques autour d'OpenStack - point E
-1235,IDRIS - Sous traitance ebiothon
-1236,POC Limagrain
-1237,POC INRIA - fédération de clusters
-1238,2webS
-1239,ANSYS - Michelin
-1240,Cetim
-1241,B-COM
-1242,TKM
-1243,IFP Portail
-1244,POC Schneider
-1245,POC INRA
-1246,Support CINES - Licence 2014
-1247,R&D - Process R&D
-1248,Support E-Biothon / CNRS - Licence 2014
-1249,Nu@ge/NewGen - Jenkins
-1250,Limagrain - Gestionnaire de tâches
-1251,IFPEN - Tests AVBP sur AWS
-1252,LMS - Audit et conseil HPC + Formation
-1253,R&D - Reviews Fortissimo
-1254,R&D - SysFera-DS v5.0
-1255,ActiveDevelopment - SI PME SAAS
-1256,IRT Bioaster - avenant projet 1233
-1257,R&D SysferaDS 5 Bug vishnu
-1258,R&D SysferaDS 5 Bug WB + lib
-1259,R&D Tests ROMEO
-2000,R&D - Process R&D SDS 5
+50,Férié,,
+60,Congés,,
+100,Maladie,,
+200,,,
+210,,,
+220,,,
+230,,,
+240,,,
+250,,,
+260,,,
+270,,,
+280,,,
+290,,,
+300,Formation interne,,
+310,,,
+320,,,
+330,,,
+340,,,
+350,,,
+360,,,
+370,,,
+380,,,
+390,,,
+400,"Formation Externe : Préparation (slides, TP, répétitions…)",,
+410,,,
+420,,,
+430,,,
+440,,,
+450,Formation Externe : Exécution (journées effectives de formation),,
+460,,,
+470,,,
+480,,,
+490,,,
+500,Salons,,
+510,Production de supports,,
+520,Présence effective,,
+530,Post traitement - 1er contact avce 1 client après le salon,,
+540,,,
+550,,,
+560,,,
+570,,,
+580,,,
+590,,,
+600,Avant Vente,,
+610,Phoning,,
+620,RDV ext,,
+630,Offre,,
+640,Négociation,,
+650,"Réunion commerciales (PIPE, …)",,
+660,Meeting partenaires,,
+670,,,
+680,,,
+690,,,
+700,Fonctionnement,,
+710,RH,,
+720,Comptabilité client,,
+730,Comptabilité fournisseur,,
+740,Intendance,,
+750,,,
+760,,,
+770,,,
+780,,,
+790,,,
+800,Veille techno + WEB,,
+810,,,
+820,,,
+830,,,
+840,,,
+850,,,
+860,,,
+870,,,
+880,,,
+890,,,
+900,Marketing,,
+910,Animation Web,,
+920,Communication formation,,
+930,Communication webinar,,
+940,Préparation formation,,
+950,Préparation webinar,,
+960,,,
+970,,,
+980,,,
+990,,,
+1146,R&D Dagda2 - Thèse,01-En cours,05-Produits
+1157,Projet R&D ANR SOP,01-En cours,05-Produits
+1163,Projet Techlimed – indexation sites tunisiens,01-En cours,03-Services liés au produit
+1189,Projet FP7 - PaaSage,01-En cours,05-Produits
+1208,"Projet e-biothon, licence 2013",03-Terminé,03-Services liés au produit
+1210,Projet R&D financé BIODATACLOUD,01-En cours,05-Produits
+1211,"Projet INRIA, mise à disposition pour PaaSage",03-Terminé,02-NRE
+1213,Projet R&D CapRezo,02-Abandonné,02-NRE
+1223,R&D - SysFera-DS v4.5,03-Terminé,05-Produits
+1224,Projet R&D CAPREZO,03-Terminé,05-Produits
+1225,EDF R&D - Support ,02-Abandonné,03-Services liés au produit
+1226,EDF R&D - Evolutions vishnu tickets Logilab,02-Abandonné,03-Services liés au produit
+1227,"Projet R&D CPER  « Imagerie expérimentale, clinique et virtuelle »",04-Attente,05-Produits
+1228,"Prestation Consulting ""SaaS Design""",01-En cours,02-NRE
+1229,Prestation Consulting TKM,02-Abandonné,02-NRE
+1230,ANSYS - projet MBD,04-Attente,03-Services liés au produit
+1231,Projet Nu@ge - page métrique,03-Terminé,03-Services liés au produit
+1232,POC CEA Cadarache,04-Attente,03-Services liés au produit
+1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,01-En cours,02-NRE
+1234,IRT Bioaster - dev spécifiques autour d'OpenStack - point E,04-Attente,02-NRE
+1235,IDRIS - Sous traitance ebiothon,03-Terminé,02-NRE
+1236,POC Limagrain,04-Attente,03-Services liés au produit
+1237,POC INRIA - fédération de clusters,04-Attente,03-Services liés au produit
+1238,2webS,04-Attente,02-NRE
+1239,ANSYS - Michelin,04-Attente,03-Services liés au produit
+1240,Cetim,04-Attente,02-NRE
+1241,B-COM,04-Attente,03-Services liés au produit
+1242,TKM,04-Attente,03-Services liés au produit
+1243,IFP Portail,02-Abandonné,03-Services liés au produit
+1244,POC Schneider,04-Attente,03-Services liés au produit
+1245,POC INRA,04-Attente,03-Services liés au produit
+1246,Support CINES - Licence 2014,01-En cours,01-Support
+1247,R&D - Process R&D,01-En cours,06-Interne
+1248,Support E-Biothon / CNRS - Licence 2014,01-En cours,01-Support
+1249,Nu@ge/NewGen - Jenkins,01-En cours,02-NRE
+1250,Limagrain - Gestionnaire de tâches,04-Attente,02-NRE
+1251,IFPEN - Tests AVBP sur AWS,04-Attente,02-NRE
+1252,LMS - Audit et conseil HPC,01-En cours,02-NRE
+1253,R&D - Reviews Fortissimo,03-Terminé,02-NRE
+1254,R&D - SysFera-DS v5.0,01-En cours,05-Produits
+1255,ActiveDevelopment - SI PME SAAS,03-Terminé,02-NRE
+1256,IRT Bioaster - avenant projet 1233,04-Attente,02-NRE
+1257,R&D SysferaDS 5 Bug vishnu,01-En cours,05-Produits
+1258,R&D SysferaDS 5 Bug WB + lib,01-En cours,05-Produits
+1259,R&D Tests ROMEO,01-En cours,05-Produits
+1260,LMS – Formation,01-En cours,02-NRE
+2000,R&D - Process R&D SDS 5,01-En cours,05-Produits
