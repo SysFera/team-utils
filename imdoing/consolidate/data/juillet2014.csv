@@ -1,19 +1,61 @@
 id,date,ticket,title,project,comments,user,of,of_name,time
+429,2014-07-03,1093,"R&D : imdoing R&D",SysFera,"N/A",olivier,1254,R&D - SysFera-DS v5.0,7.7
+442,2014-07-03,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,7.7
+430,2014-07-04,1093,"R&D : imdoing R&D",SysFera,"N/A",olivier,1254,R&D - SysFera-DS v5.0,7.7
+443,2014-07-04,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,7.7
+444,2014-07-05,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,7.7
+445,2014-07-06,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,7.7
+431,2014-07-07,1093,"R&D : imdoing R&D",SysFera,"N/A",olivier,1254,R&D - SysFera-DS v5.0,7.7
+446,2014-07-07,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,7.7
+414,2014-07-07,1092,"SOP : imdoing",SOP,"N/A",r,1157,Projet R&D ANR SOP,7.7
+432,2014-07-08,1093,"R&D : imdoing R&D",SysFera,"N/A",olivier,1254,R&D - SysFera-DS v5.0,7.7
+447,2014-07-08,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,7.7
+415,2014-07-08,1092,"SOP : imdoing",SOP,"N/A",r,1157,Projet R&D ANR SOP,7.7
+433,2014-07-09,1093,"R&D : imdoing R&D",SysFera,"N/A",olivier,1254,R&D - SysFera-DS v5.0,7.7
+448,2014-07-09,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,7.7
+416,2014-07-09,1092,"SOP : imdoing",SOP,"N/A",r,1157,Projet R&D ANR SOP,7.7
+434,2014-07-10,1093,"R&D : imdoing R&D",SysFera,"N/A",olivier,1254,R&D - SysFera-DS v5.0,7.7
+449,2014-07-10,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,7.7
+417,2014-07-10,1092,"SOP : imdoing",SOP,"N/A",r,1157,Projet R&D ANR SOP,7.7
+435,2014-07-11,1093,"R&D : imdoing R&D",SysFera,"N/A",olivier,1254,R&D - SysFera-DS v5.0,7.7
+450,2014-07-11,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,7.7
+418,2014-07-11,1092,"SOP : imdoing",SOP,"N/A",r,1157,Projet R&D ANR SOP,7.7
+451,2014-07-12,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,7.7
+419,2014-07-14,980,"Férié",SysFera,"N/A",r,50,Férié,7.7
+436,2014-07-14,980,"Férié",SysFera,"N/A",olivier,50,Férié,7.7
+441,2014-07-14,980,"Férié",SysFera,"N/A",keo,50,Férié,7.7
+437,2014-07-15,980,"Férié",SysFera,"N/A",olivier,50,Férié,5.0
+438,2014-07-15,1093,"R&D : imdoing R&D",SysFera,"N/A",olivier,1254,R&D - SysFera-DS v5.0,5.0
+452,2014-07-15,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,7.7
+420,2014-07-15,1092,"SOP : imdoing",SOP,"N/A",r,1157,Projet R&D ANR SOP,7.7
+439,2014-07-16,1093,"R&D : imdoing R&D",SysFera,"N/A",olivier,1254,R&D - SysFera-DS v5.0,7.7
+453,2014-07-16,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,7.7
+421,2014-07-16,1092,"SOP : imdoing",SOP,"N/A",r,1157,Projet R&D ANR SOP,7.7
+440,2014-07-17,1093,"R&D : imdoing R&D",SysFera,"N/A",olivier,1254,R&D - SysFera-DS v5.0,7.7
+454,2014-07-17,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,7.7
+422,2014-07-17,1092,"SOP : imdoing",SOP,"N/A",r,1157,Projet R&D ANR SOP,7.7
+455,2014-07-18,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,7.7
+423,2014-07-18,1092,"SOP : imdoing",SOP,"N/A",r,1157,Projet R&D ANR SOP,7.7
 269,2014-07-21,944,"[WB] Internationnaliser activity report",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,8.0
+424,2014-07-21,1093,"R&D : imdoing R&D",SysFera,"N/A",r,1254,R&D - SysFera-DS v5.0,7.7
 9,2014-07-22,919,"Imdoing : afficher current en arbre",SysFera,"N/A",augustin,1247,R&D - Process R&D,2.0
 270,2014-07-22,944,"[WB] Internationnaliser activity report",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,8.0
+425,2014-07-22,1093,"R&D : imdoing R&D",SysFera,"N/A",r,1254,R&D - SysFera-DS v5.0,7.7
 42,2014-07-22,949,"Modification de config de dev",Nuage,"N/A",phi,1249,Nu@ge/NewGen - Jenkins,5.0
 8,2014-07-23,919,"Imdoing : afficher current en arbre",SysFera,"N/A",augustin,1247,R&D - Process R&D,2.0
 271,2014-07-23,944,"[WB] Internationnaliser activity report",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,8.0
+426,2014-07-23,1093,"R&D : imdoing R&D",SysFera,"N/A",r,1254,R&D - SysFera-DS v5.0,7.7
 41,2014-07-23,949,"Modification de config de dev",Nuage,"N/A",phi,1249,Nu@ge/NewGen - Jenkins,5.0
 7,2014-07-24,948,"Imdoing : explorer l'option 'Time Entry' dans le Chili",SysFera,"N/A",augustin,1247,R&D - Process R&D,3.0
 272,2014-07-24,944,"[WB] Internationnaliser activity report",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,8.0
+427,2014-07-24,1093,"R&D : imdoing R&D",SysFera,"N/A",r,1254,R&D - SysFera-DS v5.0,7.7
 40,2014-07-24,949,"Modification de config de dev",Nuage,"N/A",phi,1249,Nu@ge/NewGen - Jenkins,5.0
 11,2014-07-25,943,"Imdoing : améliorations mineures diverses",SysFera,"Updated README + minor modifications.",augustin,1247,R&D - Process R&D,1.0
 12,2014-07-25,910,"Imdoing : pouvoir enregistrer des actions dans le passé",SysFera,"",augustin,1247,R&D - Process R&D,0.0
 13,2014-07-25,825,"Mise en place de la démo",SysFera,"Minor improvements to XSession lists and to the asyncsearch lib.",augustin,1247,R&D - Process R&D,1.0
 19,2014-07-25,825,"Mise en place de la démo",SysFera,"Added minor modifications to a few pages.",augustin,1247,R&D - Process R&D,2.0
 273,2014-07-25,944,"[WB] Internationnaliser activity report",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,6.5
+428,2014-07-25,1093,"R&D : imdoing R&D",SysFera,"N/A",r,1254,R&D - SysFera-DS v5.0,7.7
 15,2014-07-25,940,"Mise en place d'une plateforme de ref pour l'IC",BioAster,"Reformatting the help",augustin,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,0.3
 24,2014-07-25,940,"Mise en place d'une plateforme de ref pour l'IC",BioAster,"Reformatting the code to make it compliant with PEP and IntelliJ.",augustin,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,2.0
 25,2014-07-25,952,"Tester vagrant sur SLES 6 sur une machine en interne",BioAster,"N/A",phi,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,4.0
