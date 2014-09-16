@@ -30,6 +30,20 @@ def get_of():
     return ofs
 
 
+def get_nre():
+    filedir = os.path.join(TEAM_PATH, "consolidate", "data")
+    filename = os.path.join(filedir, 'OF.csv')
+
+    nres = {}
+
+    with open(filename, 'rb') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            nres[unicode(row[0], 'utf8')] = unicode(row[3], 'utf8') or "N/A"
+
+    return nres
+
+
 def get_entries():
     entries = []
     # Since we are limited by ChiliProject to 100 time entries at a time,
@@ -52,6 +66,7 @@ def get_entries():
                 "user": USERNAMES_REV[daily_entry['user']['id']],
                 "of": "N/A",
                 "of_name": "N/A",
+                "nre": "N/A",
                 "time": daily_entry['hours']
             }
 
@@ -67,9 +82,15 @@ def get_entries():
                 fields = issue['custom_fields']
                 of_list = [field['value'] for field in fields
                            if field['name'] == "OF"]
-                if len(of_list) > 0:
-                    entry['of'] = str(of_list[0])
-                    entry['of_name'] = list_of[entry['of']]
+                try:
+                    if len(of_list) > 0:
+                        entry['of'] = str(of_list[0])
+                        entry['of_name'] = list_of[entry['of']]
+                        entry['nre'] = list_nre[entry['of']]
+                except KeyError:
+                    print entry['title'] + " - " + \
+                        "https://support.sysfera.com/issues/" + \
+                        str(entry['ticket'])
 
             entries.append(entry)
 
@@ -87,19 +108,21 @@ def export_to_cvs(entries):
     filename = os.path.join(filedir, timestamp + '.csv')
 
     with open(filename, 'wb') as f:
-        header = u"id,date,ticket,title,project,comments,user,of,of_name,time"
+        header = u"id,date,ticket,title,project,comments,user," \
+                 u"of,of_name,nre,time"
         f.write(header.encode('utf8'))
         for entry in entries:
             line = u"\n{id},{date},{ticket},\"{title}\",{project}," \
-                   u"\"{comments}\",{user},{of},{of_name},{time}"\
+                   u"\"{comments}\",{user},{of},{of_name},{nre},{time}"\
                 .format(**entry)
             f.write(line.encode('utf8'))
 
 
 def run(args):
-    global date_from, date_to, list_of
+    global date_from, date_to, list_of, list_nre
 
     list_of = get_of()
+    list_nre = get_nre()
 
     date_from = datetime.strptime(args.date_from, "%Y%m%d").date()
     date_to = datetime.strptime(args.date_to, "%Y%m%d").date()

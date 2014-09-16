@@ -5,15 +5,19 @@
     <meta charset="UTF-8">
 </head>
 <body>
-<div id="rowchart" style="float: left;"></div>
-<div id="piechart" style="float: right;"></div>
+<div id="rowchart_OF" style="float: left;"></div>
+<div id="piechart_OF" style="float: right;"></div>
+<div id="rowchart_NRE" style="float: left;"></div>
+<div id="piechart_NRE" style="float: right;"></div>
 <script type="text/javascript" src="js/d3-3.4.6.js"></script>
 <script type="text/javascript" src="js/crossfilter.js"></script>
 <script type="text/javascript" src="js/dc.js"></script>
 <script type="text/javascript">
-    var rowchart = dc.rowChart("#rowchart");
-    var piechart = dc.pieChart("#piechart");
-    d3.csv("data/aout2014.csv", function(error, experiments) {
+    var rowchart_of = dc.rowChart("#rowchart_OF");
+    var piechart_of = dc.pieChart("#piechart_OF");
+    var rowchart_nre = dc.rowChart("#rowchart_NRE");
+    var piechart_nre = dc.pieChart("#piechart_NRE");
+    d3.csv("data/all.csv", function(error, experiments) {
       experiments.forEach(function (x) {
 
       });
@@ -24,12 +28,21 @@
         return d.of_name;
       });
 
+      var NREDimension = ndx.dimension(function (d) {
+        return d.nre;
+      });
+
       var speedSumGroup = OFDimension.group().reduceSum(function (d) {
         console.log(d.time);
         return d.time;
       });
 
-      rowchart
+      var nreSumGroup = NREDimension.group().reduceSum(function (d) {
+        console.log(d.time);
+        return d.time;
+      });
+
+      rowchart_of
               .width(640)
               .height(960)
               .dimension(OFDimension)
@@ -38,11 +51,28 @@
                 return d.key + " — " + d.value.toFixed(0) + " h"
               });
 
-      piechart
+      piechart_of
               .width(960)
               .height(960)
               .dimension(OFDimension)
               .group(speedSumGroup)
+              .renderLabel(false)
+              .renderTitle(false);
+
+      rowchart_nre
+              .width(640)
+              .height(960)
+              .dimension(NREDimension)
+              .group(nreSumGroup)
+              .label(function (d) {
+                return d.key + " — " + d.value.toFixed(0) + " h"
+              });
+
+      piechart_nre
+              .width(960)
+              .height(960)
+              .dimension(NREDimension)
+              .group(nreSumGroup)
               .renderLabel(false)
               .renderTitle(false);
 

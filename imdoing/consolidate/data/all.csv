@@ -1,0 +1,467 @@
+id,date,ticket,title,project,comments,user,of,of_name,nre,time
+429,2014-07-03,1093,"R&D : imdoing R&D",SysFera,"N/A",olivier,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+442,2014-07-03,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+430,2014-07-04,1093,"R&D : imdoing R&D",SysFera,"N/A",olivier,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+443,2014-07-04,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+444,2014-07-05,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+445,2014-07-06,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+431,2014-07-07,1093,"R&D : imdoing R&D",SysFera,"N/A",olivier,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+446,2014-07-07,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+414,2014-07-07,1092,"SOP : imdoing",SOP,"N/A",r,1157,Projet R&D ANR SOP,05-Produits,7.7
+432,2014-07-08,1093,"R&D : imdoing R&D",SysFera,"N/A",olivier,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+447,2014-07-08,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+415,2014-07-08,1092,"SOP : imdoing",SOP,"N/A",r,1157,Projet R&D ANR SOP,05-Produits,7.7
+433,2014-07-09,1093,"R&D : imdoing R&D",SysFera,"N/A",olivier,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+448,2014-07-09,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+416,2014-07-09,1092,"SOP : imdoing",SOP,"N/A",r,1157,Projet R&D ANR SOP,05-Produits,7.7
+434,2014-07-10,1093,"R&D : imdoing R&D",SysFera,"N/A",olivier,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+449,2014-07-10,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+417,2014-07-10,1092,"SOP : imdoing",SOP,"N/A",r,1157,Projet R&D ANR SOP,05-Produits,7.7
+435,2014-07-11,1093,"R&D : imdoing R&D",SysFera,"N/A",olivier,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+450,2014-07-11,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+418,2014-07-11,1092,"SOP : imdoing",SOP,"N/A",r,1157,Projet R&D ANR SOP,05-Produits,7.7
+451,2014-07-12,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+419,2014-07-14,980,"Férié",SysFera,"N/A",r,50,Férié,N/A,7.7
+436,2014-07-14,980,"Férié",SysFera,"N/A",olivier,50,Férié,N/A,7.7
+441,2014-07-14,980,"Férié",SysFera,"N/A",keo,50,Férié,N/A,7.7
+437,2014-07-15,980,"Férié",SysFera,"N/A",olivier,50,Férié,N/A,5.0
+438,2014-07-15,1093,"R&D : imdoing R&D",SysFera,"N/A",olivier,1254,R&D - SysFera-DS v5.0,05-Produits,5.0
+452,2014-07-15,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+420,2014-07-15,1092,"SOP : imdoing",SOP,"N/A",r,1157,Projet R&D ANR SOP,05-Produits,7.7
+439,2014-07-16,1093,"R&D : imdoing R&D",SysFera,"N/A",olivier,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+453,2014-07-16,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+421,2014-07-16,1092,"SOP : imdoing",SOP,"N/A",r,1157,Projet R&D ANR SOP,05-Produits,7.7
+440,2014-07-17,1093,"R&D : imdoing R&D",SysFera,"N/A",olivier,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+454,2014-07-17,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+422,2014-07-17,1092,"SOP : imdoing",SOP,"N/A",r,1157,Projet R&D ANR SOP,05-Produits,7.7
+455,2014-07-18,1093,"R&D : imdoing R&D",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+423,2014-07-18,1092,"SOP : imdoing",SOP,"N/A",r,1157,Projet R&D ANR SOP,05-Produits,7.7
+269,2014-07-21,944,"[WB] Internationnaliser activity report",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,8.0
+424,2014-07-21,1093,"R&D : imdoing R&D",SysFera,"N/A",r,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+9,2014-07-22,919,"Imdoing : afficher current en arbre",SysFera,"N/A",augustin,1247,R&D - Process R&D,06-Interne,2.0
+270,2014-07-22,944,"[WB] Internationnaliser activity report",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,8.0
+425,2014-07-22,1093,"R&D : imdoing R&D",SysFera,"N/A",r,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+42,2014-07-22,949,"Modification de config de dev",Nuage,"N/A",phi,1249,Nu@ge/NewGen - Jenkins,02-NRE,5.0
+8,2014-07-23,919,"Imdoing : afficher current en arbre",SysFera,"N/A",augustin,1247,R&D - Process R&D,06-Interne,2.0
+271,2014-07-23,944,"[WB] Internationnaliser activity report",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,8.0
+426,2014-07-23,1093,"R&D : imdoing R&D",SysFera,"N/A",r,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+41,2014-07-23,949,"Modification de config de dev",Nuage,"N/A",phi,1249,Nu@ge/NewGen - Jenkins,02-NRE,5.0
+7,2014-07-24,948,"Imdoing : explorer l'option 'Time Entry' dans le Chili",SysFera,"N/A",augustin,1247,R&D - Process R&D,06-Interne,3.0
+272,2014-07-24,944,"[WB] Internationnaliser activity report",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,8.0
+427,2014-07-24,1093,"R&D : imdoing R&D",SysFera,"N/A",r,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+40,2014-07-24,949,"Modification de config de dev",Nuage,"N/A",phi,1249,Nu@ge/NewGen - Jenkins,02-NRE,5.0
+11,2014-07-25,943,"Imdoing : améliorations mineures diverses",SysFera,"Updated README + minor modifications.",augustin,1247,R&D - Process R&D,06-Interne,1.0
+12,2014-07-25,910,"Imdoing : pouvoir enregistrer des actions dans le passé",SysFera,"",augustin,1247,R&D - Process R&D,06-Interne,0.0
+13,2014-07-25,825,"Mise en place de la démo",SysFera,"Minor improvements to XSession lists and to the asyncsearch lib.",augustin,1247,R&D - Process R&D,06-Interne,1.0
+19,2014-07-25,825,"Mise en place de la démo",SysFera,"Added minor modifications to a few pages.",augustin,1247,R&D - Process R&D,06-Interne,2.0
+273,2014-07-25,944,"[WB] Internationnaliser activity report",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,6.5
+428,2014-07-25,1093,"R&D : imdoing R&D",SysFera,"N/A",r,1254,R&D - SysFera-DS v5.0,05-Produits,7.7
+15,2014-07-25,940,"Mise en place d'une plateforme de ref pour l'IC",BioAster,"Reformatting the help",augustin,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,0.3
+24,2014-07-25,940,"Mise en place d'une plateforme de ref pour l'IC",BioAster,"Reformatting the code to make it compliant with PEP and IntelliJ.",augustin,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,2.0
+25,2014-07-25,952,"Tester vagrant sur SLES 6 sur une machine en interne",BioAster,"N/A",phi,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,4.0
+30,2014-07-25,951,"Decrire la plateforme pour le contrat",BioAster,"Description de la prolongmeent de contrat. Test de ansible sur vagrant",phi,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,2.0
+29,2014-07-28,791,"Améliorer imdoing",SysFera,"Mail @ tech pour se servir du timetracking. Voir comment faire du reporting",phi,1247,R&D - Process R&D,06-Interne,2.0
+28,2014-07-28,943,"Imdoing : améliorations mineures diverses",SysFera,"Discussion with Philippe. Cleaning of the code of imdoing time.",augustin,1247,R&D - Process R&D,06-Interne,1.0
+32,2014-07-28,944,"[WB] Internationnaliser activity report",SysFera,"new for model activy report to be able to internationnalise it saving events instead of strings",keo,1254,R&D - SysFera-DS v5.0,05-Produits,3.0
+33,2014-07-28,896,"[VISHNU] Enlever les ID générés en base de données et en faire une config",SysFera,"tests des changements",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,4.0
+34,2014-07-28,957,"Bug imdoing",SysFera,"N/A",olivier,1247,R&D - Process R&D,06-Interne,1.0
+35,2014-07-28,958,"Fonctionnement : FdT ...",SysFera,"Fiche de temps, mails",olivier,700,Fonctionnement,N/A,1.0
+36,2014-07-28,791,"Améliorer imdoing",SysFera,"Écriture de la fonction. Output en CSV.",augustin,1247,R&D - Process R&D,06-Interne,2.0
+39,2014-07-28,960,"Imdoing : automatiser la création des FdT",SysFera,"Définition des besoins avec Benjamin.",augustin,1247,R&D - Process R&D,06-Interne,1.0
+44,2014-07-28,960,"Imdoing : automatiser la création des FdT",SysFera,"Learned to use xlrt, xlwt, xlutils. Wrote the start of the code. Dropped the XLS part and went with CSV output.",augustin,1247,R&D - Process R&D,06-Interne,4.0
+56,2014-07-28,966,"Bug WB",SysFera,"N/A",olivier,1258,R&D SysferaDS 5 Bug WB + lib,05-Produits,4.0
+274,2014-07-28,944,"[WB] Internationnaliser activity report",SysFera,"",keo,1254,R&D - SysFera-DS v5.0,05-Produits,5.0
+341,2014-07-28,964,"Congés",SysFera,"N/A",absila,60,Congés,N/A,7.7
+37,2014-07-28,946,"Livrer le Manuel D5",eBiothon,"Redaction rapport",nbard,1235,IDRIS - Sous traitance ebiothon,02-NRE,2.5
+38,2014-07-28,946,"Livrer le Manuel D5",eBiothon,"Redaction rapport",nbard,1235,IDRIS - Sous traitance ebiothon,02-NRE,0.5
+43,2014-07-28,946,"Livrer le Manuel D5",eBiothon,"",nbard,1235,IDRIS - Sous traitance ebiothon,02-NRE,5.0
+48,2014-07-29,967,"Working Groups",SysFera,"Réunion imdoing",nbard,300,Formation interne,N/A,1.0
+49,2014-07-29,967,"Working Groups",SysFera,"WG imdoing entry",phi,300,Formation interne,N/A,1.0
+50,2014-07-29,967,"Working Groups",SysFera,"WG imdoing entry",phi,300,Formation interne,N/A,1.0
+51,2014-07-29,967,"Working Groups",SysFera,"Showed imdoing time et al. to the team.",augustin,300,Formation interne,N/A,1.0
+54,2014-07-29,967,"Working Groups",SysFera,"working group imdoing",r,300,Formation interne,N/A,1.0
+53,2014-07-29,958,"Fonctionnement : FdT ...",SysFera,"listing actions restant à faire sur SOP: OF 1157",r,700,Fonctionnement,N/A,0.5
+57,2014-07-29,967,"Working Groups",SysFera,"N/A",olivier,300,Formation interne,N/A,1.0
+58,2014-07-29,884,"SOP : Accès simplifié à Scilab",SysFera,"support vishnu et OpenNebula sur l'infrastructure du démonstrateur",r,1157,Projet R&D ANR SOP,05-Produits,1.0
+59,2014-07-29,943,"Imdoing : améliorations mineures diverses",SysFera,"Rewritten imdoing. Simplified, removed former code.",augustin,1247,R&D - Process R&D,06-Interne,5.5
+62,2014-07-29,944,"[WB] Internationnaliser activity report",SysFera,"Helped Kevin debug/rewrite part of the Domain Classes.",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+63,2014-07-29,896,"[VISHNU] Enlever les ID générés en base de données et en faire une config",SysFera,"mise à jour de l'environnement de tests sur jenkins",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,4.0
+64,2014-07-29,969,"Probléme de soumission de job avec fichier optionel omis",SysFera,"J'ai testé la soumission sur ebiothon en faisant le rapport (et pour preparer le mail a envoyer a Vincent lefort : je suis tombé sur ce bug",nbard,1248,Support E-Biothon / CNRS - Licence 2014,01-Support,3.0
+66,2014-07-29,969,"Probléme de soumission de job avec fichier optionel omis",SysFera,"Un peu aidé Nicolas à débugger.",augustin,1248,Support E-Biothon / CNRS - Licence 2014,01-Support,0.5
+75,2014-07-29,965,"Bug Vishnu",SysFera,"N/A",olivier,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,7.0
+275,2014-07-29,944,"[WB] Internationnaliser activity report",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,8.0
+342,2014-07-29,964,"Congés",SysFera,"N/A",absila,60,Congés,N/A,7.7
+60,2014-07-29,946,"Livrer le Manuel D5",eBiothon,"RC du doc",nbard,1235,IDRIS - Sous traitance ebiothon,02-NRE,2.0
+61,2014-07-29,643,"Livrer le rapport mensuel D4 au 31/07/2014",eBiothon,"Bootstrap",nbard,1235,IDRIS - Sous traitance ebiothon,02-NRE,2.0
+47,2014-07-29,952,"Tester vagrant sur SLES 6 sur une machine en interne",BioAster,"Galère sur keystone sur SLES6",phi,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,2.0
+65,2014-07-29,952,"Tester vagrant sur SLES 6 sur une machine en interne",BioAster,"N/A",phi,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,6.0
+79,2014-07-30,978,"Imdoing : problème avec FdT, nombre incorrect d'entrées retournées",SysFera,"Lutté contre ChiliProject qui bugge avec l'API python. Écrit un workaround. Jeté le workaround.",augustin,1247,R&D - Process R&D,06-Interne,3.0
+67,2014-07-30,896,"[VISHNU] Enlever les ID générés en base de données et en faire une config",SysFera,"mise à jour de l'environement de test jenkins",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,5.0
+70,2014-07-30,975,"Démo/Rétro",SysFera,"demo sprint",r,2000,R&D - Process R&D SDS 5,05-Produits,3.0
+73,2014-07-30,977,"WB : Proposer une version des menus en ""affix"" (qui scrollent puis se fixent en haut)",SysFera,"Implémenté l'affix de Twitter Bootstrap ""vite fait"". Pas encore testé/validé.",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,2.0
+72,2014-07-30,975,"Démo/Rétro",SysFera,"N/A",augustin,2000,R&D - Process R&D SDS 5,05-Produits,3.0
+74,2014-07-30,975,"Démo/Rétro",SysFera,"N/A",phi,2000,R&D - Process R&D SDS 5,05-Produits,3.0
+82,2014-07-30,975,"Démo/Rétro",SysFera,"N/A",olivier,2000,R&D - Process R&D SDS 5,05-Produits,3.0
+123,2014-07-30,975,"Démo/Rétro",SysFera,"N/A",nbard,2000,R&D - Process R&D SDS 5,05-Produits,3.0
+276,2014-07-30,944,"[WB] Internationnaliser activity report",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,8.0
+343,2014-07-30,964,"Congés",SysFera,"N/A",absila,60,Congés,N/A,7.7
+68,2014-07-30,643,"Livrer le rapport mensuel D4 au 31/07/2014",eBiothon,"Ajout intro et tickets/issues",nbard,1235,IDRIS - Sous traitance ebiothon,02-NRE,2.0
+69,2014-07-30,973,"Administrer la plate forme Ebiothon",eBiothon,"Migration de version, reinstallation du bon webboard",nbard,1248,Support E-Biothon / CNRS - Licence 2014,01-Support,1.0
+78,2014-07-30,973,"Administrer la plate forme Ebiothon",eBiothon,"Version e-biothon",olivier,1248,Support E-Biothon / CNRS - Licence 2014,01-Support,3.0
+124,2014-07-30,643,"Livrer le rapport mensuel D4 au 31/07/2014",eBiothon,"N/A",nbard,1235,IDRIS - Sous traitance ebiothon,02-NRE,1.0
+125,2014-07-30,946,"Livrer le Manuel D5",eBiothon,"N/A",nbard,1235,IDRIS - Sous traitance ebiothon,02-NRE,1.0
+83,2014-07-30,872,"Création de la CLI",BioAster,"N/A",phi,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,1.0
+113,2014-07-30,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,1.0
+76,2014-07-31,958,"Fonctionnement : FdT ...",SysFera,"Sprint planning
+",phi,700,Fonctionnement,N/A,2.0
+80,2014-07-31,978,"Imdoing : problème avec FdT, nombre incorrect d'entrées retournées",SysFera,"Rétabli le workaround, mais en mieux.",augustin,1247,R&D - Process R&D,06-Interne,1.0
+81,2014-07-31,976,"WB : Permettre la création d'applications customisées (type PhyML)",SysFera,"Discussions avec Ben et réflexion aux modalités d'une POC.",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+112,2014-07-31,921,"Log un peu violent et perf médiocre sur les stats",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,0.5
+114,2014-07-31,958,"Fonctionnement : FdT ...",SysFera,"N/A",olivier,700,Fonctionnement,N/A,2.0
+115,2014-07-31,975,"Démo/Rétro",SysFera,"N/A",phi,2000,R&D - Process R&D SDS 5,05-Produits,3.0
+116,2014-07-31,975,"Démo/Rétro",SysFera,"",augustin,2000,R&D - Process R&D SDS 5,05-Produits,2.0
+117,2014-07-31,975,"Démo/Rétro",SysFera,"N/A",nbard,2000,R&D - Process R&D SDS 5,05-Produits,2.0
+118,2014-07-31,975,"Démo/Rétro",SysFera,"N/A",r,2000,R&D - Process R&D SDS 5,05-Produits,3.0
+121,2014-07-31,975,"Démo/Rétro",SysFera,"N/A",olivier,2000,R&D - Process R&D SDS 5,05-Produits,2.0
+126,2014-07-31,896,"[VISHNU] Enlever les ID générés en base de données et en faire une config",SysFera,"start removed the two steps id generation in vishnu",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,4.0
+127,2014-07-31,975,"Démo/Rétro",SysFera,"N/A",keo,2000,R&D - Process R&D SDS 5,05-Produits,2.0
+128,2014-07-31,966,"Bug WB",SysFera,"Plein de bugfixes sur le WB stable, travail sur la PR avec Kevin, etc.",augustin,1258,R&D SysferaDS 5 Bug WB + lib,05-Produits,3.0
+277,2014-07-31,944,"[WB] Internationnaliser activity report",SysFera,"",keo,1254,R&D - SysFera-DS v5.0,05-Produits,6.0
+344,2014-07-31,964,"Congés",SysFera,"N/A",absila,60,Congés,N/A,7.7
+119,2014-07-31,946,"Livrer le Manuel D5",eBiothon,"N/A",nbard,1235,IDRIS - Sous traitance ebiothon,02-NRE,2.0
+120,2014-07-31,643,"Livrer le rapport mensuel D4 au 31/07/2014",eBiothon,"N/A",nbard,1235,IDRIS - Sous traitance ebiothon,02-NRE,3.0
+122,2014-07-31,973,"Administrer la plate forme Ebiothon",eBiothon,"N/A",nbard,1248,Support E-Biothon / CNRS - Licence 2014,01-Support,1.0
+77,2014-07-31,872,"Création de la CLI",BioAster,"RDV téléphonique Jacques",phi,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,1.0
+84,2014-08-01,964,"Congés",SysFera,"N/A",phi,60,Congés,N/A,7.7
+129,2014-08-01,995,"Liste toutes les tâches : pb de filtres",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,0.5
+130,2014-08-01,996,"Pagination bizarre dans quotas",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,0.5
+131,2014-08-01,990,"démo : pb affichage page résumé d'un job",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,0.5
+132,2014-08-01,985,"Démo : PhyML inutilisable",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,0.5
+133,2014-08-01,982,"Visu et date de soumission sur la démo",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+134,2014-08-01,966,"Bug WB",SysFera,"N/A",augustin,1258,R&D SysferaDS 5 Bug WB + lib,05-Produits,2.0
+135,2014-08-01,998,"use only one of columns numuserid and userid and transferid and numtransferid",SysFera,"database model updated, changed in code in progress",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,6.5
+278,2014-08-01,944,"[WB] Internationnaliser activity report",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,6.5
+345,2014-08-01,964,"Congés",SysFera,"N/A",absila,60,Congés,N/A,7.7
+88,2014-08-04,964,"Congés",SysFera,"N/A",augustin,60,Congés,N/A,7.7
+87,2014-08-04,964,"Congés",SysFera,"N/A",phi,60,Congés,N/A,7.7
+136,2014-08-04,998,"use only one of columns numuserid and userid and transferid and numtransferid",SysFera,"clean, clean and clean code. rewrite when necessary and fixes for broken features",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,7.0
+194,2014-08-04,980,"Férié",SysFera,"N/A",keo,50,Férié,N/A,7.7
+208,2014-08-04,958,"Fonctionnement : FdT ...",SysFera,"N/A",olivier,700,Fonctionnement,N/A,2.0
+346,2014-08-04,964,"Congés",SysFera,"N/A",absila,60,Congés,N/A,7.7
+209,2014-08-04,575,"Site non sécurisé",ROMEO,"N/A",olivier,1259,R&D Tests ROMEO,05-Produits,6.0
+89,2014-08-05,964,"Congés",SysFera,"N/A",phi,60,Congés,N/A,7.7
+90,2014-08-05,964,"Congés",SysFera,"N/A",augustin,60,Congés,N/A,7.7
+137,2014-08-05,1000,"Refactoring machine model",SysFera,"refactoring machine model deprecating unused properties, while providing additionnal properties where required",r,1254,R&D - SysFera-DS v5.0,05-Produits,7.0
+195,2014-08-05,980,"Férié",SysFera,"N/A",keo,50,Férié,N/A,7.7
+347,2014-08-05,964,"Congés",SysFera,"N/A",absila,60,Congés,N/A,7.7
+210,2014-08-05,575,"Site non sécurisé",ROMEO,"N/A",olivier,1259,R&D Tests ROMEO,05-Produits,8.0
+91,2014-08-06,964,"Congés",SysFera,"N/A",phi,60,Congés,N/A,7.7
+92,2014-08-06,964,"Congés",SysFera,"N/A",augustin,60,Congés,N/A,7.7
+138,2014-08-06,998,"use only one of columns numuserid and userid and transferid and numtransferid",SysFera,"infine loop: clean, refactoring, test...",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,7.0
+196,2014-08-06,980,"Férié",SysFera,"N/A",keo,50,Férié,N/A,7.7
+348,2014-08-06,964,"Congés",SysFera,"N/A",absila,60,Congés,N/A,7.7
+211,2014-08-06,575,"Site non sécurisé",ROMEO,"N/A",olivier,1259,R&D Tests ROMEO,05-Produits,8.0
+93,2014-08-07,964,"Congés",SysFera,"N/A",phi,60,Congés,N/A,7.7
+94,2014-08-07,964,"Congés",SysFera,"N/A",augustin,60,Congés,N/A,7.7
+139,2014-08-07,998,"use only one of columns numuserid and userid and transferid and numtransferid",SysFera,"clean, clean and clean code. rewrite when necessary and fixes for broken features",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,8.0
+140,2014-08-07,964,"Congés",SysFera,"N/A",r,60,Congés,N/A,4.0
+197,2014-08-07,980,"Férié",SysFera,"N/A",keo,50,Férié,N/A,7.7
+349,2014-08-07,964,"Congés",SysFera,"N/A",absila,60,Congés,N/A,7.7
+212,2014-08-07,575,"Site non sécurisé",ROMEO,"N/A",olivier,1259,R&D Tests ROMEO,05-Produits,8.0
+95,2014-08-08,964,"Congés",SysFera,"N/A",phi,60,Congés,N/A,7.7
+96,2014-08-08,964,"Congés",SysFera,"N/A",augustin,60,Congés,N/A,7.7
+141,2014-08-08,1007,"refactoring job db model",SysFera,"infine loop: refactoring, test, clean, refactoring, test...",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,7.0
+198,2014-08-08,980,"Férié",SysFera,"N/A",keo,50,Férié,N/A,7.7
+350,2014-08-08,964,"Congés",SysFera,"N/A",absila,60,Congés,N/A,7.7
+213,2014-08-08,575,"Site non sécurisé",ROMEO,"",olivier,1259,R&D Tests ROMEO,05-Produits,6.5
+474,2014-08-09,1098,"Intégration de la visualisation d'images au WebBoard/FMS/Vishnu",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,4.0
+97,2014-08-11,964,"Congés",SysFera,"N/A",phi,60,Congés,N/A,7.7
+98,2014-08-11,964,"Congés",SysFera,"N/A",augustin,60,Congés,N/A,7.7
+150,2014-08-11,998,"use only one of columns numuserid and userid and transferid and numtransferid",SysFera,"rewrite to conform to db changes + refactoring for code simplification in list accounts, list users, authsystem...",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,7.0
+199,2014-08-11,980,"Férié",SysFera,"N/A",keo,50,Férié,N/A,7.7
+351,2014-08-11,964,"Congés",SysFera,"N/A",absila,60,Congés,N/A,7.7
+214,2014-08-11,575,"Site non sécurisé",ROMEO,"N/A",olivier,1259,R&D Tests ROMEO,05-Produits,8.0
+99,2014-08-12,964,"Congés",SysFera,"N/A",phi,60,Congés,N/A,7.7
+100,2014-08-12,964,"Congés",SysFera,"N/A",augustin,60,Congés,N/A,7.7
+149,2014-08-12,998,"use only one of columns numuserid and userid and transferid and numtransferid",SysFera,"rewrite to conform with db change: job list, job submit, job info, job cancel. remain autom tests",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,7.0
+200,2014-08-12,980,"Férié",SysFera,"N/A",keo,50,Férié,N/A,7.7
+352,2014-08-12,964,"Congés",SysFera,"N/A",absila,60,Congés,N/A,7.7
+215,2014-08-12,575,"Site non sécurisé",ROMEO,"N/A",olivier,1259,R&D Tests ROMEO,05-Produits,8.0
+101,2014-08-13,964,"Congés",SysFera,"N/A",phi,60,Congés,N/A,7.7
+102,2014-08-13,964,"Congés",SysFera,"N/A",augustin,60,Congés,N/A,7.7
+152,2014-08-13,1010,"Update webbaord model",SysFera,"N/A",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,7.0
+201,2014-08-13,980,"Férié",SysFera,"N/A",keo,50,Férié,N/A,7.7
+353,2014-08-13,964,"Congés",SysFera,"N/A",absila,60,Congés,N/A,7.7
+216,2014-08-13,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,8.0
+103,2014-08-14,964,"Congés",SysFera,"N/A",phi,60,Congés,N/A,7.7
+104,2014-08-14,964,"Congés",SysFera,"N/A",augustin,60,Congés,N/A,7.7
+151,2014-08-14,1009,"Simplifying TMS",SysFera,"N/A",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,7.0
+202,2014-08-14,980,"Férié",SysFera,"N/A",keo,50,Férié,N/A,7.7
+354,2014-08-14,964,"Congés",SysFera,"N/A",absila,60,Congés,N/A,7.7
+217,2014-08-14,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,8.0
+110,2014-08-15,980,"Férié",SysFera,"N/A",augustin,50,Férié,N/A,7.7
+111,2014-08-15,980,"Férié",SysFera,"N/A",phi,50,Férié,N/A,7.7
+153,2014-08-15,980,"Férié",SysFera,"N/A",r,50,Férié,N/A,8.0
+203,2014-08-15,964,"Congés",SysFera,"N/A",keo,60,Congés,N/A,7.7
+218,2014-08-15,980,"Férié",SysFera,"N/A",olivier,50,Férié,N/A,6.5
+340,2014-08-15,980,"Férié",SysFera,"N/A",absila,50,Férié,N/A,7.7
+105,2014-08-18,964,"Congés",SysFera,"N/A",phi,60,Congés,N/A,7.7
+154,2014-08-18,971,"Analytics",SysFera,"Impossible de comprendre pourquoi Google Analytics ne trouve pas le snippet de code qui est mis sur le site.",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+155,2014-08-18,895,"[SDS] MaJ du modèle",SysFera,"Temps passé sur la PR de Rodrigue puis à lire les modifications du modèle.",augustin,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,1.0
+156,2014-08-18,1011,"WB: appliquer les changements de modèle faits par Rodrigue",SysFera,"Rien de spécial, IntelliJ a bien aidé pour renommer/effacer.",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,3.0
+158,2014-08-18,944,"[WB] Internationnaliser activity report",SysFera,"Worked with Kevin to learn how Activity Report works, and how to improve it.",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,2.0
+163,2014-08-18,1010,"Update webbaord model",SysFera,"N/A",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,2.0
+164,2014-08-18,1007,"refactoring job db model",SysFera,"tests",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,4.5
+279,2014-08-18,896,"[VISHNU] Enlever les ID générés en base de données et en faire une config",SysFera,"N/A",keo,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,4.0
+284,2014-08-18,1021,"Formation LMS",SysFera,"N/A",keo,1260,LMS – Formation,02-NRE,4.0
+355,2014-08-18,964,"Congés",SysFera,"N/A",absila,60,Congés,N/A,7.7
+219,2014-08-18,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,8.0
+106,2014-08-19,964,"Congés",SysFera,"N/A",phi,60,Congés,N/A,7.7
+159,2014-08-19,944,"[WB] Internationnaliser activity report",SysFera,"Pas mal de temps passé à jongler avec les BDD, et à ré-évaluer l'architecture progressivement. Au final, ça tourne pas mal.",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,7.0
+165,2014-08-19,1007,"refactoring job db model",SysFera,"tests",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,7.0
+280,2014-08-19,896,"[VISHNU] Enlever les ID générés en base de données et en faire une config",SysFera,"N/A",keo,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,4.0
+285,2014-08-19,1021,"Formation LMS",SysFera,"N/A",keo,1260,LMS – Formation,02-NRE,4.0
+356,2014-08-19,964,"Congés",SysFera,"N/A",absila,60,Congés,N/A,7.7
+160,2014-08-19,999,"Pb de trad FMS page d'un work",ROMEO,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+220,2014-08-19,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,8.0
+107,2014-08-20,964,"Congés",SysFera,"N/A",phi,60,Congés,N/A,7.7
+162,2014-08-20,827,"[WB] user/list ne prends pas en compte offset et max",SysFera,"Pas mal galéré pour faire le tri dans Users : il y a beaucoup de nettoyage à faire...",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,5.5
+166,2014-08-20,1007,"refactoring job db model",SysFera,"tests and debug",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,5.0
+167,2014-08-20,1012,"WB: Intégrer les clefs étrangères de Machine (?) dans Filetransfer",SysFera,"test and debug",r,1254,R&D - SysFera-DS v5.0,05-Produits,2.0
+281,2014-08-20,896,"[VISHNU] Enlever les ID générés en base de données et en faire une config",SysFera,"N/A",keo,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,3.0
+286,2014-08-20,1021,"Formation LMS",SysFera,"N/A",keo,1260,LMS – Formation,02-NRE,5.0
+357,2014-08-20,964,"Congés",SysFera,"N/A",absila,60,Congés,N/A,7.7
+161,2014-08-20,999,"Pb de trad FMS page d'un work",ROMEO,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,2.0
+222,2014-08-20,575,"Site non sécurisé",ROMEO,"N/A",olivier,1259,R&D Tests ROMEO,05-Produits,2.0
+221,2014-08-20,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,6.0
+108,2014-08-21,964,"Congés",SysFera,"N/A",phi,60,Congés,N/A,7.7
+168,2014-08-21,827,"[WB] user/list ne prends pas en compte offset et max",SysFera,"Minor additions to the Job, Work, and User searches.",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,1.5
+178,2014-08-21,966,"Bug WB",SysFera,"Ajouté la recherche dynamique à des pages",augustin,1258,R&D SysferaDS 5 Bug WB + lib,05-Produits,3.0
+176,2014-08-21,912,"Portal : nettoyage des log.X de Grails",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+184,2014-08-21,1007,"refactoring job db model",SysFera,"fixed dans le webboard",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,3.0
+185,2014-08-21,1007,"refactoring job db model",SysFera,"fixed bugs vishnu",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,4.0
+282,2014-08-21,896,"[VISHNU] Enlever les ID générés en base de données et en faire une config",SysFera,"N/A",keo,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,1.0
+287,2014-08-21,1021,"Formation LMS",SysFera,"N/A",keo,1260,LMS – Formation,02-NRE,7.0
+358,2014-08-21,964,"Congés",SysFera,"N/A",absila,60,Congés,N/A,7.7
+169,2014-08-21,1002,"FMS : pb avec le thème",ROMEO,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+177,2014-08-21,1002,"FMS : pb avec le thème",ROMEO,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+223,2014-08-21,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,8.0
+109,2014-08-22,964,"Congés",SysFera,"N/A",phi,60,Congés,N/A,7.7
+170,2014-08-22,1014,"[WB] Les liens ""select group"" de globalProjectRole ne fonctionnent pas",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,0.2
+171,2014-08-22,944,"[WB] Internationnaliser activity report",SysFera,"Corrections mineures suite aux retours de Kevin, sur la PR et 'autour'.",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,0.8
+179,2014-08-22,827,"[WB] user/list ne prends pas en compte offset et max",SysFera,"On étend encore la recherche avancée, cette fois à projectAdmin",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+180,2014-08-22,1018,"[WB] Problème d'accès à une application",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+181,2014-08-22,1020,"[WB] Contraintes entre ProjectRole et ProjectMember",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+182,2014-08-22,944,"[WB] Internationnaliser activity report",SysFera,"Perdu du temps à osciller entre deux approches et à me heurter à des problèmes de contraintes BDD",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,2.0
+186,2014-08-22,1007,"refactoring job db model",SysFera,"fixed bugs vishnu",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,0.5
+188,2014-08-22,1021,"Formation LMS",SysFera,"preparation TP formation",r,1260,LMS – Formation,02-NRE,6.5
+283,2014-08-22,896,"[VISHNU] Enlever les ID générés en base de données et en faire une config",SysFera,"N/A",keo,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,6.5
+224,2014-08-22,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,6.5
+359,2014-08-22,1071,"[PaaSage]Suivie de projet",PaaSage,"N/A",absila,1189,Projet FP7 - PaaSage,05-Produits,7.7
+189,2014-08-25,966,"Bug WB",SysFera,"Fixed bugs on batchapps, activity report, some i18n, etc.",augustin,1258,R&D SysferaDS 5 Bug WB + lib,05-Produits,2.0
+190,2014-08-25,954,"[WB] Mail dupliqué = erreur serveur",SysFera,"Bug non reproductible ici, donc rejeté.",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,0.2
+204,2014-08-25,1021,"Formation LMS",SysFera,"preparation TP formation",r,1260,LMS – Formation,02-NRE,3.5
+205,2014-08-25,1007,"refactoring job db model",SysFera,"fixed regression",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,3.5
+233,2014-08-25,974,"Les fonctions vishnu cat/tail/head ne marchent plus avec le nouveau driver.",SysFera,"reproduction du bug sous les meme condition et debug",absila,1248,Support E-Biothon / CNRS - Licence 2014,01-Support,2.0
+234,2014-08-25,972,"La fonction ""stats"" (informations) ne marche plus dans FMSGUI",SysFera,"reproduction du bug sous les meme condition et debug",absila,1248,Support E-Biothon / CNRS - Licence 2014,01-Support,1.5
+235,2014-08-25,1029,"[Vishnu] FMS: vishnu_stat ne prend pas en compte session key passée en option",SysFera,"correction du bug et commit",absila,1254,R&D - SysFera-DS v5.0,05-Produits,2.5
+254,2014-08-25,954,"[WB] Mail dupliqué = erreur serveur",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,0.8
+255,2014-08-25,944,"[WB] Internationnaliser activity report",SysFera,"Pas mal de fixes sur la PR et un peu autour.",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,4.5
+288,2014-08-25,1021,"Formation LMS",SysFera,"N/A",keo,1260,LMS – Formation,02-NRE,4.0
+297,2014-08-25,944,"[WB] Internationnaliser activity report",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,3.0
+367,2014-08-25,1043,"Installer un repository de librairies ",SysFera,"N/A",phi,2000,R&D - Process R&D SDS 5,05-Produits,7.7
+327,2014-08-25,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,8.0
+229,2014-08-26,1021,"Formation LMS",SysFera,"prepation TP ",r,1260,LMS – Formation,02-NRE,2.0
+230,2014-08-26,895,"[SDS] MaJ du modèle",SysFera,"misc fixes",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,2.0
+227,2014-08-26,975,"Démo/Rétro",SysFera,"demo",r,2000,R&D - Process R&D SDS 5,05-Produits,2.5
+236,2014-08-26,975,"Démo/Rétro",SysFera,"N/A",absila,2000,R&D - Process R&D SDS 5,05-Produits,2.5
+237,2014-08-26,1034,"FMS affichage de l'historique des transferts non complet avec le driver vishnucli",SysFera,"N/A",absila,1254,R&D - SysFera-DS v5.0,05-Produits,2.5
+238,2014-08-26,966,"Bug WB",SysFera,"N/A",absila,1258,R&D SysferaDS 5 Bug WB + lib,05-Produits,1.5
+242,2014-08-26,975,"Démo/Rétro",SysFera,"N/A",phi,2000,R&D - Process R&D SDS 5,05-Produits,3.0
+247,2014-08-26,975,"Démo/Rétro",SysFera,"N/A",augustin,2000,R&D - Process R&D SDS 5,05-Produits,3.0
+256,2014-08-26,997,"FMS GUI : bouton pour valider trop petit",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+257,2014-08-26,1030,"[WB] Id manquant à permissions summary",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+258,2014-08-26,944,"[WB] Internationnaliser activity report",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+259,2014-08-26,966,"Bug WB",SysFera,"N/A",augustin,1258,R&D SysferaDS 5 Bug WB + lib,05-Produits,1.0
+289,2014-08-26,1021,"Formation LMS",SysFera,"N/A",keo,1260,LMS – Formation,02-NRE,4.0
+291,2014-08-26,975,"Démo/Rétro",SysFera,"N/A",keo,2000,R&D - Process R&D SDS 5,05-Produits,4.0
+328,2014-08-26,975,"Démo/Rétro",SysFera,"N/A",olivier,2000,R&D - Process R&D SDS 5,05-Produits,2.0
+329,2014-08-26,1008,"Problème LDAP",SysFera,"N/A",olivier,1254,R&D - SysFera-DS v5.0,05-Produits,2.0
+330,2014-08-26,958,"Fonctionnement : FdT ...",SysFera,"N/A",olivier,700,Fonctionnement,N/A,1.5
+368,2014-08-26,1043,"Installer un repository de librairies ",SysFera,"N/A",phi,2000,R&D - Process R&D SDS 5,05-Produits,3.5
+331,2014-08-26,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,1.0
+228,2014-08-27,975,"Démo/Rétro",SysFera,"demo",r,2000,R&D - Process R&D SDS 5,05-Produits,4.5
+231,2014-08-27,1024,"FMS Driver vishnu CLI non fonctionnel",SysFera,"fix le bug d'affichage de la liste des transferts et la pagination",absila,1254,R&D - SysFera-DS v5.0,05-Produits,1.5
+232,2014-08-27,975,"Démo/Rétro",SysFera,"N/A",absila,2000,R&D - Process R&D SDS 5,05-Produits,4.5
+239,2014-08-27,895,"[SDS] MaJ du modèle",SysFera,"fix in machine domain class (unique machineid, non unique host address), update controler and view to replace site by description",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,2.5
+241,2014-08-27,975,"Démo/Rétro",SysFera,"N/A",phi,2000,R&D - Process R&D SDS 5,05-Produits,3.0
+248,2014-08-27,975,"Démo/Rétro",SysFera,"N/A",augustin,2000,R&D - Process R&D SDS 5,05-Produits,3.0
+252,2014-08-27,1072,"[WB] Applications custom : écrire le code",SysFera,"Commencé à essayer d'exposer PhyML en passant par le 'nouveau' formulaire custom.",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,4.0
+292,2014-08-27,975,"Démo/Rétro",SysFera,"N/A",keo,2000,R&D - Process R&D SDS 5,05-Produits,4.0
+296,2014-08-27,912,"Portal : nettoyage des log.X de Grails",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,2.0
+332,2014-08-27,958,"Fonctionnement : FdT ...",SysFera,"N/A",olivier,700,Fonctionnement,N/A,0.5
+334,2014-08-27,975,"Démo/Rétro",SysFera,"N/A",olivier,2000,R&D - Process R&D SDS 5,05-Produits,3.5
+335,2014-08-27,825,"Mise en place de la démo",SysFera,"N/A",olivier,1247,R&D - Process R&D,06-Interne,1.5
+369,2014-08-27,1043,"Installer un repository de librairies ",SysFera,"N/A",phi,2000,R&D - Process R&D SDS 5,05-Produits,4.0
+333,2014-08-27,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,2.0
+243,2014-08-28,982,"Visu et date de soumission sur la démo",SysFera,"N/A",absila,1254,R&D - SysFera-DS v5.0,05-Produits,2.0
+244,2014-08-28,975,"Démo/Rétro",SysFera,"N/A",absila,2000,R&D - Process R&D SDS 5,05-Produits,2.5
+245,2014-08-28,982,"Visu et date de soumission sur la démo",SysFera,"N/A",phi,1254,R&D - SysFera-DS v5.0,05-Produits,2.0
+246,2014-08-28,982,"Visu et date de soumission sur la démo",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+249,2014-08-28,1062,"[libFMS] fichiers cachés non affichés lorsqu'on fait un ls",SysFera,"N/A",absila,1254,R&D - SysFera-DS v5.0,05-Produits,1.5
+250,2014-08-28,1041,"[WB] driver vishnucli : trier les résultats par type",SysFera,"N/A",absila,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,0.5
+251,2014-08-28,1072,"[WB] Applications custom : écrire le code",SysFera,"Quasi finalisé le code",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,5.0
+267,2014-08-28,895,"[SDS] MaJ du modèle",SysFera,"test couplage webboard vishnu + misc fixes",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,7.0
+295,2014-08-28,945,"Améliorations FMSGui et FMSWidget",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,4.0
+298,2014-08-28,1042,"Faciliter/automatiser le processus de mise à jour des PR",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+336,2014-08-28,958,"Fonctionnement : FdT ...",SysFera,"N/A",olivier,700,Fonctionnement,N/A,1.5
+360,2014-08-28,1073,"[WB] Applications custom : écrire la doc",SysFera,"Fait un premier draft de la doc.",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,2.0
+370,2014-08-28,1043,"Installer un repository de librairies ",SysFera,"N/A",phi,2000,R&D - Process R&D SDS 5,05-Produits,5.0
+337,2014-08-28,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,5.0
+253,2014-08-29,945,"Améliorations FMSGui et FMSWidget",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+261,2014-08-29,1028,"[WB] i18n des labels des Permissions dans les Profils",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+262,2014-08-29,1043,"Installer un repository de librairies ",SysFera,"N/A",phi,2000,R&D - Process R&D SDS 5,05-Produits,4.0
+264,2014-08-29,950,"[libFMS] driver vishnu + tri + fichiers cachés = erreurs",SysFera,"N/A",absila,1254,R&D - SysFera-DS v5.0,05-Produits,5.0
+265,2014-08-29,905,"FMS : remplacer les icônes par celles du reste du WB",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,3.0
+266,2014-08-29,1048,"LMS : Corriger le TP",SysFera,"pris en compte remarques ben :: to be continue",r,1260,LMS – Formation,02-NRE,6.5
+293,2014-08-29,1028,"[WB] i18n des labels des Permissions dans les Profils",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,3.0
+294,2014-08-29,945,"Améliorations FMSGui et FMSWidget",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,3.0
+260,2014-08-29,1063,"Affichage du menu dans le webboard",ROMEO,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+263,2014-08-29,1001,"stderr est vide",ROMEO,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,0.5
+338,2014-08-29,1069,"Déploiement Roméo",ROMEO,"N/A",olivier,1259,R&D Tests ROMEO,05-Produits,5.0
+268,2014-08-29,872,"Création de la CLI",BioAster,"N/A",phi,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,3.0
+339,2014-08-29,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,2.5
+290,2014-09-01,958,"Fonctionnement : FdT ...",SysFera,"N/A",keo,700,Fonctionnement,N/A,3.0
+299,2014-09-01,905,"FMS : remplacer les icônes par celles du reste du WB",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,2.0
+302,2014-09-01,958,"Fonctionnement : FdT ...",SysFera,"paperasse pour election DP",keo,700,Fonctionnement,N/A,2.0
+303,2014-09-01,958,"Fonctionnement : FdT ...",SysFera,"nouvelle cible 'recurrent', déplacement de tickets, fermetures de tickets et de jalons",keo,700,Fonctionnement,N/A,0.5
+305,2014-09-01,964,"Congés",SysFera,"N/A",augustin,60,Congés,N/A,7.7
+323,2014-09-01,958,"Fonctionnement : FdT ...",SysFera,"N/A",olivier,700,Fonctionnement,N/A,1.5
+325,2014-09-01,1048,"LMS : Corriger le TP",SysFera,"enrichissement du TP",r,1260,LMS – Formation,02-NRE,6.75
+390,2014-09-01,1061,"FMS : impossible d'uploader un fichier avec des espaces dans le nom",SysFera,"N/A",absila,,N/A,N/A,2.0
+391,2014-09-01,1059,"FMS : mode édition d'un fichier ne marche plus",SysFera,"N/A",absila,,N/A,N/A,1.5
+392,2014-09-01,1041,"[WB] driver vishnucli : trier les résultats par type",SysFera,"N/A",absila,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,3.0
+301,2014-09-01,1004,"log erreur",eBiothon,"N/A",phi,1248,Support E-Biothon / CNRS - Licence 2014,01-Support,3.0
+304,2014-09-01,872,"Création de la CLI",BioAster,"N/A",phi,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,3.0
+322,2014-09-01,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,5.5
+306,2014-09-02,905,"FMS : remplacer les icônes par celles du reste du WB",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+307,2014-09-02,905,"FMS : remplacer les icônes par celles du reste du WB",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+308,2014-09-02,791,"Améliorer imdoing",SysFera,"Support de la target récurrente",keo,1247,R&D - Process R&D,06-Interne,1.5
+309,2014-09-02,965,"Bug Vishnu",SysFera,"Fix pour chgrp pour prendre en compte l'option -k",keo,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,0.5
+310,2014-09-02,1073,"[WB] Applications custom : écrire la doc",SysFera,"Traduction et amélioration de la doc",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,3.0
+311,2014-09-02,967,"Working Groups",SysFera,"WG hpcspot & hpcdrive",keo,300,Formation interne,N/A,1.5
+312,2014-09-02,895,"[SDS] MaJ du modèle",SysFera,"N/A",keo,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,1.5
+313,2014-09-02,895,"[SDS] MaJ du modèle",SysFera,"N/A",keo,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,1.0
+314,2014-09-02,905,"FMS : remplacer les icônes par celles du reste du WB",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,0.5
+316,2014-09-02,967,"Working Groups",SysFera,"N/A",olivier,300,Formation interne,N/A,1.5
+317,2014-09-02,967,"Working Groups",SysFera,"N/A",phi,300,Formation interne,N/A,1.5
+324,2014-09-02,1074,"[WB] Applications custom : valider le résultat en recréant PhyML",SysFera,"Recréé et commencé à validé PhyML nouvelle version",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,4.0
+326,2014-09-02,1048,"LMS : Corriger le TP",SysFera,"enrichissement du TP: mpi, parallel environments",r,1260,LMS – Formation,02-NRE,7.0
+393,2014-09-02,1067,"[WB] Problème de dates",SysFera,"N/A",absila,,N/A,N/A,1.0
+394,2014-09-02,1067,"[WB] Problème de dates",SysFera,"problème sur vishnu pour les test sur les affichage des date",absila,,N/A,N/A,3.0
+315,2014-09-02,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,4.0
+318,2014-09-02,872,"Création de la CLI",BioAster,"N/A",phi,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,4.0
+319,2014-09-02,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,2.0
+320,2014-09-02,872,"Création de la CLI",BioAster,"N/A",phi,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,2.0
+361,2014-09-03,943,"Imdoing : améliorations mineures diverses",SysFera,"Ajouté les OF à imdoing update",augustin,1247,R&D - Process R&D,06-Interne,0.3
+362,2014-09-03,944,"[WB] Internationnaliser activity report",SysFera,"Corrigé un problème de construction de chaîne de caractères.",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,0.5
+363,2014-09-03,958,"Fonctionnement : FdT ...",SysFera,"N/A",keo,700,Fonctionnement,N/A,1.0
+364,2014-09-03,1074,"[WB] Applications custom : valider le résultat en recréant PhyML",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,4.0
+365,2014-09-03,1048,"LMS : Corriger le TP",SysFera,"N/A",keo,1260,LMS – Formation,02-NRE,1.0
+366,2014-09-03,1074,"[WB] Applications custom : valider le résultat en recréant PhyML",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+371,2014-09-03,1046,"[WB] driver vishnu : ne remonte pas l'erreur de changement de groupe",SysFera,"Aidé Amine sur les questions de JS/Groovy.",augustin,,N/A,N/A,0.5
+372,2014-09-03,791,"Améliorer imdoing",SysFera,"Aidé Philippe sur l'utilisation de imdoing pour les feuilles de temps.",augustin,1247,R&D - Process R&D,06-Interne,0.5
+374,2014-09-03,1074,"[WB] Applications custom : valider le résultat en recréant PhyML",SysFera,"Un peu dé débugging PhyML avec Kevin.",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,2.0
+375,2014-09-03,958,"Fonctionnement : FdT ...",SysFera,"N/A",phi,700,Fonctionnement,N/A,3.7
+380,2014-09-03,1048,"LMS : Corriger le TP",SysFera,"Ajout section sur les environnements parallele et mis a jour doc formateur",r,1260,LMS – Formation,02-NRE,4.5
+381,2014-09-03,896,"[VISHNU] Enlever les ID générés en base de données et en faire une config",SysFera,"review PR kevin",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,0.5
+382,2014-09-03,1079,"SOP : support et mise à jour plateforme",SysFera,"debug segfault in TMS",r,1157,Projet R&D ANR SOP,05-Produits,1.8
+395,2014-09-03,1070,"[WB] FMSGui: probleme d'affichage d'erreur sur les popups lorsqu'on valide une modification on ne sait pas si cela a reussie ou non et l'erreur",SysFera,"N/A",absila,1254,R&D - SysFera-DS v5.0,05-Produits,5.5
+404,2014-09-03,958,"Fonctionnement : FdT ...",SysFera,"N/A",olivier,700,Fonctionnement,N/A,0.25
+405,2014-09-03,958,"Fonctionnement : FdT ...",SysFera,"N/A",olivier,700,Fonctionnement,N/A,1.5
+373,2014-09-03,872,"Création de la CLI",BioAster,"N/A",phi,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,4.0
+406,2014-09-03,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,4.5
+389,2014-09-03,1071,"[PaaSage]Suivie de projet",PaaSage,"N/A",absila,1189,Projet FP7 - PaaSage,05-Produits,1.0
+376,2014-09-04,966,"Bug WB",SysFera,"N/A",keo,1258,R&D SysferaDS 5 Bug WB + lib,05-Produits,1.0
+377,2014-09-04,985,"Démo : PhyML inutilisable",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,2.0
+378,2014-09-04,1074,"[WB] Applications custom : valider le résultat en recréant PhyML",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+379,2014-09-04,939,"Cookie et legislation",SysFera,"N/A",augustin,1247,R&D - Process R&D,06-Interne,2.0
+383,2014-09-04,943,"Imdoing : améliorations mineures diverses",SysFera,"N/A",keo,1247,R&D - Process R&D,06-Interne,3.0
+384,2014-09-04,1079,"SOP : support et mise à jour plateforme",SysFera,"debug sefault et fix regression lié à fork + exit, mise à jour de l'installation",r,1157,Projet R&D ANR SOP,05-Produits,5.0
+385,2014-09-04,985,"Démo : PhyML inutilisable",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+386,2014-09-04,939,"Cookie et legislation",SysFera,"N/A",keo,1247,R&D - Process R&D,06-Interne,1.0
+387,2014-09-04,896,"[VISHNU] Enlever les ID générés en base de données et en faire une config",SysFera,"test PR kevin et fix d'une regression lié à fork + exit",r,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,1.75
+396,2014-09-04,1070,"[WB] FMSGui: probleme d'affichage d'erreur sur les popups lorsqu'on valide une modification on ne sait pas si cela a reussie ou non et l'erreur",SysFera,"N/A",absila,1254,R&D - SysFera-DS v5.0,05-Produits,3.0
+397,2014-09-04,964,"Congés",SysFera,"N/A",absila,60,Congés,N/A,4.0
+407,2014-09-04,958,"Fonctionnement : FdT ...",SysFera,"N/A",olivier,700,Fonctionnement,N/A,0.5
+408,2014-09-04,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,6.0
+402,2014-09-05,1046,"[WB] driver vishnu : ne remonte pas l'erreur de changement de groupe",SysFera,"tests de la PR et tout un tas de bugs remontés",keo,,N/A,N/A,2.0
+401,2014-09-05,1082,"Extraire donnée brute",SysFera,"Écrit le code pour extraire les données requises.",augustin,1247,R&D - Process R&D,06-Interne,3.0
+400,2014-09-05,791,"Améliorer imdoing",SysFera,"Quelques bugfixes de imdoing",augustin,1247,R&D - Process R&D,06-Interne,1.0
+403,2014-09-05,965,"Bug Vishnu",SysFera,"Fix repérés, implémentés, testés, intégrés lié à la remontée d'erreur",keo,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,2.0
+388,2014-09-05,964,"Congés",SysFera,"N/A",r,60,Congés,N/A,8.0
+398,2014-09-05,1046,"[WB] driver vishnu : ne remonte pas l'erreur de changement de groupe",SysFera,"N/A",keo,,N/A,N/A,0.5
+399,2014-09-05,791,"Améliorer imdoing",SysFera,"N/A",keo,1247,R&D - Process R&D,06-Interne,2.0
+409,2014-09-05,958,"Fonctionnement : FdT ...",SysFera,"N/A",olivier,700,Fonctionnement,N/A,0.5
+410,2014-09-05,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,6.0
+411,2014-09-08,1081,"Imdoing : consolidation",SysFera,"N/A",augustin,1247,R&D - Process R&D,06-Interne,1.0
+412,2014-09-08,1075,"[WB] Applications custom : déployer la nouvelle version chez e-Biothon et valider la transition",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+462,2014-09-08,964,"Congés",SysFera,"N/A",keo,60,Congés,N/A,3.5
+463,2014-09-08,1088,"[WB] head/tail ne remontent pas d'erreur",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+464,2014-09-08,1090,"[WB] Echec de rename : suppression de fichier",SysFera,"N/A",keo,,N/A,N/A,3.0
+503,2014-09-08,958,"Fonctionnement : FdT ...",SysFera,"N/A",olivier,700,Fonctionnement,N/A,0.5
+504,2014-09-08,958,"Fonctionnement : FdT ...",SysFera,"N/A",olivier,700,Fonctionnement,N/A,1.0
+518,2014-09-08,1106,"Préparation conseil",SysFera,"",phi,1252,LMS - Audit et conseil HPC,02-NRE,4.0
+505,2014-09-08,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,4.5
+466,2014-09-09,966,"Bug WB",SysFera,"Réparé quelques chaînes d'i18n (problème avec les simples quotes quand on utilise une variable dans la chaîne)",augustin,1258,R&D SysferaDS 5 Bug WB + lib,05-Produits,1.0
+465,2014-09-09,1095,"[WB] Ajouter tous les fichiers PhyML nécessaires au dépôt webboardUtils",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,0.5
+467,2014-09-09,1078,"[WB] BatchApps projet : supprimée mais toujours là ?",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,0.5
+468,2014-09-09,1023,"[WB] Différence de comportement lors de la suppression d'applis projet/global",SysFera,"N/A",augustin,1223,R&D - SysFera-DS v4.5,05-Produits,0.5
+469,2014-09-09,958,"Fonctionnement : FdT ...",SysFera,"N/A",keo,700,Fonctionnement,N/A,1.0
+470,2014-09-09,1088,"[WB] head/tail ne remontent pas d'erreur",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+471,2014-09-09,958,"Fonctionnement : FdT ...",SysFera,"N/A",keo,700,Fonctionnement,N/A,0.5
+472,2014-09-09,1096,"[WB] projectAdmin/list mélange les projets supprimés et actifs",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,0.5
+473,2014-09-09,966,"Bug WB",SysFera,"Ai fait en sorte que sur 'mes' pages recherche, les paramètres de pagination/filtre soient conservés même quand on interagit avec les éléments listés.",augustin,1258,R&D SysferaDS 5 Bug WB + lib,05-Produits,3.0
+475,2014-09-09,958,"Fonctionnement : FdT ...",SysFera,"N/A",keo,700,Fonctionnement,N/A,0.5
+476,2014-09-09,966,"Bug WB",SysFera,"N/A",keo,1258,R&D SysferaDS 5 Bug WB + lib,05-Produits,4.5
+506,2014-09-09,958,"Fonctionnement : FdT ...",SysFera,"N/A",olivier,700,Fonctionnement,N/A,0.5
+519,2014-09-09,1107,"LMS : conseil",SysFera,"Jour1",phi,1252,LMS - Audit et conseil HPC,02-NRE,7.7
+507,2014-09-09,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,6.0
+515,2014-09-09,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,1.5
+477,2014-09-10,895,"[SDS] MaJ du modèle",SysFera,"N/A",augustin,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,1.0
+478,2014-09-10,966,"Bug WB",SysFera,"N/A",augustin,1258,R&D SysferaDS 5 Bug WB + lib,05-Produits,1.0
+479,2014-09-10,958,"Fonctionnement : FdT ...",SysFera,"N/A",keo,700,Fonctionnement,N/A,1.0
+480,2014-09-10,1088,"[WB] head/tail ne remontent pas d'erreur",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+481,2014-09-10,1088,"[WB] head/tail ne remontent pas d'erreur",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,0.5
+482,2014-09-10,1098,"Intégration de la visualisation d'images au WebBoard/FMS/Vishnu",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,3.0
+483,2014-09-10,1088,"[WB] head/tail ne remontent pas d'erreur",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+484,2014-09-10,895,"[SDS] MaJ du modèle",SysFera,"N/A",keo,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,3.0
+485,2014-09-10,1049,"LMS : Former David",SysFera,"N/A",keo,1260,LMS – Formation,02-NRE,1.0
+486,2014-09-10,1097,"[WB] Erreur application quand on consulte des onglets d'un projet désactivé",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,2.0
+508,2014-09-10,958,"Fonctionnement : FdT ...",SysFera,"N/A",olivier,700,Fonctionnement,N/A,0.5
+520,2014-09-10,1107,"LMS : conseil",SysFera,"Jour2",phi,1252,LMS - Audit et conseil HPC,02-NRE,7.7
+509,2014-09-10,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,6.0
+487,2014-09-11,1097,"[WB] Erreur application quand on consulte des onglets d'un projet désactivé",SysFera,"Essayé de faire plein de trucs : nettoyage de code, gestion intelligente des exceptions... Mais c'est pas super clair dans ma tête où je vais, du coup je suis pas sûr d'avoir vraiment avancé.",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,6.0
+489,2014-09-11,958,"Fonctionnement : FdT ...",SysFera,"DP",keo,700,Fonctionnement,N/A,5.0
+490,2014-09-11,965,"Bug Vishnu",SysFera,"N/A",keo,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,2.0
+510,2014-09-11,958,"Fonctionnement : FdT ...",SysFera,"N/A",olivier,700,Fonctionnement,N/A,0.25
+521,2014-09-11,1107,"LMS : conseil",SysFera,"Jour3",phi,1252,LMS - Audit et conseil HPC,02-NRE,7.7
+511,2014-09-11,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,6.0
+488,2014-09-12,1098,"Intégration de la visualisation d'images au WebBoard/FMS/Vishnu",SysFera,"Passé du temps à configurer Vishnu puis FMS avec Phi. Au final, on met ça en pause : Vishnu renvoie pas trop bien les images, et de toutes façons ça semble compliqué.",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,1.5
+491,2014-09-12,958,"Fonctionnement : FdT ...",SysFera,"N/A",keo,700,Fonctionnement,N/A,1.0
+492,2014-09-12,965,"Bug Vishnu",SysFera,"N/A",keo,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,2.0
+493,2014-09-12,958,"Fonctionnement : FdT ...",SysFera,"DP",keo,700,Fonctionnement,N/A,2.0
+494,2014-09-12,1088,"[WB] head/tail ne remontent pas d'erreur",SysFera,"N/A",keo,1254,R&D - SysFera-DS v5.0,05-Produits,1.0
+501,2014-09-12,1091,"[Chili] Installer le certificat HTTPS wildcard sur support.sysfera.com",SysFera,"Fighté avec les containers LXC sur OVH, mais on a fini par s'en sortir.",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,4.0
+502,2014-09-12,1097,"[WB] Erreur application quand on consulte des onglets d'un projet désactivé",SysFera,"N/A",augustin,1254,R&D - SysFera-DS v5.0,05-Produits,2.0
+512,2014-09-12,958,"Fonctionnement : FdT ...",SysFera,"N/A",olivier,700,Fonctionnement,N/A,0.25
+514,2014-09-12,872,"Création de la CLI",BioAster,"N/A",olivier,1233,IRT Bioaster - dev spécifiques autour d'OpenStack - point C,02-NRE,4.0
+495,2014-09-15,1045,"Déménagement",SysFera,"N/A",keo,,N/A,N/A,3.5
+496,2014-09-15,974,"Les fonctions vishnu cat/tail/head ne marchent plus avec le nouveau driver.",SysFera,"N/A",keo,1248,Support E-Biothon / CNRS - Licence 2014,01-Support,1.0
+497,2014-09-15,958,"Fonctionnement : FdT ...",SysFera,"N/A",keo,700,Fonctionnement,N/A,1.0
+498,2014-09-15,1045,"Déménagement",SysFera,"N/A",augustin,,N/A,N/A,3.0
+499,2014-09-15,1103,"CapRezo/Newgen : création doc intégration Diet",SysFera,"N/A",phi,,N/A,N/A,2.0
+500,2014-09-15,1045,"Déménagement",SysFera,"Morgan, cablage",phi,,N/A,N/A,5.0
+513,2014-09-15,1101,"[Vishnu] vishnu_cat/head/tail ne renvoie rien pour une image",SysFera,"N/A",keo,,N/A,N/A,2.0
+516,2014-09-16,1101,"[Vishnu] vishnu_cat/head/tail ne renvoie rien pour une image",SysFera,"N/A",keo,,N/A,N/A,0.5
+517,2014-09-16,895,"[SDS] MaJ du modèle",SysFera,"N/A",keo,1257,R&D SysferaDS 5 Bug vishnu,05-Produits,1.0
