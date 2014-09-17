@@ -2,14 +2,12 @@
 from variables import *
 
 
-def get_issues(issues, attr, field, value, recurrent):
+def get_issues(issues, attr, field, value):
     issues_id = []
     for i in issues:
         if hasattr(i, attr):
             a = getattr(i, attr)
             if getattr(a, field) == value:
-                issues_id.append(i.id)
-            elif recurrent and getattr(a, field) == RECURRENT_TARGET:
                 issues_id.append(i.id)
 
     return issues.filter(issues_id)
@@ -141,7 +139,11 @@ def data(status, recurrent, sort, project, luke, limit):
     results = []
 
     ids = REDMINE.issue.filter(status_id=status)
-    issues = get_issues(ids, "fixed_version", "id", TARGET_VERSION, recurrent)
+    issues = []
+    if recurrent:
+        issues = get_issues(ids, "fixed_version", "id", RECURRENT_TARGET)
+    else:
+        issues = get_issues(ids, "fixed_version", "id", TARGET_VERSION)
 
     for issue in issues:
         issue_id = issue['id']
