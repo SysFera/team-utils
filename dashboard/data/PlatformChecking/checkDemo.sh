@@ -1,7 +1,7 @@
 #!/bin/bash
 source ../../../checking/libCheck.sh
 Wb_un="admin"
-Wb_pw="admin123"
+Wb_pw="omUKfE7l"
 URL="https://sysfera-ds.sysfera.com"
 
 #Processes
@@ -19,4 +19,3 @@ testSubmitWebBoardJob ${URL} "15" "15" "1"
 testSubmitCLIJob "/home/ec2-user/sysfera-ds/etc/vishnu.server.cfg" "vishnu_connect" "/home/ec2-user/testing" "vishnu_submit_job" "cluster1" "test.sh" "647" "aws-demo"
 overallCheck "demo"
 
-http://54.246.101.26/fileBrowser/getListDir?pwd=%2Fhome%2Fuser-cluster1%2F&machine=cluster1&offset=0&max=20&sort=name&order=asc&noHidden=true
