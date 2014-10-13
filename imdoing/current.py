@@ -104,7 +104,7 @@ def print_tickets(tickets, sort):
 
 def print_ticket(ticket, prefix=""):
     color = color_status(ticket)
-    string = u"{}#{id} = {project:^7} = OF: {of} = " \
+    string = u"{}#{id:>4} = {project:^8} = OF: {of} = " \
              u"{assignee:^10} = {subject}".format(prefix, **ticket)
 
     print colorify(string, color)
