@@ -5,13 +5,13 @@
   "sprint": {
     "start": {
       "year": 2014,
-      "month": 10,
-      "day": 13
+      "month": 11,
+      "day": 17
     },
     "end": {
       "year": 2014,
-      "month": 11,
-      "day": 3
+      "month": 12,
+      "day": 5
     }
   },
   "chili": {
@@ -41,7 +41,7 @@
       "urgent": 6,
       "immediate": 7
     },
-    "version_id": 22,
+    "version_id": 23,
     "fileProjects": "dataProjects.json",
     "customerProjects": [
       { "name": "CINES" },
